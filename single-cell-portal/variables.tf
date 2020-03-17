@@ -5,6 +5,7 @@ variable dependencies {
   description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
 }
 
+
 #
 # General Vars
 #
@@ -15,13 +16,14 @@ variable "owner" {
   description = "Environment or developer"
   default = ""
 }
+locals {
+  owner = var.owner == "" ? terraform.workspace : var.owner
+}
 variable "service" {
   description = "App name"
   default = "singlecell"
 }
-locals {
-  owner = var.owner == "" ? terraform.workspace : var.owner
-}
+
 
 #
 # Service Account Vars
