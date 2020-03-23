@@ -8,6 +8,7 @@ module "enable-services" {
   services    = [
     "serviceusage.googleapis.com",
     "container.googleapis.com",
-    "iam.googleapis.com"
+    "iam.googleapis.com",
+    "sqladmin.googleapis.com"
   ]
 }
