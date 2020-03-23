@@ -1,7 +1,7 @@
 
 module "k8s-master" {
   # terraform-shared repo
-  source     = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=gm-gke-istio"
+  source     = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=k8s-master-0.2.1-tf-0.12"
   dependencies = [
     module.enable-services,
     google_compute_network.k8s-cluster-network
