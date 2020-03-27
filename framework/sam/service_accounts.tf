@@ -49,12 +49,3 @@ resource "google_project_iam_member" "google_key_cache" {
   bucket = var.google_key_cache_bucket.name
   member = "serviceAccount:${google_service_account.sam.email}"
 }
-
-resource "google_service_account_key" "sam" {
-  service_account_id = "${google_service_account.sam.name}"
-}
-
-resource "google_service_account_key" "sam_admin_sdk" {
-  count        = "${var.num_admin_sdk_service_accounts}"
-  service_account_id = "${element(google_service_account.sam_admin_sdk.*.name, count.index)}"
-}

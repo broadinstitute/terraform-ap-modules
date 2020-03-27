@@ -8,7 +8,7 @@ resource "random_id" "root-password" {
 
 # Cloud SQL database
 module "cloudsql" {
-  source        = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-0.0.1-tf-0.12"
+  source        = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=k8s-master-0.2.1-tf-0.12"
 
   providers = {
     google.target =  "google"

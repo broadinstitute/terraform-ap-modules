@@ -5,8 +5,8 @@ module "enable-services" {
   providers = {
     google.target = google.target
   }
-  project     = var.google_project
-  services    = [
+  project = var.google_project
+  services = [
     "datastore.googleapis.com",
     "pubsub.googleapis.com",
     "sql-component.googleapis.com",
