@@ -29,16 +29,16 @@ locals {
 }
 
 resource "google_project_iam_member" "sam" {
-  for_each = local.roles
+  count = length(local.roles)
   project = var.google_project
-  role = each.value
+  role = local.roles[count.index]
   member = "serviceAccount:${google_service_account.sam}"
 }
 
 resource "google_project_iam_member" "sam_classic" {
-  for_each = local.classic_roles
+  count = length(local.classic_roles)
   project = var.classic_storage_google_project
-  role = each.value
+  role = local.classic_roles[count.index]
   member = "serviceAccount:${google_service_account.sam}"
 }
 
