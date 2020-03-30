@@ -57,7 +57,7 @@ locals {
   cluster_network = var.cluster_network == "" ? var.service : var.cluster_network
 }
 variable "k8s_version_prefix" {
- default = "1.16"
+ default = "1.15.9-gke.24"
 }
 variable "private_master_ipv4_cidr_block" {
   default = "10.128.18.0/28"
