@@ -10,9 +10,12 @@ module "k8s-master" {
   name = local.cluster_name
   location = var.cluster_location
   version_prefix = var.k8s_version_prefix
+
   network = local.cluster_network
   subnetwork = local.cluster_network
   private_ipv4_cidr_block = var.private_master_ipv4_cidr_block
+
+  istio_enable = true
 }
 
 module "k8s-node-pool" {
@@ -25,9 +28,11 @@ module "k8s-node-pool" {
   name = var.node_pools[0].name
   master_name = module.k8s-master.name
   location = var.cluster_location
+
   node_count = var.node_pools[0].node_count
   machine_type = var.node_pools[0].machine_type
   disk_size_gb = var.node_pools[0].disk_size_gb
+
   labels = var.node_pools[0].labels
   tags = [ "k8s-${module.k8s-master.name}-node-${var.node_pools[0].name}" ]
 }

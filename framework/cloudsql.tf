@@ -3,7 +3,7 @@ locals {
     for env_db in setproduct(keys(var.postgres_app_dbs), toset(var.envs)):
     "${env_db[1]}-${env_db[0]}" => {
       db = "${env_db[1]}-${var.postgres_app_dbs[env_db[0]]["db"]}"
-      username = var.postgres_app_dbs[env_db[0]]["username"]
+      username = "${env_db[1]}-${var.postgres_app_dbs[env_db[0]]["username"]}"
     }
   }
 }
