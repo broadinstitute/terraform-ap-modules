@@ -44,8 +44,8 @@ resource "google_project_iam_member" "sam_classic" {
 
 # Grant sam service account access to shared bucket storing pet service account keys.
 resource "google_storage_bucket_iam_member" "google_key_cache" {
+  bucket = var.google_key_cache_bucket.name
   project = var.google_key_cache_bucket.project
   role = "roles/storage.admin"
-  bucket = var.google_key_cache_bucket.name
   member = "serviceAccount:${google_service_account.sam.email}"
 }
