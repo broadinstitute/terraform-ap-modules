@@ -6,7 +6,7 @@ resource "google_compute_router" "router" {
   network = google_compute_network.k8s-cluster-network.self_link
 
   bgp {
-    asn = 64516
+    asn = 64515
   }
 }
 

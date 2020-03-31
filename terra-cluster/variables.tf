@@ -22,7 +22,7 @@ locals {
 }
 variable "service" {
   description = "App name"
-  default = "framework"
+  default = "terra"
 }
 
 
@@ -46,10 +46,10 @@ variable "cluster_network" {
   default = ""
 }
 locals {
-  cluster_network = var.cluster_network == "" ? var.service : var.cluster_network
+  cluster_network = var.cluster_network == "" ? "${var.service}-${local.owner}" : var.cluster_network
 }
 variable "k8s_version_prefix" {
- default = "1.15.9-gke.24"
+ default = "1.15.9"
 }
 variable "private_master_ipv4_cidr_block" {
   default = "10.128.18.0/28"
@@ -69,28 +69,6 @@ variable "node_pools" {
 }
 
 
-#
-# PostgreSQL CloudSQL Vars
-#
-
-variable "postgres_app_dbs" {
-  description = "List of PostgreSQL db name and username pairs"
-  type = map(object({
-    db = string
-    username = string
-  }))
-  default = {
-    kernel-service-poc = {
-      db = "poc"
-      username = "poc"
-    }
-  }
-}
-variable "cloudsql_tier" {
-  default = "db-custom-16-32768"
-  description = "The default tier (DB instance size) for the CloudSQL instance"
-}
-
 
 #
 # CI SA vars
@@ -102,33 +80,4 @@ variable "ci_sa_roles" {
     "roles/storage.admin",
     "roles/container.admin"
   ]
-}
-
-
-#
-# Application SA vars
-#
-
-variable "app_service_accounts" {
-  description = "List of application service accounts and their roles required per environment"
-  type = map(object({
-    roles = list(string)
-  }))
-  default = {
-    kernel-service-poc = {
-      roles = [
-        "roles/cloudsql.client"
-      ]
-    }
-  }
-}
-
-
-#
-# Environment vars
-#
-variable "envs" {
-  type = list(string)
-  default = []
-  description = "A list of environments for each of which some resources need to be duplicated"
 }
