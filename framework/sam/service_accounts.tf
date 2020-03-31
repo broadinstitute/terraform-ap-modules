@@ -13,8 +13,8 @@ resource "google_service_account" "sam" {
 resource "google_service_account" "sam_admin_sdk" {
   count = var.num_admin_sdk_service_accounts
   project = var.google_project
-  account_id = "${var.gcp_name_prefix}-sam-admin-sdk-sa-${count.index}"
-  display_name = "${var.gcp_name_prefix}-sam-admin-sdk-sa-${count.index}"
+  account_id = "${var.gcp_name_prefix}-sam-sdk-${count.index}"
+  display_name = "${var.gcp_name_prefix}-sam-sdk-${count.index}"
 }
 
 locals {
@@ -36,12 +36,12 @@ resource "google_project_iam_member" "sam" {
   count = length(local.roles)
   project = var.google_project
   role = local.roles[count.index]
-  member = "serviceAccount:${google_service_account.sam}"
+  member = "serviceAccount:${google_service_account.sam.email}"
 }
 
 resource "google_project_iam_member" "sam_classic" {
   count = length(local.classic_roles)
   project = var.classic_storage_google_project
   role = local.classic_roles[count.index]
-  member = "serviceAccount:${google_service_account.sam}"
+  member = "serviceAccount:${google_service_account.sam.email}"
 }
