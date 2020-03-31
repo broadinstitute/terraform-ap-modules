@@ -36,6 +36,7 @@ resource "google_project_iam_member" "app" {
   member  = "serviceAccount:${google_service_account.app[each.value.sa].email}"
 }
 
+
 # CI access
 resource "google_service_account" "ci" {
   project      = var.google_project
