@@ -25,6 +25,7 @@ output "cloudsql_root_user_password" {
 }
 
 output "cloudsql_app_db_creds" {
+  # Avoiding error on destroy with below condition
   value = length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds[var.service]
   sensitive = true
 }
