@@ -1,6 +1,9 @@
 # Main service account for the sam service.
+# Note that Sam's service account is on the classic storage google project. This is to make it easier for Sam to use the
+# right project for storage with all of its current uses of service accounts. That may not be a compelling reason in the
+# future.
 resource "google_service_account" "sam" {
-  project = var.google_project
+  project = var.classic_storage_google_project
   account_id = "${var.gcp_name_prefix}-sam"
   display_name = "${var.gcp_name_prefix}-sam"
 }
@@ -25,6 +28,7 @@ locals {
   classic_roles = [
     "roles/pubsub.editor",
     "roles/datastore.user",
+    "roles/storage.admin",
   ]
 }
 
@@ -40,12 +44,4 @@ resource "google_project_iam_member" "sam_classic" {
   project = var.classic_storage_google_project
   role = local.classic_roles[count.index]
   member = "serviceAccount:${google_service_account.sam}"
-}
-
-# Grant sam service account access to shared bucket storing pet service account keys.
-resource "google_storage_bucket_iam_member" "google_key_cache" {
-  bucket = var.google_key_cache_bucket.name
-  project = var.google_key_cache_bucket.project
-  role = "roles/storage.admin"
-  member = "serviceAccount:${google_service_account.sam.email}"
 }
