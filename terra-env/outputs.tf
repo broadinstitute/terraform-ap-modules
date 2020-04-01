@@ -42,3 +42,13 @@ output "ic_db_creds" {
   value     = module.identity_concentrator.cloudsql_app_db_creds
   sensitive = true
 }
+
+#
+# Sam Outputs
+#
+output "sam_sa_id" {
+  value = module.sam.service_account_id
+}
+output "sam_admin_sdk_sA_ids" {
+  value = module.sam.admin_sdk_service_account_ids
+}
