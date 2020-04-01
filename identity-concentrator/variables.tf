@@ -30,10 +30,8 @@ locals {
 #
 # Service Account Vars
 #
-variable "sa_roles" {
-  type        = list(string)
-  description = "Service account roles"
-  default = [
+locals  {
+  sa_roles = [
     "roles/cloudsql.client",                      // To use cloudsql
     "roles/cloudkms.cryptoKeyEncrypterDecrypter", // To encrypt sensitive data to store in datastore
     "roles/cloudkms.publicKeyViewer",             // To sign jwt with kms
