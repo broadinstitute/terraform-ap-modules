@@ -26,8 +26,9 @@ locals {
   ]
   # Roles to give Sam on the classic Google project.
   classic_roles = [
-    "roles/pubsub.editor",
+    "roles/cloudkms.admin",
     "roles/datastore.user",
+    "roles/pubsub.editor",
     "roles/storage.admin",
   ]
 }
