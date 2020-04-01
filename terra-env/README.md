@@ -1,0 +1,3 @@
+# terra-env deployment
+This Terraform deployment definition manages manages any resources for a single Terra framework environment. This configuration is namespaced by Terra environment, with Terraform workspaces & Atlantis project definitions for each one.
+For more information and until this README is expanded, check out the [framework deployment doc](https://docs.dsp-devops.broadinstitute.org/framework-kernel-new-stack/framework-deployment).
