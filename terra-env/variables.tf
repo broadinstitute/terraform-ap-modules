@@ -1,7 +1,7 @@
 # See: https://github.com/hashicorp/terraform/issues/21418#issuecomment-495818852
 variable dependencies {
-  type = any
-  default = []
+  type        = any
+  default     = []
   description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
 }
 
@@ -9,7 +9,6 @@ variable dependencies {
 #
 # General Vars
 #
-
 variable "google_project" {
   description = "The google project"
 }
@@ -18,7 +17,7 @@ variable "cluster" {
 }
 variable "owner" {
   description = "Environment or developer"
-  default = ""
+  default     = ""
 }
 locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
