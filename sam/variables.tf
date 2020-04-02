@@ -9,8 +9,13 @@ variable "classic_storage_google_project" {
   description = "The google project outside of the cluster that has storage."
 }
 
-variable "gcp_name_prefix" {
-  description = "The string to prefix to GCP names to make them unique across different instantiations of this module."
+variable "owner" {
+  type        = string
+  description = "Environment or developer"
+  default     = ""
+}
+locals {
+  owner   = var.owner == "" ? terraform.workspace : var.owner
 }
 
 variable "num_admin_sdk_service_accounts" {

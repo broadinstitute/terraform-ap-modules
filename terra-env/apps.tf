@@ -24,9 +24,9 @@ module "identity_concentrator" {
 
 module "sam" {
   # TODO fix me framework release reference
-  source  = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=wc-CA-679-sam"
+  # source  = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.0.0"
+  source = "../sam"
   google_project = var.google_project
   classic_storage_google_project = var.classic_storage_google_project
-  gcp_name_prefix = "k8s-test-${terraform.workspace}"
   num_admin_sdk_service_accounts = 3
 }
