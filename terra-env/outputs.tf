@@ -52,3 +52,28 @@ output "sam_sa_id" {
 output "sam_admin_sdk_sa_ids" {
   value = module.sam.admin_sdk_service_account_ids
 }
+
+#
+# Workspace Manager Outputs
+#
+output "workspace_sa_id" {
+  value = module.workspace_manager.app_sa_id
+}
+output "workspace_db_ip" {
+  value = module.workspace_manager.cloudsql_public_ip
+}
+output "workspace_db_instance" {
+  value = module.workspace_manager.cloudsql_instance_name
+}
+output "workspace_db_root_pass" {
+  value = module.workspace_manager.cloudsql_root_user_password
+  sensitive = true
+}
+output "workspace_db_creds" {
+  value = module.workspace_manager.cloudsql_app_db_creds
+  sensitive = true
+}
+output "workspace_stairway_db_creds" {
+  value = module.workspace_manager.cloudsql_app_stairway_db_creds
+  sensitive = true
+}
