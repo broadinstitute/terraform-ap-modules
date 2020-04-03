@@ -68,6 +68,6 @@ variable "stairway_db_user" {
 locals {
   db_name = var.db_name == "" ? local.service : var.db_name
   db_user = var.db_user == "" ? local.service : var.db_user
-  stairway_db_name = var.stairway_db_name == "" ? local.service+"-stairway" : var.stairway_db_name
-  stairway_db_user = var.stairway_db_user == "" ? local.service+"-stairway" : var.stairway_db_user
+  stairway_db_name = var.stairway_db_name == "" ? "${local.service}-stairway" : var.stairway_db_name
+  stairway_db_user = var.stairway_db_user == "" ? "${local.service}-stairway" : var.stairway_db_user
 }

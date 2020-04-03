@@ -31,6 +31,6 @@ output "cloudsql_app_db_creds" {
 }
 
 output "cloudsql_app_stairway_db_creds" {
-  value = length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds[local.service + "-stairway"]
+  value = length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds["${local.service}-stairway"]
   sensitive = true
 }
