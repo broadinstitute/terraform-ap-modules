@@ -46,9 +46,9 @@ output "ic_db_creds" {
 #
 # Sam Outputs
 #
-output "sam_sa_id" {
-  value = module.sam.service_account_id
+output "sam_sa_email" {
+  value = module.sam.service_account_email
 }
-output "sam_admin_sdk_sa_ids" {
-  value = module.sam.admin_sdk_service_account_ids
+output "sam_admin_sdk_sa_emails" {
+  value = module.sam.admin_sdk_service_account_emails
 }

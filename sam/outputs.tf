@@ -4,10 +4,10 @@
 # output service accounts.
 #
 
-output "service_account_id" {
-  value = google_service_account.sam.account_id
+output "service_account_email" {
+  value = google_service_account.sam.email
 }
 
-output "admin_sdk_service_account_ids" {
-  value = google_service_account.sam_admin_sdk.*.account_id
+output "admin_sdk_service_account_emails" {
+  value = google_service_account.sam_admin_sdk.*.email
 }
