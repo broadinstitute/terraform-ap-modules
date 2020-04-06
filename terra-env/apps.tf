@@ -23,10 +23,13 @@ module "identity_concentrator" {
 }
 
 module "sam" {
-  source  = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.0.1"
-  google_project = var.google_project
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.0.2"
+  google_project                 = var.google_project
   classic_storage_google_project = var.classic_storage_google_project
   num_admin_sdk_service_accounts = 3
+  providers = {
+    google.target = google.target
+  }
 }
 
 module "workspace_manager" {
