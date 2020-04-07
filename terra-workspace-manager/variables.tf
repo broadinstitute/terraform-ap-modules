@@ -32,8 +32,7 @@ locals {
 #
 locals {
   sa_roles = [
-    "roles/storage.admin",
-    "roles/container.admin"
+    "roles/cloudsql.client"
   ]
 }
 
