@@ -33,9 +33,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  # TODO: pin properly once a workspace manager TF module is released.
-  #source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.0.0"
-  source = "../terra-workspace-manager"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.0.0"
   google_project = var.google_project
   cluster        = var.cluster
 
