@@ -8,7 +8,7 @@ data "google_dns_managed_zone" "dns_zone" {
 
 # Service DNS
 resource "google_dns_record_set" "app_dns" {
-  provider     = google.dns
+  provider = google.dns
 
   count = var.create_lb ? 1 : 0
 
@@ -17,6 +17,6 @@ resource "google_dns_record_set" "app_dns" {
   type         = "A"
   ttl          = var.lb_dns_ttl
   # module.load-balancer.load_balancer_public_ip is an array
-  rrdatas      = module.load-balancer.load_balancer_public_ip
-  depends_on   = [ module.load-balancer, data.google_dns_managed_zone.dns_zone[0] ]
+  rrdatas    = module.load-balancer.load_balancer_public_ip
+  depends_on = [module.load-balancer, data.google_dns_managed_zone.dns_zone[0]]
 }

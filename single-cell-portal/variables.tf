@@ -1,7 +1,7 @@
 # See: https://github.com/hashicorp/terraform/issues/21418#issuecomment-495818852
 variable dependencies {
-  type = any
-  default = []
+  type        = any
+  default     = []
   description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
 }
 
@@ -14,14 +14,14 @@ variable "google_project" {
 }
 variable "owner" {
   description = "Environment or developer"
-  default = ""
+  default     = ""
 }
 locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
 variable "service" {
   description = "App name"
-  default = "singlecell"
+  default     = "singlecell"
 }
 
 
@@ -30,11 +30,11 @@ variable "service" {
 #
 variable "create_sa" {
   description = "Whether to create and manage the SAs in TF or use an existing one"
-  default = true
+  default     = true
 }
 variable "app_sa_name" {
   description = "Application service account"
-  default = ""
+  default     = ""
 }
 locals {
   app_sa_name = var.app_sa_name == "" ? "${var.service}-${local.owner}" : var.app_sa_name
@@ -48,7 +48,7 @@ variable "app_sa_roles" {
 }
 variable "app_read_sa_name" {
   description = "Application read service account"
-  default = ""
+  default     = ""
 }
 locals {
   app_read_sa_name = var.app_read_sa_name == "" ? "${var.service}-${local.owner}-read" : var.app_read_sa_name
@@ -64,12 +64,12 @@ variable "app_read_sa_roles" {
 # Network Vars
 #
 variable "network_name" {
-  default = ""
+  default     = ""
   description = "The network name"
 }
 variable "create_network" {
   description = "Whether to create and manage the network in TF or use an existing one"
-  default = true
+  default     = true
 }
 locals {
   network_name = var.network_name == "" ? var.service : var.network_name
@@ -83,14 +83,14 @@ variable "enable_logging" {
 }
 variable "internal_range" {
   description = "Internal IP space for networks that use auto created subnets"
-  default = "10.128.0.0/9"
+  default     = "10.128.0.0/9"
 }
 variable "corp_range_cidrs" {
   description = "Company internal network CIDRs"
-  type    = list(string)
+  type        = list(string)
   default = [
     // Broad internal
-    "69.173.64.0/19", 
+    "69.173.64.0/19",
     "69.173.96.0/20",
     "69.173.112.0/21",
     "69.173.120.0/22",
@@ -103,12 +103,12 @@ variable "corp_range_cidrs" {
     "69.173.127.228/32",
     "69.173.127.230/31",
     "69.173.127.232/29",
-    "69.173.127.240/28" 
+    "69.173.127.240/28"
   ]
 }
 variable "ci_range_cidrs" {
   description = "CI/CD IPs"
-  type    = list(string)
+  type        = list(string)
   default = [
     // SCP Jenkins
     "35.232.118.163/32",
@@ -117,7 +117,7 @@ variable "ci_range_cidrs" {
 }
 variable "gcp_health_check_range_cidrs" {
   description = "CI/CD IPs"
-  type    = list(string)
+  type        = list(string)
   default = [
     // https://cloud.google.com/load-balancing/docs/health-check-concepts#ip-ranges
     "35.191.0.0/16",
@@ -137,7 +137,7 @@ variable "mongodb_roles" {
   description = "host roles that will be present in this cluster"
 }
 variable "mongodb_version" {
-   default = "3.6.14"
+  default = "3.6.14"
 }
 variable "mongodb_user" {
   default = "single_cell"
@@ -146,27 +146,27 @@ variable "mongodb_database" {
   default = "single_cell_portal_development"
 }
 variable "mongodb_instance_size" {
-  default = "n1-highmem-2"
+  default     = "n1-highmem-2"
   description = "The default size of MongoDB hosts"
 }
 variable "mongodb_instance_image" {
-  default = "centos-7"
+  default     = "centos-7"
   description = "The default image of MongoDB hosts"
 }
 variable "mongodb_instance_data_disk_size" {
-  default = "200"
+  default     = "200"
   description = "The default size of MongoDB data disk"
 }
 variable "mongodb_instance_data_disk_type" {
-  default = "pd-ssd"
+  default     = "pd-ssd"
   description = "The default type of MongoDB data disk"
 }
 variable "mongodb_dns" {
   description = "Whether to create DNS entries"
-  default = false
+  default     = false
 }
 variable "mongodb_instance_tags" {
-  default = []
+  default     = []
   description = "The default MongoDB instance tags"
 }
 locals {
@@ -178,7 +178,7 @@ locals {
   ] : var.mongodb_instance_tags
 }
 variable "mongodb_instance_labels" {
-  default = {}
+  default     = {}
   description = "The default MongoDB instance labels"
 }
 locals {
@@ -196,26 +196,26 @@ locals {
 #
 variable "create_app_server" {
   description = "Whether to create & manage an app server in TF"
-  default = false
+  default     = false
 }
 variable "app_instance_size" {
-  default = "n1-highmem-4"
+  default     = "n1-highmem-4"
   description = "The default size of app hosts"
 }
 variable "app_instance_image" {
-  default = "centos-7"
+  default     = "centos-7"
   description = "The default image of app hosts"
 }
 variable "app_instance_data_disk_size" {
-  default = "100"
+  default     = "100"
   description = "The default size of app data disk"
 }
 variable "app_instance_data_disk_type" {
-  default = "pd-ssd"
+  default     = "pd-ssd"
   description = "The default type of app data disk"
 }
 variable "app_instance_tags" {
-  default = []
+  default     = []
   description = "The default app instance tags"
 }
 locals {
@@ -228,7 +228,7 @@ locals {
   ] : var.mongodb_instance_tags
 }
 variable "app_instance_labels" {
-  default = {}
+  default     = {}
   description = "The default app instance labels"
 }
 locals {
@@ -247,28 +247,28 @@ locals {
 #
 variable "create_lb" {
   description = "Whether to create & manage a load balancer for the app server"
-  default = false
+  default     = false
 }
 variable "lb_ssl_cert" {
   description = "Self link of ssl cert to use for the load balancer"
-  default = ""
+  default     = ""
 }
 variable "ssl_policy_name" {
   description = "Name of ssl cert to use for the load balancer"
-  default = ""
+  default     = ""
 }
 locals {
   ssl_policy_name = var.ssl_policy_name == "" ? "${var.service}-${local.owner}" : var.ssl_policy_name
 }
 variable "dns_zone_name" {
   description = "DNS zone name for load balancer DNS"
-  default = ""
+  default     = ""
 }
 variable "lb_dns_name" {
   description = "DNS name for load balancer"
-  default = ""
+  default     = ""
 }
 variable "lb_dns_ttl" {
   description = "DNS ttl for load balancer"
-  default = "300"
+  default     = "300"
 }

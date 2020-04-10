@@ -23,12 +23,12 @@ output "mongodb_instance_priv_hostnames" {
 }
 
 output "mongodb_uri" {
-  value = module.mongodb.mongo_uri
+  value     = module.mongodb.mongo_uri
   sensitive = true
 }
 
 output "mongodb_priv_uri" {
-  value = module.mongodb.mongo_priv_uri
+  value     = module.mongodb.mongo_priv_uri
   sensitive = true
 }
 
