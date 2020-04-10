@@ -73,3 +73,13 @@ locals {
     "roles/container.admin"
   ]
 }
+
+#
+# Monitoring Vars
+#
+
+variable "notification_channels" {
+  type        = list(string)
+  default     = []
+  description = "List of notification channel gcloud resources to send alerts to"
+}
