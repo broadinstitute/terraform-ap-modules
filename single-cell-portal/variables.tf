@@ -115,6 +115,17 @@ variable "ci_range_cidrs" {
     "130.211.234.92"
   ]
 }
+variable "gcp_health_check_range_cidrs" {
+  description = "CI/CD IPs"
+  type    = list(string)
+  default = [
+    // https://cloud.google.com/load-balancing/docs/health-check-concepts#ip-ranges
+    "35.191.0.0/16",
+    "209.85.152.0/22",
+    "209.85.204.0/22"
+  ]
+}
+
 
 #
 # MongoDB Vars
@@ -228,4 +239,36 @@ locals {
     "ansible_branch"  = "master",
     "ansible_project" = var.service
   } : var.mongodb_instance_labels
+}
+
+
+#
+# App Server LB/SSL Vars
+#
+variable "create_lb" {
+  description = "Whether to create & manage a load balancer for the app server"
+  default = false
+}
+variable "lb_ssl_cert" {
+  description = "Self link of ssl cert to use for the load balancer"
+  default = ""
+}
+variable "ssl_policy_name" {
+  description = "Name of ssl cert to use for the load balancer"
+  default = ""
+}
+locals {
+  ssl_policy_name = var.ssl_policy_name == "" ? "${var.service}-${local.owner}" : var.ssl_policy_name
+}
+variable "dns_zone_name" {
+  description = "DNS zone name for load balancer DNS"
+  default = ""
+}
+variable "lb_dns_name" {
+  description = "DNS name for load balancer"
+  default = ""
+}
+variable "lb_dns_ttl" {
+  description = "DNS ttl for load balancer"
+  default = "300"
 }

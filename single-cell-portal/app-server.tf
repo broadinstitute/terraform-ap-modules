@@ -28,18 +28,20 @@ module "app_server" {
   ]
 }
 
-# module "load-balancer" {
-#   count = var.create_app_server ? 1 : 0
+module "load-balancer" {
+  enable_flag = var.create_lb ? 1 : 0
 
-#   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/http-load-balancer?ref=http-load-balancer-0.5.0-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/http-load-balancer?ref=gm-update-lb"
 
-#   providers = {
-#     google.target = google.target
-#   }
-#   project            = var.google_project
-#   load_balancer_name = var.service
-#   ssl_policy_name    = var.ssl_policy_name
-#   load_balancer_ssl_policy_create = 0
-#   load_balancer_ssl_certificates = []
-#   load_balancer_instance_groups = element(module.app_server.instance_instance_group,0)
-# }
+  providers = {
+    google.target = google.target
+  }
+  project            = var.google_project
+  load_balancer_name = "${var.service}-${local.owner}"
+
+  ssl_policy_name                 = local.ssl_policy_name
+  load_balancer_ssl_policy_create = var.create_lb ? 1 : 0
+  load_balancer_ssl_certificates  = var.create_lb ? [ var.lb_ssl_cert ] : []
+  load_balancer_health_check_path = "/single_cell"
+  load_balancer_instance_groups   = element(module.app_server.instance_instance_group,0)
+}

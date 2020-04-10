@@ -11,7 +11,7 @@ module "mongodb" {
 
   providers = {
     google.target = google.target,
-    google.dns =  google.target
+    google.dns =  google.dns
   }
   project                  = var.google_project
   owner                    = local.owner
