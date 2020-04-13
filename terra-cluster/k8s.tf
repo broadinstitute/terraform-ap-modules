@@ -23,6 +23,7 @@ module "k8s-node-pool" {
   dependencies = [
     module.k8s-master
   ]
+  service_account = google_service_account.node_pool.email
 
   name        = var.node_pools[0].name
   master_name = module.k8s-master.name
