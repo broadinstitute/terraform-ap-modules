@@ -74,6 +74,14 @@ locals {
   ]
 }
 
+# Which projects to give the node pool service account the 'roles/storage.objectViewer' role. The node service account
+# needs this read access to pull images from Google Container Registry for projects other than its own.
+variable "other_gcr_projects" {
+  type = list(string)
+  default = []
+  description = "List of projects with GCR that the k8s node pool needs access to for pulling images."
+}
+
 #
 # Monitoring Vars
 #

@@ -15,10 +15,17 @@ resource "google_project_iam_member" "ci" {
   member  = "serviceAccount:${google_service_account.ci.email}"
 }
 
-# Broad DSP Google Container Registry access.
+# Service account for the k8s node pool.
+resource "google_service_account" "node_pool" {
+  project      = var.google_project
+  account_id   = "${local.owner}-node-pool"
+  display_name = "${local.owner}-node-pool"
+}
+
+# Read and pull images from other_gcr_projects Google Container Registries.
 resource "google_project_iam_member" "ci" {
-  project = "broad-dsp-gcr-public"
-  # Read and pull images.
+  count = length(var.other_gcr_projects)
+  project = element(var.other_gcr_projects, count.index)
   role = "roles/storage.objectViewer"
-  member = "serviceAccount:${google_service_account.ci.email}"
+  member = "serviceAccount:${google_service_account.node_pool.email}"
 }
