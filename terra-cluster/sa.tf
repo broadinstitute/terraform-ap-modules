@@ -14,3 +14,11 @@ resource "google_project_iam_member" "ci" {
   role    = element(local.ci_sa_roles, count.index)
   member  = "serviceAccount:${google_service_account.ci.email}"
 }
+
+# Broad DSP Google Container Registry access.
+resource "google_project_iam_member" "ci" {
+  project = "broad-dsp-gcr-public"
+  # Read and pull images.
+  role = "roles/storage.objectViewer"
+  member = "serviceAccount:${google_service_account.ci.email}"
+}
