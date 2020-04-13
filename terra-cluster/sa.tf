@@ -22,8 +22,26 @@ resource "google_service_account" "node_pool" {
   display_name = "${local.owner}-node-pool"
 }
 
-# Read and pull images from other_gcr_projects Google Container Registries.
+locals {
+  # Roles needed for the node pool service account to run a GKE cluster.
+  node_pool_gke_roles = [
+    "roles/monitoring.viewer",
+    "roles/monitoring.metricWriter",
+    "roles/logging.logWriter",
+    # Google Container Registry read access.
+    "roles/storage.objectViewer"
+  ]
+}
+
 resource "google_project_iam_member" "node_pool" {
+  count   = length(local.node_pool_gke_roles)
+  project = var.google_project
+  role    = element(local.node_pool_gke_roles, count.index)
+  member  = "serviceAccount:${google_service_account.node_pool.email}"
+}
+
+# Read and pull images from other_gcr_projects Google Container Registries.
+resource "google_project_iam_member" "node_pool_other_gcr" {
   count   = length(var.other_gcr_projects)
   project = element(var.other_gcr_projects, count.index)
   role    = "roles/storage.objectViewer"
