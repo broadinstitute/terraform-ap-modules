@@ -81,13 +81,3 @@ variable "other_gcr_projects" {
   default     = []
   description = "List of projects with GCR that the k8s node pool needs access to for pulling images."
 }
-
-#
-# Monitoring Vars
-#
-
-variable "notification_channels" {
-  type        = list(string)
-  default     = []
-  description = "List of notification channel gcloud resources to send alerts to"
-}
