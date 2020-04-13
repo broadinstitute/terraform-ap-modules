@@ -81,3 +81,13 @@ variable "other_gcr_projects" {
   default     = []
   description = "List of projects with GCR that the k8s node pool needs access to for pulling images."
 }
+
+
+#
+# Monitoring Variables
+#
+variable "notification_channels" {
+  type        = list(string)
+  default     = []
+  description = "A list of ids for channels to contact when an alert fires"
+}
