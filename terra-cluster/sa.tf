@@ -25,9 +25,9 @@ resource "google_service_account" "node_pool" {
 locals {
   # Roles needed for the node pool service account to run a GKE cluster.
   node_pool_gke_roles = [
-    "monitoring.viewer",
-    "monitoring.metricWriter",
-    "logging.logWriter",
+    "roles/monitoring.viewer",
+    "roles/monitoring.metricWriter",
+    "roles/logging.logWriter",
     # Google Container Registry read access.
     "roles/storage.objectViewer"
   ]
