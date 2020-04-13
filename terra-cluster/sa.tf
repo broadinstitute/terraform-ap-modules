@@ -23,7 +23,7 @@ resource "google_service_account" "node_pool" {
 }
 
 # Read and pull images from other_gcr_projects Google Container Registries.
-resource "google_project_iam_member" "ci" {
+resource "google_project_iam_member" "node_pool" {
   count = length(var.other_gcr_projects)
   project = element(var.other_gcr_projects, count.index)
   role = "roles/storage.objectViewer"
