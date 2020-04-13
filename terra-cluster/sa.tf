@@ -33,7 +33,7 @@ locals {
   ]
 }
 
-resource "google_project_iam_member" "node_pool_gke" {
+resource "google_project_iam_member" "node_pool" {
   count   = length(local.node_pool_gke_roles)
   project = var.google_project
   role    = element(local.node_pool_gke_roles, count.index)
@@ -41,7 +41,7 @@ resource "google_project_iam_member" "node_pool_gke" {
 }
 
 # Read and pull images from other_gcr_projects Google Container Registries.
-resource "google_project_iam_member" "node_pool" {
+resource "google_project_iam_member" "node_pool_other_gcr" {
   count   = length(var.other_gcr_projects)
   project = element(var.other_gcr_projects, count.index)
   role    = "roles/storage.objectViewer"
