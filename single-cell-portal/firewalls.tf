@@ -129,7 +129,7 @@ resource "google_compute_firewall" "managed_allow_http" {
 }
 
 
-# Firewall rules for CI
+# Firewall rules for CI - Jenkins
 
 resource "google_compute_firewall" "ci_ssh" {
   provider = google-beta.target
@@ -180,6 +180,34 @@ resource "google_compute_firewall" "ci_http" {
 
   source_ranges = var.ci_range_cidrs
   target_tags   = ["http-server"]
+
+  depends_on = [google_compute_network.vpc_network]
+}
+
+
+# Firewall rules for CI - Travis
+data "http" "travis_ips" {
+  url = "https://dnsjson.com/nat.travisci.net/A.json"
+}
+locals {
+  travis_ips = formatlist("%s/32", jsondecode(data.http.travis_ips.body)["results"]["records"])
+}
+resource "google_compute_firewall" "mongo_from_travis" {
+  provider = google-beta.target
+
+  count = var.allow_travis ? 1 : 0
+
+  enable_logging = var.enable_logging
+  name           = "travis-mongo"
+  network        = local.network_name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["27017"]
+  }
+
+  source_ranges = local.travis_ips
+  target_tags   = ["mongodb"]
 
   depends_on = [google_compute_network.vpc_network]
 }

@@ -72,5 +72,5 @@ output "app_instance_group" {
 }
 
 output "app_lb_public_ip" {
-  value = var.create_lb ? module.load-balancer.load_balancer_public_ip : ""
+  value = var.create_lb ? module.load-balancer.load_balancer_public_ip[0] : ""
 }

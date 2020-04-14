@@ -81,6 +81,10 @@ locals {
 variable "enable_logging" {
   default = false
 }
+variable "allow_travis" {
+  description = "Allow Travis CI runners to communicate with MongoDB"
+  default     = false
+}
 variable "internal_range" {
   description = "Internal IP space for networks that use auto created subnets"
   default     = "10.128.0.0/9"
