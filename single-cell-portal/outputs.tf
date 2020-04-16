@@ -23,12 +23,12 @@ output "mongodb_instance_priv_hostnames" {
 }
 
 output "mongodb_uri" {
-  value = module.mongodb.mongo_uri
+  value     = module.mongodb.mongo_uri
   sensitive = true
 }
 
 output "mongodb_priv_uri" {
-  value = module.mongodb.mongo_priv_uri
+  value     = module.mongodb.mongo_priv_uri
   sensitive = true
 }
 
@@ -69,4 +69,8 @@ output "app_instance_private_ips" {
 
 output "app_instance_group" {
   value = module.app_server.instance_instance_group
+}
+
+output "app_lb_public_ip" {
+  value = var.create_lb ? module.load-balancer.load_balancer_public_ip[0] : ""
 }

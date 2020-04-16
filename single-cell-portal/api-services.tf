@@ -4,8 +4,8 @@ module "enable-services" {
   providers = {
     google.target = google.target
   }
-  project     = var.google_project
-  services    = [
+  project = var.google_project
+  services = [
     "serviceusage.googleapis.com",
     "iam.googleapis.com"
   ]
