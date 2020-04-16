@@ -26,6 +26,7 @@ module "mongodb" {
   mongodb_extra_flags     = var.mongodb_extra_flags
   instance_size           = var.mongodb_instance_size
   instance_image          = var.mongodb_instance_image
+  instance_count_offset   = var.mongodb_instance_count_offset
   instance_data_disk_size = var.mongodb_instance_data_disk_size
   instance_data_disk_type = var.mongodb_instance_data_disk_type
   instance_data_disk_name = "${var.service}-mongo-data-disk"

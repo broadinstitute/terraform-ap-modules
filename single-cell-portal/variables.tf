@@ -157,6 +157,11 @@ variable "mongodb_instance_image" {
   default     = "centos-7"
   description = "The default image of MongoDB hosts"
 }
+variable "mongodb_instance_count_offset" {
+  default = 0
+  type    = number
+  description = "Offset at which to start naming suffix"
+}
 variable "mongodb_instance_data_disk_size" {
   default     = "200"
   description = "The default size of MongoDB data disk"
