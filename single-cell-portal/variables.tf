@@ -162,6 +162,11 @@ variable "mongodb_instance_count_offset" {
   type    = number
   description = "Offset at which to start naming suffix"
 }
+variable "instance_group_name" {
+  default     = null
+  type        = string
+  description = "Name of mongo instance group. Defaults to singelcell-mongo-instance-group-unmanaged"
+}
 variable "mongodb_instance_data_disk_size" {
   default     = "200"
   description = "The default size of MongoDB data disk"
