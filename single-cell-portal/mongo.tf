@@ -7,7 +7,7 @@ resource "random_id" "mongodb_root_password" {
 }
 
 module "mongodb" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/mongodb?ref=gm-mongo-flags"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/mongodb?ref=mongodb-cluster-0.1.6-tf-0.12"
 
   providers = {
     google.target = google.target,
