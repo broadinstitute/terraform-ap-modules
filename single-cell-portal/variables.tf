@@ -197,7 +197,7 @@ locals {
 variable "mongodb_extra_flags" {
   type = string
   description = "Extra flags passed to the mongo container. https://github.com/bitnami/bitnami-docker-mongodb#passing-extra-command-line-flags-to-mongod-startup"
-  default = "--internalQueryExecMaxBlockingSortBytes=134217728"
+  default = null
 }
 
 #
