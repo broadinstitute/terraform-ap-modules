@@ -7,7 +7,7 @@ resource "random_id" "mongodb_root_password" {
 }
 
 module "mongodb" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/mongodb?ref=mongodb-cluster-0.1.5-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/mongodb?ref=gm-mongo-flags"
 
   providers = {
     google.target = google.target,
@@ -23,6 +23,7 @@ module "mongodb" {
   mongodb_app_password    = random_id.mongodb_user_password.hex
   mongodb_root_password   = random_id.mongodb_root_password.hex
   mongodb_database        = var.mongodb_database
+  mongodb_extra_flags     = var.mongodb_extra_flags
   instance_size           = var.mongodb_instance_size
   instance_image          = var.mongodb_instance_image
   instance_data_disk_size = var.mongodb_instance_data_disk_size
