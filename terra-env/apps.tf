@@ -38,6 +38,9 @@ module "sam_persistence" {
   # TODO fix to reference.
   source = "./../sam-persistence"
   google_project = var.google_project
+  providers = {
+    google.target = google.target
+  }
 }
 
 module "workspace_manager" {
