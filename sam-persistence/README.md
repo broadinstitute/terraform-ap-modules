@@ -10,4 +10,4 @@ resources. This module handles those resources.
 ## TODO
 need to add Firestore manual steps, see terraform-terra.
 
-OpenDJ
+OpenDJ password?

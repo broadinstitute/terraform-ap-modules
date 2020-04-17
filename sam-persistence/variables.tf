@@ -2,9 +2,13 @@ variable "google_project" {
   description = "The google project"
 }
 
-variable "cloudsql_label" {
-  description = "Label to use to identify this cloudsql instance. Also used to name prefix."
-  type = string
+variable "owner" {
+  type        = string
+  description = "Environment or developer"
+  default     = ""
+}
+locals {
+  owner   = var.owner == "" ? terraform.workspace : var.owner
 }
 
 variable "cloudsql_tier" {

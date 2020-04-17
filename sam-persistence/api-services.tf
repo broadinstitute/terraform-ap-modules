@@ -1,4 +1,3 @@
-# Services that should be enabled on the classic google project.
 module "enable-services" {
   source      = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=services-0.3.0-tf-0.12"
   enable_flag = "1"

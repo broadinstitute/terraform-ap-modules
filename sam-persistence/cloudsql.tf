@@ -14,13 +14,13 @@ module "cloudsql" {
     google.target =  "google"
   }
   project       = "${var.google_project}"
-  cloudsql_name = "${var.cloudsql_label}-sam-db"
+  cloudsql_name = "${local.owner}-sam-db"
   cloudsql_database_name = "sam"
   cloudsql_database_user_name = "sam"
   cloudsql_database_user_password = "${random_id.user-password.hex}"
   cloudsql_database_root_password = "${random_id.root-password.hex}"
   cloudsql_instance_labels = {
-    "app" = "${var.cloudsql_label}-sam"
+    "app" = "${local.owner}-sam"
   }
   cloudsql_tier = "${var.cloudsql_tier}"
 }
