@@ -6,6 +6,7 @@ module "enable-services" {
   }
   project = var.google_project
   services = [
+    "cloudkms.googleapis.com",
     "datastore.googleapis.com",
     "pubsub.googleapis.com",
     "sql-component.googleapis.com",
