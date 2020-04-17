@@ -6,11 +6,17 @@ module "enable-services" {
   }
   project = var.google_project
   services = [
+    # Sam uses KMS to create a key with access for all users used by Cromwell to get images.
     "cloudkms.googleapis.com",
+    # Sam uses datastore to implement distributed locking around modifications to data stored in buckets.
     "datastore.googleapis.com",
+    # Sam uses pubsub to communicate with itself about sync google groups and to get notifications about deleted
+    # objects in its managed buckets.
     "pubsub.googleapis.com",
+    # Sam uses sql to store most of its data.
     "sql-component.googleapis.com",
     "sqladmin.googleapis.com",
+    # Sam uses google bucket to store pet service account keys.
     "storage-api.googleapis.com",
     "storage-component.googleapis.com",
   ]
