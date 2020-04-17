@@ -14,3 +14,6 @@
 **/override.tf.json
 **/*_override.tf
 **/*_override.tf.json
+
+# IntelliJ files
+.idea/**

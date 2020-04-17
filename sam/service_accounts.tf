@@ -4,8 +4,8 @@
 # future.
 resource "google_service_account" "sam" {
   project = var.classic_storage_google_project
-  account_id = "${var.gcp_name_prefix}-sam"
-  display_name = "${var.gcp_name_prefix}-sam"
+  account_id = "${local.owner}-sam"
+  display_name = "${local.owner}-sam"
 }
 
 # Additional service accounts for Sam to use to manage GSuite admin group actions.
@@ -13,8 +13,8 @@ resource "google_service_account" "sam" {
 resource "google_service_account" "sam_admin_sdk" {
   count = var.num_admin_sdk_service_accounts
   project = var.google_project
-  account_id = "${var.gcp_name_prefix}-sam-sdk-${count.index}"
-  display_name = "${var.gcp_name_prefix}-sam-sdk-${count.index}"
+  account_id = "${local.owner}-sam-sdk-${count.index}"
+  display_name = "${local.owner}-sam-sdk-${count.index}"
 }
 
 locals {
@@ -26,8 +26,9 @@ locals {
   ]
   # Roles to give Sam on the classic Google project.
   classic_roles = [
-    "roles/pubsub.editor",
+    "roles/cloudkms.admin",
     "roles/datastore.user",
+    "roles/pubsub.editor",
     "roles/storage.admin",
   ]
 }
