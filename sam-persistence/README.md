@@ -10,5 +10,3 @@ resources. This module handles those resources.
 ## TODO
 need to add Firestore manual steps, see terraform-terra.
 Waiting on https://github.com/terraform-providers/terraform-provider-google/issues/3657
-
-OpenDJ password? Or maybe that only belongs in the deployments module.
