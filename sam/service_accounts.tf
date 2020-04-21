@@ -30,7 +30,7 @@ locals {
     "roles/cloudkms.admin",
     "roles/cloudsql.client",
     "roles/datastore.user",
-    "roles/pubsub.editor",
+    "roles/pubsub.admin",
     "roles/storage.admin",
   ]
 }
