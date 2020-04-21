@@ -20,9 +20,10 @@ resource "google_service_account" "sam_admin_sdk" {
 locals {
   # Roles to give Sam on its own Google project.
   roles = [
+    "roles/iam.serviceAccountUser",
+    "roles/cloudtrace.agent",
     "roles/logging.logWriter",
     "roles/monitoring.metricWriter",
-    "roles/cloudtrace.agent"
   ]
   # Roles to give Sam on the classic Google project.
   classic_roles = [
