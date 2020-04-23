@@ -17,7 +17,9 @@ module "mongodb" {
   owner                   = local.owner
   service                 = "${var.service}-mongo"
   mongodb_image_tag       = var.mongodb_version
-  mongodb_service_account = var.create_sa ? google_service_account.app[0].email : data.google_service_account.app[0].email
+  mongodb_service_account = var.create_sa ? google_service_account.app[0].email : (
+    local.app_sa_default ? data.google_compute_default_service_account.app[0].email : data.google_service_account.app[0].email
+  )
   mongodb_roles           = var.mongodb_roles
   mongodb_app_username    = var.mongodb_user
   mongodb_app_password    = random_id.mongodb_user_password.hex

@@ -38,6 +38,8 @@ variable "app_sa_name" {
 }
 locals {
   app_sa_name = var.app_sa_name == "" ? "${var.service}-${local.owner}" : var.app_sa_name
+  # Checks if the SA being used is a default compute SA, since we need a different TF data source for it
+  app_sa_default = length(regexall("\\d+-compute", var.app_sa_name)) > 0
 }
 variable "app_sa_roles" {
   default = [
