@@ -7,6 +7,13 @@ resource "google_service_account" "app" {
   display_name = local.app_sa_name
   project      = var.google_project
 }
+data "google_service_account" "app" {
+  provider     = google.target
+
+  count        = var.create_sa ? 0 : 1
+
+  account_id   = local.app_sa_name
+}
 resource "google_project_iam_member" "app" {
   provider     = google.target
 
@@ -25,6 +32,13 @@ resource "google_service_account" "app_read" {
   account_id   = local.app_read_sa_name
   display_name = local.app_read_sa_name
   project      = var.google_project
+}
+data "google_service_account" "app_read" {
+  provider     = google.target
+
+  count        = var.create_sa ? 0 : 1
+
+  account_id   = local.app_read_sa_name
 }
 resource "google_project_iam_member" "app_read" {
   provider     = google.target

@@ -16,7 +16,7 @@ module "app_server" {
   instance_data_disk_size  = var.app_instance_data_disk_size
   instance_data_disk_type  = var.app_instance_data_disk_type
   instance_data_disk_name  = "${var.service}-data-disk"
-  instance_service_account = google_service_account.app[0].email
+  instance_service_account = var.create_sa ? google_service_account.app[0].email : data.google_service_account.app[0].email
   instance_network_name    = local.network_name
   instance_tags            = local.app_instance_tags
   instance_labels          = local.app_instance_labels
