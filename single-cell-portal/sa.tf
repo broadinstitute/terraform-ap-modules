@@ -10,14 +10,14 @@ resource "google_service_account" "app" {
 data "google_service_account" "app" {
   provider     = google.target
 
-  count        = !var.create_sa && !var.app_sa_default ? 1 : 0
+  count        = !var.create_sa && !local.app_sa_default ? 1 : 0
 
   account_id   = local.app_sa_name
 }
 data "google_compute_default_service_account" "app" {
   provider     = google.target
 
-  count        = !var.create_sa && var.app_sa_default ? 1 : 0
+  count        = !var.create_sa && local.app_sa_default ? 1 : 0
 }
 resource "google_project_iam_member" "app" {
   provider     = google.target
