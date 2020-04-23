@@ -7,7 +7,7 @@ resource "random_id" "mongodb_root_password" {
 }
 
 module "mongodb" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/mongodb?ref=mongodb-cluster-0.1.6-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/mongodb?ref=gm-count-offset"
 
   providers = {
     google.target = google.target,
@@ -26,6 +26,8 @@ module "mongodb" {
   mongodb_extra_flags     = var.mongodb_extra_flags
   instance_size           = var.mongodb_instance_size
   instance_image          = var.mongodb_instance_image
+  instance_count_offset   = var.mongodb_instance_count_offset
+  instance_group_name     = var.mongodb_instance_group_name
   instance_data_disk_size = var.mongodb_instance_data_disk_size
   instance_data_disk_type = var.mongodb_instance_data_disk_type
   instance_data_disk_name = "${var.service}-mongo-data-disk"
@@ -35,6 +37,7 @@ module "mongodb" {
 
   dependencies = [
     google_compute_network.vpc_network,
+    module.enable-services,
     module.enable-services
   ]
 }
