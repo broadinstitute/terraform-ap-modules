@@ -38,6 +38,8 @@ variable "app_sa_name" {
 }
 locals {
   app_sa_name = var.app_sa_name == "" ? "${var.service}-${local.owner}" : var.app_sa_name
+  # Checks if the SA being used is a default compute SA, since we need a different TF data source for it
+  app_sa_default = length(regexall("\\d+-compute", var.app_sa_name)) > 0
 }
 variable "app_sa_roles" {
   default = [
@@ -157,6 +159,16 @@ variable "mongodb_instance_image" {
   default     = "centos-7"
   description = "The default image of MongoDB hosts"
 }
+variable "mongodb_instance_count_offset" {
+  default     = 0
+  type        = number
+  description = "Offset at which to start naming suffix"
+}
+variable "mongodb_instance_group_name" {
+  default     = null
+  type        = string
+  description = "Name of mongo instance group. Defaults to singelcell-mongo-instance-group-unmanaged"
+}
 variable "mongodb_instance_data_disk_size" {
   default     = "200"
   description = "The default size of MongoDB data disk"
@@ -195,9 +207,9 @@ locals {
   } : var.mongodb_instance_labels
 }
 variable "mongodb_extra_flags" {
-  type = string
+  type        = string
   description = "Extra flags passed to the mongo container. https://github.com/bitnami/bitnami-docker-mongodb#passing-extra-command-line-flags-to-mongod-startup"
-  default = null
+  default     = null
 }
 
 #
