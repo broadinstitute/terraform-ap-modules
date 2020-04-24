@@ -160,8 +160,8 @@ variable "mongodb_instance_image" {
   description = "The default image of MongoDB hosts"
 }
 variable "mongodb_instance_count_offset" {
-  default = 0
-  type    = number
+  default     = 0
+  type        = number
   description = "Offset at which to start naming suffix"
 }
 variable "mongodb_instance_group_name" {
@@ -207,9 +207,9 @@ locals {
   } : var.mongodb_instance_labels
 }
 variable "mongodb_extra_flags" {
-  type = string
+  type        = string
   description = "Extra flags passed to the mongo container. https://github.com/bitnami/bitnami-docker-mongodb#passing-extra-command-line-flags-to-mongod-startup"
-  default = null
+  default     = null
 }
 
 #

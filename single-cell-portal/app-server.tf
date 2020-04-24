@@ -8,20 +8,20 @@ module "app_server" {
     google.target = google.target
   }
 
-  project                  = var.google_project
-  instance_name            = var.service
-  instance_num_hosts       = 1
-  instance_size            = var.app_instance_size
-  instance_image           = var.app_instance_image
-  instance_data_disk_size  = var.app_instance_data_disk_size
-  instance_data_disk_type  = var.app_instance_data_disk_type
-  instance_data_disk_name  = "${var.service}-data-disk"
+  project                 = var.google_project
+  instance_name           = var.service
+  instance_num_hosts      = 1
+  instance_size           = var.app_instance_size
+  instance_image          = var.app_instance_image
+  instance_data_disk_size = var.app_instance_data_disk_size
+  instance_data_disk_type = var.app_instance_data_disk_type
+  instance_data_disk_name = "${var.service}-data-disk"
   instance_service_account = var.create_sa ? google_service_account.app[0].email : (
     local.app_sa_default ? data.google_compute_default_service_account.app[0].email : data.google_service_account.app[0].email
   )
-  instance_network_name    = local.network_name
-  instance_tags            = local.app_instance_tags
-  instance_labels          = local.app_instance_labels
+  instance_network_name = local.network_name
+  instance_tags         = local.app_instance_tags
+  instance_labels       = local.app_instance_labels
 
   dependencies = [
     google_compute_network.vpc_network,

@@ -13,10 +13,10 @@ module "mongodb" {
     google.target = google.target,
     google.dns    = google.dns
   }
-  project                 = var.google_project
-  owner                   = local.owner
-  service                 = "${var.service}-mongo"
-  mongodb_image_tag       = var.mongodb_version
+  project           = var.google_project
+  owner             = local.owner
+  service           = "${var.service}-mongo"
+  mongodb_image_tag = var.mongodb_version
   mongodb_service_account = var.create_sa ? google_service_account.app[0].email : (
     local.app_sa_default ? data.google_compute_default_service_account.app[0].email : data.google_service_account.app[0].email
   )
