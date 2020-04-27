@@ -127,6 +127,7 @@ variable "gcp_health_check_range_cidrs" {
   default = [
     // https://cloud.google.com/load-balancing/docs/health-check-concepts#ip-ranges
     "35.191.0.0/16",
+    "130.211.0.0/22",
     "209.85.152.0/22",
     "209.85.204.0/22"
   ]
