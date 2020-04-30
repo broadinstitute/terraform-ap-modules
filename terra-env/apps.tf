@@ -35,7 +35,7 @@ module "sam" {
 # TODO We eventually want to deploy a terra-env that shares a persistence layer with the existing terraform-firecloud
 # classic deployment. Add a variable to not instantiate this module in that case.
 module "sam_persistence" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-persistence-0.0.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam-persistence?ref=sam-persistence-0.0.0"
   google_project = var.google_project
   providers = {
     google.target = google.target
