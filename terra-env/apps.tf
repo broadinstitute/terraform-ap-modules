@@ -23,9 +23,7 @@ module "identity_concentrator" {
 }
 
 module "sam" {
-  # TODO fix to reference.
-  #source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.0.2"
-  source = "./../sam"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.0.3"
   google_project                 = var.google_project
   classic_storage_google_project = var.classic_storage_google_project
   num_admin_sdk_service_accounts = 3
@@ -37,8 +35,7 @@ module "sam" {
 # TODO We eventually want to deploy a terra-env that shares a persistence layer with the existing terraform-firecloud
 # classic deployment. Add a variable to not instantiate this module in that case.
 module "sam_persistence" {
-  # TODO fix to reference.
-  source = "./../sam-persistence"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-persistence-0.0.0"
   google_project = var.google_project
   providers = {
     google.target = google.target
