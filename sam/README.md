@@ -13,3 +13,6 @@ resources. This module handles those resources.
 
 ## TODO
 Need to add manual steps for GSuite service accounts. See terraform-terra repo.
+
+Need to add Oauth Client secrets. See terraform-terra repo.
+Maybe possible in terraform now with https://github.com/terraform-providers/terraform-provider-google/issues/1287.

@@ -54,6 +54,28 @@ output "sam_admin_sdk_sa_emails" {
 }
 
 #
+# Sam Persistence Outputs
+#
+
+output "sam_db_ip" {
+  value = module.sam_persistence.cloudsql_public_ip
+}
+
+output "sam_db_instance" {
+  value = module.sam_persistence.cloudsql_instance_name
+}
+
+output "sam_db_root_password" {
+  value = module.sam_persistence.cloudsql_root_user_password
+  sensitive = true
+}
+
+output "sam_db_creds" {
+  value = module.sam_persistence.cloudsql_app_db_creds
+  sensitive = true
+}
+
+#
 # Workspace Manager Outputs
 #
 output "workspace_sa_id" {
