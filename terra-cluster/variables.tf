@@ -41,8 +41,6 @@ locals {
 }
 
 # Network settings
-# Option 1 - use old school naming conventions.
-# terra-integration for cluster network, subnet, router, and nat addresses
 variable "use_short_network_names" {
   description = "Whether to use short network names for VPC/subet/etc resources"
   type        = bool
