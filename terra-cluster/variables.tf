@@ -198,3 +198,15 @@ variable "notification_channels" {
   default     = []
   description = "A list of ids for channels to contact when an alert fires"
 }
+
+variable "stackdriver_workspace_project" {
+  type        = string
+  default     = "broad-dsp-stackdriver"
+  description = "The stackdriver workspace that monitors the legacy firecloud environments except broad-dsde-prod."
+}
+
+variable "use_legacy_stackdriver_workspace" {
+  type        = bool
+  default     = false
+  description = "Flag that should be enabled only if you are creating a cluster in one of the legacy firecloud gcp projects: broad-dsde-[dev/alpha/perf/staging]"
+}
