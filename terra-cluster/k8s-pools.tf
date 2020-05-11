@@ -5,7 +5,7 @@ locals {
 # Default node pool
 module "k8s-node-pool" {
   # terraform-shared repo
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.1.0-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.0-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -25,7 +25,7 @@ module "k8s-node-pool" {
 
 # Highmem pool
 module "k8s-node-pool-highmem" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.1.0-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.0-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
