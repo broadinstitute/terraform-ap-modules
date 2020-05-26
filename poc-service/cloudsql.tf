@@ -1,5 +1,7 @@
 module "cloudsql" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.0.0-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=gm-enable-flags"
+
+  enable = var.enable
 
   providers = {
     google.target = google.target
@@ -18,4 +20,6 @@ module "cloudsql" {
       username = local.db_user
     }
   }
+
+  dependencies = [ var.dependencies ]
 }
