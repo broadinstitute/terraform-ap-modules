@@ -1,8 +1,8 @@
 # Service account for the CRL Integration tests to use.
 resource "google_service_account" "crl" {
   project = var.google_project
-  account_id = "crl"
-  display_name = "crl"
+  account_id = "crl-test"
+  display_name = "crl-test"
 }
 
 locals {
