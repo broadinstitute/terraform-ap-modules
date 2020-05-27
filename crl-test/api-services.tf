@@ -4,7 +4,7 @@ module "enable-services" {
   providers = {
     google.target = google.target
   }
-  project     = var.google_project
+  project     = google_project.project.name
   services    = [
     # APIs needed by CRL functionality.
     "cloudtrace.googleapis.com",
