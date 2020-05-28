@@ -1,5 +1,5 @@
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=gm-enable-flags"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.0"
 
   enable = local.terra_apps["poc"]
 
@@ -13,7 +13,7 @@ module "poc_service" {
 }
 
 module "identity_concentrator" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=gm-enable-flags"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=identity-concentrator-0.1.0"
 
   enable = local.terra_apps["identity_concentrator"]
 
@@ -27,7 +27,7 @@ module "identity_concentrator" {
 }
 
 module "sam" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=gm-enable-flags"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.1.0"
 
   enable = local.terra_apps["sam"]
 
@@ -40,7 +40,7 @@ module "sam" {
 }
 
 module "sam_persistence" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//sam-persistence?ref=gm-enable-flags"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam-persistence?ref=sam-persistence-0.1.0"
 
   enable = local.terra_apps["sam_persistence"]
 
@@ -51,7 +51,7 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=gm-enable-flags"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.1.0"
 
   enable = local.terra_apps["workspace_manager"]
 
