@@ -59,3 +59,20 @@ locals {
   db_name = var.db_name == "" ? local.service : var.db_name
   db_user = var.db_user == "" ? local.service : var.db_user
 }
+
+#
+# DNS Vars
+#
+variable "dns_zone_name" {
+  type = string
+  description = "DNS zone name"
+  default = "dsp-envs"
+}
+variable "domain_name" {
+  type = string
+  description = "Domain name before zone"
+  default = ""
+}
+locals {
+  domain_name = var.domain_name == "" ? "${local.service}.${local.owner}.${var.cluster}"
+}
