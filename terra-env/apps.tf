@@ -1,5 +1,5 @@
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=gm-ip-dns"
 
   enable = local.terra_apps["poc"]
 
@@ -8,6 +8,7 @@ module "poc_service" {
 
   providers = {
     google.target      = google.target
+    google.dns         = google.dns
     google-beta.target = google-beta.target
   }
 }
