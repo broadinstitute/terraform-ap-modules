@@ -5,9 +5,5 @@
 #
 
 output "service_account_email" {
-  value = var.enable ? google_service_account.sam[0].email : null
-}
-
-output "admin_sdk_service_account_emails" {
-  value = var.enable ? google_service_account.sam_admin_sdk.*.email : null
+  value = google_service_account.crl.email
 }
