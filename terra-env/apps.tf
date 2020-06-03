@@ -11,7 +11,7 @@ module "poc_service" {
 }
 
 module "identity_concentrator" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=identity-concentrator-0.0.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=identity-concentrator-0.0.1"
 
   google_project = var.google_project
   cluster        = var.cluster
