@@ -28,3 +28,24 @@ variable "owner" {
 locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
+
+
+#
+# Application toggles
+#
+variable "terra_apps" {
+  type        = map(bool)
+  description = "Terra apps to enable. All disabled by default."
+  default     = {}
+}
+locals {
+  terra_apps = merge({
+      poc = false,
+      identity_concentrator = false,
+      sam = false,
+      sam_persistence = false,
+      workspace_manager = false
+    },
+    var.terra_apps
+  )
+}
