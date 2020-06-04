@@ -13,6 +13,7 @@ locals {
     "roles/monitoring.metricWriter",
     # Roles used in integration testing.
     "roles/storage.admin",
+    "roles/bigquery.admin",
   ]
 }
 
