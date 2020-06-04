@@ -13,5 +13,6 @@ module "enable-services" {
     # APIs exercised by CRL integration testing.
     "storage-api.googleapis.com",
     "storage-component.googleapis.com",
+    "bigquery.googleapis.com",
   ]
 }
