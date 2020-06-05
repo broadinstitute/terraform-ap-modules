@@ -4,11 +4,11 @@
 # output service accounts.
 #
 
-output "service_account_email-admin" {
+output "service_account_email_admin" {
   value = google_service_account.crl-admin.email
 }
 
-output "service_account_email-user" {
+output "service_account_email_user" {
   value = google_service_account.crl-user.email
 }
 
