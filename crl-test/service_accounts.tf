@@ -27,7 +27,7 @@ resource "google_project_iam_member" "crl-admin" {
   count = length(local.roles)
   project = google_project.project.name
   role = local.roles[count.index]
-  member = "serviceAccount:${google_service_account.crl-admin.email}"
+  member = "serviceAccount:${google_service_account.crl_admin.email}"
 }
 
 resource "google_project_iam_member" "crl-user" {
