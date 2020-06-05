@@ -9,6 +9,5 @@ output "service_account_email_admin" {
 }
 
 output "service_account_email_user" {
-  value = google_service_account.crl-user.email
+  value = google_service_account.crl_user.email
 }
-
