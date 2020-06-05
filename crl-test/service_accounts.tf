@@ -1,5 +1,5 @@
 # Service accounts for the CRL Integration tests to use.
-resource "google_service_account" "crl-admin" {
+resource "google_service_account" "crl_admin" {
   project = google_project.project.name
   account_id = "crl-test-admin"
   display_name = "crl-test-admin"
