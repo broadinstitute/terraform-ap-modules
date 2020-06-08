@@ -41,6 +41,24 @@ locals {
 
 
 #
+# DNS Vars
+#
+variable "dns_zone_name" {
+  type = string
+  description = "DNS zone name"
+  default = "dsp-envs"
+}
+variable "domain_name" {
+  type = string
+  description = "Domain name before zone"
+  default = ""
+}
+locals {
+  domain_name = var.domain_name == "" ? "${local.service}.terra-${local.owner}.${var.cluster}" : var.domain_name
+}
+
+
+#
 # Postgres CloudSQL DB Vars
 #
 variable "db_tier" {
