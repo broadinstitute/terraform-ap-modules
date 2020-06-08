@@ -15,5 +15,5 @@ module "k8s-master" {
   subnetwork              = var.auto_create_subnets ? local.cluster_network : local.cluster_subnet
   private_ipv4_cidr_block = var.private_master_ipv4_cidr_block
 
-  istio_enable = true
+  istio_enable = var.istio_enable
 }
