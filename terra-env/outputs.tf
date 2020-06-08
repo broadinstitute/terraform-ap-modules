@@ -103,3 +103,9 @@ output "workspace_stairway_db_creds" {
   value = module.workspace_manager.cloudsql_app_stairway_db_creds
   sensitive = true
 }
+output "workspace_ingress_ip" {
+  value = module.workspace_manager.ingress_ip
+}
+output "workspace_fqdn" {
+  value = module.workspace_manager.fqdn
+}
