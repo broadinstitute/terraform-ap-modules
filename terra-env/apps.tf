@@ -61,6 +61,7 @@ module "workspace_manager" {
 
   providers = {
     google.target      = google.target
+    google.dns         = google.dns
     google-beta.target = google-beta.target
   }
 }
