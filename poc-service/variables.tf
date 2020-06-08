@@ -74,5 +74,5 @@ variable "domain_name" {
   default = ""
 }
 locals {
-  domain_name = var.domain_name == "" ? "${local.service}.${local.owner}.${var.cluster}" : var.domain_name
+  domain_name = var.domain_name == "" ? "${local.service}.terra-${local.owner}.${var.cluster}" : var.domain_name
 }

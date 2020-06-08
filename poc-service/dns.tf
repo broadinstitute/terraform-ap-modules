@@ -5,7 +5,7 @@ data "google_dns_managed_zone" "dns_zone" {
   name = var.dns_zone_name
 }
 
-resource "google_dns_record_set" "atlantis" {
+resource "google_dns_record_set" "ingress" {
   count = var.enable ? 1 : 0
   
   provider = google.dns
