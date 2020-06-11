@@ -60,7 +60,7 @@ variable "domain_name" {
 }
 locals {
   cluster_name = var.cluster_short == "" ? var.cluster : var.cluster_short
-  domain_name = var.domain_name == "" ? "${local.service}.${local.owner}.${local.cluster}" : var.domain_name
+  domain_name = var.domain_name == "" ? "${local.service}.${local.owner}.${local.cluster_name}" : var.domain_name
 }
 
 
