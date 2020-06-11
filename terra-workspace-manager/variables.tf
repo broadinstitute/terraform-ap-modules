@@ -19,6 +19,11 @@ variable "google_project" {
 variable "cluster" {
   description = "Terra GKE cluster suffix, whatever is after terra-"
 }
+variable "cluster_short" {
+  type        = string
+  description = "Optional short cluster name"
+  default     = ""
+}
 variable "owner" {
   type        = string
   description = "Environment or developer"
@@ -54,7 +59,8 @@ variable "domain_name" {
   default = ""
 }
 locals {
-  domain_name = var.domain_name == "" ? "${local.service}.terra-${local.owner}.${var.cluster}" : var.domain_name
+  cluster_name = var.cluster_short == "" ? var.cluster : var.cluster_short
+  domain_name = var.domain_name == "" ? "${local.service}.${local.owner}.${local.cluster}" : var.domain_name
 }
 
 

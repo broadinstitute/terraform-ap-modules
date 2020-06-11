@@ -58,6 +58,7 @@ module "workspace_manager" {
 
   google_project = var.google_project
   cluster        = var.cluster
+  cluster_short  = var.cluster_short
 
   providers = {
     google.target      = google.target

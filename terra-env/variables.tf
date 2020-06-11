@@ -16,12 +16,20 @@ variable "classic_storage_google_project" {
   # Today, we want to share a persistence layer between the deployment defined by this terraform and
   # broadinstitute/terraform-firecloud classic deployment. This variable is the corresponding classic deployment
   # google project.
+  type        = string
   description = "The google project outside of the cluster that has storage."
 }
 variable "cluster" {
+  type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
 }
+variable "cluster_short" {
+  type        = string
+  description = "Optional short cluster name"
+  default     = ""
+}
 variable "owner" {
+  type        = string
   description = "Environment or developer"
   default     = ""
 }
