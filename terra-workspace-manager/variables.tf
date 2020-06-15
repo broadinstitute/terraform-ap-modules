@@ -69,7 +69,7 @@ variable "hostname" {
   default     = ""
 }
 locals {
-  hostname       = var.hostname == "" ? var.service : var.hostname
+  hostname       = var.hostname == "" ? local.service : var.hostname
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
   subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }

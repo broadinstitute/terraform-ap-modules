@@ -61,7 +61,7 @@ module "workspace_manager" {
   cluster_short  = var.cluster_short
 
   dns_zone_name    = var.dns_zone_name
-  subdomain_name   = var.domain_name
+  subdomain_name   = var.subdomain_name
   use_subdomain    = var.use_subdomain
 
   providers = {
