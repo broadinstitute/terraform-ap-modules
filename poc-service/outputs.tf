@@ -38,5 +38,5 @@ output "ingress_ip" {
   value = var.enable ? google_compute_address.ingress_ip[0].address : null
 }
 output "fqdn" {
-  value = var.enable ? "${local.domain_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
+  value = var.enable ? local.fqdn : null
 }
