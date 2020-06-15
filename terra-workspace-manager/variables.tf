@@ -49,18 +49,29 @@ locals {
 # DNS Vars
 #
 variable "dns_zone_name" {
-  type = string
+  type        = string
   description = "DNS zone name"
-  default = "dsp-envs"
+  default     = "dsp-envs"
 }
-variable "domain_name" {
-  type = string
-  description = "Domain name before zone"
-  default = ""
+variable "use_subdomain" {
+  type        = bool
+  description = "Whether to use a subdomain between the zone and hostname"
+  default     = true
+}
+variable "subdomain_name" {
+  type        = string
+  description = "Domain namespacing between zone and hostname"
+  default     = ""
+}
+variable "hostname" {
+  type        = string
+  description = "Service hostname"
+  default     = ""
 }
 locals {
-  cluster_name = var.cluster_short == "" ? var.cluster : var.cluster_short
-  domain_name = var.domain_name == "" ? "${local.service}.${local.owner}.${local.cluster_name}" : var.domain_name
+  hostname       = var.hostname == "" ? var.service : var.hostname
+  cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
+  subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
 
 

@@ -57,3 +57,22 @@ locals {
     var.terra_apps
   )
 }
+
+#
+# DNS Vars
+#
+variable "dns_zone_name" {
+  type        = string
+  description = "DNS zone name"
+  default     = "dsp-envs"
+}
+variable "subdomain_name" {
+  type        = string
+  description = "Domain namespacing between zone and hostname"
+  default     = ""
+}
+variable "use_subdomain" {
+  type        = bool
+  description = "Whether to use a subdomain between the zone and hostname"
+  default     = true
+}
