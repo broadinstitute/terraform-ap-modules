@@ -131,6 +131,13 @@ variable "nat_egress_ip_count" {
   default     = 2
 }
 
+# Istio
+variable "istio_enable" {
+  description = "Whether to enable Google's Istio implementation in the cluster"
+  type        = bool
+  default     = true
+}
+
 variable "release_channel" {
   type        = string
   description = "See official documentation for GKE release channels"

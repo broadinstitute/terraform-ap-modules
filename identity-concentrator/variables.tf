@@ -37,8 +37,7 @@ locals  {
   sa_roles = [
     "roles/cloudsql.client",                      // To use cloudsql
     "roles/cloudkms.cryptoKeyEncrypterDecrypter", // To encrypt sensitive data to store in datastore
-    "roles/cloudkms.publicKeyViewer",             // To sign jwt with kms
-    "roles/cloudkms.signer",                      // To sign jwt with kms
+    "roles/cloudkms.signerVerifier",              // To sign jwt with kms
     "roles/datastore.indexAdmin",                 // TO mange datastore index
     "roles/datastore.user",                       // To use datastore
     "roles/cloudkms.admin",                       // To manage cryptographic keys for IC
