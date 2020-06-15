@@ -1,13 +1,19 @@
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.1"
 
   enable = local.terra_apps["poc"]
 
   google_project = var.google_project
   cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name    = var.dns_zone_name
+  subdomain_name   = var.subdomain_name
+  use_subdomain    = var.use_subdomain
 
   providers = {
     google.target      = google.target
+    google.dns         = google.dns
     google-beta.target = google-beta.target
   }
 }
@@ -50,15 +56,21 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.1.1"
 
   enable = local.terra_apps["workspace_manager"]
 
   google_project = var.google_project
   cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name    = var.dns_zone_name
+  subdomain_name   = var.subdomain_name
+  use_subdomain    = var.use_subdomain
 
   providers = {
     google.target      = google.target
+    google.dns         = google.dns
     google-beta.target = google-beta.target
   }
 }

@@ -4,7 +4,6 @@
 output "poc_sa_id" {
   value = module.poc_service.app_sa_id
 }
-
 output "poc_db_ip" {
   value = module.poc_service.cloudsql_public_ip
 }
@@ -19,7 +18,12 @@ output "poc_db_creds" {
   value     = module.poc_service.cloudsql_app_db_creds
   sensitive = true
 }
-
+output "poc_ingress_ip" {
+  value = module.poc_service.ingress_ip
+}
+output "poc_fqdn" {
+  value = module.poc_service.fqdn
+}
 
 #
 # Identity Concentrator Outputs
@@ -98,4 +102,10 @@ output "workspace_db_creds" {
 output "workspace_stairway_db_creds" {
   value = module.workspace_manager.cloudsql_app_stairway_db_creds
   sensitive = true
+}
+output "workspace_ingress_ip" {
+  value = module.workspace_manager.ingress_ip
+}
+output "workspace_fqdn" {
+  value = module.workspace_manager.fqdn
 }
