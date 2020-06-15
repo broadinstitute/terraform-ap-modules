@@ -1,5 +1,5 @@
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=gm-ip-dns"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.1"
 
   enable = local.terra_apps["poc"]
 
@@ -56,7 +56,7 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=gm-ip-dns"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.1.1"
 
   enable = local.terra_apps["workspace_manager"]
 
