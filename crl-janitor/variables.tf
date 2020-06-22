@@ -30,7 +30,7 @@ variable "owner" {
   default     = ""
 }
 locals {
-  owner   = var.owner == "" ? terraform.crl_janitor : var.owner
+  owner   = var.owner == "" ? terraform.workspace : var.owner
   service = "crl-janitor"
 }
 
