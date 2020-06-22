@@ -34,7 +34,6 @@ locals {
   service = "crl-janitor"
 }
 
-
 #
 # Service Account Vars
 #
@@ -43,7 +42,6 @@ locals {
     "roles/cloudsql.client",
   ]
 }
-
 
 #
 # DNS Vars
