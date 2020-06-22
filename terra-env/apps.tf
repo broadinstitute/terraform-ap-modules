@@ -74,3 +74,23 @@ module "workspace_manager" {
     google-beta.target = google-beta.target
   }
 }
+
+module "crl_janitor" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.1.1"
+
+  enable = local.terra_apps["poc"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name    = var.dns_zone_name
+  subdomain_name   = var.subdomain_name
+  use_subdomain    = var.use_subdomain
+
+  providers = {
+    google.target      = google.target
+    google.dns         = google.dns
+    google-beta.target = google-beta.target
+  }
+}
