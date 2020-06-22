@@ -40,7 +40,14 @@ locals {
 #
 locals {
   sa_roles = [
-    "roles/cloudsql.client"
+    # Roles needed as a part of CRL Janitor functionality.
+    "roles/cloudsql.client",
+    "roles/cloudtrace.agent",
+    "roles/logging.logWriter",
+    "roles/monitoring.metricWriter",
+    # Roles used in integration testing.
+    "roles/storage.admin",
+    "roles/bigquery.admin",
   ]
 }
 
