@@ -113,26 +113,26 @@ output "workspace_fqdn" {
 #
 # CRL Janitor Service Outputs
 #
-output "crl-janitor_sa_id" {
+output "crl_janitor_sa_id" {
   value = module.crl_janitor.app_sa_id
 }
-output "crl-janitor_db_ip" {
+output "crl_janitor_db_ip" {
   value = module.crl_janitor.cloudsql_public_ip
 }
-output "crl-janitor_db_instance" {
+output "crl_janitor_db_instance" {
   value = module.crl_janitor.cloudsql_instance_name
 }
-output "crl-janitor_db_root_pass" {
+output "crl_janitor_db_root_pass" {
   value     = module.crl_janitor.cloudsql_root_user_password
   sensitive = true
 }
-output "crl-janitor_db_creds" {
+output "crl_janitor_db_creds" {
   value     = module.crl_janitor.cloudsql_app_db_creds
   sensitive = true
 }
-output "crl-janitor_ingress_ip" {
+output "crl_janitor_ingress_ip" {
   value = module.crl_janitor.ingress_ip
 }
-output "crl-janitor_fqdn" {
+output "crl_janitor_fqdn" {
   value = module.crl_janitor.fqdn
 }
