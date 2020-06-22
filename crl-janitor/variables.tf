@@ -46,6 +46,7 @@ locals {
     "roles/logging.logWriter",
     "roles/monitoring.metricWriter",
     # Roles used in integration testing.
+    "roles/resourcemanager.admin",
     "roles/storage.admin",
     "roles/bigquery.admin",
   ]
