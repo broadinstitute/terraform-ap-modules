@@ -34,24 +34,14 @@ locals {
   service = "crl-janitor"
 }
 
-
 #
 # Service Account Vars
 #
 locals {
   sa_roles = [
-    # Roles needed as a part of CRL Janitor functionality.
     "roles/cloudsql.client",
-    "roles/cloudtrace.agent",
-    "roles/logging.logWriter",
-    "roles/monitoring.metricWriter",
-    # Roles used in integration testing.
-    "roles/resourcemanager.admin",
-    "roles/storage.admin",
-    "roles/bigquery.admin",
   ]
 }
-
 
 #
 # DNS Vars
