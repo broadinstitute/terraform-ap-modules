@@ -53,7 +53,7 @@ locals {
       sam = false,
       sam_persistence = false,
       workspace_manager = false,
-      crl-janitor = false,
+      crl_janitor = false,
     },
     var.terra_apps
   )
