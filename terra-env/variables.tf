@@ -52,7 +52,8 @@ locals {
       identity_concentrator = false,
       sam = false,
       sam_persistence = false,
-      workspace_manager = false
+      workspace_manager = false,
+      crl_janitor = false,
     },
     var.terra_apps
   )
