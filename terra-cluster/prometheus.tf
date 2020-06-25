@@ -9,6 +9,6 @@ module "prometheus" {
   use_subdomain  = var.use_subdomain
 
   providers = {
-    google.dns = google.dns
+    google.dns = var.use_subdomain ? google.dns : google.target
   }
 }
