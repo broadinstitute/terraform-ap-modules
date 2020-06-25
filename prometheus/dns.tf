@@ -12,7 +12,7 @@ locals {
 resource "google_dns_record_set" "ingress" {
   count = var.enable ? 1 : 0
 
-  provider     = google.dns
+  provider     = var.use_subdomain ? google.dns : google.target
   managed_zone = data.google_dns_managed_zone.dns_zone[0].name
   name         = local.fqdn
   type         = "A"
