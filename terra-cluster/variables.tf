@@ -217,3 +217,20 @@ variable "use_legacy_stackdriver_workspace" {
   default     = false
   description = "Flag that should be enabled only if you are creating a cluster in one of the legacy firecloud gcp projects: broad-dsde-[dev/alpha/perf/staging]"
 }
+
+# DNS Vars
+variable "dns_zone_name" {
+  type        = string
+  description = "DNS zone name"
+  default     = "dsp-envs"
+}
+variable "subdomain_name" {
+  type        = string
+  description = "Domain namespacing between zone and hostname"
+  default     = ""
+}
+variable "use_subdomain" {
+  type        = bool
+  description = "Whether to use a subdomain between the zone and hostname"
+  default     = true
+}
