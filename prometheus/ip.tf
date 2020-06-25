@@ -1,7 +1,7 @@
 resource "google_compute_address" "ingress_ip" {
   count = var.enable ? 1 : 0
 
-  provider = google.target
+  provider = google.dns
 
   name = "terra-${var.cluster}-${local.owner}-${local.service}-ip"
 }

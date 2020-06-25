@@ -1,8 +1,4 @@
 # General vars
-variable "google_project" {
-  description = "The google project"
-}
-
 variable "environment" {
   description = "Environment or developer"
   default     = ""
