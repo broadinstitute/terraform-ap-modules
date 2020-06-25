@@ -3,5 +3,5 @@ resource "google_compute_address" "ingress_ip" {
 
   provider = google.dns
 
-  name = "terra-${var.cluster}-${local.owner}-${local.service}-ip"
+  name = "terra-${local.owner}-${local.service}-ip"
 }
