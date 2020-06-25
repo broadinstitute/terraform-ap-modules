@@ -4,6 +4,10 @@ module "prometheus" {
   enable      = true
   environment = local.owner
 
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
   providers = {
     google.dns = google.dns
   }
