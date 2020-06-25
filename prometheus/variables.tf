@@ -15,9 +15,9 @@ variable "dns_project" {
 }
 
 locals {
-  owner     = var.environment == "integration" ? "integ" : var.use_subdomain ? terraform.workspace : "dsde-${terraform.workspace}"
+  owner     = var.environment == "integration" ? "integ" : terraform.workspace
   service   = "prometheus"
-  subdomain = "${local.service}.${local.owner}"
+  subdomain = var.use_subdomain ? "${local.service}.${local.owner}" : local.service
   project   = var.use_subdomain ? var.dns_project : var.google_project
 }
 
