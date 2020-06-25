@@ -4,10 +4,21 @@ variable "environment" {
   default     = ""
 }
 
+variable "google_project" {
+  description = "The google project"
+}
+
+variable "dns_project" {
+  type        = string
+  description = "Host project for mcterra dns"
+  default     = "dsp-devops"
+}
+
 locals {
   owner     = var.environment == "integration" ? "integ" : var.use_subdomain ? terraform.workspace : "dsde-${terraform.workspace}"
   service   = "prometheus"
   subdomain = "${local.service}.${local.owner}"
+  project   = var.use_subdomain ? var.dns_project : var.google_project
 }
 
 variable "enable" {
