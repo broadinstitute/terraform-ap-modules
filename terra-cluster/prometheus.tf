@@ -1,5 +1,5 @@
 module "prometheus" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=terra-cluster-0.0.12"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=terra-cluster-0.0.13"
 
   enable         = true
   environment    = local.owner
@@ -10,6 +10,7 @@ module "prometheus" {
   use_subdomain  = var.use_subdomain
 
   providers = {
-    google.dns = google.dns
+    google.dns    = google.dns
+    google.target = google.target
   }
 }
