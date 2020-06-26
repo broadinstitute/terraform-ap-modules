@@ -11,6 +11,6 @@ module "prometheus" {
 
   providers = {
     google.dns    = google.dns
-    google.target = goole.target
+    google.target = google.target
   }
 }
