@@ -1,5 +1,5 @@
 module "prometheus" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=terra-cluster-0.0.13"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=terra-cluster-0.0.14"
 
   enable         = true
   environment    = local.owner
