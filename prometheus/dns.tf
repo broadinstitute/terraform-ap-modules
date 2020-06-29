@@ -19,5 +19,5 @@ resource "google_dns_record_set" "ingress" {
   name         = local.fqdn
   type         = "A"
   ttl          = "300"
-  rrdatas      = [google_compute_address.ingress_ip[0].address]
+  rrdatas      = [google_compute_global_address.ingress_ip[0].address]
 }
