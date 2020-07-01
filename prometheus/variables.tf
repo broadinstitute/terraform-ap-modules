@@ -1,11 +1,13 @@
 # General vars
 variable "environment" {
+  type        = string
   description = "Environment or developer"
   default     = ""
 }
 
 variable "google_project" {
-  description = "The google project"
+  type        = string
+  description = "The google project in which to create resources"
 }
 
 variable "dns_project" {
@@ -43,4 +45,3 @@ variable "use_subdomain" {
   description = "Whether to use a subdomain between the zone and hostname"
   default     = true
 }
-
