@@ -1,5 +1,5 @@
 # terraform-ap-modules
-DSP Analysis Platform Terraform Modules. This public repository contains Terraform modules that are meant to be Broad-agnostic and can potentially be deployed by outside parties. The general pattern their deployment inside the Broad is for them to be referenced from a deployment in the private [terraform-ap-deployments repository](https://github.com/broadinstitute/terraform-ap-deployments), along with any Broad-specific infrastructure.
+DSP Analysis Platform Terraform Modules. This public repository contains Terraform modules that are meant to be Broad-agnostic and can potentially be deployed by outside parties. The general pattern for their deployment inside the Broad is for them to be referenced from a deployment in the private [terraform-ap-deployments repository](https://github.com/broadinstitute/terraform-ap-deployments), along with any Broad-specific infrastructure.
 
 ## Formatting
 Before committing changes to a module, please run the following linting operations in the module directory:
