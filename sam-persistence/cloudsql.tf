@@ -1,10 +1,10 @@
 module "cloudsql" {
-  source        = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.1.0"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.1.0"
 
   enable = var.enable
 
   providers = {
-    google.target =  google.target
+    google.target = google.target
   }
   project       = var.google_project
   cloudsql_name = "sam-db-${local.owner}"
@@ -21,5 +21,5 @@ module "cloudsql" {
     }
   }
 
-  dependencies = [ var.dependencies ]
+  dependencies = [var.dependencies]
 }

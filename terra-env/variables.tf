@@ -10,14 +10,19 @@ variable dependencies {
 # General Vars
 #
 variable "google_project" {
-  description = "The google project"
+  type        = string
+  description = "The google project in which to create resources"
 }
 variable "classic_storage_google_project" {
   # Today, we want to share a persistence layer between the deployment defined by this terraform and
   # broadinstitute/terraform-firecloud classic deployment. This variable is the corresponding classic deployment
   # google project.
   type        = string
-  description = "The google project outside of the cluster that has storage."
+  description = "The google project in which to look for a classic environment persistence layer. If empty defaults to google_project."
+  default     = ""
+}
+locals {
+  classic_storage_google_project = var.classic_storage_google_project == "" ? var.google_project : var.classic_storage_google_project
 }
 variable "cluster" {
   type        = string
@@ -30,7 +35,7 @@ variable "cluster_short" {
 }
 variable "owner" {
   type        = string
-  description = "Environment or developer"
+  description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
 locals {
@@ -48,12 +53,12 @@ variable "terra_apps" {
 }
 locals {
   terra_apps = merge({
-      poc = false,
-      identity_concentrator = false,
-      sam = false,
-      sam_persistence = false,
-      workspace_manager = false,
-      crl_janitor = false,
+    poc                   = false,
+    identity_concentrator = false,
+    sam                   = false,
+    sam_persistence       = false,
+    workspace_manager     = false,
+    crl_janitor           = false,
     },
     var.terra_apps
   )

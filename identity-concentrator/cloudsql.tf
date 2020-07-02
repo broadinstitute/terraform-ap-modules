@@ -21,5 +21,5 @@ module "cloudsql" {
     }
   }
 
-  dependencies = [ var.dependencies ]
+  dependencies = [var.dependencies]
 }

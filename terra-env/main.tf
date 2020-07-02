@@ -1,3 +1,16 @@
+/**
+ * # terra-env module
+ *
+ * This Terraform module manages resources for a single Terra environment.
+ * Each Terra application's resources are defined in its own module that this module references.
+ * 
+ * For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
+ * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
+ *
+ * This documentation is generated with [terraform-docs](https://github.com/segmentio/terraform-docs)
+ * `terraform-docs markdown --no-sort . > README.md`
+ */
+
 module "poc_service" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.1"
 
@@ -7,9 +20,9 @@ module "poc_service" {
   cluster        = var.cluster
   cluster_short  = var.cluster_short
 
-  dns_zone_name    = var.dns_zone_name
-  subdomain_name   = var.subdomain_name
-  use_subdomain    = var.use_subdomain
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
 
   providers = {
     google.target      = google.target
@@ -37,7 +50,7 @@ module "sam" {
   enable = local.terra_apps["sam"]
 
   google_project                 = var.google_project
-  classic_storage_google_project = var.classic_storage_google_project
+  classic_storage_google_project = local.classic_storage_google_project
   num_admin_sdk_service_accounts = 3
   providers = {
     google.target = google.target
@@ -64,9 +77,9 @@ module "workspace_manager" {
   cluster        = var.cluster
   cluster_short  = var.cluster_short
 
-  dns_zone_name    = var.dns_zone_name
-  subdomain_name   = var.subdomain_name
-  use_subdomain    = var.use_subdomain
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
 
   providers = {
     google.target      = google.target
@@ -84,9 +97,9 @@ module "crl_janitor" {
   cluster        = var.cluster
   cluster_short  = var.cluster_short
 
-  dns_zone_name    = var.dns_zone_name
-  subdomain_name   = var.subdomain_name
-  use_subdomain    = var.use_subdomain
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
 
   providers = {
     google.target      = google.target

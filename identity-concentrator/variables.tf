@@ -8,20 +8,20 @@ variable "dependencies" {
   description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
 }
 variable "enable" {
-  type = bool
+  type        = bool
   description = "Enable flag for this module. If set to false, no resources will be created."
-  default = true
+  default     = true
 }
 variable "google_project" {
   type        = string
-  description = "The google project"
+  description = "The google project in which to create resources"
 }
 variable "cluster" {
   description = "Terra GKE cluster suffix, whatever is after terra-"
 }
 variable "owner" {
   type        = string
-  description = "Environment or developer"
+  description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
 locals {
@@ -33,7 +33,7 @@ locals {
 #
 # Service Account Vars
 #
-locals  {
+locals {
   sa_roles = [
     "roles/cloudsql.client",                      // To use cloudsql
     "roles/cloudkms.cryptoKeyEncrypterDecrypter", // To encrypt sensitive data to store in datastore
@@ -50,17 +50,18 @@ locals  {
 # Postgres CloudSQL DB Vars
 #
 variable "db_tier" {
+  type        = string
   default     = "db-g1-small"
   description = "The default tier (DB instance size) for the CloudSQL instance"
 }
 variable "db_name" {
   type        = string
-  description = "Postgres db name"
+  description = "Postgres db name. Defaults to ic."
   default     = ""
 }
 variable "db_user" {
   type        = string
-  description = "Postgres username"
+  description = "Postgres username. Defaults to ic."
   default     = ""
 }
 locals {

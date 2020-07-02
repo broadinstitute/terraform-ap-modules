@@ -8,28 +8,28 @@ variable "dependencies" {
   description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
 }
 variable "enable" {
-  type = bool
+  type        = bool
   description = "Enable flag for this module. If set to false, no resources will be created."
-  default = true
+  default     = true
 }
 variable "google_project" {
-  type = string
-  description = "The google project"
+  type        = string
+  description = "The google project in which to create resources"
 }
 variable "owner" {
   type        = string
-  description = "Environment or developer"
+  description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
 locals {
-  owner   = var.owner == "" ? terraform.workspace : var.owner
+  owner = var.owner == "" ? terraform.workspace : var.owner
 }
 
 #
 # Postgres CloudSQL DB Vars
 #
 variable "cloudsql_tier" {
-  type = string
-  default = "db-f1-micro"
+  type        = string
+  default     = "db-f1-micro"
   description = "The default tier (DB instance size) for Application CloudSQL instances."
 }

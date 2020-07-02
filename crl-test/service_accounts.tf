@@ -1,13 +1,13 @@
 # Service accounts for the CRL Integration tests to use.
 resource "google_service_account" "crl_test_admin" {
-  project = google_project.project.name
-  account_id = "crl-test-admin"
+  project      = google_project.project.name
+  account_id   = "crl-test-admin"
   display_name = "crl-test-admin"
 }
 
 resource "google_service_account" "crl_test_user" {
-  project = google_project.project.name
-  account_id = "crl-test-user"
+  project      = google_project.project.name
+  account_id   = "crl-test-user"
   display_name = "crl-test-user"
 }
 
@@ -24,9 +24,9 @@ locals {
 }
 
 resource "google_project_iam_member" "crl_test_admin" {
-  count = length(local.roles)
+  count   = length(local.roles)
   project = google_project.project.name
-  role = local.roles[count.index]
-  member = "serviceAccount:${google_service_account.crl_test_admin.email}"
+  role    = local.roles[count.index]
+  member  = "serviceAccount:${google_service_account.crl_test_admin.email}"
 }
 

@@ -10,10 +10,12 @@ variable dependencies {
 # General Vars
 #
 variable "google_project" {
-  description = "The google project"
+  type        = string
+  description = "The google project in which to create resources"
 }
 variable "owner" {
-  description = "Environment or developer"
+  type        = string
+  description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
 locals {
@@ -29,10 +31,12 @@ variable "service" {
 # Service Account Vars
 #
 variable "create_sa" {
-  description = "Whether to create and manage the SAs in TF or use an existing one"
+  type        = bool
+  description = "Whether to create and manage the SAs in TF or use existing ones"
   default     = true
 }
 variable "app_sa_name" {
+  type        = string
   description = "Application service account"
   default     = ""
 }
@@ -42,6 +46,8 @@ locals {
   app_sa_default = length(regexall("\\d+-compute", var.app_sa_name)) > 0
 }
 variable "app_sa_roles" {
+  type        = list(string)
+  description = "Roles that the app Google service account is granted"
   default = [
     "roles/compute.viewer",
     "roles/logging.logWriter",
@@ -49,13 +55,16 @@ variable "app_sa_roles" {
   ]
 }
 variable "app_read_sa_name" {
-  description = "Application read service account"
+  type        = string
+  description = "Application read service account. Defaults to singlecell-[env]-read if left blank."
   default     = ""
 }
 locals {
   app_read_sa_name = var.app_read_sa_name == "" ? "${var.service}-${local.owner}-read" : var.app_read_sa_name
 }
 variable "app_read_sa_roles" {
+  type        = list(string)
+  description = "Roles that the app read Google service account is granted"
   default = [
     "roles/storage.objectViewer"
   ]
@@ -66,10 +75,12 @@ variable "app_read_sa_roles" {
 # Network Vars
 #
 variable "network_name" {
+  type        = string
   default     = ""
-  description = "The network name"
+  description = "The network name. Defaults to singlecell"
 }
 variable "create_network" {
+  type        = bool
   description = "Whether to create and manage the network in TF or use an existing one"
   default     = true
 }
@@ -81,13 +92,17 @@ locals {
 # Firewall Vars
 #
 variable "enable_logging" {
-  default = false
+  type        = bool
+  description = "Whether to enable logging in firewall rules"
+  default     = false
 }
 variable "allow_travis" {
-  description = "Allow Travis CI runners to communicate with MongoDB"
+  type        = bool
+  description = "Whether to allow Travis CI runners to communicate with MongoDB"
   default     = false
 }
 variable "internal_range" {
+  type        = string
   description = "Internal IP space for networks that use auto created subnets"
   default     = "10.128.0.0/9"
 }
@@ -138,25 +153,31 @@ variable "gcp_health_check_range_cidrs" {
 # MongoDB Vars
 #
 variable "mongodb_roles" {
+  type = list(string)
   default = [
     "primary"
   ]
   description = "host roles that will be present in this cluster"
 }
 variable "mongodb_version" {
+  type    = string
   default = "3.6.14"
 }
 variable "mongodb_user" {
+  type    = string
   default = "single_cell"
 }
 variable "mongodb_database" {
+  type    = string
   default = "single_cell_portal_development"
 }
 variable "mongodb_instance_size" {
+  type        = string
   default     = "n1-highmem-2"
   description = "The default size of MongoDB hosts"
 }
 variable "mongodb_instance_image" {
+  type        = string
   default     = "centos-7"
   description = "The default image of MongoDB hosts"
 }
@@ -171,18 +192,22 @@ variable "mongodb_instance_group_name" {
   description = "Name of mongo instance group. Defaults to singelcell-mongo-instance-group-unmanaged"
 }
 variable "mongodb_instance_data_disk_size" {
+  type        = string
   default     = "200"
   description = "The default size of MongoDB data disk"
 }
 variable "mongodb_instance_data_disk_type" {
+  type        = string
   default     = "pd-ssd"
   description = "The default type of MongoDB data disk"
 }
 variable "mongodb_dns" {
+  type        = bool
   description = "Whether to create DNS entries"
   default     = false
 }
 variable "mongodb_instance_tags" {
+  type        = list(string)
   default     = []
   description = "The default MongoDB instance tags"
 }
@@ -195,6 +220,7 @@ locals {
   ] : var.mongodb_instance_tags
 }
 variable "mongodb_instance_labels" {
+  type        = map(string)
   default     = {}
   description = "The default MongoDB instance labels"
 }
@@ -217,26 +243,32 @@ variable "mongodb_extra_flags" {
 # App Server Vars
 #
 variable "create_app_server" {
+  type        = bool
   description = "Whether to create & manage an app server in TF"
   default     = false
 }
 variable "app_instance_size" {
+  type        = string
   default     = "n1-highmem-4"
   description = "The default size of app hosts"
 }
 variable "app_instance_image" {
+  type        = string
   default     = "centos-7"
   description = "The default image of app hosts"
 }
 variable "app_instance_data_disk_size" {
+  type        = string
   default     = "100"
   description = "The default size of app data disk"
 }
 variable "app_instance_data_disk_type" {
+  type        = string
   default     = "pd-ssd"
   description = "The default type of app data disk"
 }
 variable "app_instance_tags" {
+  type        = list(string)
   default     = []
   description = "The default app instance tags"
 }
@@ -250,6 +282,7 @@ locals {
   ] : var.mongodb_instance_tags
 }
 variable "app_instance_labels" {
+  type        = map(string)
   default     = {}
   description = "The default app instance labels"
 }
@@ -268,29 +301,35 @@ locals {
 # App Server LB/SSL Vars
 #
 variable "create_lb" {
+  type        = bool
   description = "Whether to create & manage a load balancer for the app server"
   default     = false
 }
 variable "lb_ssl_cert" {
-  description = "Self link of ssl cert to use for the load balancer"
+  type        = string
+  description = "Self link of ssl cert to use for the load balancer. Required if create_lb is true."
   default     = ""
 }
 variable "ssl_policy_name" {
-  description = "Name of ssl cert to use for the load balancer"
+  type        = string
+  description = "Name of ssl cert to use for the load balancer. Defaults to singlecell-[env]"
   default     = ""
 }
 locals {
   ssl_policy_name = var.ssl_policy_name == "" ? "${var.service}-${local.owner}" : var.ssl_policy_name
 }
 variable "dns_zone_name" {
-  description = "DNS zone name for load balancer DNS"
+  type        = string
+  description = "DNS zone name for load balancer DNS. Required if create_lb is true."
   default     = ""
 }
 variable "lb_dns_name" {
-  description = "DNS name for load balancer"
+  type        = string
+  description = "DNS name for load balancer. Required if create_lb is true."
   default     = ""
 }
 variable "lb_dns_ttl" {
+  type        = string
   description = "DNS ttl for load balancer"
   default     = "300"
 }
