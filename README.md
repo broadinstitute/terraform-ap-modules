@@ -11,13 +11,19 @@ To do the above linting automatically on each commit, you can add the following 
 ```
 #!/bin/sh
 
-# Format
-terraform fmt -recursive
+# Formats any *.tf files according to the hashicorp convention
+files=$(git diff --diff-filter=d --cached --name-only)
+for f in $files
+do
+  if [ -e "$f" ] && [[ $f == *.tf ]]; then
+    terraform fmt -check=true $f
+  fi
+done
 
 # Keep module docs up to date
 for d in $(ls -1)
 do
-  terraform-docs md $d > $d/README.md
+  terraform-docs md --no-sort $d > $d/README.md
   if [ $? -eq 0 ] ; then
     git add "./$d/README.md"
   fi
