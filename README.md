@@ -8,6 +8,7 @@ Before committing changes to a module, please run the following linting operatio
 
 ### Pre-commit hook
 To do the above linting automatically on each commit, you can add the following git commit hook in `.git/hooks/pre-commit`:
+(If you have global hooks already you may need to add [this tweak](https://stackoverflow.com/a/49912720/2014408) to run local ones as well)
 ```
 #!/bin/sh
 
