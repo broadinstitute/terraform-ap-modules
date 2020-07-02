@@ -21,7 +21,7 @@ do
 done
 
 # Keep module docs up to date
-for d in $(ls -1)
+for d in $(ls -d */)
 do
   terraform-docs md --no-sort $d > $d/README.md
   if [ $? -eq 0 ] ; then
