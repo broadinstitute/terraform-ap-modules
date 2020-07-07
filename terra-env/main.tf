@@ -3,7 +3,7 @@
  *
  * This Terraform module manages resources for a single Terra environment.
  * Each Terra application's resources are defined in its own module that this module references.
- * 
+ *
  * For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
  *
@@ -113,11 +113,14 @@ module "datarepo" {
 
   enable = local.terra_apps["datarepo"]
 
-  google_project = var.google_project
-  environment = var.owner
-  vault_root = "${var.vault_path}/datarepo"
-
-  dns_names = [] # TODO
+  google_project            = var.google_project
+  environment               = var.owner
+  vault_root                = "${var.vault_path}/datarepo"
+  dns_zone                  = var.dns_zone
+  dns_names                 = var.dns_names
+  db_version                = var.db_version
+  enable_private_services   = false
+  existing_vpc_network      = var.existing_vpc_network
 
   providers = {
     google.target            = google.target
