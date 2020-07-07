@@ -42,6 +42,10 @@ locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
 
+variable "vault_path" {
+  type = string
+  description = "Vault path where secrets created by child modules should be stored"
+}
 
 #
 # Application toggles
@@ -59,6 +63,7 @@ locals {
     sam_persistence       = false,
     workspace_manager     = false,
     crl_janitor           = false,
+    datarepo              = false,
     },
     var.terra_apps
   )

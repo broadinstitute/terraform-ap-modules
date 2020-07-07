@@ -107,3 +107,22 @@ module "crl_janitor" {
     google-beta.target = google-beta.target
   }
 }
+
+module "datarepo" {
+  source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=ch-tweaks"
+
+  enable = local.terra_apps["datarepo"]
+
+  google_project = var.google_project
+  environment = var.owner
+  vault_root = "${var.vault_path}/datarepo"
+
+  dns_names = [] # TODO
+
+  providers = {
+    google.target            = google.target
+    google-beta.target       = google-beta.target
+    google-beta.datarepo-dns = google.dns
+    vault.target             = vault.target
+  }
+}
