@@ -40,3 +40,9 @@ output "cloudsql_app_db_creds" {
   description = "CRL Janitor database user credentials"
   sensitive   = true
 }
+output "cloudsql_app_stairway_db_creds" {
+  # Avoiding error on destroy with below condition
+  value       = var.enable ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds["${local.service}-stairway"]) : null
+  description = "CRL Janitor Stairway database user credentials"
+  sensitive   = true
+}
