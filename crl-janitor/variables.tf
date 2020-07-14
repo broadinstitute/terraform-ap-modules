@@ -41,6 +41,8 @@ locals {
 locals {
   sa_roles = [
     "roles/cloudsql.client",
+    # Stairway creates a pub/sub topic and subscription.
+    "roles/pubsub.admin",
   ]
 }
 
