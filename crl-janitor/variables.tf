@@ -93,7 +93,19 @@ variable "db_user" {
   description = "Postgres username"
   default     = ""
 }
+variable "stairway_db_name" {
+  type        = string
+  description = "Stairway db name"
+  default     = ""
+}
+variable "stairway_db_user" {
+  type        = string
+  description = "Stairway db username"
+  default     = ""
+}
 locals {
-  db_name = var.db_name == "" ? local.service : var.db_name
-  db_user = var.db_user == "" ? local.service : var.db_user
+  db_name          = var.db_name == "" ? local.service : var.db_name
+  db_user          = var.db_user == "" ? local.service : var.db_user
+  stairway_db_name = var.stairway_db_name == "" ? "${local.service}-stairway" : var.stairway_db_name
+  stairway_db_user = var.stairway_db_user == "" ? "${local.service}-stairway" : var.stairway_db_user
 }
