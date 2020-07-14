@@ -19,6 +19,10 @@ module "cloudsql" {
       db       = local.db_name
       username = local.db_user
     }
+    "${local.service}-stairway" = {
+      db       = local.db_name
+      username = local.db_user
+    }
   }
 
   dependencies = [var.dependencies]

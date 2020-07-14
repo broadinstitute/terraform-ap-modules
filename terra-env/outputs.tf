@@ -156,6 +156,11 @@ output "crl_janitor_db_creds" {
   description = "CRL Janitor database user credentials"
   sensitive   = true
 }
+output "crl_janitor_stairway_db_creds" {
+  value       = module.crl_janitor.cloudsql_app_stairway_db_creds
+  description = "CRL Janitor Stairway database user credentials"
+  sensitive   = true
+}
 output "crl_janitor_ingress_ip" {
   value       = module.crl_janitor.ingress_ip
   description = "CRL Janitor ingress IP"
