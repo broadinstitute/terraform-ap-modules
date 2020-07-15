@@ -20,8 +20,8 @@ module "cloudsql" {
       username = local.db_user
     }
     "${local.service}-stairway" = {
-      db       = local.db_name
-      username = local.db_user
+      db       = local.stairway_db_name
+      username = local.stairway_db_user
     }
   }
 
