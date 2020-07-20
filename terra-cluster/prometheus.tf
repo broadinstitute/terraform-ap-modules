@@ -1,5 +1,5 @@
 module "prometheus" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=DDO-398-fix-integ-prometheus-ip"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=terra-cluster-0.0.15"
 
   enable         = true
   environment    = local.owner
