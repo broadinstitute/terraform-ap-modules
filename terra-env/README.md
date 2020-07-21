@@ -67,6 +67,7 @@ No provider.
 | crl\_janitor\_db\_instance | CRL Janitor CloudSQL instance name |
 | crl\_janitor\_db\_root\_pass | CRL Janitor database root password |
 | crl\_janitor\_db\_creds | CRL Janitor database user credentials |
+| crl\_janitor\_stairway\_db\_creds | CRL Janitor Stairway database user credentials |
 | crl\_janitor\_ingress\_ip | CRL Janitor ingress IP |
 | crl\_janitor\_fqdn | CRL Janitor fully qualified domain name |
 

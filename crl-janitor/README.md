@@ -37,6 +37,8 @@ No requirements.
 | db\_tier | The default tier (DB instance size) for the CloudSQL instance | `string` | `"db-g1-small"` | no |
 | db\_name | Postgres db name | `string` | `""` | no |
 | db\_user | Postgres username | `string` | `""` | no |
+| stairway\_db\_name | Stairway db name | `string` | `""` | no |
+| stairway\_db\_user | Stairway db username | `string` | `""` | no |
 
 ## Outputs
 
@@ -49,4 +51,5 @@ No requirements.
 | cloudsql\_instance\_name | CRL Janitor CloudSQL instance name |
 | cloudsql\_root\_user\_password | CRL Janitor database root password |
 | cloudsql\_app\_db\_creds | CRL Janitor database user credentials |
+| cloudsql\_app\_stairway\_db\_creds | CRL Janitor Stairway database user credentials |
 

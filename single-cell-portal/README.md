@@ -18,10 +18,10 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| http | n/a |
 | random | n/a |
 | google.target | n/a |
 | google-beta.target | n/a |
+| http | n/a |
 
 ## Inputs
 
@@ -55,18 +55,14 @@ No requirements.
 | mongodb\_instance\_data\_disk\_size | The default size of MongoDB data disk | `string` | `"200"` | no |
 | mongodb\_instance\_data\_disk\_type | The default type of MongoDB data disk | `string` | `"pd-ssd"` | no |
 | mongodb\_dns | Whether to create DNS entries | `bool` | `false` | no |
-| mongodb\_instance\_tags | The default MongoDB instance tags | `list(string)` | `[]` | no |
-| mongodb\_instance\_labels | The default MongoDB instance labels | `map(string)` | `{}` | no |
 | mongodb\_extra\_flags | Extra flags passed to the mongo container. https://github.com/bitnami/bitnami-docker-mongodb#passing-extra-command-line-flags-to-mongod-startup | `string` | `null` | no |
 | create\_app\_server | Whether to create & manage an app server in TF | `bool` | `false` | no |
 | app\_instance\_size | The default size of app hosts | `string` | `"n1-highmem-4"` | no |
 | app\_instance\_image | The default image of app hosts | `string` | `"centos-7"` | no |
 | app\_instance\_data\_disk\_size | The default size of app data disk | `string` | `"100"` | no |
 | app\_instance\_data\_disk\_type | The default type of app data disk | `string` | `"pd-ssd"` | no |
-| app\_instance\_tags | The default app instance tags | `list(string)` | `[]` | no |
-| app\_instance\_labels | The default app instance labels | `map(string)` | `{}` | no |
 | create\_lb | Whether to create & manage a load balancer for the app server | `bool` | `false` | no |
-| lb\_ssl\_cert | Self link of ssl cert to use for the load balancer. Required if create\_lb is true. | `string` | `""` | no |
+| lb\_ssl\_certs | Self links of ssl certs to use for the load balancer. Required if create\_lb is true. | `list(string)` | `[]` | no |
 | ssl\_policy\_name | Name of ssl cert to use for the load balancer. Defaults to singlecell-[env] | `string` | `""` | no |
 | dns\_zone\_name | DNS zone name for load balancer DNS. Required if create\_lb is true. | `string` | `""` | no |
 | lb\_dns\_name | DNS name for load balancer. Required if create\_lb is true. | `string` | `""` | no |

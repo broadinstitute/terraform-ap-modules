@@ -206,32 +206,22 @@ variable "mongodb_dns" {
   description = "Whether to create DNS entries"
   default     = false
 }
-variable "mongodb_instance_tags" {
-  type        = list(string)
-  default     = []
-  description = "The default MongoDB instance tags"
-}
 locals {
-  mongodb_instance_tags = var.mongodb_instance_tags == [] ? [
+  mongodb_instance_tags = [
     "${var.service}-mongodb-${local.owner}",
     "http-server",
     "https-server",
     "mongodb"
-  ] : var.mongodb_instance_tags
-}
-variable "mongodb_instance_labels" {
-  type        = map(string)
-  default     = {}
-  description = "The default MongoDB instance labels"
+  ]
 }
 locals {
-  mongodb_instance_labels = var.mongodb_instance_labels == {} ? {
+  mongodb_instance_labels = {
     "app"             = "${var.service}-mongo",
     "owner"           = local.owner,
     "role"            = "db",
     "ansible_branch"  = "master",
     "ansible_project" = var.service
-  } : var.mongodb_instance_labels
+  }
 }
 variable "mongodb_extra_flags" {
   type        = string
@@ -267,33 +257,23 @@ variable "app_instance_data_disk_type" {
   default     = "pd-ssd"
   description = "The default type of app data disk"
 }
-variable "app_instance_tags" {
-  type        = list(string)
-  default     = []
-  description = "The default app instance tags"
-}
 locals {
-  app_instance_tags = var.app_instance_tags == [] ? [
+  app_instance_tags = [
     "${var.service}-${local.owner}",
     var.service,
     "http-server",
     "https-server",
     "gce-lb-instance-group-member",
-  ] : var.mongodb_instance_tags
-}
-variable "app_instance_labels" {
-  type        = map(string)
-  default     = {}
-  description = "The default app instance labels"
+  ]
 }
 locals {
-  app_instance_labels = var.app_instance_labels == {} ? {
+  app_instance_labels = {
     "app"             = var.service,
     "owner"           = local.owner,
     "role"            = "app-server",
     "ansible_branch"  = "master",
     "ansible_project" = var.service
-  } : var.mongodb_instance_labels
+  }
 }
 
 
@@ -305,10 +285,10 @@ variable "create_lb" {
   description = "Whether to create & manage a load balancer for the app server"
   default     = false
 }
-variable "lb_ssl_cert" {
-  type        = string
-  description = "Self link of ssl cert to use for the load balancer. Required if create_lb is true."
-  default     = ""
+variable "lb_ssl_certs" {
+  type        = list(string)
+  description = "Self links of ssl certs to use for the load balancer. Required if create_lb is true."
+  default     = []
 }
 variable "ssl_policy_name" {
   type        = string

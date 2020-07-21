@@ -43,7 +43,7 @@ module "load-balancer" {
 
   ssl_policy_name                 = local.ssl_policy_name
   load_balancer_ssl_policy_create = var.create_lb ? 1 : 0
-  load_balancer_ssl_certificates  = var.create_lb ? [var.lb_ssl_cert] : []
+  load_balancer_ssl_certificates  = var.create_lb ? var.lb_ssl_certs : []
   load_balancer_health_check_path = "/single_cell"
   load_balancer_instance_groups   = var.create_lb ? element(module.app_server.instance_instance_group, 0) : ""
 }
