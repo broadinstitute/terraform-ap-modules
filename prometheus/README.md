@@ -17,6 +17,7 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
+| google.target | n/a |
 
 ## Inputs
 
