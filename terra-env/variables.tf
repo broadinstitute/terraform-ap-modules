@@ -98,8 +98,8 @@ variable "datarepo_db_version" {
   default     = "POSTGRES_11"
 }
 
-variable "cloudsql_vpc_network" {
+variable "cluster_vpc_network" {
   type        = string
   default     = null
-  description = "Name of the VPC network where private CloudSQL instance IPs will be allocated"
+  description = "Name of the VPC network used by the environment's cluster"
 }

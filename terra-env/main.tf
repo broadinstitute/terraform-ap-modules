@@ -120,7 +120,7 @@ module "datarepo" {
   dns_names               = [var.subdomain_name == "" ? "datarepo" : "datarepo.${var.subdomain_name}"]
   enable_private_services = false
   db_version              = var.datarepo_db_version
-  existing_vpc_network    = var.cloudsql_vpc_network
+  existing_vpc_network    = var.cluster_vpc_network
 
   providers = {
     google.target            = google.target
