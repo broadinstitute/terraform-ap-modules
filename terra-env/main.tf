@@ -107,3 +107,26 @@ module "crl_janitor" {
     google-beta.target = google-beta.target
   }
 }
+
+module "datarepo" {
+  source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=datarepo-modules-0.0.1"
+
+  enable = local.terra_apps["datarepo"]
+
+  google_project            = var.google_project
+  environment               = var.owner
+  vault_root                = "${var.vault_path}/datarepo"
+  dns_zone                  = var.dns_zone_name
+  dns_names                 = var.subdomain_name == "" ? "datarepo" : "datarepo.${subdomain_name}"
+  db_version                = var.db_version
+  enable_private_services   = false
+  db_version                = var.datarepo_db_version
+  existing_vpc_network      = var.existing_vpc_network
+
+  providers = {
+    google.target            = google.target
+    google-beta.target       = google-beta.target
+    google-beta.datarepo-dns = google.dns
+    vault.target             = vault.target
+  }
+}

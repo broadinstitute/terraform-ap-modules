@@ -42,6 +42,10 @@ locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
 
+variable "vault_path" {
+  type = string
+  description = "Vault path where secrets created by child modules should be stored"
+}
 
 #
 # Application toggles
@@ -59,6 +63,7 @@ locals {
     sam_persistence       = false,
     workspace_manager     = false,
     crl_janitor           = false,
+    datarepo              = false,
     },
     var.terra_apps
   )
@@ -81,4 +86,20 @@ variable "use_subdomain" {
   type        = bool
   description = "Whether to use a subdomain between the zone and hostname"
   default     = true
+}
+
+
+#
+# Datarepo vars
+#
+variable "datarepo_db_version" {
+  type        = string
+  description = "Postgres db verion"
+  default     = "POSTGRES_11"
+}
+
+variable "existing_vpc_network" {
+  type = string
+  default = null
+  description = "Name of the projects network that the NAT/VPC pairing sql ip will be put on."
 }
