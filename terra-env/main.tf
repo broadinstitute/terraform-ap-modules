@@ -117,10 +117,11 @@ module "datarepo" {
   environment               = var.owner
   vault_root                = "${var.vault_path}/datarepo"
   dns_zone                  = var.dns_zone_name
-  dns_names                 = var.datarepo_dns_names
+  dns_names                 = var.subdomain_name == "" ? "datarepo" : "datarepo.${subdomain_name}"
   db_version                = var.db_version
   enable_private_services   = false
-  existing_vpc_network      = var.existing_vpc_network
+  # db_version                = var.db_version
+  # existing_vpc_network      = var.existing_vpc_network
 
   providers = {
     google.target            = google.target
