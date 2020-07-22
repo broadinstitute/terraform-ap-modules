@@ -12,7 +12,7 @@
  */
 
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=crl-janitor-0.1.4"
 
   enable = local.terra_apps["poc"]
 

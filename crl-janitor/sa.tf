@@ -7,6 +7,15 @@ resource "google_service_account" "app" {
   display_name = "${local.service}-${local.owner}"
 }
 
+resource "google_project_iam_member" "app_roles" {
+  count = var.enable ? length(local.sa_roles) : 0
+
+  provider = google.target
+  project  = var.google_project
+  role     = local.sa_roles[count.index]
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+
 resource "google_service_account" "client" {
   count = var.enable ? 1 : 0
 
@@ -15,11 +24,11 @@ resource "google_service_account" "client" {
   display_name = "crl-janitor-client"
 }
 
-resource "google_project_iam_member" "app_roles" {
+resource "google_project_iam_member" "client_roles" {
   count = var.enable ? length(local.sa_roles) : 0
 
   provider = google.target
   project  = var.google_project
-  role     = local.sa_roles[count.index]
-  member   = "serviceAccount:${google_service_account.app[0].email}"
+  role     = local.client_sa_roles[count.index]
+  member   = "serviceAccount:${google_service_account.client[0].email}"
 }
