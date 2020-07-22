@@ -11,6 +11,12 @@ resource "google_service_account" "crl_test_user" {
   display_name = "crl-test-user"
 }
 
+resource "google_service_account" "crl_test_client" {
+  project      = google_project.project.name
+  account_id   = "crl-test-client"
+  display_name = "crl--test-client"
+}
+
 locals {
   roles = [
     # Roles needed as a part of CRL functionality.

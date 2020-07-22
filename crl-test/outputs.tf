@@ -13,3 +13,8 @@ output "service_account_email_user" {
   value       = google_service_account.crl_test_user.email
   description = "User Google service account email"
 }
+
+output "service_account_email_crl_client" {
+  value       = google_service_account.crl_test_client.email
+  description = "User Google service account email"
+}
