@@ -91,12 +91,6 @@ variable "use_subdomain" {
 #
 # Datarepo vars
 #
-variable "datarepo_dns_names" {
-  type        = list(string)
-  description = "List of DNS names to generate global IP addresses, A-records, and CNAME-records for."
-  default     = ["datarepo"]
-}
-
 variable "datarepo_db_version" {
   type        = string
   description = "Postgres db verion"
