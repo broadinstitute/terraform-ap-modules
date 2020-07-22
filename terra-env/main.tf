@@ -3,7 +3,7 @@
  *
  * This Terraform module manages resources for a single Terra environment.
  * Each Terra application's resources are defined in its own module that this module references.
- * 
+ *
  * For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
  *
@@ -120,7 +120,7 @@ module "datarepo" {
   dns_names               = [var.subdomain_name == "" ? "datarepo" : "datarepo.${var.subdomain_name}"]
   enable_private_services = false
   db_version              = var.datarepo_db_version
-  existing_vpc_network    = var.existing_vpc_network
+  existing_vpc_network    = var.cloudsql_vpc_network
 
   providers = {
     google.target            = google.target

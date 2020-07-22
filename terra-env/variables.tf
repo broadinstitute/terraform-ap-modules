@@ -43,7 +43,7 @@ locals {
 }
 
 variable "vault_path" {
-  type = string
+  type        = string
   description = "Vault path where secrets created by child modules should be stored"
 }
 
@@ -98,8 +98,8 @@ variable "datarepo_db_version" {
   default     = "POSTGRES_11"
 }
 
-variable "existing_vpc_network" {
-  type = string
-  default = null
-  description = "Name of the projects network that the NAT/VPC pairing sql ip will be put on."
+variable "cloudsql_vpc_network" {
+  type        = string
+  default     = null
+  description = "Name of the VPC network where private CloudSQL instance IPs will be allocated"
 }
