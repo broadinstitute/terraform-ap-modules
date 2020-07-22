@@ -117,7 +117,7 @@ module "datarepo" {
   environment             = var.owner
   vault_root              = "${var.vault_path}/datarepo"
   dns_zone                = var.dns_zone_name
-  dns_names               = [var.subdomain_name == "" ? "datarepo" : "datarepo.${subdomain_name}"]
+  dns_names               = [var.subdomain_name == "" ? "datarepo" : "datarepo.${var.subdomain_name}"]
   enable_private_services = false
   db_version              = var.datarepo_db_version
   existing_vpc_network    = var.existing_vpc_network
