@@ -115,7 +115,7 @@ module "datarepo" {
 
   google_project          = var.google_project
   environment             = var.owner
-  vault_root              = "${var.vault_path}/datarepo"
+  vault_root              = "${var.vault_path}datarepo"
   dns_zone                = var.dns_zone_name
   dns_names               = [var.subdomain_name == "" ? "datarepo" : "datarepo.${var.subdomain_name}"]
   enable_private_services = false
