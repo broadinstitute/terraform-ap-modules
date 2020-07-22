@@ -12,6 +12,7 @@ data "google_compute_network" "existing-vpc-network" {
 }
 
 locals {
+  cluster_network_id        = var.create_network ? google_compute_network.k8s-cluster-network[0].id : data.google_compute_network.existing-vpc-network.id
   cluster_network_self_link = var.create_network ? google_compute_network.k8s-cluster-network[0].self_link : data.google_compute_network.existing-vpc-network.self_link
 }
 
@@ -44,4 +45,32 @@ resource "google_compute_subnetwork" "k8s-cluster-subnet" {
       range_name    = "services"
       ip_cidr_range = var.services_subnet_ipv4_cidr_block
   }]
+}
+
+#
+# Set up private services access
+# https://cloud.google.com/vpc/docs/configure-private-services-access
+# So that apps can talk to private CloudSQL instances
+#
+locals {
+  peering_range_cidr             = split("/", var.private_services_access_cidr_block)
+  peering_range_starting_address = peering_range_cidr[0]
+  peering_range_prefix_length    = parseint(peering_range_cidr[1])
+}
+
+resource "google_compute_global_address" "private-services-range" {
+  count         = var.private_services_access_enabled ? 1 : 0
+  name          = "${local.cluster_network}-private-services"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  network       = local.cluster_network_id
+  address       = local.peering_range_starting_address
+  prefix_length = local.peering_range_prefix_length
+}
+
+resource "google_service_networking_connection" "private-services-peering-connection" {
+  count                   = var.private_services_access_enabled ? 1 : 0
+  network                 = local.cluster_network_id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.private-services-range.name]
 }
