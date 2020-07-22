@@ -109,7 +109,7 @@ module "crl_janitor" {
 }
 
 module "datarepo" {
-  source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=datarepo-modules-0.0.1""
+  source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=datarepo-modules-0.0.1"
 
   enable = local.terra_apps["datarepo"]
 
