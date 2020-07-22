@@ -130,6 +130,16 @@ variable "nat_egress_ip_count" {
   type        = number
   default     = 2
 }
+variable "private_services_access_enabled" {
+  description = "Whether to enable private services access on the VPC network"
+  type        = bool
+  default     = false
+}
+variable "private_services_access_cidr_block" {
+  description = "CIDR block for the address range to reserve for private services access"
+  type        = string
+  default     = "0.0.0.0/16"
+}
 
 # Istio
 variable "istio_enable" {
