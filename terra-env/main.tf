@@ -109,15 +109,15 @@ module "crl_janitor" {
 }
 
 module "datarepo" {
-  source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=ch-tweaks"
+  source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=datarepo-modules-0.0.1""
 
   enable = local.terra_apps["datarepo"]
 
   google_project            = var.google_project
   environment               = var.owner
   vault_root                = "${var.vault_path}/datarepo"
-  dns_zone                  = var.dns_zone
-  dns_names                 = var.dns_names
+  dns_zone                  = var.dns_zone_name
+  dns_names                 = var.datarepo_dns_names
   db_version                = var.db_version
   enable_private_services   = false
   existing_vpc_network      = var.existing_vpc_network

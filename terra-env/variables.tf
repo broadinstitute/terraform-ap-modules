@@ -87,3 +87,24 @@ variable "use_subdomain" {
   description = "Whether to use a subdomain between the zone and hostname"
   default     = true
 }
+
+#
+# Datarepo vars
+#
+variable "datarepo_dns_names" {
+  type        = list(string)
+  description = "List of DNS names to generate global IP addresses, A-records, and CNAME-records for."
+  default     = ["datarepo"]
+}
+
+variable "datarepo_db_version" {
+  type        = string
+  description = "Postgres db verion"
+  default     = "POSTGRES_11"
+}
+
+variable "existing_vpc_network" {
+  type = string
+  default = null
+  description = "Name of the projects network that the NAT/VPC pairing sql ip will be put on."
+}
