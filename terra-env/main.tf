@@ -108,6 +108,10 @@ module "crl_janitor" {
   }
 }
 
+data "google_compute_network" "cluster_vpc_network" {
+  name = var.cluster_vpc_network
+}
+
 module "datarepo" {
   source = "github.com/broadinstitute/terraform-jade.git//modules/datarepo-app?ref=datarepo-modules-0.0.1"
 
@@ -120,7 +124,7 @@ module "datarepo" {
   dns_names               = [var.subdomain_name == "" ? "datarepo" : "datarepo.${var.subdomain_name}"]
   enable_private_services = false
   db_version              = var.datarepo_db_version
-  existing_vpc_network    = var.cluster_vpc_network
+  existing_vpc_network    = data.google_compute_network.cluster_vpc_network.self_link
 
   providers = {
     google.target            = google.target
