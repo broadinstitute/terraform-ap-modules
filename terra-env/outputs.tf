@@ -136,11 +136,11 @@ output "workspace_fqdn" {
 #
 output "crl_janitor_sa_id" {
   value       = module.crl_janitor.app_sa_id
-  description = "CRL Janitor Google service accout ID"
+  description = "CRL Janitor Google service account ID"
 }
 output "crl_janitor_client_sa_id" {
   value       = module.crl_janitor.client_sa_id
-  description = "CRL Janitor Google service accout ID"
+  description = "CRL Janitor Google service account ID"
 }
 output "crl_janitor_db_ip" {
   value       = module.crl_janitor.cloudsql_public_ip
