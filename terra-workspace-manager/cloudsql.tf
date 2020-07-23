@@ -8,6 +8,7 @@ module "cloudsql" {
   }
   project       = var.google_project
   cloudsql_name = "${local.service}-db-${local.owner}"
+  cloudsql_version = "POSTGRES_12"
   cloudsql_instance_labels = {
     "env" = local.owner
     "app" = local.service
