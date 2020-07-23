@@ -25,7 +25,7 @@ resource "google_service_account" "client" {
 }
 
 resource "google_project_iam_member" "client_roles" {
-  count = var.enable ? length(local.sa_roles) : 0
+  count = var.enable ? length(local.client_sa_roles) : 0
 
   provider = google.target
   project  = var.google_project
