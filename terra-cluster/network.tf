@@ -54,8 +54,8 @@ resource "google_compute_subnetwork" "k8s-cluster-subnet" {
 #
 locals {
   peering_range_cidr             = split("/", var.private_services_access_cidr_block)
-  peering_range_starting_address = peering_range_cidr[0]
-  peering_range_prefix_length    = parseint(peering_range_cidr[1])
+  peering_range_starting_address = local.peering_range_cidr[0]
+  peering_range_prefix_length    = local.parseint(peering_range_cidr[1])
 }
 
 resource "google_compute_global_address" "private-services-range" {
