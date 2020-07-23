@@ -12,7 +12,7 @@
  */
 
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=yyu-PF-2"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.1"
 
   enable = local.terra_apps["poc"]
 
@@ -89,7 +89,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.1.4"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=yyu-PF-2"
 
   enable = local.terra_apps["poc"]
 
