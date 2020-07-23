@@ -16,19 +16,12 @@ resource "google_project_iam_member" "app_roles" {
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
+# The service account to be able to access Janitor service.
+# All services which want to access Janitor would need to use this service account secrete.
 resource "google_service_account" "client" {
   count = var.enable ? 1 : 0
 
   provider     = google.target
   account_id   = "crl-janitor-client"
   display_name = "crl-janitor-client"
-}
-
-resource "google_project_iam_member" "client_roles" {
-  count = var.enable ? length(local.client_sa_roles) : 0
-
-  provider = google.target
-  project  = var.google_project
-  role     = local.client_sa_roles[count.index]
-  member   = "serviceAccount:${google_service_account.client[0].email}"
 }

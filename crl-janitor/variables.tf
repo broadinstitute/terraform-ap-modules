@@ -44,9 +44,6 @@ locals {
     # Stairway creates a pub/sub topic and subscription.
     "roles/pubsub.admin",
   ]
-  client_sa_roles = [
-    # No IAM roles needed for now.
-  ]
 }
 
 #
