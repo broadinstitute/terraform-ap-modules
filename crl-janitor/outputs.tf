@@ -5,6 +5,10 @@ output "app_sa_id" {
   value       = var.enable ? google_service_account.app[0].account_id : null
   description = "CRL Janitor Google service accout ID"
 }
+output "client_sa_id" {
+  value       = var.enable ? google_service_account.client[0].account_id : null
+  description = "User Google service account email"
+}
 
 #
 # IP/DNS Outputs

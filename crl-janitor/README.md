@@ -1,7 +1,7 @@
 # Cloud Resource Janitor Service module
 
 This module creates the service account and CloudSQL databases necessary for  
-running the [CRL-Janitor](http://github.com/databiosphere/crl-janitor).
+running the [CRL-Janitor](http://github.com/databiosphere/crl-janitor) and a service account to access this service. 
 
 For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)  
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
