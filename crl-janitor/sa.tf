@@ -22,6 +22,6 @@ resource "google_service_account" "client" {
   count = var.enable ? 1 : 0
 
   provider     = google.target
-  account_id   = "crl-janitor-client"
-  display_name = "crl-janitor-client"
+  account_id   = "${local.service}-client-${local.owner}"
+  display_name = "${local.service}-client-${local.owner}"
 }
