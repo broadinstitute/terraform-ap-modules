@@ -89,5 +89,5 @@ variable "use_subdomain" {
 variable "wsm_db_version" {
   type        = string
   default     = ""
-  description = "The version for the WSM CloudSQL instance. Default if left empty."
+  description = "The version for the WSM CloudSQL instance"
 }

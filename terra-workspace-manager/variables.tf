@@ -82,7 +82,7 @@ locals {
 variable "db_version" {
   type        = string
   default     = ""
-  description = "The version for the CloudSQL instance. Default if left empty."
+  description = "The version for the CloudSQL instance"
 }
 variable "db_tier" {
   type        = string

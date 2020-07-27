@@ -18,8 +18,8 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| random | n/a |
 | http | n/a |
+| random | n/a |
 | google-beta.target | n/a |
 | google.target | n/a |
 
