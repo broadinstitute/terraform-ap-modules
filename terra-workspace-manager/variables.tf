@@ -84,6 +84,11 @@ variable "db_version" {
   default     = "POSTGRES_9_6"
   description = "The version for the CloudSQL instance"
 }
+variable "db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}
 variable "db_tier" {
   type        = string
   default     = "db-g1-small"
