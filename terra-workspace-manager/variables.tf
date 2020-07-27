@@ -79,7 +79,13 @@ locals {
 #
 # Postgres CloudSQL DB Vars
 #
+variable "db_version" {
+  type        = string
+  default     = ""
+  description = "The version for the CloudSQL instance. Default if left empty."
+}
 variable "db_tier" {
+  type        = string
   default     = "db-g1-small"
   description = "The default tier (DB instance size) for the CloudSQL instance"
 }
