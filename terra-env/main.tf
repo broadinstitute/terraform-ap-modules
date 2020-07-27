@@ -82,6 +82,7 @@ module "workspace_manager" {
   use_subdomain  = var.use_subdomain
 
   db_version = var.wsm_db_version
+  db_keepers = var.wsm_db_keepers
 
   providers = {
     google.target      = google.target

@@ -91,3 +91,8 @@ variable "wsm_db_version" {
   default     = "POSTGRES_9_6"
   description = "The version for the WSM CloudSQL instance"
 }
+variable "wsm_db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}
