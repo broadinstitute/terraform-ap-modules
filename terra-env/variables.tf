@@ -82,3 +82,12 @@ variable "use_subdomain" {
   description = "Whether to use a subdomain between the zone and hostname"
   default     = true
 }
+
+#
+# Workspace Manager Vars
+#
+variable "wsm_db_version" {
+  type        = string
+  default     = ""
+  description = "The version for the WSM CloudSQL instance. Default if left empty."
+}
