@@ -36,7 +36,7 @@ No requirements.
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | hostname | Service hostname | `string` | `""` | no |
-| db\_version | The version for the CloudSQL instance | `string` | `""` | no |
+| db\_version | The version for the CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | db\_tier | The default tier (DB instance size) for the CloudSQL instance | `string` | `"db-g1-small"` | no |
 | db\_name | Postgres db name | `string` | `""` | no |
 | db\_user | Postgres username | `string` | `""` | no |
