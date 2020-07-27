@@ -31,7 +31,7 @@ No provider.
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
-| wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `""` | no |
+| wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 
 ## Outputs
 
@@ -63,7 +63,8 @@ No provider.
 | workspace\_stairway\_db\_creds | Stairway database user credentials |
 | workspace\_ingress\_ip | Workspace Manager ingress IP |
 | workspace\_fqdn | Workspace Manager fully qualified domain name |
-| crl\_janitor\_sa\_id | CRL Janitor Google service accout ID |
+| crl\_janitor\_sa\_id | CRL Janitor Google service account ID |
+| crl\_janitor\_client\_sa\_id | CRL Janitor Google service account ID |
 | crl\_janitor\_db\_ip | CRL Janitor CloudSQL instance IP |
 | crl\_janitor\_db\_instance | CRL Janitor CloudSQL instance name |
 | crl\_janitor\_db\_root\_pass | CRL Janitor database root password |

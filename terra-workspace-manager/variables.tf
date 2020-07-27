@@ -81,7 +81,7 @@ locals {
 #
 variable "db_version" {
   type        = string
-  default     = ""
+  default     = "POSTGRES_9_6"
   description = "The version for the CloudSQL instance"
 }
 variable "db_tier" {
