@@ -31,7 +31,7 @@ No provider.
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
-| wsm\_db\_version | The version for the WSM CloudSQL instance. Default if left empty. | `string` | `""` | no |
+| wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `""` | no |
 
 ## Outputs
 
