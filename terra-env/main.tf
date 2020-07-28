@@ -69,7 +69,7 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.2.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=as367"
 
   enable = local.terra_apps["workspace_manager"]
 
