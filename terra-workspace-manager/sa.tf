@@ -7,6 +7,8 @@ resource "google_service_account" "sqlproxy" {
   display_name = "${local.service}-${local.owner}-sqlproxy"
 }
 resource "google_project_iam_member" "app_roles" {
+  count = var.enable ? 1 : 0
+  
   provider = google.target
   project  = var.google_project
   role     = "roles/cloudsql.client"
@@ -23,6 +25,8 @@ resource "google_service_account" "cloud_trace" {
 }
 
 resource "google_project_iam_member" "cloud_trace_roles" {
+  count = var.enable ? 1 : 0
+
   provider = google.target
   project  = var.google_project
   role     = "roles/editor"
