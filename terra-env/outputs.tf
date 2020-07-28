@@ -95,9 +95,13 @@ output "sam_db_creds" {
 #
 # Workspace Manager Outputs
 #
-output "workspace_sa_id" {
-  value       = module.workspace_manager.app_sa_id
-  description = "Workspace Manager Google service accout ID"
+output "workspace_sqlproxy_sa_id" {
+  value       = module.workspace_manager.sqlproxy_sa_id
+  description = "Workspace Manager Cloud SQL Proxy Google service account ID"
+}
+output "workspace_cloud_trace_sa_id" {
+  value       = module.workspace_manager.cloud_trace_sa_id
+  description = "Workspace Manager Cloud trace Google service account ID"
 }
 output "workspace_db_ip" {
   value       = module.workspace_manager.cloudsql_public_ip
