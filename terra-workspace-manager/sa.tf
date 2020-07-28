@@ -29,6 +29,6 @@ resource "google_project_iam_member" "cloud_trace_roles" {
 
   provider = google.target
   project  = var.google_project
-  role     = "roles/editor"
+  role     = "roles/cloudtrace.admin"
   member   = "serviceAccount:${google_service_account.cloud_trace[0].email}"
 }
