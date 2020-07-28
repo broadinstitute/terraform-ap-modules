@@ -23,6 +23,8 @@ resource "google_service_account" "cloud_trace" {
 }
 
 resource "google_project_iam_member" "cloud_trace_roles" {
+  count = var.enable ? 1 : 0
+
   provider = google.target
   project  = var.google_project
   role     = "roles/cloudtrace.admin"
