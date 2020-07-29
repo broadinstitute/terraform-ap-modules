@@ -54,10 +54,6 @@ output "cloudsql_app_stairway_db_creds" {
 #
 # Pub/sub Outputs
 #
-output "project_id" {
-  value       = var.enable ? var.google_project : null
-  description = "CRL Janitor Google Project Id"
-}
 output "pubsub_topic" {
   value       = var.enable ? google_pubsub_topic.crl-janitor-pubsub-topic.name : null
   description = "CRL Janitor Pub/sub topic"

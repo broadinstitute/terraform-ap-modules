@@ -52,6 +52,5 @@ No requirements.
 | cloudsql\_instance\_name | CRL Janitor CloudSQL instance name |
 | cloudsql\_root\_user\_password | CRL Janitor database root password |
 | cloudsql\_app\_db\_creds | CRL Janitor database user credentials |
-| project\_id\ | CRL Janitor Google Project Id |
 | pubsub\_topic\ | CRL Janitor Pub/sub topic |
 | pubsub\_subscription\ | CRL Janitor Pub/sub subscription name |
