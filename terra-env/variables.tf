@@ -82,3 +82,17 @@ variable "use_subdomain" {
   description = "Whether to use a subdomain between the zone and hostname"
   default     = true
 }
+
+#
+# Workspace Manager Vars
+#
+variable "wsm_db_version" {
+  type        = string
+  default     = "POSTGRES_9_6"
+  description = "The version for the WSM CloudSQL instance"
+}
+variable "wsm_db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}

@@ -79,7 +79,18 @@ locals {
 #
 # Postgres CloudSQL DB Vars
 #
+variable "db_version" {
+  type        = string
+  default     = "POSTGRES_9_6"
+  description = "The version for the CloudSQL instance"
+}
+variable "db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}
 variable "db_tier" {
+  type        = string
   default     = "db-g1-small"
   description = "The default tier (DB instance size) for the CloudSQL instance"
 }

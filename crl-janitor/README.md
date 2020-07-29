@@ -1,7 +1,7 @@
 # Cloud Resource Janitor Service module
 
 This module creates the service account and CloudSQL databases necessary for  
-running the [CRL-Janitor](http://github.com/databiosphere/crl-janitor) and a service account to access this service. 
+running the [CRL-Janitor](http://github.com/databiosphere/crl-janitor).
 
 For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)  
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
@@ -45,6 +45,7 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | app\_sa\_id | CRL Janitor Google service accout ID |
+| client\_sa\_id | User Google service account email |
 | ingress\_ip | CRL Janitor ingress IP |
 | fqdn | CRL Janitor fully qualified domain name |
 | cloudsql\_public\_ip | CRL Janitor CloudSQL instance IP |

@@ -69,7 +69,7 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.1.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.3.0"
 
   enable = local.terra_apps["workspace_manager"]
 
@@ -81,6 +81,9 @@ module "workspace_manager" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
+  db_version = var.wsm_db_version
+  db_keepers = var.wsm_db_keepers
+
   providers = {
     google.target      = google.target
     google.dns         = google.dns
@@ -91,6 +94,7 @@ module "workspace_manager" {
 module "crl_janitor" {
   // source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.1.6"
   source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=yyu-pubsub"
+
   enable = local.terra_apps["poc"]
 
   google_project = var.google_project
