@@ -15,20 +15,19 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   expiration_policy {
     ttl = ""
   }
-
-  push_config {
-    push_endpoint = "https://${google_compute_address.ingress_ip[0].address}/receive_messages?token=${random_uuid.pubsub-secret-token.result}"
-
-    oidc_token {
-      service_account_email = google_service_account.app[0].account_id
-    }
-  }
 }
 
-# import service can publish to its own topic
+# CRL Client can publish to the topic
 resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
   project = var.google_project
   topic = google_pubsub_topic.crl-janitor-pubsub-topic.name
   role = "roles/pubsub.publisher"
+  member   = "serviceAccount:${google_service_account.client[0].email}"
+}
+
+# Janitor SA can subscribe to the topic
+resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_publish" {
+  subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription.name
+  role = "roles/editor"
   member   = "serviceAccount:${google_service_account.client[0].email}"
 }
