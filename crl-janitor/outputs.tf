@@ -62,3 +62,8 @@ output "pubsub_topic" {
   value       = var.enable ? google_pubsub_topic.crl-janitor-pubsub-topic.name : null
   description = "CRL Janitor Pub/sub topic"
 }
+output "pubsub_subscription" {
+  value       = var.enable ? google_pubsub_subscription.crl-janitor-pubsub-subscription.name : null
+  description = "CRL Janitor Pub/sub subscription name"
+}
+
