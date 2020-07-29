@@ -181,3 +181,7 @@ output "crl_janitor_project_id" {
   value       = module.crl_janitor.project_id
   description = "CRL Janitor Google Project Id"
 }
+output "crl_janitor_pubsub_topic" {
+  value       = module.crl_janitor.pubsub_topic
+  description = "CRL Janitor Pub/sub Topic"
+}
