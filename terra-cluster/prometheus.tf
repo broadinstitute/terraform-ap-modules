@@ -1,5 +1,5 @@
 module "prometheus" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=terra-cluster-0.0.15"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//prometheus?ref=DDO-594-k8s-sys-dashboards"
 
   enable         = true
   environment    = local.owner
