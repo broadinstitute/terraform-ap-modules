@@ -12,7 +12,7 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
 
   project = var.google_project
   name = "${local.owner}-${local.service}-pubsub-sub"
-  topic = google_pubsub_topic.crl-janitor-pubsub-topic.name
+  topic = google_pubsub_topic.crl-janitor-pubsub-topic[0].name
 
   ack_deadline_seconds = 600
 
@@ -27,7 +27,7 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
 
 
   project = var.google_project
-  topic = google_pubsub_topic.crl-janitor-pubsub-topic.name
+  topic = google_pubsub_topic.crl-janitor-pubsub-topic[0].name
   role = "roles/pubsub.publisher"
   member   = "serviceAccount:${google_service_account.client[0].email}"
 }
@@ -37,7 +37,7 @@ resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_publish
   count = var.enable ? 1 : 0
 
 
-  subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription.name
+  subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription[0].name
   role = "roles/editor"
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
