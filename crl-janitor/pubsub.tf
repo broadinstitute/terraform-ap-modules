@@ -21,7 +21,7 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   }
 }
 
-# CRL Client can publish to the topic
+# Janitor clients can publish to the topic
 resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
   count = var.enable ? 1 : 0
 
