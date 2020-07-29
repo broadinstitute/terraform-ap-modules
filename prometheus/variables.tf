@@ -17,10 +17,12 @@ variable "dns_project" {
 }
 
 locals {
-  owner     = var.environment == "integration" ? "integ" : terraform.workspace
-  service   = "prometheus"
-  subdomain = var.use_subdomain ? "${local.service}.${local.owner}" : local.service
-  project   = var.use_subdomain ? var.dns_project : var.google_project
+  owner           = var.environment == "integration" ? "integ" : terraform.workspace
+  service         = "prometheus"
+  graph_service   = "k8s-sys-graph"
+  subdomain       = var.use_subdomain ? "${local.service}.${local.owner}" : local.service
+  project         = var.use_subdomain ? var.dns_project : var.google_project
+  graph_subdomain = var.use_subdomain ? "${local.graph_service}.${local.owner}" : local.graph_service
 }
 
 variable "enable" {

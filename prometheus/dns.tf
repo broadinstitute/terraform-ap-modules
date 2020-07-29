@@ -6,7 +6,8 @@ data "google_dns_managed_zone" "dns_zone" {
   name     = var.dns_zone_name
 }
 locals {
-  fqdn = "${local.subdomain}.${data.google_dns_managed_zone.dns_zone[0].dns_name}"
+  fqdn       = "${local.subdomain}.${data.google_dns_managed_zone.dns_zone[0].dns_name}"
+  graph_fqdn = "${local.graph_subdomain}.${data.google_dns_managed_zone.dns_zone[0].dns_name}"
 }
 
 
@@ -20,4 +21,16 @@ resource "google_dns_record_set" "ingress" {
   type         = "A"
   ttl          = "300"
   rrdatas      = [google_compute_global_address.ingress_ip[0].address]
+}
+
+resource "google_dns_record_set" "k8s_graph_ingress" {
+  count = var.enable ? 1 : 0
+
+  project      = local.project
+  provider     = google.dns
+  managed_zone = data.google_dns_managed_zone.dns_zone[0].name
+  name         = local.graph_fqdn
+  type         = "A"
+  ttl          = "300"
+  rrdatas      = [google_compute_global_address.k8s_graph_ip[0].address]
 }
