@@ -3,8 +3,6 @@ resource "google_pubsub_topic" "crl-janitor-pubsub-topic" {
   name = "${local.owner}-${local.service}-pubsub-topic"
 }
 
-resource "random_uuid" "pubsub-secret-token" {}
-
 resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   project = var.google_project
   name = "${local.owner}-${local.service}-pubsub-sub"
