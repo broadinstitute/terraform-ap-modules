@@ -177,3 +177,7 @@ output "crl_janitor_fqdn" {
   value       = module.crl_janitor.fqdn
   description = "CRL Janitor fully qualified domain name"
 }
+output "crl_janitor_project_id" {
+  value       = module.crl_janitor.project_id
+  description = "CRL Janitor Google Project Id"
+}

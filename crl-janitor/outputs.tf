@@ -50,3 +50,11 @@ output "cloudsql_app_stairway_db_creds" {
   description = "CRL Janitor Stairway database user credentials"
   sensitive   = true
 }
+
+#
+# Pub/sub Outputs
+#
+output "project_id" {
+  value       = var.enable ? var.google_project : null
+  description = "CRL Janitor Google Project Id"
+}
