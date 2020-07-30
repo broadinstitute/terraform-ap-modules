@@ -177,3 +177,11 @@ output "crl_janitor_fqdn" {
   value       = module.crl_janitor.fqdn
   description = "CRL Janitor fully qualified domain name"
 }
+output "crl_janitor_pubsub_topic" {
+  value       = module.crl_janitor.pubsub_topic
+  description = "CRL Janitor Pub/sub Topic"
+}
+output "crl_janitor_pubsub_subscription" {
+  value       = module.crl_janitor.pubsub_subscription
+  description = "CRL Janitor Pub/sub Subscription name"
+}
