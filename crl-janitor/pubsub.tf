@@ -1,17 +1,15 @@
 resource "google_pubsub_topic" "crl-janitor-pubsub-topic" {
   count = var.enable ? 1 : 0
 
-
   project = var.google_project
-  name = "${local.owner}-${local.service}-pubsub-topic"
+  name = "${local.service}-${local.owner}-pubsub-topic"
 }
 
 resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   count = var.enable ? 1 : 0
 
-
   project = var.google_project
-  name = "${local.owner}-${local.service}-pubsub-sub"
+  name = "${local.service}-${local.owner}-pubsub-sub"
   topic = google_pubsub_topic.crl-janitor-pubsub-topic[0].name
 
   ack_deadline_seconds = 20
@@ -26,7 +24,6 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
 resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
   count = var.enable ? 1 : 0
 
-
   project = var.google_project
   topic = google_pubsub_topic.crl-janitor-pubsub-topic[0].name
   role = "roles/pubsub.publisher"
@@ -36,7 +33,6 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
 # Janitor SA can subscribe to the topic
 resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_publish" {
   count = var.enable ? 1 : 0
-
 
   subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription[0].name
   role = "roles/editor"
