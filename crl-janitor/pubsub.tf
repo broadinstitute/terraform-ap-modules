@@ -14,9 +14,10 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   name = "${local.owner}-${local.service}-pubsub-sub"
   topic = google_pubsub_topic.crl-janitor-pubsub-topic[0].name
 
-  ack_deadline_seconds = 600
+  ack_deadline_seconds = 20
 
   expiration_policy {
+    // No expiration
     ttl = ""
   }
 }
