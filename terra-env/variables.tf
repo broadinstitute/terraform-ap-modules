@@ -59,6 +59,7 @@ locals {
     sam_persistence       = false,
     workspace_manager     = false,
     crl_janitor           = false,
+    datarepo              = false,
     },
     var.terra_apps
   )
@@ -95,4 +96,18 @@ variable "wsm_db_keepers" {
   type        = bool
   default     = false
   description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}
+
+#
+# Datarepo Vars
+#
+variable "datarepo_static_ip_name" {
+  type        = string
+  default     = ""
+  description = "Name of Data Repo's static IP"
+}
+variable "datarepo_static_ip_project" {
+  type        = string
+  default     = ""
+  description = "Project where of Data Repo's static IP lives"
 }
