@@ -27,6 +27,7 @@ No provider.
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
+| preview | Preview environment flag | `bool` | `false` | no |
 | terra\_apps | Terra apps to enable. All disabled by default. | `map(bool)` | `{}` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
@@ -56,7 +57,8 @@ No provider.
 | sam\_db\_instance | SAM CloudSQL instance name |
 | sam\_db\_root\_password | SAM database root password |
 | sam\_db\_creds | SAM database user credentials |
-| workspace\_sa\_id | Workspace Manager Google service accout ID |
+| workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
+| workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
 | workspace\_db\_instance | Workspace Manager CloudSQL instance name |
 | workspace\_db\_root\_pass | Workspace Manager database root password |
@@ -73,4 +75,6 @@ No provider.
 | crl\_janitor\_stairway\_db\_creds | CRL Janitor Stairway database user credentials |
 | crl\_janitor\_ingress\_ip | CRL Janitor ingress IP |
 | crl\_janitor\_fqdn | CRL Janitor fully qualified domain name |
+| crl\_janitor\_pubsub\_topic | CRL Janitor Pub/sub Topic |
+| crl\_janitor\_pubsub\_subscription | CRL Janitor Pub/sub Subscription name |
 

@@ -41,6 +41,11 @@ variable "owner" {
 locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
+variable "preview" {
+  type        = bool
+  description = "Preview environment flag"
+  default     = false
+}
 
 
 #

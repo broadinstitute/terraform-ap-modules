@@ -19,6 +19,7 @@ No requirements.
 |------|---------|
 | google.dns | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -53,5 +54,6 @@ No requirements.
 | cloudsql\_root\_user\_password | CRL Janitor database root password |
 | cloudsql\_app\_db\_creds | CRL Janitor database user credentials |
 | cloudsql\_app\_stairway\_db\_creds | CRL Janitor Stairway database user credentials |
-| pubsub\_topic\ | CRL Janitor Pub/sub topic |
-| pubsub\_subscription\ | CRL Janitor Pub/sub subscription name |
+| pubsub\_topic | CRL Janitor Pub/sub topic |
+| pubsub\_subscription | CRL Janitor Pub/sub subscription name |
+
