@@ -31,34 +31,22 @@ variable "dns_zone_name" {
   description = "DNS zone name"
   default     = "dsp-envs"
 }
-variable "use_subdomain" {
-  type        = bool
-  description = "Whether to use a subdomain between the zone and hostname"
-  default     = true
-}
 variable "subdomain_name" {
   type        = string
   description = "Domain namespacing between zone and hostname"
   default     = ""
 }
-variable "hostname" {
-  type        = string
-  description = "Service hostname"
-  default     = ""
-}
 locals {
-  hostname       = var.hostname == "" ? local.service : var.hostname
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
-  subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
 
 #
 # Service Vars
 #
-variable "services" {
-  type = list(string)
-  description = "List of services in this env"
-  default = [
-    "workspacemanager"
-  ]
+variable "terra_apps" {
+  type = map(string)
+  description = "Map of app Helm chart names to ingress hostnames"
+  default = {
+    workspacemanager = "workspace"
+  }
 }

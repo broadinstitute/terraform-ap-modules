@@ -1,5 +1,5 @@
 resource "google_compute_address" "ingress" {
-  for_each = toset(var.services)
+  for_each = var.terra_apps
 
   provider = google.target
 

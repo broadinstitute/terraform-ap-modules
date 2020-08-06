@@ -18,10 +18,8 @@ No requirements.
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
-| use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
-| hostname | Service hostname | `string` | `""` | no |
-| services | List of services in this env | `list(string)` | <pre>[<br>  "workspacemanager"<br>]</pre> | no |
+| terra\_apps | Map of app Helm chart names to ingress hostnames | `map(string)` | <pre>{<br>  "workspacemanager": "workspace"<br>}</pre> | no |
 
 ## Outputs
 
