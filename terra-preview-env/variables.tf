@@ -31,11 +31,6 @@ variable "dns_zone_name" {
   description = "DNS zone name"
   default     = "dsp-envs"
 }
-variable "subdomain_name" {
-  type        = string
-  description = "Domain namespacing between zone and hostname"
-  default     = ""
-}
 locals {
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
 }

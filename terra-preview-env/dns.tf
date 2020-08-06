@@ -6,7 +6,7 @@ data "google_dns_managed_zone" "dns_zone" {
 locals {
   fqdns = {
     for app in keys(var.terra_apps):
-    app => "${var.terra_apps[app]}.${local.subdomain_name}.preview.${data.google_dns_managed_zone.dns_zone.dns_name}"
+    app => "${var.terra_apps[app]}.${local.owner}.preview.${data.google_dns_managed_zone.dns_zone.dns_name}"
   }
 }
 
