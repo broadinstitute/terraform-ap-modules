@@ -22,5 +22,8 @@ No requirements.
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| ingress\_ips | Service ingress IPs |
+| fqdns | Service fully qualified domain names |
 
