@@ -3,7 +3,7 @@
  *
  * This Terraform module manages resources for a single Terra environment.
  * Each Terra application's resources are defined in its own module that this module references.
- * 
+ *
  * For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
  *
@@ -104,6 +104,26 @@ module "crl_janitor" {
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target      = google.target
+    google.dns         = google.dns
+    google-beta.target = google-beta.target
+  }
+}
+
+module "datarepo" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=datarepo-0.1.0"
+
+  enable = local.terra_apps["datarepo"]
+
+  # Create Datarepo DNS records
+  # data.<env>.envs-terra.bio
+  dns_zone_name    = "envs-terra"
+  dns_zone_project = "dsp-devops"
+
+  static_ip_name    = var.datarepo_static_ip_name
+  static_ip_project = var.datarepo_static_ip_project
 
   providers = {
     google.target      = google.target
