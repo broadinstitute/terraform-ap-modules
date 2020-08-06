@@ -2,7 +2,10 @@
 # IP/DNS Outputs
 #
 output "ingress_ips" {
-  value       = google_compute_address.ingress[*].address
+  value       = {
+    for service, ip in google_compute_address.ingress
+    service => ip.address
+  }
   description = "Service ingress IPs"
 }
 output "fqdns" {
