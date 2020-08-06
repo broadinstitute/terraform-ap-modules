@@ -3,7 +3,7 @@
 #
 output "ingress_ips" {
   value       = {
-    for service, ip in google_compute_address.ingress
+    for service, ip in google_compute_address.ingress :
     service => ip.address
   }
   description = "Service ingress IPs"
