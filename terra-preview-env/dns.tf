@@ -15,8 +15,8 @@ resource "google_dns_record_set" "ingress" {
 
   provider     = google.dns
   managed_zone = data.google_dns_managed_zone.dns_zone.name
-  name         = fqdns[each.key]
+  name         = local.fqdns[each.key]
   type         = "A"
   ttl          = "300"
-  rrdatas      = [google_compute_address.ingress_ip[each.key].address]
+  rrdatas      = [google_compute_address.ingress[each.key].address]
 }
