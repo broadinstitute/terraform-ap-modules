@@ -14,11 +14,11 @@ output "cloud_trace_sa_id" {
 # IP/DNS Outputs
 #
 output "ingress_ip" {
-  value       = var.enable ? google_compute_address.ingress_ip[0].address : null
+  value       = var.enable && !var.preview ? google_compute_address.ingress_ip[0].address : null
   description = "Workspace Manager ingress IP"
 }
 output "fqdn" {
-  value       = var.enable ? local.fqdn : null
+  value       = var.enable && !var.preview ? local.fqdn : null
   description = "Workspace Manager fully qualified domain name"
 }
 
