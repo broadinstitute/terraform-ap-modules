@@ -104,7 +104,7 @@ module "crl_janitor" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
-  google_folder  = var.janitor_google_folder
+  google_folder_id  = var.janitor_google_folder_id
 
   providers = {
     google.target      = google.target
