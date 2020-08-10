@@ -21,7 +21,7 @@ resource "google_folder_iam_member" "app_folder_roles" {
   count = var.enable ? 1 : 0
 
   provider = google.target
-  folder  = var.google_folder
+  folder  = var.google_folder_id
   role     = "roles/editor"
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }

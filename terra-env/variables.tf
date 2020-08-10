@@ -114,8 +114,8 @@ variable "datarepo_static_ip_project" {
 
 # CRL Janitor Vars
 #
-variable "janitor_google_folder" {
+variable "janitor_google_folder_id" {
   type        = string
   default     = ""
-  description = "The folder in which Janitor has permission to cleanup resources."
+  description = "The folder ID in which Janitor has permission to cleanup resources."
 }
