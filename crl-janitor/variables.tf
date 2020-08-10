@@ -16,9 +16,10 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
-variable "google_folder" {
+variable "google_folder_id" {
   type        = string
   description = "The folder in which Janitor has permission to delete resources."
+  default     = ""
 }
 variable "cluster" {
   type        = string
