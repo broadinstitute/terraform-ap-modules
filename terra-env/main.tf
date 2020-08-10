@@ -92,7 +92,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.1.7"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=yyu-PF-73"
 
   enable = local.terra_apps["crl_janitor"]
 
@@ -103,6 +103,8 @@ module "crl_janitor" {
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
+
+  google_folder  = var.janitor_google_folder
 
   providers = {
     google.target      = google.target

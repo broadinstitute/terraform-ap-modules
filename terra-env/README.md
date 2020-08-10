@@ -33,6 +33,7 @@ No provider.
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| janitor\_google\_folder | The folder in which Janitor has permission to cleanup resources. | `string` | n/a | no |
 
 ## Outputs
 
