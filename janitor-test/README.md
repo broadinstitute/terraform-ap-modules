@@ -1,7 +1,7 @@
 # janitor-test
 
 This terraform module defines the resources needed for running
-[Cloud Resource Library](https://github.com/DataBiosphere/terra-cloud-resource-lib) (CRL) integration tests.
+[Terra Resource Janitor](https://github.com/DataBiosphere/terra-resource-janitor) integration tests
 
 For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)  
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
