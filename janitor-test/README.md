@@ -1,7 +1,7 @@
 # janitor-test
 
 This terraform module defines the resources needed for running
-[Terra Resource Janitor](https://github.com/DataBiosphere/terra-resource-janitor) integration tests
+[Terra Resource Janitor](https://github.com/DataBiosphere/terra-resource-janitor) integration tests.
 
 For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)  
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
@@ -27,4 +27,7 @@ No requirements.
 | folder\_id | What folder to create google\_project under. | `string` | n/a | yes |
 | billing\_account\_id | What billing account to assign to the project. | `string` | n/a | yes |
 
+## Outputs
+
+No output.
 

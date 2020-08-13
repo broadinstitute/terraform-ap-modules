@@ -1,5 +1,5 @@
 variable "google_project" {
-  description = "The google project id to create for CRL to run integration tests within."
+  description = "The google project id to create for Janitor to run integration tests within."
   type        = string
 }
 
