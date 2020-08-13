@@ -41,17 +41,6 @@ locals {
 }
 
 #
-# Service Account Vars
-#
-locals {
-  sa_roles = [
-    "roles/cloudsql.client",
-    # Stairway creates a pub/sub topic and subscription.
-    "roles/pubsub.admin",
-  ]
-}
-
-#
 # DNS Vars
 #
 variable "dns_zone_name" {
