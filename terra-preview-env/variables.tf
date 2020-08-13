@@ -48,6 +48,6 @@ variable "terra_apps" {
 
 variable "versions" {
   type = string
-  description = "JSON string of version overrides"
-  default = "{}"
+  description = "Base64 encoded JSON string of version overrides"
+  default = "Cg=="
 }

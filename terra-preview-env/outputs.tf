@@ -14,5 +14,5 @@ output "fqdns" {
 }
 output "versions" {
   value       = var.versions
-  description = "JSON string of version overrides"
+  description = "Base64 encoded JSON string of version overrides"
 }
