@@ -34,6 +34,8 @@ No provider.
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
+| datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 
 ## Outputs
 

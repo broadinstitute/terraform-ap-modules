@@ -45,3 +45,9 @@ variable "terra_apps" {
     workspacemanager = "workspace"
   }
 }
+
+variable "versions" {
+  type = string
+  description = "JSON string of version overrides"
+  default = "{}"
+}

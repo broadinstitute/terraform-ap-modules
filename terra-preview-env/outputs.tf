@@ -12,3 +12,7 @@ output "fqdns" {
   value       = local.fqdns
   description = "Service fully qualified domain names"
 }
+output "versions" {
+  value       = var.versions
+  description = "JSON string of version overrides"
+}
