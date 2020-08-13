@@ -33,7 +33,9 @@ No provider.
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
-| janitor\_google\_folder\_id | The folder in which Janitor has permission to cleanup resources. | `string` | n/a | no |
+| datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
+| datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
+| janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 
 ## Outputs
 
@@ -57,7 +59,8 @@ No provider.
 | sam\_db\_instance | SAM CloudSQL instance name |
 | sam\_db\_root\_password | SAM database root password |
 | sam\_db\_creds | SAM database user credentials |
-| workspace\_sa\_id | Workspace Manager Google service accout ID |
+| workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
+| workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
 | workspace\_db\_instance | Workspace Manager CloudSQL instance name |
 | workspace\_db\_root\_pass | Workspace Manager database root password |
@@ -66,6 +69,7 @@ No provider.
 | workspace\_ingress\_ip | Workspace Manager ingress IP |
 | workspace\_fqdn | Workspace Manager fully qualified domain name |
 | crl\_janitor\_sa\_id | CRL Janitor Google service account ID |
+| crl\_janitor\_sqlproxy\_sa\_id | CRL Janitor Cloud SQL Proxy Google service account ID |
 | crl\_janitor\_client\_sa\_id | CRL Janitor Google service account ID |
 | crl\_janitor\_db\_ip | CRL Janitor CloudSQL instance IP |
 | crl\_janitor\_db\_instance | CRL Janitor CloudSQL instance name |
@@ -74,4 +78,6 @@ No provider.
 | crl\_janitor\_stairway\_db\_creds | CRL Janitor Stairway database user credentials |
 | crl\_janitor\_ingress\_ip | CRL Janitor ingress IP |
 | crl\_janitor\_fqdn | CRL Janitor fully qualified domain name |
+| crl\_janitor\_pubsub\_topic | CRL Janitor Pub/sub Topic |
+| crl\_janitor\_pubsub\_subscription | CRL Janitor Pub/sub Subscription name |
 
