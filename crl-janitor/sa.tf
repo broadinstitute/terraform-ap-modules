@@ -27,6 +27,10 @@ locals {
     # Allow the creation and exporting of monitoring metrics.
     "roles/monitoring.editor"
   ]
+  app_sa_folder_roles = [
+    "roles/storage.admin",
+    "roles/bigquery.admin"
+  ]
 }
 
 # The main service account for the Janitor service app.
@@ -55,7 +59,7 @@ resource "google_folder_iam_member" "app_folder_roles" {
 
   provider = google.target
   folder  = var.google_folder_id
-  role     = "roles/editor"
+  role     = local.app_sa_folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
