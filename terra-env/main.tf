@@ -92,7 +92,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.1.9"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=yyu-PF-75"
 
   enable = local.terra_apps["crl_janitor"]
 
