@@ -27,7 +27,7 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   }
 
   dead_letter_policy {
-    dead_letter_topic = google_pubsub_topic.crl-janitor-pubsub-dead-letter-topic.id
+    dead_letter_topic = google_pubsub_topic.crl-janitor-pubsub-dead-letter-topic[0].name
     max_delivery_attempts = 10
   }
 }
@@ -42,8 +42,8 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
   member   = "serviceAccount:${google_service_account.client[0].email}"
 }
 
-# Janitor SA can subscribe the topic
-resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_subscribe" {
+# Janitor SA can subscribe and forward the topic
+resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_manage" {
   count = var.enable ? 1 : 0
 
   subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription[0].name
