@@ -27,7 +27,7 @@ resource "google_pubsub_subscription" "crl-janitor-pubsub-subscription" {
   }
 
   dead_letter_policy {
-    dead_letter_topic = google_pubsub_topic.crl-janitor-pubsub-dead-letter-topic[0].name
+    dead_letter_topic = google_pubsub_topic.crl-janitor-pubsub-dead-letter-topic[0].id
     max_delivery_attempts = 10
   }
 }
