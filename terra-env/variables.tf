@@ -116,3 +116,11 @@ variable "datarepo_static_ip_project" {
   default     = ""
   description = "Project where of Data Repo's static IP lives"
 }
+
+# CRL Janitor Vars
+#
+variable "janitor_google_folder_id" {
+  type        = string
+  default     = ""
+  description = "The folder ID in which Janitor has permission to cleanup resources."
+}

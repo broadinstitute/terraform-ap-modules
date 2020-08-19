@@ -142,6 +142,10 @@ output "crl_janitor_sa_id" {
   value       = module.crl_janitor.app_sa_id
   description = "CRL Janitor Google service account ID"
 }
+output "crl_janitor_sqlproxy_sa_id" {
+  value       = module.crl_janitor.sqlproxy_sa_id
+  description = "CRL Janitor Cloud SQL Proxy Google service account ID"
+}
 output "crl_janitor_client_sa_id" {
   value       = module.crl_janitor.client_sa_id
   description = "CRL Janitor Google service account ID"

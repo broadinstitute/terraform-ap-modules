@@ -1,3 +1,35 @@
+# The service account for the cloudsql proxy.
+resource "google_service_account" "sqlproxy" {
+  count = var.enable ? 1 : 0
+
+  provider     = google.target
+  project      = var.google_project
+  account_id   = "${local.service}-${local.owner}-sqlproxy"
+  display_name = "${local.service}-${local.owner}-sqlproxy"
+}
+resource "google_project_iam_member" "sqlproxy_role" {
+  count = var.enable ? 1 : 0
+
+  provider = google.target
+  project  = var.google_project
+  role     = "roles/cloudsql.client"
+  member   = "serviceAccount:${google_service_account.sqlproxy[0].email}"
+}
+
+locals {
+  app_sa_roles = [
+    # TODO: remove cloudsql.client deprecated by separate service account once we have migrated
+    # existing deployments.
+    "roles/cloudsql.client",
+    # Stairway publishes and subscribes to pubsub.
+    "roles/pubsub.publisher",
+    "roles/pubsub.subscriber",
+    # Allow the creation and exporting of monitoring metrics.
+    "roles/monitoring.editor"
+  ]
+}
+
+# The main service account for the Janitor service app.
 resource "google_service_account" "app" {
   count = var.enable ? 1 : 0
 
@@ -8,11 +40,22 @@ resource "google_service_account" "app" {
 }
 
 resource "google_project_iam_member" "app_roles" {
-  count = var.enable ? length(local.sa_roles) : 0
+  count = var.enable ? length(local.app_sa_roles) : 0
 
   provider = google.target
   project  = var.google_project
-  role     = local.sa_roles[count.index]
+  role     = local.app_sa_roles[count.index]
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+
+# Grant Janitor App Service Account editor permission in folder level permission to cleanup resources.
+resource "google_folder_iam_member" "app_folder_roles" {
+  // Skip if google_folder variable is not present.
+  count = var.enable && (var.google_folder_id != "") ? 1 : 0
+
+  provider = google.target
+  folder  = var.google_folder_id
+  role     = "roles/editor"
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 

@@ -16,6 +16,11 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
+variable "google_folder_id" {
+  type        = string
+  description = "The folder in which Janitor has permission to delete resources."
+  default     = ""
+}
 variable "cluster" {
   type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
@@ -33,17 +38,6 @@ variable "owner" {
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
   service = "crljanitor"
-}
-
-#
-# Service Account Vars
-#
-locals {
-  sa_roles = [
-    "roles/cloudsql.client",
-    # Stairway creates a pub/sub topic and subscription.
-    "roles/pubsub.admin",
-  ]
 }
 
 #

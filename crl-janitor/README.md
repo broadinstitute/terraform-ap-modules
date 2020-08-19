@@ -20,6 +20,7 @@ No requirements.
 | google.dns | n/a |
 | google | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -28,6 +29,7 @@ No requirements.
 | dependencies | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
 | enable | Enable flag for this module. If set to false, no resources will be created. | `bool` | `true` | no |
 | google\_project | The google project in which to create resources | `string` | n/a | yes |
+| google\_folder\_id | The folder in which Janitor has permission to delete resources. | `string` | `""` | no |
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
@@ -46,6 +48,7 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | app\_sa\_id | CRL Janitor Google service accout ID |
+| sqlproxy\_sa\_id | CRL Janitor Cloud SQL Proxy Google service account ID |
 | client\_sa\_id | User Google service account email |
 | ingress\_ip | CRL Janitor ingress IP |
 | fqdn | CRL Janitor fully qualified domain name |

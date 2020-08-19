@@ -36,6 +36,7 @@ No provider.
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
+| janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 
 ## Outputs
 
@@ -69,6 +70,7 @@ No provider.
 | workspace\_ingress\_ip | Workspace Manager ingress IP |
 | workspace\_fqdn | Workspace Manager fully qualified domain name |
 | crl\_janitor\_sa\_id | CRL Janitor Google service account ID |
+| crl\_janitor\_sqlproxy\_sa\_id | CRL Janitor Cloud SQL Proxy Google service account ID |
 | crl\_janitor\_client\_sa\_id | CRL Janitor Google service account ID |
 | crl\_janitor\_db\_ip | CRL Janitor CloudSQL instance IP |
 | crl\_janitor\_db\_instance | CRL Janitor CloudSQL instance name |
