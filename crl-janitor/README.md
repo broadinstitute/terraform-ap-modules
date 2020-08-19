@@ -18,6 +18,7 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
+| google | n/a |
 | google.target | n/a |
 | google | n/a |
 

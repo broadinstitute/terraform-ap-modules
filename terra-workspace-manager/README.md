@@ -28,6 +28,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | dependencies | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
 | enable | Enable flag for this module. If set to false, no resources will be created. | `bool` | `true` | no |
+| preview | Preview environment flag | `bool` | `false` | no |
 | google\_project | The google project in which to create resources | `string` | n/a | yes |
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
@@ -48,7 +49,8 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
-| app\_sa\_id | Workspace Manager Google service accout ID |
+| sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
+| cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | ingress\_ip | Workspace Manager ingress IP |
 | fqdn | Workspace Manager fully qualified domain name |
 | cloudsql\_public\_ip | Workspace Manager CloudSQL instance IP |

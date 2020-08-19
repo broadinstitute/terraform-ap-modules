@@ -12,6 +12,11 @@ variable "enable" {
   description = "Enable flag for this module. If set to false, no resources will be created."
   default     = true
 }
+variable "preview" {
+  type        = bool
+  description = "Preview environment flag"
+  default     = false
+}
 variable "google_project" {
   type        = string
   description = "The google project in which to create resources"

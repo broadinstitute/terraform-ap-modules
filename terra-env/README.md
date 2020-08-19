@@ -27,6 +27,7 @@ No provider.
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
+| preview | Preview environment flag | `bool` | `false` | no |
 | terra\_apps | Terra apps to enable. All disabled by default. | `map(bool)` | `{}` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
