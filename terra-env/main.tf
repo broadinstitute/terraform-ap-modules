@@ -105,7 +105,7 @@ module "crl_janitor" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
-  google_folder_id  = var.janitor_google_folder_id
+  google_folder_id = var.janitor_google_folder_id
 
   providers = {
     google.target      = google.target
@@ -131,5 +131,25 @@ module "datarepo" {
     google.target      = google.target
     google.dns         = google.dns
     google-beta.target = google-beta.target
+  }
+}
+
+module "ontology" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=DDO-634-support-ontology-k8s"
+
+  enable = local.terra_apps["ontology"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+  preview        = var.preview
+
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target = google.target
+    google.dns    = google.dns
   }
 }
