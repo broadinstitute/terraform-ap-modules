@@ -37,7 +37,7 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "ontology"
+  service = "ontology-k8s" # K8s suffix is here for dns testing purposes, ot avoid overlap with GCE ontology, will remove when ready to cut over
 }
 
 
