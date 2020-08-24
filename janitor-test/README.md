@@ -23,7 +23,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| google\_project | The google project id to create for CRL to run integration tests within. | `string` | n/a | yes |
+| google\_project | The google project id to create for Janitor to run integration tests within. | `string` | n/a | yes |
 | folder\_id | What folder to create google\_project under. | `string` | n/a | yes |
 | billing\_account\_id | What billing account to assign to the project. | `string` | n/a | yes |
 
