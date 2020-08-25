@@ -18,11 +18,11 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| google-beta.target | n/a |
-| http | n/a |
+| google | n/a |
 | random | n/a |
 | google.target | n/a |
-| google | n/a |
+| google-beta.target | n/a |
+| http | n/a |
 
 ## Inputs
 

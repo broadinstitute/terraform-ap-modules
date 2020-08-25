@@ -3,7 +3,13 @@
 resource "google_compute_firewall" "allow_http_vpn" {
   provider = google-beta.target
 
-  enable_logging = var.enable_logging
+  dynamic "log_config" {
+    for_each = var.enable_logging ? [ 1 ] : []
+    content {
+      metadata = "INCLUDE_ALL_METADATA"
+    }
+  }
+
   name           = "allow-http-internal"
   network        = local.network_name
 
