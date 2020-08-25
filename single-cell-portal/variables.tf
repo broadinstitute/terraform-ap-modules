@@ -315,12 +315,12 @@ variable "lb_dns_ttl" {
 }
 variable "lb_rules" {
   description = "List of security policy rules to apply to LB"
-  type = set(object(
+  type = set(object({
       action=string,
       priority=string,
       ip_ranges=list(string),
       description=string
-    )
+    })
   )
   default = []
 }
