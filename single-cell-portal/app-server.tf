@@ -33,7 +33,7 @@ module "app_server" {
 module "load-balancer" {
   enable_flag = var.create_lb ? 1 : 0
 
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/http-load-balancer?ref=gm-lb-security-policy"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/http-load-balancer?ref=http-load-balancer-0.6.0"
 
   providers = {
     google.target = google.target
