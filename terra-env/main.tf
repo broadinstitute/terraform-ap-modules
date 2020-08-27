@@ -135,7 +135,7 @@ module "datarepo" {
 }
 
 module "ontology" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.1"
 
   enable = local.terra_apps["ontology"]
 
