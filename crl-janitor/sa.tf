@@ -80,5 +80,5 @@ output "project_number" {
 // deal lette queue message management.
 // See https://cloud.google.com/pubsub/docs/dead-letter-topics#granting_forwarding_permissions.
 data "google_service_account" "project_pubsub_sa" {
-  account_id = join(["service-", data.google_project.project.number]
+  account_id = concat("service-", data.google_project.project.number)
 }
