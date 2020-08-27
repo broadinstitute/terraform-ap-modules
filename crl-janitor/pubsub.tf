@@ -82,11 +82,11 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish_dead_l
   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
 
-# Project SA can subscribe to the dead letter queue topic
-resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_subscribe_dead_letter" {
+# Project SA can subscribe to topic then forward the message.
+resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_subscribe" {
   count = var.enable ? 1 : 0
   project = var.google_project
-  subscription = google_pubsub_subscription.crl-janitor-pubsub-dead-letter-subscription[0].name
+  subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription[0].name
   role = "roles/pubsub.subscriber"
   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
