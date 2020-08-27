@@ -66,6 +66,12 @@ resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_manage"
   member = "serviceAccount:${google_service_account.app[0].email}"
 }
 
+// Pubsub creates a SA account for each project: service-project-number@gcp-sa-pubsub.iam.gserviceaccount.com for
+// deal lette queue message management.
+// See https://cloud.google.com/pubsub/docs/dead-letter-topics#granting_forwarding_permissions.
+data "google_project" "project" {
+}
+
 # Project SA can publish to the dead letter queue topic
 resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish_dead_letter" {
   count = var.enable ? 1 : 0

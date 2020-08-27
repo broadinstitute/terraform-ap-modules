@@ -68,17 +68,3 @@ resource "google_service_account" "client" {
   account_id   = "${local.service}-client-${local.owner}"
   display_name = "${local.service}-client-${local.owner}"
 }
-
-data "google_project" "project" {
-}
-
-output "project_number" {
-  value = data.google_project.project.number
-}
-
-// Pubsub creates a SA account for each project: service-project-number@gcp-sa-pubsub.iam.gserviceaccount.com for
-// deal lette queue message management.
-// See https://cloud.google.com/pubsub/docs/dead-letter-topics#granting_forwarding_permissions.
-data "google_service_account" "project_pubsub_sa" {
-  account_id = "service-${data.google_project.project.number}"
-}
