@@ -189,3 +189,16 @@ output "crl_janitor_pubsub_subscription" {
   value       = module.crl_janitor.pubsub_subscription
   description = "CRL Janitor Pub/sub Subscription name"
 }
+
+#
+# Ontology Outputs
+#
+output "ontology_ip" {
+  value       = module.ontology.ingress_ip
+  description = "Ontology service static ip"
+}
+
+output "ontology_fqdn" {
+  value       = module.ontology.fqdn
+  description = "Fqdn for the ontology service"
+}
