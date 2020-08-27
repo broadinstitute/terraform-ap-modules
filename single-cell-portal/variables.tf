@@ -313,3 +313,14 @@ variable "lb_dns_ttl" {
   description = "DNS ttl for load balancer"
   default     = "300"
 }
+variable "lb_rules" {
+  description = "List of security policy rules to apply to LB"
+  type = set(object({
+      action=string,
+      priority=string,
+      ip_ranges=list(string),
+      description=string
+    })
+  )
+  default = []
+}
