@@ -54,7 +54,7 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish" {
   project = var.google_project
   topic = google_pubsub_topic.crl-janitor-pubsub-topic[0].name
   role = "roles/pubsub.publisher"
-  member   = "serviceAccount:${google_service_account.client[0].email}"
+  member = "serviceAccount:${google_service_account.client[0].email}"
 }
 
 # Janitor SA can subscribe and forward the topic
@@ -63,7 +63,7 @@ resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_manage"
 
   subscription = google_pubsub_subscription.crl-janitor-pubsub-subscription[0].name
   role = "roles/editor"
-  member   = "serviceAccount:${google_service_account.app[0].email}"
+  member = "serviceAccount:${google_service_account.app[0].email}"
 }
 
 # Project SA can publish to the dead letter queue topic
@@ -73,16 +73,14 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish_dead_l
   project = var.google_project
   topic = google_pubsub_topic.crl-janitor-pubsub-dead-letter-topic[0].name
   role = "roles/pubsub.publisher"
-
-  member   = data.google_service_account.project_pubsub_sa.email
+  member = "serviceAccount:${data.google_service_account.project_pubsub_sa.email}"
 }
 
 # Project SA can subscribe to the dead letter queue topic
 resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_subscribe_dead_letter" {
   count = var.enable ? 1 : 0
-
   project = var.google_project
   subscription = google_pubsub_subscription.crl-janitor-pubsub-dead-letter-subscription[0].name
   role = "roles/pubsub.subscriber"
-  member   = data.google_service_account.project_pubsub_sa.email
+  member = "serviceAccount:${data.google_service_account.project_pubsub_sa.email}"
 }
