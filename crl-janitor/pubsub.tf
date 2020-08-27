@@ -73,7 +73,7 @@ resource "google_pubsub_topic_iam_member" "crl_janitor_client_can_publish_dead_l
   project = var.google_project
   topic = google_pubsub_topic.crl-janitor-pubsub-dead-letter-topic[0].name
   role = "roles/pubsub.publisher"
-  member = "serviceAccount:${data.google_service_account.project_pubsub_sa.email}"
+  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
 
 # Project SA can subscribe to the dead letter queue topic
@@ -82,5 +82,5 @@ resource "google_pubsub_subscription_iam_member" "crl_janitor_client_can_subscri
   project = var.google_project
   subscription = google_pubsub_subscription.crl-janitor-pubsub-dead-letter-subscription[0].name
   role = "roles/pubsub.subscriber"
-  member = "serviceAccount:${data.google_service_account.project_pubsub_sa.email}"
+  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
