@@ -135,14 +135,13 @@ module "datarepo" {
 }
 
 module "ontology" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.2"
 
   enable = local.terra_apps["ontology"]
 
   google_project = var.google_project
   cluster        = var.cluster
   cluster_short  = var.cluster_short
-  preview        = var.preview
 
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
