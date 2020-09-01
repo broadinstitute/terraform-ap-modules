@@ -41,7 +41,7 @@ resource "google_project_iam_member" "crl_test_admin" {
 resource "google_folder_iam_member" "app_folder_roles" {
   count = length(local.folder_roles)
   provider = google.target
-  folder  = google_folder.test_resource_container
+  folder  = google_folder.test_resource_container.id
   role     = local.folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.crl_test_admin.email}"
 }
