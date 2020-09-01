@@ -65,6 +65,7 @@ locals {
     workspace_manager     = false,
     crl_janitor           = false,
     datarepo              = false,
+    ontology              = false,
     },
     var.terra_apps
   )

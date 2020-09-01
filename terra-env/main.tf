@@ -93,7 +93,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.2"
 
   enable = local.terra_apps["crl_janitor"]
 
@@ -105,7 +105,7 @@ module "crl_janitor" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
-  google_folder_id  = var.janitor_google_folder_id
+  google_folder_id = var.janitor_google_folder_id
 
   providers = {
     google.target      = google.target
@@ -131,5 +131,24 @@ module "datarepo" {
     google.target      = google.target
     google.dns         = google.dns
     google-beta.target = google-beta.target
+  }
+}
+
+module "ontology" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.2"
+
+  enable = local.terra_apps["ontology"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target = google.target
+    google.dns    = google.dns
   }
 }

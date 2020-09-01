@@ -18,10 +18,10 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| random | n/a |
-| google-beta.target | n/a |
 | http | n/a |
+| random | n/a |
 | google.target | n/a |
+| google-beta.target | n/a |
 
 ## Inputs
 
@@ -67,6 +67,7 @@ No requirements.
 | dns\_zone\_name | DNS zone name for load balancer DNS. Required if create\_lb is true. | `string` | `""` | no |
 | lb\_dns\_name | DNS name for load balancer. Required if create\_lb is true. | `string` | `""` | no |
 | lb\_dns\_ttl | DNS ttl for load balancer | `string` | `"300"` | no |
+| lb\_rules | List of security policy rules to apply to LB | <pre>set(object({<br>      action=string,<br>      priority=string,<br>      ip_ranges=list(string),<br>      description=string<br>    })<br>  )</pre> | `[]` | no |
 
 ## Outputs
 
