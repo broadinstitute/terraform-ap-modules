@@ -81,6 +81,4 @@ No provider.
 | crl\_janitor\_fqdn | CRL Janitor fully qualified domain name |
 | crl\_janitor\_pubsub\_topic | CRL Janitor Pub/sub Topic |
 | crl\_janitor\_pubsub\_subscription | CRL Janitor Pub/sub Subscription name |
-| ontology\_ip | Ontology service static ip |
-| ontology\_fqdn | Fqdn for the ontology service |
 
