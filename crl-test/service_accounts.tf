@@ -27,7 +27,6 @@ locals {
     "roles/resourcemanager.folderAdmin",
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeletor",
-    "roles/resourcemanager.projectIamAdmin",
   ]
 }
 
