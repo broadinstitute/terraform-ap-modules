@@ -5,7 +5,7 @@ variable "google_project" {
 
 variable "folder_id" {
   type        = string
-  description = "What folder to create google_project under."
+  description = "What folder to create google_project and a test folder under."
 }
 
 variable "billing_account_id" {

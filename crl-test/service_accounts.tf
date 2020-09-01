@@ -21,6 +21,14 @@ locals {
     "roles/storage.admin",
     "roles/bigquery.admin",
   ]
+
+  # Roles used to manage projects for integration testing.
+  folder_roles = [
+    "roles/resourcemanager.folderAdmin",
+    "roles/resourcemanager.projectCreator",
+    "roles/resourcemanager.projectDeletor",
+    "roles/resourcemanager.projectIamAdmin",
+  ]
 }
 
 resource "google_project_iam_member" "crl_test_admin" {
@@ -30,3 +38,10 @@ resource "google_project_iam_member" "crl_test_admin" {
   member  = "serviceAccount:${google_service_account.crl_test_admin.email}"
 }
 
+resource "google_folder_iam_member" "app_folder_roles" {
+  count = length(local.folder_roles)
+  provider = google.target
+  folder  = google_folder.test_resource_container
+  role     = local.folder_roles[count.index]
+  member   = "serviceAccount:${google_service_account.crl_test_admin.email}"
+}
