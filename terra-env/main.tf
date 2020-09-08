@@ -115,7 +115,7 @@ module "crl_janitor" {
 }
 
 module "datarepo" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=ch-datarepo-prod-dns"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=datarepo-1.0.0"
 
   enable = local.terra_apps["datarepo"]
 
