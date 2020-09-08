@@ -18,9 +18,9 @@ locals {
     "roles/logging.logWriter",
     "roles/monitoring.metricWriter",
     # Roles used in integration testing.
-    "roles/billing.user",
     "roles/storage.admin",
     "roles/bigquery.admin",
+    "roles/billing.user",
   ]
 
   # Roles used to manage projects for integration testing.
