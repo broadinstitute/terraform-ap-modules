@@ -20,7 +20,6 @@ locals {
     # Roles used in integration testing.
     "roles/storage.admin",
     "roles/bigquery.admin",
-    "roles/billing.projectManager",
   ]
 
   # Roles used to manage projects for integration testing.
@@ -44,4 +43,10 @@ resource "google_folder_iam_member" "app_folder_roles" {
   folder  = google_folder.test_resource_container.id
   role     = local.folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.crl_test_admin.email}"
+}
+
+resource "google_billing_account_iam_member" "crl_test_admin" {
+  billing_account_id = var.billing_account_id
+  role               = "roles/billing.user"
+  member             = "serviceAccount:${google_service_account.crl_test_admin.email}"
 }
