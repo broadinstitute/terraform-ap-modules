@@ -20,7 +20,7 @@ locals {
     # Roles used in integration testing.
     "roles/storage.admin",
     "roles/bigquery.admin",
-    "roles/billing.user",
+    "roles/billing.projectManager",
   ]
 
   # Roles used to manage projects for integration testing.
