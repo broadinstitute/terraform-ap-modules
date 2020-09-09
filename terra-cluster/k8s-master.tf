@@ -15,6 +15,8 @@ module "k8s-master" {
   subnetwork              = var.auto_create_subnets ? local.cluster_network : local.cluster_subnet
   private_ipv4_cidr_block = var.private_master_ipv4_cidr_block
 
+  authorized_network_cidrs = var.authorized_network_cidrs
+
   ip_allocation_policy = {
     cluster_secondary_range_name  = var.auto_create_subnets ? null : "pods"
     services_secondary_range_name = var.auto_create_subnets ? null : "services"
