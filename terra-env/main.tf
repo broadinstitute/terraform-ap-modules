@@ -115,14 +115,16 @@ module "crl_janitor" {
 }
 
 module "datarepo" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=datarepo-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=datarepo-1.0.0"
 
   enable = local.terra_apps["datarepo"]
 
   # Create Datarepo DNS records
   # data.<env>.envs-terra.bio
-  dns_zone_name    = "envs-terra"
-  dns_zone_project = "dsp-devops"
+  # OR data.terra.bio for prod
+  dns_name         = var.datarepo_dns_name
+  dns_zone_name    = var.datarepo_dns_zone_name
+  dns_zone_project = var.datarepo_dns_zone_project
 
   static_ip_name    = var.datarepo_static_ip_name
   static_ip_project = var.datarepo_static_ip_project

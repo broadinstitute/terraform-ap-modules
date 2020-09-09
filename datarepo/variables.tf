@@ -9,22 +9,14 @@ variable "enable" {
   description = "Enable flag for this module. If set to false, no resources will be created."
   default     = true
 }
-variable "owner" {
-  type        = string
-  description = "Environment or developer. Defaults to TF workspace name if left blank."
-  default     = ""
-}
-locals {
-  owner = var.owner == "" ? terraform.workspace : var.owner
-}
 
 #
 # DNS Vars
 #
-variable "hostname" {
+variable "dns_name" {
   type        = string
-  description = "DNS hostname"
-  default     = "data"
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
+  default     = ""
 }
 variable "dns_zone_name" {
   type        = string
