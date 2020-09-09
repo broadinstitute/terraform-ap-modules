@@ -130,6 +130,11 @@ variable "nat_egress_ip_count" {
   type        = number
   default     = 2
 }
+variable "authorized_network_cidrs" {
+  description = "Array of CIDR blocks for authorized networks"
+  type        = list(string)
+  default     = []
+}
 
 # Istio
 variable "istio_enable" {
