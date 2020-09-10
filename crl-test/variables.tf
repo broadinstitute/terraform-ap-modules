@@ -17,7 +17,7 @@ variable "billing_account_id" {
 # Broad SA that runs terraform does not want to have the broad permissions to set modify
 # permissions on the service account. This was done manually instead for the Broad.
 variable "enable_billing_user" {
-  type        = boolean
+  type        = bool
   description = "Whether to set the CRL test SA as a billing user on the billing account."
   default     = true
 }
