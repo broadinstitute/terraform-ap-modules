@@ -15,7 +15,7 @@ data "google_compute_global_address" "ingress_ip" {
 }
 
 locals {
-  fqdn = var.enable ? "${var.hostname}.${local.owner}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
+  fqdn = var.enable ? "${var.dns_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
 }
 
 # data.alpha.envs-terra.bio

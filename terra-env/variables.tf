@@ -107,6 +107,21 @@ variable "wsm_db_keepers" {
 #
 # Datarepo Vars
 #
+variable "datarepo_dns_name" {
+  type        = string
+  default     = ""
+  description = "Name for the Data Repo DNS record. Eg. data.alpha"
+}
+variable "datarepo_dns_zone_name" {
+  type        = string
+  default     = ""
+  description = "Zone where Data Repo DNS record should be provisioned"
+}
+variable "datarepo_dns_zone_project" {
+  type        = string
+  default     = ""
+  description = "Google Project where Data Repo DNS zone lives"
+}
 variable "datarepo_static_ip_name" {
   type        = string
   default     = ""

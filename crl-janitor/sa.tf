@@ -18,14 +18,13 @@ resource "google_project_iam_member" "sqlproxy_role" {
 
 locals {
   app_sa_roles = [
-    # TODO: remove cloudsql.client deprecated by separate service account once we have migrated
-    # existing deployments.
-    "roles/cloudsql.client",
     # Stairway publishes and subscribes to pubsub.
     "roles/pubsub.publisher",
     "roles/pubsub.subscriber",
     # Allow the creation and exporting of monitoring metrics.
-    "roles/monitoring.editor"
+    "roles/monitoring.editor",
+    # Allow tracing.
+    "roles/cloudtrace.agent",
   ]
 }
 
