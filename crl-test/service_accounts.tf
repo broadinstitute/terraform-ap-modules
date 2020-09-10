@@ -38,14 +38,15 @@ resource "google_project_iam_member" "crl_test_admin" {
 }
 
 resource "google_folder_iam_member" "app_folder_roles" {
-  count = length(local.folder_roles)
+  count    = length(local.folder_roles)
   provider = google.target
-  folder  = google_folder.test_resource_container.id
+  folder   = google_folder.test_resource_container.id
   role     = local.folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.crl_test_admin.email}"
 }
 
 resource "google_billing_account_iam_member" "crl_test_admin" {
+  count              = var.enable_billing_user ? 1 : 0
   billing_account_id = var.billing_account_id
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.crl_test_admin.email}"

@@ -17,8 +17,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| google | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -27,6 +27,7 @@ No requirements.
 | google\_project | The google project id to create for CRL to run integration tests within. | `string` | n/a | yes |
 | folder\_id | What folder to create google\_project and a test folder under. | `string` | n/a | yes |
 | billing\_account\_id | What billing account to assign to the project. | `string` | n/a | yes |
+| enable\_billing\_user | Whether to set the CRL test SA as a billing user on the billing account. | `boolean` | `true` | no |
 
 ## Outputs
 

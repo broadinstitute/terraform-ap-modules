@@ -1,5 +1,5 @@
 output "test_resource_container_folder_id" {
-  value = google_folder.test_resource_container.id
+  value       = google_folder.test_resource_container.id
   description = "The folder id of the folder the admin service account has permissions to edit."
 }
 
