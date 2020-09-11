@@ -14,7 +14,7 @@ resource "google_service_account" "app" {
   display_name = "janitor-test-resource-access"
 }
 
-# Grant Janitor App Service Account editor permission in folder level permission to cleanup resources.
+# Grant this SA Account permission to create/modify resources in test.
 resource "google_folder_iam_member" "app_folder_roles" {
   count    = length(local.folder_roles)
   provider = google.target
