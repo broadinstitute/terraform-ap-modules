@@ -18,6 +18,6 @@ resource "google_service_account" "app" {
 resource "google_folder_iam_member" "app_folder_roles" {
   provider = google.target
   folder   = var.folder_id
-  role     = "roles/owner"
+  role     = local.folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.app.email}"
 }
