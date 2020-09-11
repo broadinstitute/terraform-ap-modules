@@ -28,6 +28,14 @@ locals {
     # Allow deleting project.
     "roles/resourcemanager.projectDeleter",
   ]
+
+
+  # Roles used to manage projects for integration testing.
+  app_folder_roles = [
+    "roles/editor",
+    "roles/resourcemanager.projectCreator",
+    "roles/resourcemanager.projectDeleter",
+  ]
 }
 
 # The main service account for the Janitor service app.
@@ -56,7 +64,7 @@ resource "google_folder_iam_member" "app_folder_roles" {
 
   provider = google.target
   folder  = var.google_folder_id
-  role     = "roles/editor"
+  role     = local.app_folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
