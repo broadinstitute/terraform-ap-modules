@@ -21,18 +21,16 @@ locals {
     # Stairway publishes and subscribes to pubsub.
     "roles/pubsub.publisher",
     "roles/pubsub.subscriber",
-    # Allow the creation and exporting of monitoring metrics.
+    # Allow exporting metrics, profiling, and tracing for monitoring.
     "roles/monitoring.editor",
-    # Allow tracing.
+    "roles/cloudprofiler.agent",
     "roles/cloudtrace.agent",
-    # Allow deleting project.
-    "roles/resourcemanager.projectDeleter",
   ]
 
   # Roles used to manage projects for integration testing.
   app_folder_roles = [
     "roles/editor",
-    "roles/resourcemanager.projectCreator",
+    # Allow deleting project.
     "roles/resourcemanager.projectDeleter",
   ]
 }
