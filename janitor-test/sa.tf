@@ -14,17 +14,10 @@ resource "google_service_account" "app" {
   display_name = "janitor-test-resource-access"
 }
 
-resource "google_project_iam_member" "app_roles" {
-  provider = google.target
-  project  = var.google_project
-  role     = local.folder_roles[count.index]
-  member   = "serviceAccount:${google_service_account.app[0].email}"
-}
-
 # Grant Janitor App Service Account editor permission in folder level permission to cleanup resources.
 resource "google_folder_iam_member" "app_folder_roles" {
   provider = google.target
-  folder  = var.folder_id
+  folder   = var.folder_id
   role     = "roles/owner"
-  member   = "serviceAccount:${google_service_account.app[0].email}"
+  member   = "serviceAccount:${google_service_account.app.email}"
 }
