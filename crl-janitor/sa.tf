@@ -29,7 +29,6 @@ locals {
     "roles/resourcemanager.projectDeleter",
   ]
 
-
   # Roles used to manage projects for integration testing.
   app_folder_roles = [
     "roles/editor",
