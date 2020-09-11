@@ -1,5 +1,6 @@
 locals {
   folder_roles = [
+    "roles/editor",
     "roles/resourcemanager.folderAdmin",
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeleter",
