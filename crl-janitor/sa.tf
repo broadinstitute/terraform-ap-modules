@@ -57,7 +57,7 @@ resource "google_project_iam_member" "app_roles" {
 # Grant Janitor App Service Account editor permission in folder level permission to cleanup resources.
 resource "google_folder_iam_member" "app_folder_roles" {
   // Skip if google_folder variable is not present.
-  count = var.enable && (var.google_folder_id != "") ? 1 : 0
+  count = var.enable && (var.google_folder_id != "") ? length(local.app_folder_roles) : 0
 
   provider = google.target
   folder  = var.google_folder_id
