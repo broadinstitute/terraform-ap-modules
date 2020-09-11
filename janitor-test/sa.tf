@@ -1,4 +1,9 @@
 locals {
+  roles = [
+    "roles/storage.admin",
+    "roles/bigquery.admin",
+  ]
+
   folder_roles = [
     "roles/resourcemanager.folderAdmin",
     "roles/resourcemanager.projectCreator",
@@ -12,6 +17,13 @@ resource "google_service_account" "janitor_test" {
   project      = var.google_project
   account_id   = "janitor-test-resource-access"
   display_name = "janitor-test-resource-access"
+}
+
+resource "google_project_iam_member" "janitor_test_roles" {
+  count   = length(local.roles)
+  project = google_project.project.name
+  role    = local.roles[count.index]
+  member   = "serviceAccount:${google_service_account.janitor_test.email}"
 }
 
 # Grant this SA Account permission to create/modify resources in test.
