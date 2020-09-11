@@ -6,7 +6,7 @@ locals {
   ]
 }
 
-# The main service account for the Janitor service app.
+# The service account used to access cloud resources in test.
 resource "google_service_account" "app" {
   provider     = google.target
   project      = var.google_project
