@@ -25,6 +25,8 @@ locals {
     "roles/monitoring.editor",
     # Allow tracing.
     "roles/cloudtrace.agent",
+    # Allow deleting project.
+    "roles/resourcemanager.projectDeleter",
   ]
 }
 
