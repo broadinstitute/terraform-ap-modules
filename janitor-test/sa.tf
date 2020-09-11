@@ -16,6 +16,7 @@ resource "google_service_account" "app" {
 
 # Grant Janitor App Service Account editor permission in folder level permission to cleanup resources.
 resource "google_folder_iam_member" "app_folder_roles" {
+  count    = length(local.folder_roles)
   provider = google.target
   folder   = var.folder_id
   role     = local.folder_roles[count.index]
