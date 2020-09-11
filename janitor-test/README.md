@@ -29,5 +29,9 @@ No requirements.
 
 ## Outputs
 
-No output.
+
+| Name | Description |
+|------|-------------|
+| service\_account\_email\ | Google service account email in Janitor test |
+
 
