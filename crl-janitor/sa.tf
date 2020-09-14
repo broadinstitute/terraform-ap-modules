@@ -32,6 +32,7 @@ locals {
     "roles/editor",
     # Allow deleting project.
     "roles/resourcemanager.projectDeleter",
+    "roles/bigquery.admin",
   ]
 }
 
