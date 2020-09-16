@@ -149,7 +149,8 @@ variable "release_channel" {
   default     = "REGULAR"
 }
 variable "k8s_version_prefix" {
-  default = "1.15.9"
+  type        = string
+  description = "Passed to k8s-cluster module to set minimum cluster version"
 }
 
 variable "node_count_default" {
