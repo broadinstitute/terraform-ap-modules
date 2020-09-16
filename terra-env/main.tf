@@ -76,7 +76,9 @@ module "workspace_manager" {
   google_project = var.google_project
   cluster        = var.cluster
   cluster_short  = var.cluster_short
+
   preview        = var.preview
+  preview_shared = var.preview_shared
 
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name

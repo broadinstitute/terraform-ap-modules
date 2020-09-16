@@ -18,6 +18,7 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google | n/a |
+| google.target | n/a |
 
 ## Inputs
 
@@ -29,9 +30,7 @@ No requirements.
 
 ## Outputs
 
-
 | Name | Description |
 |------|-------------|
-| service\_account\_email\ | Google service account email in Janitor test |
-
+| service\_account\_email | Google service account email in Janitor test |
 

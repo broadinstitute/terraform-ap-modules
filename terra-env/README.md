@@ -27,13 +27,18 @@ No provider.
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
-| preview | Preview environment flag | `bool` | `false` | no |
+| preview | Preview environment flag. Set to true if creating a preview environment. | `bool` | `false` | no |
+| preview\_shared | Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments. | `bool` | `false` | no |
+| preview\_versions | Base64 encoded JSON string of version overrides. Used for preview environments. | `string` | `"Cg=="` | no |
 | terra\_apps | Terra apps to enable. All disabled by default. | `map(bool)` | `{}` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| datarepo\_dns\_name | Name for the Data Repo DNS record. Eg. data.alpha | `string` | `""` | no |
+| datarepo\_dns\_zone\_name | Zone where Data Repo DNS record should be provisioned | `string` | `""` | no |
+| datarepo\_dns\_zone\_project | Google Project where Data Repo DNS zone lives | `string` | `""` | no |
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
@@ -81,4 +86,9 @@ No provider.
 | crl\_janitor\_fqdn | CRL Janitor fully qualified domain name |
 | crl\_janitor\_pubsub\_topic | CRL Janitor Pub/sub Topic |
 | crl\_janitor\_pubsub\_subscription | CRL Janitor Pub/sub Subscription name |
+| ontology\_ip | Ontology service static ip |
+| ontology\_fqdn | Fqdn for the ontology service |
+| versions | Base64 encoded JSON string of version overrides |
+| ingress\_ips | Service ingress IPs |
+| fqdns | Service fully qualified domain names |
 

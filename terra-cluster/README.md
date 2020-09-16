@@ -39,6 +39,7 @@ No requirements.
 | services\_subnet\_ipv4\_cidr\_block | Secondary CIDR range for the cluster's services | `string` | `"0.0.0.0/32"` | no |
 | private\_master\_ipv4\_cidr\_block | CIDR range for private cluster master endpoint | `string` | `"0.0.0.0/28"` | no |
 | nat\_egress\_ip\_count | Number of Cloud NAT IPs to create for cluster egress | `number` | `2` | no |
+| authorized\_network\_cidrs | Array of CIDR blocks for authorized networks | `list(string)` | `[]` | no |
 | istio\_enable | Whether to enable Google's Istio implementation in the cluster | `bool` | `true` | no |
 | release\_channel | See official documentation for GKE release channels | `string` | `"REGULAR"` | no |
 | k8s\_version\_prefix | n/a | `string` | `"1.15.9"` | no |

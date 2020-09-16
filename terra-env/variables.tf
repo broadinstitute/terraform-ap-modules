@@ -41,10 +41,25 @@ variable "owner" {
 locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
+
+
+#
+# Preview environment Vars
+#
 variable "preview" {
   type        = bool
-  description = "Preview environment flag"
+  description = "Preview environment flag. Set to true if creating a preview environment."
   default     = false
+}
+variable "preview_shared" {
+  type        = bool
+  description = "Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments."
+  default     = false
+}
+variable "preview_versions" {
+  type = string
+  description = "Base64 encoded JSON string of version overrides. Used for preview environments."
+  default = "Cg=="
 }
 
 

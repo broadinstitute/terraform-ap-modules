@@ -1,16 +1,16 @@
 data "google_dns_managed_zone" "dns_zone" {
-  count = var.enable && !var.preview ? 1 : 0
+  count = var.enable && !var.preview_shared ? 1 : 0
 
   provider = google.dns
   name     = var.dns_zone_name
 }
 
 locals {
-  fqdn = var.enable && !var.preview ? "${local.hostname}${local.subdomain_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
+  fqdn = var.enable && !var.preview_shared ? "${local.hostname}${local.subdomain_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
 }
 
 resource "google_dns_record_set" "ingress" {
-  count = var.enable && !var.preview ? 1 : 0
+  count = var.enable && !var.preview_shared ? 1 : 0
 
   provider     = google.dns
   managed_zone = data.google_dns_managed_zone.dns_zone[0].name

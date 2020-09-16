@@ -12,11 +12,6 @@ variable "enable" {
   description = "Enable flag for this module. If set to false, no resources will be created."
   default     = true
 }
-variable "preview" {
-  type        = bool
-  description = "Preview environment flag"
-  default     = false
-}
 variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
@@ -40,6 +35,19 @@ locals {
   service = "workspace"
 }
 
+#
+# Preview environment Vars
+#
+variable "preview" {
+  type        = bool
+  description = "Preview environment flag. Set to true if creating a preview environment."
+  default     = false
+}
+variable "preview_shared" {
+  type        = bool
+  description = "Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments."
+  default     = false
+}
 
 #
 # Service Account Vars

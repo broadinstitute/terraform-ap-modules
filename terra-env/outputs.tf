@@ -197,8 +197,27 @@ output "ontology_ip" {
   value       = module.ontology.ingress_ip
   description = "Ontology service static ip"
 }
-
 output "ontology_fqdn" {
   value       = module.ontology.fqdn
   description = "Fqdn for the ontology service"
+}
+
+#
+# Preview Environment Outputs
+#
+output "versions" {
+  value       = var.preview ? var.versions : null
+  description = "Base64 encoded JSON string of version overrides"
+}
+output "ingress_ips" {
+  value       = var.preview ? {
+    workspace = local.terra_apps["workspace_manager"] ? module.workspace_manager.ingress_ip : null
+  } : null
+  description = "Service ingress IPs"
+}
+output "fqdns" {
+  value       = var.preview ? {
+    workspace = local.terra_apps["workspace_manager"] ? module.workspace_manager.fqdn : null
+  } : null
+  description = "Service fully qualified domain names"
 }

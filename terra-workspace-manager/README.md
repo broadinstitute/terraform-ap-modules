@@ -28,11 +28,12 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | dependencies | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
 | enable | Enable flag for this module. If set to false, no resources will be created. | `bool` | `true` | no |
-| preview | Preview environment flag | `bool` | `false` | no |
 | google\_project | The google project in which to create resources | `string` | n/a | yes |
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
+| preview | Preview environment flag. Set to true if creating a preview environment. | `bool` | `false` | no |
+| preview\_shared | Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments. | `bool` | `false` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
