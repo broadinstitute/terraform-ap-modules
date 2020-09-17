@@ -211,13 +211,13 @@ output "versions" {
 }
 output "ingress_ips" {
   value       = var.preview ? {
-    workspace = local.terra_apps["workspace_manager"] ? module.workspace_manager.ingress_ip : null
+    workspacemanager = local.terra_apps["workspace_manager"] ? module.workspace_manager.ingress_ip : null
   } : null
   description = "Service ingress IPs"
 }
 output "fqdns" {
   value       = var.preview ? {
-    workspace = local.terra_apps["workspace_manager"] ? module.workspace_manager.fqdn : null
+    workspacemanager = local.terra_apps["workspace_manager"] ? module.workspace_manager.fqdn : null
   } : null
   description = "Service fully qualified domain names"
 }
