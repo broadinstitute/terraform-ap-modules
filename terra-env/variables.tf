@@ -56,7 +56,7 @@ variable "preview_shared" {
   description = "Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments."
   default     = false
 }
-variable "preview_versions" {
+variable "versions" {
   type = string
   description = "Base64 encoded JSON string of version overrides. Used for preview environments."
   default = "Cg=="

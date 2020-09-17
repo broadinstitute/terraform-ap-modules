@@ -29,7 +29,7 @@ No provider.
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 | preview | Preview environment flag. Set to true if creating a preview environment. | `bool` | `false` | no |
 | preview\_shared | Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments. | `bool` | `false` | no |
-| preview\_versions | Base64 encoded JSON string of version overrides. Used for preview environments. | `string` | `"Cg=="` | no |
+| versions | Base64 encoded JSON string of version overrides. Used for preview environments. | `string` | `"Cg=="` | no |
 | terra\_apps | Terra apps to enable. All disabled by default. | `map(bool)` | `{}` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
