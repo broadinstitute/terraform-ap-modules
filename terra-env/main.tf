@@ -77,8 +77,7 @@ module "workspace_manager" {
   cluster        = var.cluster
   cluster_short  = var.cluster_short
 
-  preview        = var.preview
-  preview_shared = var.preview_shared
+  env_type = var.env_type
 
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name

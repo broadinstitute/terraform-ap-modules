@@ -32,8 +32,7 @@ No requirements.
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
-| preview | Preview environment flag. Set to true if creating a preview environment. | `bool` | `false` | no |
-| preview\_shared | Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments. | `bool` | `false` | no |
+| env\_type | Environment type. Valid values are 'preview', 'preview\_shared', and 'default' | `string` | `"default"` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |

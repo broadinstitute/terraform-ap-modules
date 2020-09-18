@@ -36,17 +36,14 @@ locals {
 }
 
 #
-# Preview environment Vars
-#
-variable "preview" {
-  type        = bool
-  description = "Preview environment flag. Set to true if creating a preview environment."
-  default     = false
-}
-variable "preview_shared" {
-  type        = bool
-  description = "Preview environment shared resource flag. Set to true if creating a deployment for resources shared by all preview environments."
-  default     = false
+# Environment types:
+#   default: Standard persistent environments that contain a 'prod-like' set of infrastructure
+#   preview: Short-lived, ephemeral environments with various shortcuts and resource sharing to make them lightweight & quick to spin up/down
+#   preview_shared: A deployment with all of the infrastructure that is shared between the preview environments
+variable "env_type" {
+  type        = string
+  description = "Environment type. Valid values are 'preview', 'preview_shared', and 'default'"
+  default     = "default"
 }
 
 #
