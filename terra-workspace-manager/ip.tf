@@ -1,5 +1,5 @@
 resource "google_compute_address" "ingress_ip" {
-  count = var.enable && !var.preview ? 1 : 0
+  count = var.enable && contains(["default", "preview"], var.env_type) ? 1 : 0
 
   provider = google.target
 

@@ -41,10 +41,27 @@ variable "owner" {
 locals {
   owner = var.owner == "" ? terraform.workspace : var.owner
 }
-variable "preview" {
-  type        = bool
-  description = "Preview environment flag"
-  default     = false
+
+
+#
+# Environment types:
+#   default: Standard persistent environments that contain a 'prod-like' set of infrastructure
+#   preview: Short-lived, ephemeral environments with various shortcuts and resource sharing to make them lightweight & quick to spin up/down
+#   preview_shared: A deployment with all of the infrastructure that is shared between the preview environments
+variable "env_type" {
+  type        = string
+  description = "Environment type. Valid values are 'preview', 'preview_shared', and 'default'"
+  default     = "default"
+}
+
+
+#
+# Preview environment Vars
+#
+variable "versions" {
+  type = string
+  description = "Base64 encoded JSON string of version overrides. Used for preview environments."
+  default = "eyJyZWxlYXNlcyI6e319Cg=="
 }
 
 

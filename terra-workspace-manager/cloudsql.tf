@@ -1,7 +1,7 @@
 module "cloudsql" {
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.1"
 
-  enable = var.enable && !var.preview
+  enable = var.enable && contains(["default"], var.env_type)
 
   providers = {
     google.target = google.target

@@ -1,5 +1,5 @@
 resource "google_service_account" "sqlproxy" {
-  count = var.enable && !var.preview ? 1 : 0
+  count = var.enable && contains(["default"], var.env_type) ? 1 : 0
 
   provider     = google.target
   project      = var.google_project
@@ -7,7 +7,7 @@ resource "google_service_account" "sqlproxy" {
   display_name = "${local.service}-${local.owner}-sqlproxy"
 }
 resource "google_project_iam_member" "sqlproxy" {
-  count = var.enable && !var.preview ? 1 : 0
+  count = var.enable && contains(["default"], var.env_type) ? 1 : 0
   
   provider = google.target
   project  = var.google_project
@@ -16,7 +16,7 @@ resource "google_project_iam_member" "sqlproxy" {
 }
 
 resource "google_service_account" "cloud_trace" {
-  count = var.enable ? 1 : 0
+  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
 
   provider     = google.target
   project      = var.google_project
@@ -25,7 +25,7 @@ resource "google_service_account" "cloud_trace" {
 }
 
 resource "google_project_iam_member" "cloud_trace" {
-  count = var.enable ? 1 : 0
+  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
 
   provider = google.target
   project  = var.google_project

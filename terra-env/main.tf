@@ -69,14 +69,15 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.3.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.3.2"
 
   enable = local.terra_apps["workspace_manager"]
 
   google_project = var.google_project
   cluster        = var.cluster
   cluster_short  = var.cluster_short
-  preview        = var.preview
+
+  env_type = var.env_type
 
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
