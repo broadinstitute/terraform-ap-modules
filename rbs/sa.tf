@@ -19,12 +19,18 @@ resource "google_project_iam_member" "sqlproxy_role" {
 locals {
   app_sa_roles = [
     # Allow creating project.
-    "roles/resourcemanager.projectCreator",
+
 
     # Allow exporting metrics, profiling, and tracing for monitoring.
     "roles/monitoring.editor",
     "roles/cloudprofiler.agent",
     "roles/cloudtrace.agent",
+  ]
+
+  # Roles used to manage projects for integration testing.
+  app_folder_roles = [
+    # Allow creating project.
+    "roles/resourcemanager.projectCreator",
   ]
 }
 
@@ -48,4 +54,17 @@ resource "google_project_iam_member" "app_roles" {
   role     = local.app_sa_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
+
+
+# Grant Terra RBS App Service Account permission to modify resource in folder.
+resource "google_folder_iam_member" "app_folder_roles" {
+  // Skip if google_folder variable is not present.
+  count = var.enable && (var.google_folder_id != "") ? length(local.app_folder_roles) : 0
+
+  provider = google.target
+  folder  = var.google_folder_id
+  role     = local.app_folder_roles[count.index]
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+
 

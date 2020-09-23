@@ -158,3 +158,11 @@ variable "janitor_google_folder_id" {
   default     = ""
   description = "The folder ID in which Janitor has permission to cleanup resources."
 }
+
+# Terra RBS Vars
+#
+variable "rbs_google_folder_id" {
+  type        = string
+  default     = ""
+  description = "The folder ID in which RBS has permission"
+}

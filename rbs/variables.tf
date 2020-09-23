@@ -16,6 +16,11 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
+variable "google_folder_id" {
+  type        = string
+  description = "The folder in which RBS has permission."
+  default     = ""
+}
 variable "cluster" {
   type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
@@ -59,9 +64,9 @@ variable "hostname" {
   default     = ""
 }
 locals {
-  hostname       = var.hostname == "" ? local.service : var.hostname
-  cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
-  subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
+  hostname       = var.hostname
+  cluster_name   = var.cluster_short
+  subdomain_name = var.use_subdomain ? var.subdomain_name : ""
 }
 
 
@@ -93,8 +98,8 @@ variable "stairway_db_user" {
   default     = ""
 }
 locals {
-  db_name          = var.db_name == "" ? local.service : var.db_name
-  db_user          = var.db_user == "" ? local.service : var.db_user
-  stairway_db_name = var.stairway_db_name == "" ? "${local.service}-stairway" : var.stairway_db_name
-  stairway_db_user = var.stairway_db_user == "" ? "${local.service}-stairway" : var.stairway_db_user
+  db_name          = var.db_name
+  db_user          = var.db_user
+  stairway_db_name = var.stairway_db_name
+  stairway_db_user = var.stairway_db_user
 }
