@@ -256,3 +256,11 @@ output "rbs_stairway_db_creds" {
   description = "Terra RBS Stairway database user credentials"
   sensitive   = true
 }
+output "rbs_ingress_ip" {
+  value       = module.rbs.ingress_ip
+  description = "Terra RBS ingress IP"
+}
+output "rbs_fqdn" {
+  value       = module.rbs.fqdn
+  description = "Terra RBS fully qualified domain name"
+}

@@ -97,4 +97,6 @@ No provider.
 | rbs\_db\_root\_pass | Terra RBS database root password |
 | rbs\_db\_creds | Terra RBS database user credentials |
 | rbs\_stairway\_db\_creds | Terra RBS Stairway database user credentials |
+| rbs\_ingress\_ip | Terra RBS ingress IP |
+| rbs\_fqdn | Terra RBS fully qualified domain name |
 
