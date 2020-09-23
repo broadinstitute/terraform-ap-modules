@@ -37,7 +37,6 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "rbs"
 }
 
 #
