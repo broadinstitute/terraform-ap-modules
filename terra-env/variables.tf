@@ -83,6 +83,7 @@ locals {
     crl_janitor           = false,
     datarepo              = false,
     ontology              = false,
+    rbs                   = false,
     },
     var.terra_apps
   )

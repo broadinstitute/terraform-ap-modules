@@ -90,4 +90,11 @@ No provider.
 | versions | Base64 encoded JSON string of version overrides |
 | ingress\_ips | Service ingress IPs |
 | fqdns | Service fully qualified domain names |
+| rbs\_sa\_id | Terra RBS Google service account ID |
+| rbs\_sqlproxy\_sa\_id | Terra RBS Cloud SQL Proxy Google service account ID |
+| rbs\_db\_ip | Terra RBS CloudSQL instance IP |
+| rbs\_db\_instance | Terra RBS CloudSQL instance name |
+| rbs\_db\_root\_pass | Terra RBS database root password |
+| rbs\_db\_creds | Terra RBS database user credentials |
+| rbs\_stairway\_db\_creds | Terra RBS Stairway database user credentials |
 
