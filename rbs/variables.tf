@@ -18,7 +18,7 @@ variable "google_project" {
 }
 variable "google_folder_id" {
   type        = string
-  description = "The folder in which RBS has permission."
+  description = "The folder in which Janitor has permission to delete resources."
   default     = ""
 }
 variable "cluster" {
@@ -33,11 +33,11 @@ variable "cluster_short" {
 variable "owner" {
   type        = string
   description = "Environment or developer. Defaults to TF workspace name if left blank."
-  default     = ""
+  default     = null
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "rbs"
+  service = "crljanitor"
 }
 
 #
@@ -64,9 +64,9 @@ variable "hostname" {
   default     = ""
 }
 locals {
-  hostname       = var.hostname
-  cluster_name   = var.cluster_short
-  subdomain_name = var.use_subdomain ? var.subdomain_name : ""
+  hostname       = var.hostname == "" ? local.service : var.hostname
+  cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
+  subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
 
 
@@ -98,8 +98,8 @@ variable "stairway_db_user" {
   default     = ""
 }
 locals {
-  db_name          = var.db_name
-  db_user          = var.db_user
-  stairway_db_name = var.stairway_db_name
-  stairway_db_user = var.stairway_db_user
+  db_name          = var.db_name == "" ? local.service : var.db_name
+  db_user          = var.db_user == "" ? local.service : var.db_user
+  stairway_db_name = var.stairway_db_name == "" ? "${local.service}-stairway" : var.stairway_db_name
+  stairway_db_user = var.stairway_db_user == "" ? "${local.service}-stairway" : var.stairway_db_user
 }
