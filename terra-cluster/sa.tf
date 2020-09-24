@@ -28,8 +28,6 @@ locals {
     "roles/monitoring.viewer",
     "roles/monitoring.metricWriter",
     "roles/logging.logWriter",
-    # Google Container Registry read access.
-    "roles/storage.objectViewer"
   ]
 }
 
