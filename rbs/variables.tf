@@ -18,7 +18,7 @@ variable "google_project" {
 }
 variable "google_folder_id" {
   type        = string
-  description = "The folder in which Janitor has permission to delete resources."
+  description = "The folder in which RBS has permission."
   default     = ""
 }
 variable "cluster" {
@@ -33,11 +33,11 @@ variable "cluster_short" {
 variable "owner" {
   type        = string
   description = "Environment or developer. Defaults to TF workspace name if left blank."
-  default     = null
+  default     = ""
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "crljanitor"
+  service = "rbs"
 }
 
 #
