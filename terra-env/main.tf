@@ -170,6 +170,8 @@ module "rbs" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
+  google_folder_id = var.rbs_google_folder_id
+
   providers = {
     google.target      = google.target
     google.dns         = google.dns
