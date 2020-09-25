@@ -1,6 +1,6 @@
 module "k8s-master" {
   # terraform-shared repo
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=k8s-master-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=k8s-master-0.2.3-tf-0.12"
   dependencies = [
     module.enable-services,
     google_compute_network.k8s-cluster-network
@@ -23,4 +23,6 @@ module "k8s-master" {
   }
 
   istio_enable = var.istio_enable
+
+  enable_shielded_nodes = true
 }

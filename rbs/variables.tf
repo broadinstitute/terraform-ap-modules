@@ -19,7 +19,7 @@ variable "google_project" {
 variable "google_folder_id" {
   type        = string
   description = "The folder in which RBS has permission."
-  default     = ""
+  default     = null
 }
 variable "cluster" {
   type        = string
