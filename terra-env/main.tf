@@ -157,7 +157,7 @@ module "ontology" {
 }
 
 module "rbs" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.2"
 
   enable = local.terra_apps["rbs"]
 
