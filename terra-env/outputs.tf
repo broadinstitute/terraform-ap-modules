@@ -221,3 +221,46 @@ output "fqdns" {
   } : null
   description = "Service fully qualified domain names"
 }
+
+#
+# Terra Resource Buffering Service Outputs
+#
+output "rbs_sa_id" {
+  value       = module.rbs.app_sa_id
+  description = "Terra RBS Google service account ID"
+}
+output "rbs_sqlproxy_sa_id" {
+  value       = module.rbs.sqlproxy_sa_id
+  description = "Terra RBS Cloud SQL Proxy Google service account ID"
+}
+output "rbs_db_ip" {
+  value       = module.rbs.cloudsql_public_ip
+  description = "Terra RBS CloudSQL instance IP"
+}
+output "rbs_db_instance" {
+  value       = module.rbs.cloudsql_instance_name
+  description = "Terra RBS CloudSQL instance name"
+}
+output "rbs_db_root_pass" {
+  value       = module.rbs.cloudsql_root_user_password
+  description = "Terra RBS database root password"
+  sensitive   = true
+}
+output "rbs_db_creds" {
+  value       = module.rbs.cloudsql_app_db_creds
+  description = "Terra RBS database user credentials"
+  sensitive   = true
+}
+output "rbs_stairway_db_creds" {
+  value       = module.rbs.cloudsql_app_stairway_db_creds
+  description = "Terra RBS Stairway database user credentials"
+  sensitive   = true
+}
+output "rbs_ingress_ip" {
+  value       = module.rbs.ingress_ip
+  description = "Terra RBS ingress IP"
+}
+output "rbs_fqdn" {
+  value       = module.rbs.fqdn
+  description = "Terra RBS fully qualified domain name"
+}
