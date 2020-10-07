@@ -13,26 +13,51 @@ variable "enable" {
 #
 # DNS Vars
 #
-variable "dns_name" {
+variable "datarepo_dns_name" {
   type        = string
   description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
   default     = ""
 }
+
+variable "grafana_dns_name" {
+  type        = string
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
+  default     = ""
+}
+
+variable "prometheus_dns_name" {
+  type        = string
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
+  default     = ""
+}
+
 variable "dns_zone_name" {
   type        = string
   description = "DNS zone name"
   default     = ""
 }
+
 variable "dns_zone_project" {
   type        = string
   description = "DNS zone project"
   default     = ""
 }
 
-variable "static_ip_name" {
+variable "datarepo_static_ip_name" {
   type        = string
   description = "Name of Data Repo's static IP"
 }
+
+variable "grafana_static_ip_name" {
+  type        = string
+  description = "Name of Data Repo's static IP"
+}
+
+variable "prometheus_static_ip_name" {
+  type        = string
+  description = "Name of Data Repo's static IP"
+}
+
 variable "static_ip_project" {
   type        = string
   description = "The google project where Data Repo's static IP lives"
