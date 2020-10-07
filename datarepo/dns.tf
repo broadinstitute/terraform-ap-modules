@@ -31,8 +31,8 @@ data "google_compute_global_address" "prometheus_ingress_ip" {
 }
 
 locals {
-  datarepo_fqdn = var.enable ? "${var.datarepo_dns_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
-  grafana_fqdn = var.enable ? "${var.grafana_dns_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
+  datarepo_fqdn   = var.enable ? "${var.datarepo_dns_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
+  grafana_fqdn    = var.enable ? "${var.grafana_dns_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
   prometheus_fqdn = var.enable ? "${var.prometheus_dns_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
 }
 
