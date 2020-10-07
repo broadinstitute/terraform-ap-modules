@@ -78,7 +78,6 @@ locals {
     poc                   = false,
     identity_concentrator = false,
     sam                   = false,
-    sam_persistence       = false,
     workspace_manager     = false,
     crl_janitor           = false,
     datarepo              = false,
@@ -165,4 +164,26 @@ variable "rbs_google_folder_id" {
   type        = string
   default     = ""
   description = "The folder ID in which RBS has permission"
+}
+
+#
+# Sam Vars
+#
+variable "sam_sdk_sa_count" {
+  type        = number
+  default     = 3
+  description = "How many Sam admin SDK service accounts for GSuite group/user management to create."
+}
+variable "sam_firestore_project_name" {
+  description = "Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank."
+  type        = string
+  default     = ""
+}
+variable "sam_firestore_billing_account_id" {
+  description = "Sam Firestore project billing account ID"
+  type        = string
+}
+variable "sam_firestore_folder_id" {
+  description = "Sam Firestore project folder ID"
+  type        = string
 }

@@ -42,7 +42,7 @@ No requirements.
 | authorized\_network\_cidrs | Array of CIDR blocks for authorized networks | `list(string)` | `[]` | no |
 | istio\_enable | Whether to enable Google's Istio implementation in the cluster | `bool` | `true` | no |
 | release\_channel | See official documentation for GKE release channels | `string` | `"REGULAR"` | no |
-| k8s\_version\_prefix | n/a | `string` | `"1.15.9"` | no |
+| k8s\_version\_prefix | Passed to k8s-cluster module to set minimum cluster version | `string` | n/a | yes |
 | node\_count\_default | Number of nodes default pool | `number` | `6` | no |
 | node\_count\_highmem | Number of nodes in highmem pool | `number` | `8` | no |
 | other\_gcr\_projects | List of projects with GCR that the k8s node pool needs access to for pulling images. | `list(string)` | `[]` | no |

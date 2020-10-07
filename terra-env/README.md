@@ -41,6 +41,11 @@ No provider.
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
+| rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |
+| sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
+| sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
+| sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | n/a | yes |
+| sam\_firestore\_folder\_id | Sam Firestore project folder ID | `string` | n/a | yes |
 
 ## Outputs
 
