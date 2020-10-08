@@ -130,10 +130,10 @@ module "datarepo" {
   # dns zone and project
   dns_zone_name       = var.datarepo_dns_zone_name
   dns_zone_project    = var.datarepo_dns_zone_project
-  # static ips
   datarepo_static_ip_name   = var.datarepo_static_ip_name
   grafana_static_ip_name    = var.grafana_static_ip_name
   prometheus_static_ip_name = var.prometheus_static_ip_name
+
   static_ip_project         = var.datarepo_static_ip_project
 
   providers = {

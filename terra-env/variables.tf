@@ -154,16 +154,19 @@ variable "datarepo_dns_zone_project" {
 }
 variable "datarepo_static_ip_name" {
   type        = string
+  default     = ""
   description = "Name of Data Repo's static IP"
 }
 
 variable "grafana_static_ip_name" {
   type        = string
+  default     = ""
   description = "Name of Data Repo's static IP"
 }
 
 variable "prometheus_static_ip_name" {
   type        = string
+  default     = ""
   description = "Name of Data Repo's static IP"
 }
 variable "datarepo_static_ip_project" {
