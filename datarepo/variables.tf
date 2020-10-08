@@ -46,19 +46,23 @@ variable "dns_zone_project" {
 variable "datarepo_static_ip_name" {
   type        = string
   description = "Name of Data Repo's static IP"
+  default     = ""
 }
 
 variable "grafana_static_ip_name" {
   type        = string
   description = "Name of Data Repo's static IP"
+  default     = ""
 }
 
 variable "prometheus_static_ip_name" {
   type        = string
   description = "Name of Data Repo's static IP"
+  default     = ""
 }
 
 variable "static_ip_project" {
   type        = string
   description = "The google project where Data Repo's static IP lives"
+  default     = ""
 }
