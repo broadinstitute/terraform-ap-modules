@@ -116,7 +116,7 @@ module "crl_janitor" {
 }
 
 module "datarepo" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=ms-moredns"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=terra-env-0.3.8"
 
   enable = local.terra_apps["datarepo"]
 
