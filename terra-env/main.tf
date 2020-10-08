@@ -116,19 +116,25 @@ module "crl_janitor" {
 }
 
 module "datarepo" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=datarepo-1.0.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=terra-env-0.3.8"
 
   enable = local.terra_apps["datarepo"]
 
   # Create Datarepo DNS records
   # data.<env>.envs-terra.bio
   # OR data.terra.bio for prod
-  dns_name         = var.datarepo_dns_name
-  dns_zone_name    = var.datarepo_dns_zone_name
-  dns_zone_project = var.datarepo_dns_zone_project
+  # gcp global ip names
+  datarepo_dns_name   = var.datarepo_dns_name
+  grafana_dns_name    = var.grafana_dns_name
+  prometheus_dns_name = var.prometheus_dns_name
+  # dns zone and project
+  dns_zone_name       = var.datarepo_dns_zone_name
+  dns_zone_project    = var.datarepo_dns_zone_project
+  datarepo_static_ip_name   = var.datarepo_static_ip_name
+  grafana_static_ip_name    = var.grafana_static_ip_name
+  prometheus_static_ip_name = var.prometheus_static_ip_name
 
-  static_ip_name    = var.datarepo_static_ip_name
-  static_ip_project = var.datarepo_static_ip_project
+  static_ip_project         = var.datarepo_static_ip_project
 
   providers = {
     google.target      = google.target
