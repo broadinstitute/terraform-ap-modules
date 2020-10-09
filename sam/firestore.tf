@@ -11,7 +11,7 @@ resource "google_project" "sam-firestore" {
   auto_create_network = false
 }
 
-module "enable-services" {
+module "enable-services-firestore" {
   source      = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=services-1.0.0"
 
   enable_flag = var.enable && contains(["default", "preview_shared"], var.env_type) ? true : false
