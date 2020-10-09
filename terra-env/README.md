@@ -63,12 +63,12 @@ No provider.
 | ic\_db\_instance | Identity Concentrator CloudSQL instance name |
 | ic\_db\_root\_pass | Identity Concentrator database root password |
 | ic\_db\_creds | Identity Concentrator database user credentials |
-| sam\_sa\_email | SAM Google service account email |
-| sam\_admin\_sdk\_sa\_emails | SAM admin SDK Google service account emails |
-| sam\_db\_ip | SAM CloudSQL instance IP |
-| sam\_db\_instance | SAM CloudSQL instance name |
-| sam\_db\_root\_password | SAM database root password |
-| sam\_db\_creds | SAM database user credentials |
+| sam\_app\_sa\_id | SAM Google service account ID |
+| sam\_admin\_sdk\_sa\_ids | SAM admin SDK Google service account IDs |
+| sam\_firestore\_sa\_id | Sam Firestore Google service account ID |
+| sam\_firestore\_project\_name | Sam Firestore project name |
+| sam\_ingress\_ip | Workspace Manager ingress IP |
+| sam\_fqdn | Workspace Manager fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
