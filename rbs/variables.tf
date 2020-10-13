@@ -103,3 +103,20 @@ locals {
   stairway_db_name = var.stairway_db_name == "" ? "${local.service}-stairway" : var.stairway_db_name
   stairway_db_user = var.stairway_db_user == "" ? "${local.service}-stairway" : var.stairway_db_user
 }
+
+#
+# APP SA account IAM Vars
+#
+# We separate whether the roles/billing.user is set on the RBS SA as its own flag because the
+# Broad SA that runs terraform does not want to have the broad permissions to set modify
+# permissions on the service account. This was done manually instead for the Broad.
+variable "billing_account_id" {
+  type        = string
+  description = "What billing account to assign to the project."
+}
+
+variable "enable_billing_user" {
+  type        = bool
+  description = "Whether to set the RBS SA as a billing user on the billing account."
+  default     = false
+}

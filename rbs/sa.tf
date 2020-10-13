@@ -18,9 +18,6 @@ resource "google_project_iam_member" "sqlproxy_role" {
 
 locals {
   app_sa_roles = [
-    # Allow creating project.
-
-
     # Allow exporting metrics, profiling, and tracing for monitoring.
     "roles/monitoring.editor",
     "roles/cloudprofiler.agent",
@@ -29,8 +26,9 @@ locals {
 
   # Roles used to manage projects for integration testing.
   app_folder_roles = [
-    # Allow creating project.
+    "roles/resourcemanager.folderAdmin",
     "roles/resourcemanager.projectCreator",
+    "roles/resourcemanager.projectDeleter",
   ]
 }
 
@@ -66,5 +64,14 @@ resource "google_folder_iam_member" "app_folder_roles" {
   role     = local.app_folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
+
+# Grant Terra RBS App Service Account permission use the billing account.
+resource "google_billing_account_iam_member" "app_billing_roles" {
+  count              = var.enable_billing_user ? 1 : 0
+  billing_account_id = var.billing_account_id
+  role               = "roles/billing.user"
+  member             = "serviceAccount:${google_service_account.app[0].email}"
+}
+
 
 

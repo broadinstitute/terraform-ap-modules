@@ -190,3 +190,13 @@ variable "rbs_google_folder_id" {
   default     = ""
   description = "The folder ID in which RBS has permission"
 }
+variable "rbs_billing_account_id" {
+  type        = string
+  default     = ""
+  description = "The billing account ID RBS has permission"
+}
+variable "rbs_enable_billing_user" {
+  type        = bool
+  description = "Whether to set the RBS SA as a billing user on the billing account."
+  default     = false
+}
