@@ -12,15 +12,15 @@ resource "google_project" "sam-firestore" {
 }
 
 module "enable-services-firestore" {
-  source      = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=services-1.0.0"
+  source      = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=gm-api-project"
 
   enable_flag = var.enable && contains(["default", "preview_shared"], var.env_type) ? true : false
 
   providers = {
     google.target = "google.target"
   }
-  project     = google_project.sam-firestore.name
-  services    = [
+  google_project = google_project.sam-firestore.name
+  services       = [
     "cloudfunctions.googleapis.com",
     "firestore.googleapis.com"
   ]
