@@ -30,6 +30,6 @@ output "fqdn" {
 # Firestore Outputs
 #
 output "firestore_project_name" {
-  value = var.enable && contains(["default", "preview_shared"], var.env_type) ? google_compute_address.ingress_ip[0].address : null
+  value = var.enable && contains(["default", "preview_shared"], var.env_type) ? google_project.sam-firestore[0].name : null
   description = "Sam Firestore project name"
 }
