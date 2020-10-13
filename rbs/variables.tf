@@ -105,7 +105,7 @@ locals {
 }
 
 #
-# APP SA account IAM Vars
+# Billing account IAM Vars
 #
 # We separate whether the roles/billing.user is set on the RBS SA as its own flag because the
 # Broad SA that runs terraform does not want to have the broad permissions to set modify
