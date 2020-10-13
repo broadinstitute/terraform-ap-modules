@@ -53,7 +53,6 @@ resource "google_project_iam_member" "app_roles" {
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
-
 # Grant Terra RBS App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
   // Skip if google_folder variable is not present.
@@ -66,8 +65,9 @@ resource "google_folder_iam_member" "app_folder_roles" {
 }
 
 # Grant Terra RBS App Service Account permission use the billing account.
+# If billing_account_id is empty, we won't set the RBS SA as a billing user
 resource "google_billing_account_iam_member" "app_billing_roles" {
-  count              = var.enable_billing_user ? 1 : 0
+  count = var.enable && (var.billing_account_id != "") ? 1 : 0
   billing_account_id = var.billing_account_id
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.app[0].email}"

@@ -113,10 +113,6 @@ locals {
 variable "billing_account_id" {
   type        = string
   description = "What billing account to assign to the project."
-}
-
-variable "enable_billing_user" {
-  type        = bool
-  description = "Whether to set the RBS SA as a billing user on the billing account."
-  default     = false
+  # If billing_account_id is empty, we won't set the RBS SA as a billing user
+  default     = ""
 }
