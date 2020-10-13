@@ -72,6 +72,3 @@ resource "google_billing_account_iam_member" "app_billing_roles" {
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.app[0].email}"
 }
-
-
-
