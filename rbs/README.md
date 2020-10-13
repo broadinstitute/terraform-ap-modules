@@ -19,6 +19,7 @@ No requirements.
 |------|---------|
 | google.dns | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -40,6 +41,8 @@ No requirements.
 | db\_user | Postgres username | `string` | `""` | no |
 | stairway\_db\_name | Stairway db name | `string` | `""` | no |
 | stairway\_db\_user | Stairway db username | `string` | `""` | no |
+| billing\_account\_id | What billing account to assign to the project. | `string` | n/a | yes |
+| enable\_billing\_user | Whether to set the RBS SA as a billing user on the billing account. | `bool` | `false` | no |
 
 ## Outputs
 
