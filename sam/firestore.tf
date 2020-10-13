@@ -19,7 +19,7 @@ module "enable-services-firestore" {
   providers = {
     google.target = google.target
   }
-  google_project = google_project.sam-firestore.name
+  google_project = google_project.sam-firestore[0].name
   services       = [
     "cloudfunctions.googleapis.com",
     "firestore.googleapis.com"
@@ -31,7 +31,7 @@ resource "google_service_account" "sam-firestore" {
   count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
 
   provider     = google.target
-  project      = google_project.sam-firestore.name
+  project      = google_project.sam-firestore[0].name
   account_id   = "${local.service}-${local.owner}-firestore"
   display_name = "${local.service}-${local.owner}-firestore"
 }
@@ -40,7 +40,7 @@ resource "google_project_iam_member" "sam-firestore" {
   count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
 
   provider = google.target
-  project  = google_project.sam-firestore.name
+  project  = google_project.sam-firestore[0].name
   role     = "roles/editor"
   member   = "serviceAccount:${google_service_account.sam-firestore[0].email}"
 }
