@@ -35,10 +35,14 @@ No provider.
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
-| datarepo\_dns\_name | Name for the Data Repo DNS record. Eg. data.alpha | `string` | `""` | no |
+| datarepo\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
+| grafana\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
+| prometheus\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | datarepo\_dns\_zone\_name | Zone where Data Repo DNS record should be provisioned | `string` | `""` | no |
 | datarepo\_dns\_zone\_project | Google Project where Data Repo DNS zone lives | `string` | `""` | no |
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
+| grafana\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
+| prometheus\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |

@@ -126,8 +126,20 @@ variable "wsm_db_keepers" {
 #
 variable "datarepo_dns_name" {
   type        = string
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
   default     = ""
-  description = "Name for the Data Repo DNS record. Eg. data.alpha"
+}
+
+variable "grafana_dns_name" {
+  type        = string
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
+  default     = ""
+}
+
+variable "prometheus_dns_name" {
+  type        = string
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
+  default     = ""
 }
 variable "datarepo_dns_zone_name" {
   type        = string
@@ -140,6 +152,18 @@ variable "datarepo_dns_zone_project" {
   description = "Google Project where Data Repo DNS zone lives"
 }
 variable "datarepo_static_ip_name" {
+  type        = string
+  default     = ""
+  description = "Name of Data Repo's static IP"
+}
+
+variable "grafana_static_ip_name" {
+  type        = string
+  default     = ""
+  description = "Name of Data Repo's static IP"
+}
+
+variable "prometheus_static_ip_name" {
   type        = string
   default     = ""
   description = "Name of Data Repo's static IP"
