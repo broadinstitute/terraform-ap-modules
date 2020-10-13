@@ -17,7 +17,7 @@ module "enable-services-firestore" {
   enable_flag = var.enable && contains(["default", "preview_shared"], var.env_type) ? true : false
 
   providers = {
-    google.target = "google.target"
+    google.target = google.target
   }
   google_project = google_project.sam-firestore.name
   services       = [
