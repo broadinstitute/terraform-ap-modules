@@ -178,7 +178,6 @@ module "rbs" {
 
   google_folder_id = var.rbs_google_folder_id
 
-  enable_billing_user = var.rbs_enable_billing_user
   billing_account_id = var.rbs_billing_account_id
 
   providers = {
