@@ -189,7 +189,7 @@ module "rbs" {
 module "consent" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=DDO-803-consent-k8s-initial"
 
-  enable = loacl.terra_apps["consent"]
+  enable = local.terra_apps["consent"]
 
   google_project = var.google_project
   cluster        = var.cluster
