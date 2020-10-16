@@ -210,13 +210,13 @@ output "versions" {
   description = "Base64 encoded JSON string of version overrides"
 }
 output "ingress_ips" {
-  value       = contains(["preview"], var.env_type) ? {
+  value = contains(["preview"], var.env_type) ? {
     workspacemanager = local.terra_apps["workspace_manager"] ? module.workspace_manager.ingress_ip : null
   } : null
   description = "Service ingress IPs"
 }
 output "fqdns" {
-  value       = contains(["preview"], var.env_type) ? {
+  value = contains(["preview"], var.env_type) ? {
     workspacemanager = local.terra_apps["workspace_manager"] ? module.workspace_manager.fqdn : null
   } : null
   description = "Service fully qualified domain names"
@@ -263,4 +263,17 @@ output "rbs_ingress_ip" {
 output "rbs_fqdn" {
   value       = module.rbs.fqdn
   description = "Terra RBS fully qualified domain name"
+}
+
+#
+# Consent Outputs
+#
+output "consent_ingress_ip" {
+  value       = module.consent.ingress_ip
+  description = "Static ip for consent LB"
+}
+
+output "consent_fqdn" {
+  value       = module.consent.fqdn
+  description = "fqdn for to access k8s consent deployment"
 }

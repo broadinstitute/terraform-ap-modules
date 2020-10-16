@@ -59,9 +59,9 @@ variable "env_type" {
 # Preview environment Vars
 #
 variable "versions" {
-  type = string
+  type        = string
   description = "Base64 encoded JSON string of version overrides. Used for preview environments."
-  default = "eyJyZWxlYXNlcyI6e319Cg=="
+  default     = "eyJyZWxlYXNlcyI6e319Cg=="
 }
 
 
@@ -84,6 +84,7 @@ locals {
     datarepo              = false,
     ontology              = false,
     rbs                   = false,
+    consent               = false,
     },
     var.terra_apps
   )
@@ -191,7 +192,11 @@ variable "rbs_google_folder_id" {
   description = "The folder ID in which RBS has permission"
 }
 variable "rbs_billing_account_id" {
+<<<<<<< HEAD
   type        = string
+=======
+  type = string
+>>>>>>> origin/master
   # If billing_account_id is empty, we won't set the RBS SA as a billing user
   default     = ""
   description = "The billing account ID RBS has permission to use"

@@ -128,13 +128,13 @@ module "datarepo" {
   grafana_dns_name    = var.grafana_dns_name
   prometheus_dns_name = var.prometheus_dns_name
   # dns zone and project
-  dns_zone_name       = var.datarepo_dns_zone_name
-  dns_zone_project    = var.datarepo_dns_zone_project
+  dns_zone_name             = var.datarepo_dns_zone_name
+  dns_zone_project          = var.datarepo_dns_zone_project
   datarepo_static_ip_name   = var.datarepo_static_ip_name
   grafana_static_ip_name    = var.grafana_static_ip_name
   prometheus_static_ip_name = var.prometheus_static_ip_name
 
-  static_ip_project         = var.datarepo_static_ip_project
+  static_ip_project = var.datarepo_static_ip_project
 
   providers = {
     google.target      = google.target
@@ -164,7 +164,9 @@ module "ontology" {
 
 module "rbs" {
   // source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.4"
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.4"
+  // source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.5"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=yyu-PF-127"
+
   enable = local.terra_apps["rbs"]
 
   google_project = var.google_project
@@ -183,5 +185,24 @@ module "rbs" {
     google.target      = google.target
     google.dns         = google.dns
     google-beta.target = google-beta.target
+  }
+}
+
+module "consent" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.0.2"
+
+  enable = local.terra_apps["consent"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target = google.target
+    google.dns    = google.dns
   }
 }
