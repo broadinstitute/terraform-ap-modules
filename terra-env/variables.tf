@@ -192,11 +192,7 @@ variable "rbs_google_folder_id" {
   description = "The folder ID in which RBS has permission"
 }
 variable "rbs_billing_account_id" {
-<<<<<<< HEAD
-  type        = string
-=======
   type = string
->>>>>>> origin/master
   # If billing_account_id is empty, we won't set the RBS SA as a billing user
   default     = ""
   description = "The billing account ID RBS has permission to use"
