@@ -2,11 +2,15 @@
 # Service Account Outputs
 #
 output "sqlproxy_sa_id" {
-  value       = var.enable && contains(["default"], var.env_type) ? google_service_account.sqlproxy[0].account_id : null
+  value       = length(google_service_account.sqlproxy) > 0 ? google_service_account.sqlproxy[0].account_id : null
   description = "Workspace Manager Cloud SQL Proxy Google service account ID"
 }
+output "app_sa_id" {
+  value       = length(google_service_account.app) > 0 ? google_service_account.app[0].account_id : null
+  description = "Workspace Manager App Google service account ID"
+}
 output "cloud_trace_sa_id" {
-  value       = var.enable && contains(["default", "preview_shared"], var.env_type) ? google_service_account.cloud_trace[0].account_id : null
+  value       = length(google_service_account.cloud_trace) > 0 ? google_service_account.cloud_trace[0].account_id : null
   description = "Workspace Manager Cloud trace Google service account ID"
 }
 

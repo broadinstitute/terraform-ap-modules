@@ -112,6 +112,15 @@ variable "use_subdomain" {
 #
 # Workspace Manager Vars
 #
+variable "wsm_workspace_project_folder_id" {
+  type = string
+  description = "What google folder within which to create a folder for creating workspace google projects."
+}
+variable "wsm_billing_account_ids" {
+  type = list(string)
+  description = "List of Google billing account ids to allow WM to use for billing workspace google projects."
+  default = []
+}
 variable "wsm_db_version" {
   type        = string
   default     = "POSTGRES_9_6"

@@ -47,14 +47,20 @@ variable "env_type" {
 }
 
 #
-# Service Account Vars
+# Service Vars
 #
-locals {
-  sa_roles = [
-    "roles/cloudsql.client"
-  ]
+variable "workspace_project_folder_id" {
+  type = string
+  description = "What google folder within which to create a folder for creating workspace google projects."
+  default = null
 }
 
+# This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
+variable "billing_account_ids" {
+  type = list(string)
+  description = "List of Google billing account ids to allow WSM to use for billing workspace google projects."
+  default = []
+}
 
 #
 # DNS Vars

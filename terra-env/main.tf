@@ -69,7 +69,9 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.3.2"
+  # DO NOT SUBMIT use github tag.
+  source = "../terra-workspace-manager"
+  #source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.3.2"
 
   enable = local.terra_apps["workspace_manager"]
 
@@ -85,6 +87,9 @@ module "workspace_manager" {
 
   db_version = var.wsm_db_version
   db_keepers = var.wsm_db_keepers
+
+  workspace_project_folder_id = var.wsm_workspace_project_folder_id
+  billing_account_ids = var.wsm_billing_account_ids
 
   providers = {
     google.target      = google.target
