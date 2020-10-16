@@ -187,7 +187,7 @@ module "rbs" {
 }
 
 module "consent" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=DDO-803-consent-k8s-initial"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.0.2"
 
   enable = local.terra_apps["consent"]
 
