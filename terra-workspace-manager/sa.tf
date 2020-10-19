@@ -43,14 +43,14 @@ resource "google_service_account" "app" {
 }
 
 resource "google_project_iam_member" "app" {
-  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_sa_roles) : 0
+  count    = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_sa_roles) : 0
   provider = google.target
   project  = var.google_project
   role     = local.app_sa_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 resource "google_folder_iam_member" "app" {
-  count    = length(google_folder.workspace_project_folder) > 0 ? length(local.app_folder_roles) : 0
+  count    = var.enable && contains(["default", "preview_shared"], var.env_type) && var.workspace_project_folder_id != null ? length(local.app_folder_roles) : 0
   provider = google.target
   folder   = google_folder.workspace_project_folder[0].id
   role     = local.app_folder_roles[count.index]
