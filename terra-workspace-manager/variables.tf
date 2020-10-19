@@ -50,16 +50,16 @@ variable "env_type" {
 # Service Vars
 #
 variable "workspace_project_folder_id" {
-  type = string
+  type        = string
   description = "What google folder within which to create a folder for creating workspace google projects."
-  default = null
+  default     = null
 }
 
 # This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
 variable "billing_account_ids" {
-  type = list(string)
+  type        = list(string)
   description = "List of Google billing account ids to allow WSM to use for billing workspace google projects."
-  default = []
+  default     = []
 }
 
 #

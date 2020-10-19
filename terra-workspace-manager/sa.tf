@@ -9,7 +9,7 @@ resource "google_service_account" "sqlproxy" {
 }
 resource "google_project_iam_member" "sqlproxy" {
   count = var.enable && contains(["default"], var.env_type) ? 1 : 0
-  
+
   provider = google.target
   project  = var.google_project
   role     = "roles/cloudsql.client"
@@ -43,15 +43,14 @@ resource "google_service_account" "app" {
 }
 
 resource "google_billing_account_iam_member" "crl_test_admin" {
-  count              = var.enable && contains(["default", "preview_shared"], var.env_type) ? length
-  (var.billing_account_ids) : 0
+  count              = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(var.billing_account_ids) : 0
   billing_account_id = var.billing_account_ids[count.index]
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.app.email}"
 }
 
 resource "google_folder_iam_member" "app_folder_roles" {
-  count    = var.enable && contains(["default", "preview_shared"], var.env_type)? length(local.app_folder_roles) : 0
+  count    = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_folder_roles) : 0
   provider = google.target
   folder   = google_folder.workspace_project_folder.id
   role     = local.app_folder_roles[count.index]

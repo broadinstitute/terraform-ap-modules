@@ -6,8 +6,8 @@ module "cloudsql" {
   providers = {
     google.target = google.target
   }
-  project       = var.google_project
-  cloudsql_name = "${local.service}-db-${local.owner}"
+  project          = var.google_project
+  cloudsql_name    = "${local.service}-db-${local.owner}"
   cloudsql_version = var.db_version
   cloudsql_keepers = var.db_keepers
   cloudsql_instance_labels = {

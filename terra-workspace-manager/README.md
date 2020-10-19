@@ -21,6 +21,7 @@ No requirements.
 |------|---------|
 | google.dns | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -33,6 +34,8 @@ No requirements.
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 | env\_type | Environment type. Valid values are 'preview', 'preview\_shared', and 'default' | `string` | `"default"` | no |
+| workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. | `string` | `null` | no |
+| billing\_account\_ids | List of Google billing account ids to allow WSM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
@@ -50,6 +53,7 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
+| app\_sa\_id | Workspace Manager App Google service account ID |
 | cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | ingress\_ip | Workspace Manager ingress IP |
 | fqdn | Workspace Manager fully qualified domain name |
