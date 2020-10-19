@@ -99,6 +99,10 @@ output "workspace_sqlproxy_sa_id" {
   value       = module.workspace_manager.sqlproxy_sa_id
   description = "Workspace Manager Cloud SQL Proxy Google service account ID"
 }
+output "workspace_app_sa_id" {
+  value       = module.workspace_manager.app_sa_id
+  description = "Workspace Manager App Google service account ID"
+}
 output "workspace_cloud_trace_sa_id" {
   value       = module.workspace_manager.cloud_trace_sa_id
   description = "Workspace Manager Cloud trace Google service account ID"
