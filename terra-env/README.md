@@ -46,6 +46,7 @@ No provider.
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |
+| rbs\_billing\_account\_id | The billing account ID RBS has permission to use | `string` | `""` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
 | sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | n/a | yes |
@@ -108,4 +109,6 @@ No provider.
 | rbs\_stairway\_db\_creds | Terra RBS Stairway database user credentials |
 | rbs\_ingress\_ip | Terra RBS ingress IP |
 | rbs\_fqdn | Terra RBS fully qualified domain name |
+| consent\_ingress\_ip | Static ip for consent LB |
+| consent\_fqdn | fqdn for to access k8s consent deployment |
 
