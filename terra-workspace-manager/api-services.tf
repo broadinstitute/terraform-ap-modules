@@ -4,7 +4,7 @@ module "enable-services" {
   providers = {
     google.target = google.target
   }
-  project = google_project
+  project = var.google_project
   services = [
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",

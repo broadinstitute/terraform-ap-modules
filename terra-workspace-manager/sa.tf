@@ -42,19 +42,25 @@ resource "google_service_account" "app" {
   display_name = "${local.service}-${local.owner}"
 }
 
-resource "google_billing_account_iam_member" "crl_test_admin" {
+resource "google_project_iam_member" "app" {
+  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_sa_roles) : 0
+  provider = google.target
+  project  = var.google_project
+  role     = local.app_sa_roles[count.index]
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+resource "google_folder_iam_member" "app" {
+  count    = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_folder_roles) : 0
+  provider = google.target
+  folder   = google_folder.workspace_project_folder[0].id
+  role     = local.app_folder_roles[count.index]
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+resource "google_billing_account_iam_member" "app" {
   count              = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(var.billing_account_ids) : 0
   billing_account_id = var.billing_account_ids[count.index]
   role               = "roles/billing.user"
-  member             = "serviceAccount:${google_service_account.app.email}"
-}
-
-resource "google_folder_iam_member" "app_folder_roles" {
-  count    = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_folder_roles) : 0
-  provider = google.target
-  folder   = google_folder.workspace_project_folder.id
-  role     = local.app_folder_roles[count.index]
-  member   = "serviceAccount:${google_service_account.app.email}"
+  member             = "serviceAccount:${google_service_account.app[0].email}"
 }
 
 # TODO(wchamber): Remove the cloud_trace SA in favor of the single "app" SA.
