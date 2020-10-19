@@ -89,7 +89,7 @@ module "workspace_manager" {
   db_keepers = var.wsm_db_keepers
 
   workspace_project_folder_id = var.wsm_workspace_project_folder_id
-  billing_account_ids = var.wsm_billing_account_ids
+  billing_account_ids         = var.wsm_billing_account_ids
 
   providers = {
     google.target      = google.target

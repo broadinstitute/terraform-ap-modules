@@ -8,6 +8,7 @@ module "enable-services" {
   services = [
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
+    "cloudtrace.googleapis.com",
     "logging.googleapis.com",
     "monitoring.googleapis.com",
     "storage-api.googleapis.com",
