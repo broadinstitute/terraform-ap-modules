@@ -50,7 +50,7 @@ resource "google_project_iam_member" "app" {
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 resource "google_folder_iam_member" "app" {
-  count    = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(local.app_folder_roles) : 0
+  count    = length(google_folder.workspace_project_folder) > 0 ? length(local.app_folder_roles) : 0
   provider = google.target
   folder   = google_folder.workspace_project_folder[0].id
   role     = local.app_folder_roles[count.index]
