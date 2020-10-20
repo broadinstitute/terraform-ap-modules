@@ -4,7 +4,7 @@
 # output service accounts.
 #
 output "service_account_editor_email" {
-  value       = google_service_account.rbs_editor.email
+  value       = google_service_account.rbs_test_editor.email
   description = "Editor permission Google service account email in RBS test"
 }
 output "service_account_viewer_email" {
