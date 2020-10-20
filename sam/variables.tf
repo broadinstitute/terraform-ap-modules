@@ -101,5 +101,5 @@ variable "firestore_folder_id" {
   type        = string
 }
 locals {
-  firestore_project_name = var.firestore_project_name == "" ? "${local.service}-${local.owner}-firestore" : var.firestore_project_name
+  firestore_project_name = var.firestore_project_name == "" ? "terra-${local.service}-${local.owner}-firestore" : var.firestore_project_name
 }
