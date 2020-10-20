@@ -61,35 +61,29 @@ output "ic_db_creds" {
 #
 # Sam Outputs
 #
-output "sam_sa_email" {
-  value       = module.sam.service_account_email
-  description = "SAM Google service account email"
+output "sam_app_sa_id" {
+  value       = module.sam.app_sa_id
+  description = "SAM Google service account ID"
 }
-output "sam_admin_sdk_sa_emails" {
-  value       = module.sam.admin_sdk_service_account_emails
-  description = "SAM admin SDK Google service account emails"
+output "sam_admin_sdk_sa_ids" {
+  value       = module.sam.admin_sdk_sa_ids
+  description = "SAM admin SDK Google service account IDs"
 }
-
-#
-# Sam Persistence Outputs
-#
-output "sam_db_ip" {
-  value       = module.sam_persistence.cloudsql_public_ip
-  description = "SAM CloudSQL instance IP"
+output "sam_firestore_sa_email" {
+  value       = module.sam.firestore_sa_email
+  description = "Sam Firestore Google service account email"
 }
-output "sam_db_instance" {
-  value       = module.sam_persistence.cloudsql_instance_name
-  description = "SAM CloudSQL instance name"
+output "sam_firestore_project_name" {
+  value       = module.sam.firestore_project_name
+  description = "Sam Firestore project name"
 }
-output "sam_db_root_password" {
-  value       = module.sam_persistence.cloudsql_root_user_password
-  description = "SAM database root password"
-  sensitive   = true
+output "sam_ingress_ip" {
+  value       = module.sam.ingress_ip
+  description = "Workspace Manager ingress IP"
 }
-output "sam_db_creds" {
-  value       = module.sam_persistence.cloudsql_app_db_creds
-  description = "SAM database user credentials"
-  sensitive   = true
+output "sam_fqdn" {
+  value       = module.sam.fqdn
+  description = "Workspace Manager fully qualified domain name"
 }
 
 #

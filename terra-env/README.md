@@ -47,6 +47,10 @@ No provider.
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |
 | rbs\_billing\_account\_id | The billing account ID RBS has permission to use | `string` | `""` | no |
+| sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
+| sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
+| sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | n/a | yes |
+| sam\_firestore\_folder\_id | Sam Firestore project folder ID | `string` | n/a | yes |
 
 ## Outputs
 
@@ -64,12 +68,12 @@ No provider.
 | ic\_db\_instance | Identity Concentrator CloudSQL instance name |
 | ic\_db\_root\_pass | Identity Concentrator database root password |
 | ic\_db\_creds | Identity Concentrator database user credentials |
-| sam\_sa\_email | SAM Google service account email |
-| sam\_admin\_sdk\_sa\_emails | SAM admin SDK Google service account emails |
-| sam\_db\_ip | SAM CloudSQL instance IP |
-| sam\_db\_instance | SAM CloudSQL instance name |
-| sam\_db\_root\_password | SAM database root password |
-| sam\_db\_creds | SAM database user credentials |
+| sam\_app\_sa\_id | SAM Google service account ID |
+| sam\_admin\_sdk\_sa\_ids | SAM admin SDK Google service account IDs |
+| sam\_firestore\_sa\_email | Sam Firestore Google service account email |
+| sam\_firestore\_project\_name | Sam Firestore project name |
+| sam\_ingress\_ip | Workspace Manager ingress IP |
+| sam\_fqdn | Workspace Manager fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
