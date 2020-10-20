@@ -69,9 +69,9 @@ output "sam_admin_sdk_sa_ids" {
   value       = module.sam.admin_sdk_sa_ids
   description = "SAM admin SDK Google service account IDs"
 }
-output "sam_firestore_sa_id" {
-  value       = module.sam.firestore_sa_id
-  description = "Sam Firestore Google service account ID"
+output "sam_firestore_sa_email" {
+  value       = module.sam.firestore_sa_email
+  description = "Sam Firestore Google service account email"
 }
 output "sam_firestore_project_name" {
   value       = module.sam.firestore_project_name

@@ -9,9 +9,9 @@ output "admin_sdk_sa_ids" {
   value       = var.enable && contains(["default", "preview_shared"], var.env_type) ? google_service_account.sam_admin_sdk.*.account_id : null
   description = "Sam admin SDK Google service account IDs"
 }
-output "firestore_sa_id" {
-  value       = var.enable && contains(["default", "preview_shared"], var.env_type) ? google_service_account.sam-firestore[0].account_id : null
-  description = "Sam Firestore Google service account ID"
+output "firestore_sa_email" {
+  value       = var.enable && contains(["default", "preview_shared"], var.env_type) ? google_service_account.sam-firestore[0].email : null
+  description = "Sam Firestore Google service account email"
 }
 
 #

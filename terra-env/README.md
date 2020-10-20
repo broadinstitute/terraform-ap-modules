@@ -70,7 +70,7 @@ No provider.
 | ic\_db\_creds | Identity Concentrator database user credentials |
 | sam\_app\_sa\_id | SAM Google service account ID |
 | sam\_admin\_sdk\_sa\_ids | SAM admin SDK Google service account IDs |
-| sam\_firestore\_sa\_id | Sam Firestore Google service account ID |
+| sam\_firestore\_sa\_email | Sam Firestore Google service account email |
 | sam\_firestore\_project\_name | Sam Firestore project name |
 | sam\_ingress\_ip | Workspace Manager ingress IP |
 | sam\_fqdn | Workspace Manager fully qualified domain name |

@@ -59,7 +59,7 @@ No requirements.
 |------|-------------|
 | app\_sa\_id | Sam app Google service account ID |
 | admin\_sdk\_sa\_ids | Sam admin SDK Google service account IDs |
-| firestore\_sa\_id | Sam Firestore Google service account ID |
+| firestore\_sa\_email | Sam Firestore Google service account email |
 | ingress\_ip | Sam ingress IP |
 | fqdn | Sam fully qualified domain name |
 | firestore\_project\_name | Sam Firestore project name |
