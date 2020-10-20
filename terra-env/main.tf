@@ -69,9 +69,7 @@ module "sam_persistence" {
 }
 
 module "workspace_manager" {
-  # DO NOT SUBMIT use github tag.
-  source = "../terra-workspace-manager"
-  #source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.3.2"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.4.0"
 
   enable = local.terra_apps["workspace_manager"]
 
