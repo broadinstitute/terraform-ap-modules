@@ -33,6 +33,8 @@ No provider.
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
+| wsm\_workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. | `string` | `null` | no |
+| wsm\_billing\_account\_ids | List of Google billing account ids to allow WM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_9_6"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | datarepo\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
@@ -49,8 +51,8 @@ No provider.
 | rbs\_billing\_account\_id | The billing account ID RBS has permission to use | `string` | `""` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
-| sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | n/a | yes |
-| sam\_firestore\_folder\_id | Sam Firestore project folder ID | `string` | n/a | yes |
+| sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | `""` | no |
+| sam\_firestore\_folder\_id | Sam Firestore project folder ID | `string` | `""` | no |
 
 ## Outputs
 
@@ -75,6 +77,7 @@ No provider.
 | sam\_ingress\_ip | Workspace Manager ingress IP |
 | sam\_fqdn | Workspace Manager fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
+| workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
 | workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
 | workspace\_db\_instance | Workspace Manager CloudSQL instance name |

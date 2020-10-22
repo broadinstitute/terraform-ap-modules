@@ -223,8 +223,10 @@ variable "sam_firestore_project_name" {
 variable "sam_firestore_billing_account_id" {
   description = "Sam Firestore project billing account ID"
   type        = string
+  default     = ""
 }
 variable "sam_firestore_folder_id" {
   description = "Sam Firestore project folder ID"
   type        = string
+  default     = ""
 }
