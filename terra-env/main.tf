@@ -195,7 +195,7 @@ module "rbs" {
 module "consent" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.0.2"
 
-  enable = local.terra_apps["rawls"]
+  enable = local.terra_apps["consent"]
 
   google_project = var.google_project
   cluster        = var.cluster
@@ -213,6 +213,8 @@ module "consent" {
 
 module "rawls" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=DDO-824-expose-rawls-k8s"
+
+  enable = local.terra_apps["rawls"]
 
   google_project = var.google_project
   cluster        = var.cluster
