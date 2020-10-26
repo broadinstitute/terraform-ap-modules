@@ -49,6 +49,7 @@ No provider.
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |
 | rbs\_billing\_account\_id | The billing account ID RBS has permission to use | `string` | `""` | no |
+| sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
 | sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | `""` | no |
