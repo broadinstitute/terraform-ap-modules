@@ -19,7 +19,7 @@ module "enable-services-firestore" {
   providers = {
     google.target = google.target
   }
-  google_project = var.enable && contains(["preview_shared"] ? google_project.sam-firestore[0].name : ""
+  google_project = var.enable && contains(["preview_shared"], var.env_type) ? google_project.sam-firestore[0].name : ""
   services       = [
     "cloudfunctions.googleapis.com",
     "firestore.googleapis.com"
