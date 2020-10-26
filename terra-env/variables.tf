@@ -84,6 +84,7 @@ locals {
     ontology              = false,
     rbs                   = false,
     consent               = false,
+    rawls                 = false,
     },
     var.terra_apps
   )

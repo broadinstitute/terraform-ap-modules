@@ -275,3 +275,16 @@ output "consent_fqdn" {
   value       = module.consent.fqdn
   description = "fqdn for to access k8s consent deployment"
 }
+
+#
+# Rawls Outputs
+#
+output "rawls_ingress_ip" {
+  value       = module.rawls.ingress_ip
+  description = "Static ip for rawls LB"
+}
+
+output "rawls_fqdn" {
+  value       = module.rawls.fqdn
+  description = "fqdn for to access k8s rawls deployment"
+}
