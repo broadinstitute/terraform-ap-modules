@@ -114,4 +114,6 @@ No provider.
 | rbs\_fqdn | Terra RBS fully qualified domain name |
 | consent\_ingress\_ip | Static ip for consent LB |
 | consent\_fqdn | fqdn for to access k8s consent deployment |
+| rawls\_ingress\_ip | Static ip for rawls LB |
+| rawls\_fqdn | fqdn for to access k8s rawls deployment |
 
