@@ -74,8 +74,9 @@ No provider.
 | sam\_admin\_sdk\_sa\_ids | SAM admin SDK Google service account IDs |
 | sam\_firestore\_sa\_email | Sam Firestore Google service account email |
 | sam\_firestore\_project\_name | Sam Firestore project name |
-| sam\_ingress\_ip | Workspace Manager ingress IP |
-| sam\_fqdn | Workspace Manager fully qualified domain name |
+| sam\_ingress\_ip | Sam ingress IP |
+| sam\_ingress\_ip\_name | Sam ingress IP name |
+| sam\_fqdn | Sam fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
 | workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |

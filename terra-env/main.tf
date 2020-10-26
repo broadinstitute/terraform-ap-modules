@@ -45,7 +45,7 @@ module "identity_concentrator" {
 }
 
 module "sam" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.2.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=gm-sam"
   enable = local.terra_apps["sam"]
 
   providers = {
