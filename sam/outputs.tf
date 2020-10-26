@@ -18,11 +18,11 @@ output "firestore_sa_email" {
 # IP/DNS Outputs
 #
 output "ingress_ip" {
-  value       = var.enable && contains(["default", "preview"], var.env_type) ? google_compute_address.ingress_ip[0].address : null
+  value       = var.enable && contains(["default", "preview"], var.env_type) ? google_compute_global_address.ingress_ip[0].address : null
   description = "Sam ingress IP"
 }
 output "ingress_ip_name" {
-  value       = var.enable && contains(["default", "preview"], var.env_type) ? google_compute_address.ingress_ip[0].name : null
+  value       = var.enable && contains(["default", "preview"], var.env_type) ? google_compute_global_address.ingress_ip[0].name : null
   description = "Sam ingress IP name"
 }
 output "fqdn" {
