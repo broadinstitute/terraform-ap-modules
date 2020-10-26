@@ -212,7 +212,7 @@ module "consent" {
 }
 
 module "rawls" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=DDO-824-expose-rawls-k8s"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.0.1"
 
   enable = local.terra_apps["rawls"]
 
