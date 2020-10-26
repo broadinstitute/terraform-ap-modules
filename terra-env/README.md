@@ -49,6 +49,7 @@ No provider.
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |
 | rbs\_billing\_account\_id | The billing account ID RBS has permission to use | `string` | `""` | no |
+| sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
 | sam\_firestore\_billing\_account\_id | Sam Firestore project billing account ID | `string` | `""` | no |
@@ -74,8 +75,9 @@ No provider.
 | sam\_admin\_sdk\_sa\_ids | SAM admin SDK Google service account IDs |
 | sam\_firestore\_sa\_email | Sam Firestore Google service account email |
 | sam\_firestore\_project\_name | Sam Firestore project name |
-| sam\_ingress\_ip | Workspace Manager ingress IP |
-| sam\_fqdn | Workspace Manager fully qualified domain name |
+| sam\_ingress\_ip | Sam ingress IP |
+| sam\_ingress\_ip\_name | Sam ingress IP name |
+| sam\_fqdn | Sam fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
 | workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
@@ -114,4 +116,6 @@ No provider.
 | rbs\_fqdn | Terra RBS fully qualified domain name |
 | consent\_ingress\_ip | Static ip for consent LB |
 | consent\_fqdn | fqdn for to access k8s consent deployment |
+| rawls\_ingress\_ip | Static ip for rawls LB |
+| rawls\_fqdn | fqdn for to access k8s rawls deployment |
 

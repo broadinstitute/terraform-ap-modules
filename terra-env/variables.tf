@@ -211,6 +211,11 @@ variable "rbs_billing_account_id" {
 #
 # Sam Vars
 #
+variable "sam_hostname" {
+  description = "Sam ingress hostname"
+  type        = string
+  default     = "sam"
+}
 variable "sam_sdk_sa_count" {
   type        = number
   default     = 3

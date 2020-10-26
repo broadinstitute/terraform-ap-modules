@@ -45,7 +45,7 @@ module "identity_concentrator" {
 }
 
 module "sam" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.2.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.3.0"
   enable = local.terra_apps["sam"]
 
   providers = {
@@ -59,6 +59,7 @@ module "sam" {
 
   env_type = var.env_type
 
+  hostname       = var.sam_hostname
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain

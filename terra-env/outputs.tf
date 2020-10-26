@@ -79,11 +79,15 @@ output "sam_firestore_project_name" {
 }
 output "sam_ingress_ip" {
   value       = module.sam.ingress_ip
-  description = "Workspace Manager ingress IP"
+  description = "Sam ingress IP"
+}
+output "sam_ingress_ip_name" {
+  value       = module.sam.ingress_ip_name
+  description = "Sam ingress IP name"
 }
 output "sam_fqdn" {
   value       = module.sam.fqdn
-  description = "Workspace Manager fully qualified domain name"
+  description = "Sam fully qualified domain name"
 }
 
 #

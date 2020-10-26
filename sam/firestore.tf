@@ -1,6 +1,6 @@
 # Google project for Sam Firestore
 resource "google_project" "sam-firestore" {
-  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
+  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
 
   provider = google.target
 
@@ -14,12 +14,12 @@ resource "google_project" "sam-firestore" {
 module "enable-services-firestore" {
   source      = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=gm-api-project"
 
-  enable_flag = var.enable && contains(["default", "preview_shared"], var.env_type)
+  enable_flag = var.enable && contains(["preview_shared"], var.env_type)
 
   providers = {
     google.target = google.target
   }
-  google_project = var.enable ? google_project.sam-firestore[0].name : ""
+  google_project = var.enable && contains(["preview_shared"], var.env_type) ? google_project.sam-firestore[0].name : ""
   services       = [
     "cloudfunctions.googleapis.com",
     "firestore.googleapis.com"
@@ -28,7 +28,7 @@ module "enable-services-firestore" {
 
 # Sam Firestore service account
 resource "google_service_account" "sam-firestore" {
-  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
+  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
 
   provider     = google.target
   project      = google_project.sam-firestore[0].name
@@ -37,7 +37,7 @@ resource "google_service_account" "sam-firestore" {
 }
 
 resource "google_project_iam_member" "sam-firestore" {
-  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
+  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
 
   provider = google.target
   project  = google_project.sam-firestore[0].name
