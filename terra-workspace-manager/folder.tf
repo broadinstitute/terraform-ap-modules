@@ -2,9 +2,7 @@
 # We create a separate folder to scope the WM SA broad folder permissions to a single purpose folder.
 # TODO(PF-156): Once WM uses RBS, we no longer need permissions to create projects, or this folder.
 resource "google_folder" "workspace_project_folder" {
-  # Check against `null` and `"null"` since terraform passes `null` as a literal between modules.
-  # https://github.com/hashicorp/terraform/issues/21702
-  count        = var.enable && contains(["default", "preview_shared"], var.env_type) && (var.workspace_project_folder_id != null  || var.workspace_project_folder_id == "null") ? 1 : 0
+  count        = var.enable && contains(["default", "preview_shared"], var.env_type) && var.workspace_project_folder_id != "" ? 1 : 0
   display_name = "${local.service}-${local.owner} workspace project folder"
   parent       = "folders/${var.workspace_project_folder_id}"
   provider     = google.target
