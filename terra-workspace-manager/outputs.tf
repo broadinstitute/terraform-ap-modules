@@ -18,7 +18,7 @@ output "cloud_trace_sa_id" {
 # Infrastructure Outputs
 #
 output "workspace_container_folder_id" {
-  value       = if (google_folder.workspace_project_folder != null) ? google_folder.workspace_project_folder.id : null
+  value       =  length(google_folder.workspace_project_folder) > 0 ? google_folder.workspace_project_folder[0].id : null
   description = "The folder id of the folder that workspace projects should be created within."
 }
 
