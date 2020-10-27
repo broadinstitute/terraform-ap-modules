@@ -114,8 +114,8 @@ variable "use_subdomain" {
 #
 variable "wsm_workspace_project_folder_id" {
   type        = string
-  description = "What google folder within which to create a folder for creating workspace google projects."
-  default     = null
+  description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
+  default     = ""
 }
 variable "wsm_billing_account_ids" {
   type        = list(string)
