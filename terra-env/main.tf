@@ -72,9 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  # TODO add & bump version.
-  #source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.4.0"
-  source = "../terra-workspace-manager"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.4.1"
 
   enable = local.terra_apps["workspace_manager"]
 
