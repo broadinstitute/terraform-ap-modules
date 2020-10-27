@@ -51,8 +51,10 @@ variable "env_type" {
 #
 variable "workspace_project_folder_id" {
   type        = string
-  description = "What google folder within which to create a folder for creating workspace google projects."
-  default     = null
+  description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
+  # Use empty string as a default value as TF has problems with null as a default between modules.
+  # https://github.com/hashicorp/terraform/issues/21702
+  default     = ""
 }
 
 # This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.

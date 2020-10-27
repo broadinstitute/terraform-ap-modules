@@ -105,6 +105,11 @@ output "workspace_cloud_trace_sa_id" {
   value       = module.workspace_manager.cloud_trace_sa_id
   description = "Workspace Manager Cloud trace Google service account ID"
 }
+output "workspace_container_folder_id" {
+  value       = module.workspace_manager.workspace_container_folder_id
+  description = "The folder id of the folder that workspace projects should be created within."
+}
+
 output "workspace_db_ip" {
   value       = module.workspace_manager.cloudsql_public_ip
   description = "Workspace Manager CloudSQL instance IP"
