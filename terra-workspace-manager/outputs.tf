@@ -15,6 +15,14 @@ output "cloud_trace_sa_id" {
 }
 
 #
+# Infrastructure Outputs
+#
+output "workspace_container_folder_id" {
+  value       = google_folder.workspace_project_folder.id
+  description = "The folder id of the folder that workspace projects should be created within."
+}
+
+#
 # IP/DNS Outputs
 #
 output "ingress_ip" {
