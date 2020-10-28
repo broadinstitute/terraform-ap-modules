@@ -124,7 +124,7 @@ variable "wsm_billing_account_ids" {
 }
 variable "wsm_db_version" {
   type        = string
-  default     = "POSTGRES_9_6"
+  default     = "POSTGRES_12"
   description = "The version for the WSM CloudSQL instance"
 }
 variable "wsm_db_keepers" {
