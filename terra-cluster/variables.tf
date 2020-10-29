@@ -165,10 +165,12 @@ variable "node_pool_cronjob_v1_autoscaling" {
 
 variable "node_pool_default_node_count" {
   description = "Number of nodes default pool"
+  type        = number
 }
 
 variable "node_pool_highmem_node_count" {
   description = "Number of nodes in highmem pool"
+  type        = number
 }
 
 #
