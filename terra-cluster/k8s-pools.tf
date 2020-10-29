@@ -4,7 +4,7 @@ locals {
 }
 
 # default-v2 node pool
-module "k8s-node-pool" {
+module "k8s-node-pool-default-v2" {
   # boilerplate
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-autoscaling" # k8s-node-pool-0.2.0-tf-0.12
   dependencies = [
@@ -20,11 +20,11 @@ module "k8s-node-pool" {
   machine_type = "n1-standard-16"
   disk_size_gb = 200
   labels       = []
-  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-default-v2"])
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-${module.k8s-node-pool-default-v2.name}"])
 }
 
 # cronjob-v1 node pool
-module "k8s-node-pool" {
+module "k8s-node-pool-cronjob-v1" {
   # boilerplate
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-autoscaling"
   dependencies = [
@@ -40,7 +40,7 @@ module "k8s-node-pool" {
   machine_type = "n1-standard-4"
   disk_size_gb = 200
   labels       = []
-  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-${module.k8s-node-pool-cronjob-v1.name}"])
 }
 
 # old default node pool - deprecated
