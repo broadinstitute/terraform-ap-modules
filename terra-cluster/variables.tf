@@ -136,6 +136,14 @@ variable "authorized_network_cidrs" {
   default     = []
 }
 
+variable "cloud_nat_settings" {
+  description = "Cloud NAT settings"
+  type        = object({ min_ports_per_vm = number })
+  default = {
+    min_ports_per_vm = 64
+  }
+}
+
 # Istio
 variable "istio_enable" {
   description = "Whether to enable Google's Istio implementation in the cluster"
