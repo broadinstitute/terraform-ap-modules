@@ -156,29 +156,19 @@ variable "k8s_version_prefix" {
 variable "node_pool_default_v2_autoscaling" {
   description = "Range of nodes in default-v2 pool"
   type        = object({ min_node_count = number, max_node_count = number })
-  default = {
-    min_node_count = 3
-    max_node_count = 20
-  }
 }
 
 variable "node_pool_cronjob_v1_autoscaling" {
   description = "Range of nodes in cronjob-v1 pool"
   type        = object({ min_node_count = number, max_node_count = number })
-  default = {
-    min_node_count = 3
-    max_node_count = 6
-  }
 }
 
 variable "node_pool_default_node_count" {
   description = "Number of nodes default pool"
-  default     = 6
 }
 
 variable "node_pool_highmem_node_count" {
   description = "Number of nodes in highmem pool"
-  default     = 8
 }
 
 #
