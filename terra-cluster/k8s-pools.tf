@@ -6,7 +6,7 @@ locals {
 # default-v2 node pool
 module "k8s-node-pool-default-v2" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-autoscaling" # k8s-node-pool-0.2.0-tf-0.12
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -26,7 +26,7 @@ module "k8s-node-pool-default-v2" {
 # cronjob-v1 node pool
 module "k8s-node-pool-cronjob-v1" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-autoscaling"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -46,7 +46,7 @@ module "k8s-node-pool-cronjob-v1" {
 # old default node pool - deprecated
 module "k8s-node-pool" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-autoscaling"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -66,7 +66,7 @@ module "k8s-node-pool" {
 # highmem node pool - currently used for running Cromwell
 module "k8s-node-pool-highmem" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-autoscaling"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
