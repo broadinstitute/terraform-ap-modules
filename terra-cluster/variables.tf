@@ -156,7 +156,7 @@ variable "k8s_version_prefix" {
 variable "node_pool_default_v2_autoscaling" {
   description = "Range of nodes in default-v2 pool"
   default = {
-    min_node_count = 6
+    min_node_count = 3
     max_node_count = 20
   }
 }

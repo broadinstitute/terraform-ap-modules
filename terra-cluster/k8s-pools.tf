@@ -56,7 +56,7 @@ module "k8s-node-pool" {
 
   # pool-specific settings
   name         = "default"
-  node_count   = var.node_count_default
+  node_count   = var.node_pool_default_node_count
   machine_type = "n1-standard-4"
   disk_size_gb = 200
   labels       = { test_label_foo = "test_label_bar" } # These can't be changed without deleting the node pool
@@ -76,9 +76,11 @@ module "k8s-node-pool-highmem" {
 
   # pool-specific settings
   name         = "highmem"
-  node_count   = var.node_count_highmem
+  node_count   = var.node_pool_highmem_node_count
   machine_type = "n1-highmem-8"
   disk_size_gb = 200
   labels       = {}
-  tags         = local.legacy_node_tags # This is incorrect, but we can't update the node tags on an existing pool, so we're stuck until we build out a new pool
+  # This is incorrect, but we can't update the node tags on an existing pool,
+  # so we're stuck until we build out a new pool
+  tags = local.legacy_node_tags
 }
