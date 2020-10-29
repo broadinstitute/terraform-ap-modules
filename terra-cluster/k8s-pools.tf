@@ -1,3 +1,9 @@
+# TODO - there is a lot of duplication across each k8s-node-pool module
+# declaration :(
+# Once we move to Terraform 0.13, we should be able to use
+# a foreach for these:
+#  https://github.com/hashicorp/terraform/issues/17519#issuecomment-632403492
+
 locals {
   default_node_tags = ["k8s-${module.k8s-master.name}-node"]
   legacy_node_tags  = ["k8s-${module.k8s-master.name}-node-default"]
@@ -6,7 +12,7 @@ locals {
 # default-v2 node pool
 module "k8s-node-pool-default-v2" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix" # k8s-node-pool-0.2.1-tf-0.12
   dependencies = [
     module.k8s-master
   ]
@@ -26,7 +32,7 @@ module "k8s-node-pool-default-v2" {
 # cronjob-v1 node pool
 module "k8s-node-pool-cronjob-v1" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
   ]
@@ -43,10 +49,30 @@ module "k8s-node-pool-cronjob-v1" {
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
 }
 
-# old default node pool - deprecated
+# cromwell-v1 node pool
+module "k8s-node-pool-cromwell-v1" {
+  # boilerplate
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
+  dependencies = [
+    module.k8s-master
+  ]
+  service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
+
+  # pool-specific settings
+  name         = "cromwell-v1"
+  autoscaling  = var.node_pool_cromwell_v1_autoscaling
+  machine_type = "n1-highmem-8"
+  disk_size_gb = 200
+  labels       = {}
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cromwell-v1"])
+}
+
+# old default node pool - deprecated, will be succeeded by default-v2
 module "k8s-node-pool" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
   ]
@@ -63,10 +89,10 @@ module "k8s-node-pool" {
   tags         = local.legacy_node_tags
 }
 
-# highmem node pool - currently used for running Cromwell
+# highmem node pool - deprecated, will be succeeded by cromwell-v1
 module "k8s-node-pool-highmem" {
   # boilerplate
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
   ]
