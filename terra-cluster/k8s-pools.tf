@@ -1,44 +1,86 @@
 locals {
-  default_node_tags = ["k8s-${module.k8s-master.name}-node-${local.node_pools.default.name}"]
+  default_node_tags = ["k8s-${module.k8s-master.name}-node"]
+  legacy_node_tags  = ["k8s-${module.k8s-master.name}-node-default"]
 }
 
-# Default node pool
+# default-v2 node pool
+module "k8s-node-pool-default-v2" {
+  # boilerplate
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
+  dependencies = [
+    module.k8s-master
+  ]
+  service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
+
+  # pool-specific settings
+  name         = "default-v2"
+  autoscaling  = var.node_pool_default_v2_autoscaling
+  machine_type = "n1-standard-16"
+  disk_size_gb = 200
+  labels       = {}
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-default-v2"])
+}
+
+# cronjob-v1 node pool
+module "k8s-node-pool-cronjob-v1" {
+  # boilerplate
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
+  dependencies = [
+    module.k8s-master
+  ]
+  service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
+
+  # pool-specific settings
+  name         = "cronjob-v1"
+  autoscaling  = var.node_pool_cronjob_v1_autoscaling
+  machine_type = "n1-standard-4"
+  disk_size_gb = 200
+  labels       = {}
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
+}
+
+# old default node pool - deprecated
 module "k8s-node-pool" {
-  # terraform-shared repo
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.0-tf-0.12"
+  # boilerplate
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
   service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
 
-  name        = local.node_pools.default.name
-  master_name = module.k8s-master.name
-  location    = var.cluster_location
-
-  node_count   = local.node_pools.default.node_count
-  machine_type = local.node_pools.default.machine_type
-  disk_size_gb = local.node_pools.default.disk_size_gb
-
-  labels = local.node_pools.default.labels
-  tags   = setunion(local.default_node_tags, local.node_pools.default.tags)
+  # pool-specific settings
+  name         = "default"
+  node_count   = var.node_pool_default_node_count
+  machine_type = "n1-standard-4"
+  disk_size_gb = 200
+  labels       = { test_label_foo = "test_label_bar" } # These can't be changed without deleting the node pool
+  tags         = local.legacy_node_tags
 }
 
-# Highmem pool
+# highmem node pool - currently used for running Cromwell
 module "k8s-node-pool-highmem" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.0-tf-0.12"
+  # boilerplate
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.1-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
   service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
 
-  name        = local.node_pools.highmem.name
-  master_name = module.k8s-master.name
-  location    = var.cluster_location
-
-  node_count   = local.node_pools.highmem.node_count
-  machine_type = local.node_pools.highmem.machine_type
-  disk_size_gb = local.node_pools.highmem.disk_size_gb
-
-  labels = local.node_pools.highmem.labels
-  tags   = setunion(local.default_node_tags, local.node_pools.highmem.tags)
+  # pool-specific settings
+  name         = "highmem"
+  node_count   = var.node_pool_highmem_node_count
+  machine_type = "n1-highmem-8"
+  disk_size_gb = 200
+  labels       = {}
+  # This is incorrect, but we can't update the node tags on an existing pool,
+  # so we're stuck until we build out a new pool
+  tags = local.legacy_node_tags
 }

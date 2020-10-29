@@ -153,35 +153,24 @@ variable "k8s_version_prefix" {
   description = "Passed to k8s-cluster module to set minimum cluster version"
 }
 
-variable "node_count_default" {
+variable "node_pool_default_v2_autoscaling" {
+  description = "Range of nodes in default-v2 pool"
+  type        = object({ min_node_count = number, max_node_count = number })
+}
+
+variable "node_pool_cronjob_v1_autoscaling" {
+  description = "Range of nodes in cronjob-v1 pool"
+  type        = object({ min_node_count = number, max_node_count = number })
+}
+
+variable "node_pool_default_node_count" {
   description = "Number of nodes default pool"
-  default     = 6
+  type        = number
 }
 
-variable "node_count_highmem" {
+variable "node_pool_highmem_node_count" {
   description = "Number of nodes in highmem pool"
-  default     = 8
-}
-
-locals {
-  node_pools = {
-    default = {
-      name         = "default"
-      node_count   = var.node_count_default
-      machine_type = "n1-standard-4"
-      disk_size_gb = 200
-      tags         = []
-      labels       = { test_label_foo = "test_label_bar" }
-    }
-    highmem = {
-      name         = "highmem"
-      node_count   = var.node_count_highmem
-      machine_type = "n1-highmem-8"
-      disk_size_gb = 200
-      tags         = []
-      labels       = {}
-    }
-  }
+  type        = number
 }
 
 #
