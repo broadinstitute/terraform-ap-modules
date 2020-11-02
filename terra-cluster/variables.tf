@@ -179,26 +179,26 @@ variable "node_pool_highmem" {
 
 variable "node_pool_default_v2" {
   type = object({
-    enable = bool,
+    enable         = bool,
     min_node_count = number,
     max_node_count = number
-  }
+  })
 }
 
 variable "node_pool_cronjob_v1" {
   type = object({
-    enable = bool,
+    enable         = bool,
     min_node_count = number,
     max_node_count = number
-  }
+  })
 }
 
 variable "node_pool_cromwell_v1" {
   type = object({
-    enable = bool,
+    enable         = bool,
     min_node_count = number,
     max_node_count = number
-  }
+  })
 }
 
 #
