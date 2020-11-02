@@ -29,7 +29,7 @@ module "k8s-node-pool-default-v2" {
   }
   machine_type = "n1-standard-16"
   disk_size_gb = 200
-  labels       = { "org.broadinstitute/node-pool" = "default" }
+  labels       = { "bio.terra/node-pool" = "default" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-default-v2"])
 }
 
@@ -53,7 +53,7 @@ module "k8s-node-pool-cronjob-v1" {
   }
   machine_type = "n1-standard-4"
   disk_size_gb = 200
-  labels       = { "org.broadinstitute/node-pool" = "cronjob" }
+  labels       = { "bio.terra/node-pool" = "cronjob" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
 }
 
@@ -77,7 +77,7 @@ module "k8s-node-pool-cromwell-v1" {
   }
   machine_type = "n1-highmem-8"
   disk_size_gb = 200
-  labels       = { "org.broadinstitute/node-pool" = "cromwell" }
+  labels       = { "bio.terra/node-pool" = "cromwell" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cromwell-v1"])
 }
 
