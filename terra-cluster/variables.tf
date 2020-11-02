@@ -166,29 +166,29 @@ variable "k8s_version_prefix" {
 variable "node_pools" {
   type = object({
     default = object({
-      enable     = boolean,
+      enable     = bool,
       node_count = number
     }),
     highmem = object({
-      enable     = boolean,
+      enable     = bool,
       node_count = number
     }),
     default_v2 = object({
-      enable = boolean,
+      enable = bool,
       autoscaling = object({
         min_node_count = number,
         max_node_count = number
       })
     }),
     cronjob_v1 = object({
-      enable = boolean,
+      enable = bool,
       autoscaling = object({
         min_node_count = number,
         max_node_count = number
       })
     }),
     cromwell_v1 = object({
-      enable = boolean,
+      enable = bool,
       autoscaling = object({
         min_node_count = number,
         max_node_count = number
