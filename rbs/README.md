@@ -28,7 +28,7 @@ No requirements.
 | dependencies | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
 | enable | Enable flag for this module. If set to false, no resources will be created. | `bool` | `true` | no |
 | google\_project | The google project in which to create resources | `string` | n/a | yes |
-| google\_folder\_id | The folder in which RBS has permission. | `string` | `""` | no |
+| google\_folder\_ids | List of folders RBS has permission on. | `list(string)` | `[]` | no |
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
@@ -41,7 +41,7 @@ No requirements.
 | db\_user | Postgres username | `string` | `""` | no |
 | stairway\_db\_name | Stairway db name | `string` | `""` | no |
 | stairway\_db\_user | Stairway db username | `string` | `""` | no |
-| billing\_account\_id | What billing account to assign to the project. | `string` | `""` | no |
+| billing\_account\_ids | List of Google billing account ids to allow RBS to use | `list(string)` | `[]` | no |
 
 ## Outputs
 

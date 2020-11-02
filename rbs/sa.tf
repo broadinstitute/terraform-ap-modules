@@ -30,6 +30,12 @@ locals {
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeleter",
   ]
+
+  folder_ids_and_roles = [
+    for pair in setproduct(local.app_folder_roles, var.google_folder_ids) : {
+      folder_role = pair[0]
+      folder_id = pair[1]
+    }]
 }
 
 # The main service account for the Terra RBS service app.
@@ -56,19 +62,19 @@ resource "google_project_iam_member" "app_roles" {
 # Grant Terra RBS App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
   // Skip if google_folder variable is not present.
-  count = var.enable && (var.google_folder_id != "") ? length(local.app_folder_roles) : 0
+  count = var.enable ? length(local.folder_ids_and_roles): 0
 
   provider = google.target
-  folder  = var.google_folder_id
-  role     = local.app_folder_roles[count.index]
+  folder  = local.folder_ids_and_roles[count.index].folder_id
+  role     = local.folder_ids_and_roles[count.index].folder_role
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
-# Grant Terra RBS App Service Account permission use the billing account.
-# If billing_account_id is empty, we won't set the RBS SA as a billing user
+# Grant Terra RBS App Service Account permission use the billing accounts.
+# If billing_account_ids is empty, we won't set the RBS SA as a billing user
 resource "google_billing_account_iam_member" "app_billing_roles" {
-  count = var.enable && (var.billing_account_id != "") ? 1 : 0
-  billing_account_id = var.billing_account_id
+  count              = var.enable ? length(var.billing_account_ids) : 0
+  billing_account_id = var.billing_account_ids[count.index]
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.app[0].email}"
 }

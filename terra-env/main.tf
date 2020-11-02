@@ -169,7 +169,7 @@ module "ontology" {
 }
 
 module "rbs" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.4"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.5"
 
   enable = local.terra_apps["rbs"]
 
@@ -181,9 +181,9 @@ module "rbs" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
-  google_folder_id = var.rbs_google_folder_id
+  google_folder_ids = var.rbs_google_folder_ids
 
-  billing_account_id = var.rbs_billing_account_id
+  billing_account_ids = var.rbs_billing_account_ids
 
   providers = {
     google.target      = google.target
