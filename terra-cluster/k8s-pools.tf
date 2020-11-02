@@ -60,7 +60,7 @@ module "k8s-node-pool-cronjob-v1" {
 # cromwell-v1 node pool
 module "k8s-node-pool-cromwell-v1" {
   # boilerplate
-  enable = var.node_pools.cromwell_v1.enable
+  enable = var.node_pool_cromwell_v1.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
