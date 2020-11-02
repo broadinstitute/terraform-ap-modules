@@ -16,10 +16,10 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
-variable "google_folder_id" {
-  type        = string
-  description = "The folder in which RBS has permission."
-  default     = ""
+variable "google_folder_ids" {
+  type        = list(string)
+  description = "List of folders RBS has permission on."
+  default     = []
 }
 variable "cluster" {
   type        = string
@@ -105,14 +105,13 @@ locals {
 }
 
 #
-# Billing account IAM Vars
+# List of billing accounts RBS has permissions on.
 #
 # We separate whether the roles/billing.user is set on the RBS SA as its own flag because the
 # Broad SA that runs terraform does not want to have the broad permissions to set modify
 # permissions on the service account. This was done manually instead for the Broad.
-variable "billing_account_id" {
-  type        = string
-  description = "What billing account to assign to the project."
-  # If billing_account_id is empty, we won't set the RBS SA as a billing user
-  default     = ""
+variable "billing_account_ids" {
+  type        = list(string)
+  description = "List of Google billing account ids to allow RBS to use"
+  default     = []
 }
