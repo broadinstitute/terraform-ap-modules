@@ -31,14 +31,11 @@ locals {
     "roles/resourcemanager.projectDeleter",
   ]
 
-  app_role_to_folder_map = [
-    for role in local.app_folder_roles: [
-      for folder in var.google_folder_ids: {
-        role = role
-        folder = folder
-      }
-    ]
-  ]
+  folder_role_to_folder_id_map = [
+    for pair in setproduct(local.app_folder_roles, var.google_folder_ids) : {
+      folder_role = pair[0]
+      folder_id = pair[1]
+    }]
 }
 
 # The main service account for the Terra RBS service app.
@@ -65,11 +62,11 @@ resource "google_project_iam_member" "app_roles" {
 # Grant Terra RBS App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
   // Skip if google_folder variable is not present.
-  count = var.enable ? length(local.app_role_to_folder_map): 0
+  count = var.enable ? length(local.folder_role_to_folder_id_map): 0
 
   provider = google.target
-  folder  = local.app_role_to_folder_map[count.index].folder
-  role     = local.app_role_to_folder_map[count.index].role
+  folder  = local.folder_role_to_folder_id_map[count.index].folder_id
+  role     = local.folder_role_to_folder_id_map[count.index].folder_role
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
