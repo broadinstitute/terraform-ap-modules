@@ -161,29 +161,41 @@ variable "k8s_version_prefix" {
   description = "Passed to k8s-cluster module to set minimum cluster version"
 }
 
-variable "node_pool_default_v2_autoscaling" {
-  description = "Range of nodes in default-v2 pool"
-  type        = object({ min_node_count = number, max_node_count = number })
-}
-
-variable "node_pool_cronjob_v1_autoscaling" {
-  description = "Range of nodes in cronjob-v1 pool"
-  type        = object({ min_node_count = number, max_node_count = number })
-}
-
-variable "node_pool_cromwell_v1_autoscaling" {
-  description = "Range of nodes in cromwell-v1 pool"
-  type        = object({ min_node_count = number, max_node_count = number })
-}
-
-variable "node_pool_default_node_count" {
-  description = "Number of nodes default pool"
-  type        = number
-}
-
-variable "node_pool_highmem_node_count" {
-  description = "Number of nodes in highmem pool"
-  type        = number
+# Node pool settings.
+# Defaults are in the terraform-ap-deployments repo
+variable "node_pools" {
+  type = object({
+    default = object({
+      enable     = boolean,
+      node_count = number
+    }),
+    highmem = object({
+      enable     = boolean,
+      node_count = number
+    }),
+    default_v2 = object({
+      enable = boolean,
+      autoscaling = object({
+        min_node_count = number,
+        max_node_count = number
+      })
+    }),
+    cronjob_v1 = object({
+      enable = boolean,
+      autoscaling = object({
+        min_node_count = number,
+        max_node_count = number
+      })
+    }),
+    cromwell_v1 = object({
+      enable = boolean,
+      autoscaling = object({
+        min_node_count = number,
+        max_node_count = number
+      })
+    })
+  })
+  description = "Node pool settings"
 }
 
 #

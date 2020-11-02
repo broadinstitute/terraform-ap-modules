@@ -12,6 +12,7 @@ locals {
 # default-v2 node pool
 module "k8s-node-pool-default-v2" {
   # boilerplate
+  enable = var.node_pools.default_v2.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix" # k8s-node-pool-0.2.1-tf-0.12
   dependencies = [
     module.k8s-master
@@ -22,7 +23,7 @@ module "k8s-node-pool-default-v2" {
 
   # pool-specific settings
   name         = "default-v2"
-  autoscaling  = var.node_pool_default_v2_autoscaling
+  autoscaling  = var.node_pools.default_v2.autoscaling
   machine_type = "n1-standard-16"
   disk_size_gb = 200
   labels       = { "org.broadinstitute/node-pool" = "default" }
@@ -32,6 +33,7 @@ module "k8s-node-pool-default-v2" {
 # cronjob-v1 node pool
 module "k8s-node-pool-cronjob-v1" {
   # boilerplate
+  enable = var.node_pools.cronjob_v1.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
@@ -42,7 +44,7 @@ module "k8s-node-pool-cronjob-v1" {
 
   # pool-specific settings
   name         = "cronjob-v1"
-  autoscaling  = var.node_pool_cronjob_v1_autoscaling
+  autoscaling  = var.node_pools.cronjob_v1.autoscaling
   machine_type = "n1-standard-4"
   disk_size_gb = 200
   labels       = { "org.broadinstitute/node-pool" = "cronjob" }
@@ -52,6 +54,7 @@ module "k8s-node-pool-cronjob-v1" {
 # cromwell-v1 node pool
 module "k8s-node-pool-cromwell-v1" {
   # boilerplate
+  enable = var.node_pools.cromwell_v1.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
@@ -62,7 +65,7 @@ module "k8s-node-pool-cromwell-v1" {
 
   # pool-specific settings
   name         = "cromwell-v1"
-  autoscaling  = var.node_pool_cromwell_v1_autoscaling
+  autoscaling  = var.node_pools.cromwell_v1.autoscaling
   machine_type = "n1-highmem-8"
   disk_size_gb = 200
   labels       = { "org.broadinstitute/node-pool" = "cromwell" }
@@ -72,6 +75,7 @@ module "k8s-node-pool-cromwell-v1" {
 # old default node pool - deprecated, will be succeeded by default-v2
 module "k8s-node-pool" {
   # boilerplate
+  enable = var.node_pools.default.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
@@ -82,7 +86,7 @@ module "k8s-node-pool" {
 
   # pool-specific settings
   name         = "default"
-  node_count   = var.node_pool_default_node_count
+  node_count   = var.node_pools.default.node_count
   machine_type = "n1-standard-4"
   disk_size_gb = 200
   labels       = { test_label_foo = "test_label_bar" } # These can't be changed without deleting the node pool
@@ -92,6 +96,7 @@ module "k8s-node-pool" {
 # highmem node pool - deprecated, will be succeeded by cromwell-v1
 module "k8s-node-pool-highmem" {
   # boilerplate
+  enable = var.node_pools.highmem.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-fix"
   dependencies = [
     module.k8s-master
@@ -102,7 +107,7 @@ module "k8s-node-pool-highmem" {
 
   # pool-specific settings
   name         = "highmem"
-  node_count   = var.node_pool_highmem_node_count
+  node_count   = var.node_pools.highmem.node_count
   machine_type = "n1-highmem-8"
   disk_size_gb = 200
   labels       = {}
