@@ -25,7 +25,7 @@ module "k8s-node-pool-default-v2" {
   autoscaling  = var.node_pool_default_v2_autoscaling
   machine_type = "n1-standard-16"
   disk_size_gb = 200
-  labels       = {}
+  labels       = { "org.broadinstitute/node-pool" = "default" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-default-v2"])
 }
 
@@ -45,7 +45,7 @@ module "k8s-node-pool-cronjob-v1" {
   autoscaling  = var.node_pool_cronjob_v1_autoscaling
   machine_type = "n1-standard-4"
   disk_size_gb = 200
-  labels       = {}
+  labels       = { "org.broadinstitute/node-pool" = "cronjob" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
 }
 
@@ -65,7 +65,7 @@ module "k8s-node-pool-cromwell-v1" {
   autoscaling  = var.node_pool_cromwell_v1_autoscaling
   machine_type = "n1-highmem-8"
   disk_size_gb = 200
-  labels       = {}
+  labels       = { "org.broadinstitute/node-pool" = "cromwell" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cromwell-v1"])
 }
 
