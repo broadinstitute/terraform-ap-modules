@@ -29,6 +29,8 @@ resource "google_compute_router_nat" "nat" {
 
   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
 
+  min_ports_per_vm = var.cloud_nat_settings.min_ports_per_vm
+
   log_config {
     enable = true
     filter = "ERRORS_ONLY"

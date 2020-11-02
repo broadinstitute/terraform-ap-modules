@@ -136,6 +136,14 @@ variable "authorized_network_cidrs" {
   default     = []
 }
 
+variable "cloud_nat_settings" {
+  description = "Cloud NAT settings"
+  type        = object({ min_ports_per_vm = number })
+  default = {
+    min_ports_per_vm = 64
+  }
+}
+
 # Istio
 variable "istio_enable" {
   description = "Whether to enable Google's Istio implementation in the cluster"
@@ -153,24 +161,44 @@ variable "k8s_version_prefix" {
   description = "Passed to k8s-cluster module to set minimum cluster version"
 }
 
-variable "node_pool_default_v2_autoscaling" {
-  description = "Range of nodes in default-v2 pool"
-  type        = object({ min_node_count = number, max_node_count = number })
+# Node pool settings.
+# Defaults are in the terraform-ap-deployments repo
+variable "node_pool_default" {
+  type = object({
+    enable     = bool,
+    node_count = number
+  })
 }
 
-variable "node_pool_cronjob_v1_autoscaling" {
-  description = "Range of nodes in cronjob-v1 pool"
-  type        = object({ min_node_count = number, max_node_count = number })
+variable "node_pool_highmem" {
+  type = object({
+    enable     = bool,
+    node_count = number
+  })
 }
 
-variable "node_pool_default_node_count" {
-  description = "Number of nodes default pool"
-  type        = number
+variable "node_pool_default_v2" {
+  type = object({
+    enable         = bool,
+    min_node_count = number,
+    max_node_count = number
+  })
 }
 
-variable "node_pool_highmem_node_count" {
-  description = "Number of nodes in highmem pool"
-  type        = number
+variable "node_pool_cronjob_v1" {
+  type = object({
+    enable         = bool,
+    min_node_count = number,
+    max_node_count = number
+  })
+}
+
+variable "node_pool_cromwell_v1" {
+  type = object({
+    enable         = bool,
+    min_node_count = number,
+    max_node_count = number
+  })
 }
 
 #
