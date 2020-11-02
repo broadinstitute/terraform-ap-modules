@@ -163,39 +163,42 @@ variable "k8s_version_prefix" {
 
 # Node pool settings.
 # Defaults are in the terraform-ap-deployments repo
-variable "node_pools" {
+variable "node_pool_default" {
   type = object({
-    default = object({
-      enable     = bool,
-      node_count = number
-    }),
-    highmem = object({
-      enable     = bool,
-      node_count = number
-    }),
-    default_v2 = object({
-      enable = bool,
-      autoscaling = object({
-        min_node_count = number,
-        max_node_count = number
-      })
-    }),
-    cronjob_v1 = object({
-      enable = bool,
-      autoscaling = object({
-        min_node_count = number,
-        max_node_count = number
-      })
-    }),
-    cromwell_v1 = object({
-      enable = bool,
-      autoscaling = object({
-        min_node_count = number,
-        max_node_count = number
-      })
-    })
+    enable     = bool,
+    node_count = number
   })
-  description = "Node pool settings"
+}
+
+variable "node_pool_highmem" {
+  type = object({
+    enable     = bool,
+    node_count = number
+  })
+}
+
+variable "node_pool_default_v2" {
+  type = object({
+    enable = bool,
+    min_node_count = number,
+    max_node_count = number
+  }
+}
+
+variable "node_pool_cronjob_v1" {
+  type = object({
+    enable = bool,
+    min_node_count = number,
+    max_node_count = number
+  }
+}
+
+variable "node_pool_cromwell_v1" {
+  type = object({
+    enable = bool,
+    min_node_count = number,
+    max_node_count = number
+  }
 }
 
 #
