@@ -54,7 +54,7 @@ variable "workspace_project_folder_id" {
   description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
   # Use empty string as a default value as TF has problems with null as a default between modules.
   # https://github.com/hashicorp/terraform/issues/21702
-  default     = ""
+  default = ""
 }
 
 # This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
@@ -121,6 +121,11 @@ variable "db_user" {
   type        = string
   description = "Postgres username"
   default     = ""
+}
+variable "db_deletion_protection" {
+  type        = bool
+  description = "Deletion protection. DON'T TOUCH THIS UNLESS YOU WANT TO DELETE THE DATABASE!"
+  default     = true # set to false to make it possible to delete the database
 }
 variable "stairway_db_name" {
   type        = string

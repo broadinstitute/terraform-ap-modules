@@ -88,6 +88,7 @@ module "workspace_manager" {
 
   db_version = var.wsm_db_version
   db_keepers = var.wsm_db_keepers
+  db_deletion_protection = false # REMOVE THIS BEFORE MERGING, CHELSEA
 
   workspace_project_folder_id = var.wsm_workspace_project_folder_id
   billing_account_ids         = var.wsm_billing_account_ids
