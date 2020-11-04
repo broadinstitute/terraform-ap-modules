@@ -37,7 +37,7 @@ module "k8s-node-pool-default-v2" {
 module "k8s-node-pool-cronjob-v1" {
   # boilerplate
   enable = var.node_pool_cronjob_v1.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-taints"
   dependencies = [
     module.k8s-master
   ]
@@ -61,7 +61,7 @@ module "k8s-node-pool-cronjob-v1" {
 module "k8s-node-pool-cromwell-v1" {
   # boilerplate
   enable = var.node_pool_cromwell_v1.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-taints"
   dependencies = [
     module.k8s-master
   ]
