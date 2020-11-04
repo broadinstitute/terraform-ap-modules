@@ -9,7 +9,7 @@ module "cloudsql" {
   project          = var.google_project
   cloudsql_name    = "${local.service}-db-${local.owner}"
   cloudsql_version = var.db_version
-  cloudsql_keepers = true # var.db_keepers
+  cloudsql_keepers = var.db_keepers
   cloudsql_instance_labels = {
     "env" = local.owner
     "app" = local.service
