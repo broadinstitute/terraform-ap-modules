@@ -1,5 +1,5 @@
 module "cloudsql" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=ch-deletion-protection"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.1"
 
   enable = var.enable && contains(["default"], var.env_type)
 
@@ -15,8 +15,6 @@ module "cloudsql" {
     "app" = local.service
   }
   cloudsql_tier = var.db_tier
-
-  cloudsql_deletion_protection = var.db_deletion_protection
 
   app_dbs = {
     "${local.service}" = {
