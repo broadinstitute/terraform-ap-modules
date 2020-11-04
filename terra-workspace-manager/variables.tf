@@ -104,8 +104,8 @@ variable "db_version" {
 }
 variable "db_keepers" {
   type        = bool
-  default     = false
-  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+  default     = true
+  description = "Whether to use keepers to re-generate instance name."
 }
 variable "db_tier" {
   type        = string
