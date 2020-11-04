@@ -55,6 +55,7 @@ module "k8s-node-pool-cronjob-v1" {
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "cronjob" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
+  taints       = [{ key = "workload", value = "cronjob", effect = "NoSchedule" }]
 }
 
 # cromwell-v1 node pool
@@ -79,6 +80,7 @@ module "k8s-node-pool-cromwell-v1" {
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "cromwell" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cromwell-v1"])
+  taints       = [{ key = "workload", value = "cromwell", effect = "NoSchedule" }]
 }
 
 # old default node pool - deprecated, will be succeeded by default-v2
