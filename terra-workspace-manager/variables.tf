@@ -54,7 +54,7 @@ variable "workspace_project_folder_id" {
   description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
   # Use empty string as a default value as TF has problems with null as a default between modules.
   # https://github.com/hashicorp/terraform/issues/21702
-  default     = ""
+  default = ""
 }
 
 # This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
@@ -99,13 +99,13 @@ locals {
 #
 variable "db_version" {
   type        = string
-  default     = "POSTGRES_9_6"
+  default     = "POSTGRES_12"
   description = "The version for the CloudSQL instance"
 }
 variable "db_keepers" {
   type        = bool
-  default     = false
-  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+  default     = true
+  description = "Whether to use keepers to re-generate instance name."
 }
 variable "db_tier" {
   type        = string
