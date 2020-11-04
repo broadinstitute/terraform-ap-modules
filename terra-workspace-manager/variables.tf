@@ -122,11 +122,6 @@ variable "db_user" {
   description = "Postgres username"
   default     = ""
 }
-variable "db_deletion_protection" {
-  type        = bool
-  description = "Deletion protection. DON'T TOUCH THIS UNLESS YOU WANT TO DELETE THE DATABASE!"
-  default     = true # set to false to make it possible to delete the database
-}
 variable "stairway_db_name" {
   type        = string
   description = "Stairway db name"
