@@ -13,7 +13,7 @@ locals {
 module "k8s-node-pool-default-v2" {
   # boilerplate
   enable = var.node_pool_default_v2.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-node-pool-taints"
   dependencies = [
     module.k8s-master
   ]
@@ -55,7 +55,7 @@ module "k8s-node-pool-cronjob-v1" {
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "cronjob" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
-  taints       = [{ key = "workload", value = "cronjob", effect = "NoSchedule" }]
+  taints       = [{ key = "bio.terra/workload", value = "cronjob", effect = "NoSchedule" }]
 }
 
 # cromwell-v1 node pool
@@ -80,7 +80,7 @@ module "k8s-node-pool-cromwell-v1" {
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "cromwell" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cromwell-v1"])
-  taints       = [{ key = "workload", value = "cromwell", effect = "NoSchedule" }]
+  taints       = [{ key = "bio.terra/workload", value = "cromwell", effect = "NoSchedule" }]
 }
 
 # old default node pool - deprecated, will be succeeded by default-v2
