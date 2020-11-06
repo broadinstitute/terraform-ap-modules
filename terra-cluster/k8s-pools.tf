@@ -13,7 +13,7 @@ locals {
 module "k8s-node-pool-default-v2" {
   # boilerplate
   enable = var.node_pool_default_v2.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -37,7 +37,7 @@ module "k8s-node-pool-default-v2" {
 module "k8s-node-pool-cronjob-v1" {
   # boilerplate
   enable = var.node_pool_cronjob_v1.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -55,13 +55,14 @@ module "k8s-node-pool-cronjob-v1" {
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "cronjob" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cronjob-v1"])
+  taints       = [{ key = "bio.terra/workload", value = "cronjob", effect = "NO_SCHEDULE" }]
 }
 
 # cromwell-v1 node pool
 module "k8s-node-pool-cromwell-v1" {
   # boilerplate
   enable = var.node_pool_cromwell_v1.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -79,13 +80,14 @@ module "k8s-node-pool-cromwell-v1" {
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "cromwell" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-cromwell-v1"])
+  taints       = [{ key = "bio.terra/workload", value = "cromwell", effect = "NO_SCHEDULE" }]
 }
 
 # old default node pool - deprecated, will be succeeded by default-v2
 module "k8s-node-pool" {
   # boilerplate
   enable = var.node_pool_default.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
@@ -106,7 +108,7 @@ module "k8s-node-pool" {
 module "k8s-node-pool-highmem" {
   # boilerplate
   enable = var.node_pool_highmem.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.2-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
