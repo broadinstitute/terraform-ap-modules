@@ -212,7 +212,7 @@ module "consent" {
 }
 
 module "rawls" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.0.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.1.0"
 
   enable = local.terra_apps["rawls"]
 
