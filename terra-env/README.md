@@ -33,7 +33,7 @@ No provider.
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
-| wsm\_workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. | `string` | `null` | no |
+| wsm\_workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder. | `string` | `""` | no |
 | wsm\_billing\_account\_ids | List of Google billing account ids to allow WM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
@@ -47,8 +47,12 @@ No provider.
 | prometheus\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
-| rbs\_google\_folder\_id | The folder ID in which RBS has permission | `string` | `""` | no |
-| rbs\_billing\_account\_id | The billing account ID RBS has permission to use | `string` | `""` | no |
+| janitor\_db\_version | The version for the Janitor CloudSQL instance | `string` | `"POSTGRES_12"` | no |
+| janitor\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| rbs\_google\_folder\_ids | List of folders RBS has permission on. | `list(string)` | `[]` | no |
+| rbs\_billing\_account\_ids | List of billing accounts RBS has permission to use. | `list(string)` | `[]` | no |
+| rbs\_db\_version | The version for the RBS CloudSQL instance | `string` | `"POSTGRES_12"` | no |
+| rbs\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
@@ -81,6 +85,7 @@ No provider.
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
 | workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
+| workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
 | workspace\_db\_instance | Workspace Manager CloudSQL instance name |
 | workspace\_db\_root\_pass | Workspace Manager database root password |

@@ -77,6 +77,16 @@ variable "db_tier" {
   default     = "db-g1-small"
   description = "The default tier (DB instance size) for the CloudSQL instance"
 }
+variable "db_version" {
+  type        = string
+  default     = "POSTGRES_12"
+  description = "The version for the CloudSQL instance"
+}
+variable "db_keepers" {
+  type        = bool
+  default     = true
+  description = "Whether to use keepers to re-generate instance name."
+}
 variable "db_name" {
   type        = string
   description = "Postgres db name"

@@ -193,6 +193,16 @@ variable "janitor_google_folder_id" {
   default     = ""
   description = "The folder ID in which Janitor has permission to cleanup resources."
 }
+variable "janitor_db_version" {
+  type        = string
+  default     = "POSTGRES_12"
+  description = "The version for the Janitor CloudSQL instance"
+}
+variable "janitor_db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}
 
 # Terra RBS Vars
 #
@@ -205,6 +215,16 @@ variable "rbs_billing_account_ids" {
   type        = list(string)
   description = "List of billing accounts RBS has permission to use."
   default     = []
+}
+variable "rbs_db_version" {
+  type        = string
+  default     = "POSTGRES_12"
+  description = "The version for the RBS CloudSQL instance"
+}
+variable "rbs_db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
 }
 
 #
