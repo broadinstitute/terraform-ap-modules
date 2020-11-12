@@ -193,7 +193,7 @@ module "rbs" {
 }
 
 module "consent" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.0.2"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=DDO-849-consent-gke-ingress"
 
   enable = local.terra_apps["consent"]
 
