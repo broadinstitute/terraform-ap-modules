@@ -49,6 +49,7 @@ No requirements.
 |------|-------------|
 | app\_sa\_id | Terra RBS Google service accout ID |
 | sqlproxy\_sa\_id | Terra RBS Cloud SQL Proxy Google service account ID |
+| client\_sa\_id | Client Google service account ID |
 | ingress\_ip | Terra RBS ingress IP |
 | fqdn | Terra RBS fully qualified domain name |
 | cloudsql\_public\_ip | Terra RBS CloudSQL instance IP |

@@ -78,3 +78,13 @@ resource "google_billing_account_iam_member" "app_billing_roles" {
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.app[0].email}"
 }
+
+# The service account to be able to access Buffer service.
+# All services which want to access the Buffer service would need to use this service account secret.
+resource "google_service_account" "client" {
+  count = var.enable ? 1 : 0
+
+  provider     = google.target
+  account_id   = "${local.service}-client-${local.owner}"
+  display_name = "${local.service}-client-${local.owner}"
+}

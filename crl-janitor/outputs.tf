@@ -11,7 +11,7 @@ output "sqlproxy_sa_id" {
 }
 output "client_sa_id" {
   value       = var.enable ? google_service_account.client[0].account_id : null
-  description = "User Google service account email"
+  description = "Client Google service account ID"
 }
 
 #

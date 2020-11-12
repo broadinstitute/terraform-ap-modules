@@ -67,7 +67,7 @@ resource "google_folder_iam_member" "app_folder_roles" {
 }
 
 # The service account to be able to access Janitor service.
-# All services which want to access Janitor would need to use this service account secrete.
+# All services which want to access Janitor would need to use this service account secret.
 resource "google_service_account" "client" {
   count = var.enable ? 1 : 0
 

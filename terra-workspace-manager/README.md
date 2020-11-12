@@ -20,8 +20,8 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| google.target | n/a |
 | google | n/a |
+| google.target | n/a |
 
 ## Inputs
 
@@ -34,14 +34,14 @@ No requirements.
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 | env\_type | Environment type. Valid values are 'preview', 'preview\_shared', and 'default' | `string` | `"default"` | no |
-| workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. | `string` | `null` | no |
+| workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder. | `string` | `""` | no |
 | billing\_account\_ids | List of Google billing account ids to allow WSM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
 | hostname | Service hostname | `string` | `""` | no |
 | db\_version | The version for the CloudSQL instance | `string` | `"POSTGRES_12"` | no |
-| db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| db\_keepers | Whether to use keepers to re-generate instance name. | `bool` | `true` | no |
 | db\_tier | The default tier (DB instance size) for the CloudSQL instance | `string` | `"db-g1-small"` | no |
 | db\_name | Postgres db name | `string` | `""` | no |
 | db\_user | Postgres username | `string` | `""` | no |
@@ -55,6 +55,7 @@ No requirements.
 | sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | app\_sa\_id | Workspace Manager App Google service account ID |
 | cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
+| workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
 | ingress\_ip | Workspace Manager ingress IP |
 | fqdn | Workspace Manager fully qualified domain name |
 | cloudsql\_public\_ip | Workspace Manager CloudSQL instance IP |
