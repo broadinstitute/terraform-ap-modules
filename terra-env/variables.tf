@@ -85,6 +85,7 @@ locals {
     rbs                   = false,
     consent               = false,
     rawls                 = false,
+    leonardo              = false
     },
     var.terra_apps
   )
@@ -134,14 +135,8 @@ variable "wsm_db_keepers" {
 }
 
 #
-# Datarepo Vars
+# Prometheus / Grafana vars
 #
-variable "datarepo_dns_name" {
-  type        = string
-  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
-  default     = ""
-}
-
 variable "grafana_dns_name" {
   type        = string
   description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
@@ -153,6 +148,28 @@ variable "prometheus_dns_name" {
   description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
   default     = ""
 }
+
+variable "grafana_static_ip_name" {
+  type        = string
+  default     = ""
+  description = "Name of Data Repo's static IP"
+}
+
+variable "prometheus_static_ip_name" {
+  type        = string
+  default     = ""
+  description = "Name of Data Repo's static IP"
+}
+
+#
+# Datarepo Vars
+#
+variable "datarepo_dns_name" {
+  type        = string
+  description = "DNS record name, excluding zone top-level domain. Eg. data.alpha"
+  default     = ""
+}
+
 variable "datarepo_dns_zone_name" {
   type        = string
   default     = ""
@@ -164,18 +181,6 @@ variable "datarepo_dns_zone_project" {
   description = "Google Project where Data Repo DNS zone lives"
 }
 variable "datarepo_static_ip_name" {
-  type        = string
-  default     = ""
-  description = "Name of Data Repo's static IP"
-}
-
-variable "grafana_static_ip_name" {
-  type        = string
-  default     = ""
-  description = "Name of Data Repo's static IP"
-}
-
-variable "prometheus_static_ip_name" {
   type        = string
   default     = ""
   description = "Name of Data Repo's static IP"
