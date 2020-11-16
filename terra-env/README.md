@@ -37,14 +37,14 @@ No provider.
 | wsm\_billing\_account\_ids | List of Google billing account ids to allow WM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
-| datarepo\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | grafana\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | prometheus\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
+| grafana\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
+| prometheus\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
+| datarepo\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | datarepo\_dns\_zone\_name | Zone where Data Repo DNS record should be provisioned | `string` | `""` | no |
 | datarepo\_dns\_zone\_project | Google Project where Data Repo DNS zone lives | `string` | `""` | no |
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
-| grafana\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
-| prometheus\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_ids | List of folders RBS has permission on. | `list(string)` | `[]` | no |
@@ -118,7 +118,9 @@ No provider.
 | rbs\_ingress\_ip | Terra RBS ingress IP |
 | rbs\_fqdn | Terra RBS fully qualified domain name |
 | consent\_ingress\_ip | Static ip for consent LB |
-| consent\_fqdn | fqdn for to access k8s consent deployment |
+| consent\_fqdn | fqdn to access k8s consent deployment |
 | rawls\_ingress\_ip | Static ip for rawls LB |
-| rawls\_fqdn | fqdn for to access k8s rawls deployment |
+| rawls\_fqdn | fqdn to access k8s rawls deployment |
+| leonardo\_ingress\_ip | Static ip for leonardo LB |
+| leonardo\_fqdn | fqdn to access k8s leonardo deployment |
 

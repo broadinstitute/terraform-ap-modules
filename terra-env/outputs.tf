@@ -282,7 +282,7 @@ output "consent_ingress_ip" {
 
 output "consent_fqdn" {
   value       = module.consent.fqdn
-  description = "fqdn for to access k8s consent deployment"
+  description = "fqdn to access k8s consent deployment"
 }
 
 #
@@ -295,5 +295,18 @@ output "rawls_ingress_ip" {
 
 output "rawls_fqdn" {
   value       = module.rawls.fqdn
-  description = "fqdn for to access k8s rawls deployment"
+  description = "fqdn to access k8s rawls deployment"
+}
+
+#
+# Leonardo Outputs
+#
+output "leonardo_ingress_ip" {
+  value       = module.leonardo.ingress_ip
+  description = "Static ip for leonardo LB"
+}
+
+output "leonardo_fqdn" {
+  value       = module.leonardo.fqdn
+  description = "fqdn to access k8s leonardo deployment"
 }
