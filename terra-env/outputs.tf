@@ -240,6 +240,10 @@ output "rbs_sqlproxy_sa_id" {
   value       = module.rbs.sqlproxy_sa_id
   description = "Terra RBS Cloud SQL Proxy Google service account ID"
 }
+output "rbs_client_sa_id" {
+  value       = module.rbs.client_sa_id
+  description = "Terra RBS client Google service account ID"
+}
 output "rbs_db_ip" {
   value       = module.rbs.cloudsql_public_ip
   description = "Terra RBS CloudSQL instance IP"

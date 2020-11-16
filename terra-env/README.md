@@ -110,6 +110,7 @@ No provider.
 | fqdns | Service fully qualified domain names |
 | rbs\_sa\_id | Terra RBS Google service account ID |
 | rbs\_sqlproxy\_sa\_id | Terra RBS Cloud SQL Proxy Google service account ID |
+| rbs\_client\_sa\_id | Terra RBS client Google service account ID |
 | rbs\_db\_ip | Terra RBS CloudSQL instance IP |
 | rbs\_db\_instance | Terra RBS CloudSQL instance name |
 | rbs\_db\_root\_pass | Terra RBS database root password |

@@ -9,6 +9,10 @@ output "sqlproxy_sa_id" {
   value       = var.enable ? google_service_account.sqlproxy[0].account_id : null
   description = "Terra RBS Cloud SQL Proxy Google service account ID"
 }
+output "client_sa_id" {
+  value       = var.enable ? google_service_account.client[0].account_id : null
+  description = "Client Google service account ID"
+}
 
 #
 # IP/DNS Outputs

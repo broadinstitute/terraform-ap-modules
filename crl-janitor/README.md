@@ -48,7 +48,7 @@ No requirements.
 |------|-------------|
 | app\_sa\_id | CRL Janitor Google service accout ID |
 | sqlproxy\_sa\_id | CRL Janitor Cloud SQL Proxy Google service account ID |
-| client\_sa\_id | User Google service account email |
+| client\_sa\_id | Client Google service account ID |
 | ingress\_ip | CRL Janitor ingress IP |
 | fqdn | CRL Janitor fully qualified domain name |
 | cloudsql\_public\_ip | CRL Janitor CloudSQL instance IP |
