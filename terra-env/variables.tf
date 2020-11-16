@@ -206,6 +206,16 @@ variable "rbs_billing_account_ids" {
   description = "List of billing accounts RBS has permission to use."
   default     = []
 }
+variable "rbs_db_version" {
+  type        = string
+  default     = "POSTGRES_12"
+  description = "The version for the RBS CloudSQL instance"
+}
+variable "rbs_db_keepers" {
+  type        = bool
+  default     = false
+  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
+}
 
 #
 # Sam Vars

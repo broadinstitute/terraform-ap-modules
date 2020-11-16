@@ -169,7 +169,7 @@ module "ontology" {
 }
 
 module "rbs" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.5"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.6"
 
   enable = local.terra_apps["rbs"]
 
@@ -180,6 +180,9 @@ module "rbs" {
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
+
+  db_version = var.rbs_db_version
+  db_keepers = var.rbs_db_keepers
 
   google_folder_ids = var.rbs_google_folder_ids
 
@@ -193,7 +196,7 @@ module "rbs" {
 }
 
 module "consent" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.0.2"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.2.0"
 
   enable = local.terra_apps["consent"]
 

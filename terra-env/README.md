@@ -49,6 +49,8 @@ No provider.
 | janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
 | rbs\_google\_folder\_ids | List of folders RBS has permission on. | `list(string)` | `[]` | no |
 | rbs\_billing\_account\_ids | List of billing accounts RBS has permission to use. | `list(string)` | `[]` | no |
+| rbs\_db\_version | The version for the RBS CloudSQL instance | `string` | `"POSTGRES_12"` | no |
+| rbs\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
