@@ -221,32 +221,3 @@ variable "rbs_db_keepers" {
   default     = false
   description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
 }
-
-#
-# Sam Vars
-#
-variable "sam_hostname" {
-  description = "Sam ingress hostname"
-  type        = string
-  default     = "sam"
-}
-variable "sam_sdk_sa_count" {
-  type        = number
-  default     = 3
-  description = "How many Sam admin SDK service accounts for GSuite group/user management to create."
-}
-variable "sam_firestore_project_name" {
-  description = "Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank."
-  type        = string
-  default     = ""
-}
-variable "sam_firestore_billing_account_id" {
-  description = "Sam Firestore project billing account ID"
-  type        = string
-  default     = ""
-}
-variable "sam_firestore_folder_id" {
-  description = "Sam Firestore project folder ID"
-  type        = string
-  default     = ""
-}

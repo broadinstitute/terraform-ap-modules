@@ -59,38 +59,6 @@ output "ic_db_creds" {
 }
 
 #
-# Sam Outputs
-#
-output "sam_app_sa_id" {
-  value       = module.sam.app_sa_id
-  description = "SAM Google service account ID"
-}
-output "sam_admin_sdk_sa_ids" {
-  value       = module.sam.admin_sdk_sa_ids
-  description = "SAM admin SDK Google service account IDs"
-}
-output "sam_firestore_sa_email" {
-  value       = module.sam.firestore_sa_email
-  description = "Sam Firestore Google service account email"
-}
-output "sam_firestore_project_name" {
-  value       = module.sam.firestore_project_name
-  description = "Sam Firestore project name"
-}
-output "sam_ingress_ip" {
-  value       = module.sam.ingress_ip
-  description = "Sam ingress IP"
-}
-output "sam_ingress_ip_name" {
-  value       = module.sam.ingress_ip_name
-  description = "Sam ingress IP name"
-}
-output "sam_fqdn" {
-  value       = module.sam.fqdn
-  description = "Sam fully qualified domain name"
-}
-
-#
 # Workspace Manager Outputs
 #
 output "workspace_sqlproxy_sa_id" {

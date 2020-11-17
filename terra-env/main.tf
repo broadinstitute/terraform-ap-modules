@@ -44,33 +44,6 @@ module "identity_concentrator" {
   }
 }
 
-module "sam" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.3.0"
-  enable = local.terra_apps["sam"]
-
-  providers = {
-    google.target = google.target
-    google.dns    = google.dns
-  }
-
-  google_project = var.google_project
-  cluster        = var.cluster
-  cluster_short  = var.cluster_short
-
-  env_type = var.env_type
-
-  hostname       = var.sam_hostname
-  dns_zone_name  = var.dns_zone_name
-  subdomain_name = var.subdomain_name
-  use_subdomain  = var.use_subdomain
-
-  num_admin_sdk_service_accounts = var.sam_sdk_sa_count
-
-  firestore_project_name       = var.sam_firestore_project_name
-  firestore_billing_account_id = var.sam_firestore_billing_account_id
-  firestore_folder_id          = var.sam_firestore_folder_id
-}
-
 module "workspace_manager" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.4.3"
 
