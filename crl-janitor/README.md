@@ -28,7 +28,7 @@ No requirements.
 | dependencies | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
 | enable | Enable flag for this module. If set to false, no resources will be created. | `bool` | `true` | no |
 | google\_project | The google project in which to create resources | `string` | n/a | yes |
-| google\_folder\_id | The folder in which Janitor has permission to delete resources. | `string` | `""` | no |
+| google\_folder\_ids | List of folders Janitor has permission on. | `list(string)` | `[]` | no |
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
