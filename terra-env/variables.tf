@@ -193,10 +193,10 @@ variable "datarepo_static_ip_project" {
 
 # CRL Janitor Vars
 #
-variable "janitor_google_folder_id" {
-  type        = string
-  default     = ""
-  description = "The folder ID in which Janitor has permission to cleanup resources."
+variable "janitor_google_folder_ids" {
+  type        = list(string)
+  description = "List of folders Janitor has permission on."
+  default     = []
 }
 
 # Terra RBS Vars

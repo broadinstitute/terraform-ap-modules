@@ -34,6 +34,12 @@ locals {
     "roles/resourcemanager.projectDeleter",
     "roles/bigquery.admin",
   ]
+
+  folder_ids_and_roles = [
+    for pair in setproduct(local.app_folder_roles, var.google_folder_ids) : {
+      folder_role = pair[0]
+      folder_id = pair[1]
+  }]
 }
 
 # The main service account for the Janitor service app.
@@ -57,12 +63,12 @@ resource "google_project_iam_member" "app_roles" {
 
 # Grant Janitor App Service Account editor permission in folder level permission to cleanup resources.
 resource "google_folder_iam_member" "app_folder_roles" {
-  // Skip if google_folder variable is not present.
-  count = var.enable && (var.google_folder_id != "") ? length(local.app_folder_roles) : 0
+  // Skip if folder id list is empty.
+  count = var.enable ? length(local.folder_ids_and_roles): 0
 
   provider = google.target
-  folder  = var.google_folder_id
-  role     = local.app_folder_roles[count.index]
+  folder  = local.folder_ids_and_roles[count.index].folder_id
+  role     = local.folder_ids_and_roles[count.index].folder_role
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 

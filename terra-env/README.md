@@ -46,7 +46,7 @@ No provider.
 | datarepo\_dns\_zone\_project | Google Project where Data Repo DNS zone lives | `string` | `""` | no |
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
-| janitor\_google\_folder\_id | The folder ID in which Janitor has permission to cleanup resources. | `string` | `""` | no |
+| janitor\_google\_folder\_ids | List of folders Janitor has permission on. | `list(string)` | `[]` | no |
 | rbs\_google\_folder\_ids | List of folders RBS has permission on. | `list(string)` | `[]` | no |
 | rbs\_billing\_account\_ids | List of billing accounts RBS has permission to use. | `list(string)` | `[]` | no |
 | rbs\_db\_version | The version for the RBS CloudSQL instance | `string` | `"POSTGRES_12"` | no |
