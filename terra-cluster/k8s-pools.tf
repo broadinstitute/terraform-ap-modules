@@ -13,7 +13,7 @@ locals {
 module "k8s-node-pool-default-v2" {
   # boilerplate
   enable = var.node_pool_default_v2.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=gm-trace-scope"
   dependencies = [
     module.k8s-master
   ]
