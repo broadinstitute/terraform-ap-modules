@@ -18,7 +18,7 @@ variable "google_project" {
 }
 variable "google_folder_ids" {
   type        = list(string)
-  description = "List of folders RBS has permission on."
+  description = "List of folders Resource Buffer Service has permission on."
   default     = []
 }
 variable "cluster" {
@@ -37,7 +37,7 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "rbs"
+  service = "Resource Buffer Service"
 }
 
 #
@@ -115,13 +115,13 @@ locals {
 }
 
 #
-# List of billing accounts RBS has permissions on.
+# List of billing accounts Resource Buffer Service has permissions on.
 #
-# We separate whether the roles/billing.user is set on the RBS SA as its own flag because the
+# We separate whether the roles/billing.user is set on the Resource Buffer Service SA as its own flag because the
 # Broad SA that runs terraform does not want to have the broad permissions to set modify
 # permissions on the service account. This was done manually instead for the Broad.
 variable "billing_account_ids" {
   type        = list(string)
-  description = "List of Google billing account ids to allow RBS to use"
+  description = "List of Google billing account ids to allow Resource Buffer Service to use"
   default     = []
 }

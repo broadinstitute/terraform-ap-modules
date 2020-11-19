@@ -232,48 +232,48 @@ output "fqdns" {
 #
 # Terra Resource Buffering Service Outputs
 #
-output "rbs_sa_id" {
-  value       = module.rbs.app_sa_id
-  description = "Terra RBS Google service account ID"
+output "buffer_sa_id" {
+  value       = module.buffer.app_sa_id
+  description = "Terra Resource Service Google service account ID"
 }
-output "rbs_sqlproxy_sa_id" {
-  value       = module.rbs.sqlproxy_sa_id
-  description = "Terra RBS Cloud SQL Proxy Google service account ID"
+output "buffer_sqlproxy_sa_id" {
+  value       = module.buffer.sqlproxy_sa_id
+  description = "Terra Resource Buffer Service Cloud SQL Proxy Google service account ID"
 }
-output "rbs_client_sa_id" {
-  value       = module.rbs.client_sa_id
-  description = "Terra RBS client Google service account ID"
+output "buffer_client_sa_id" {
+  value       = module.buffer.client_sa_id
+  description = "Terra Resource Buffer Service client Google service account ID"
 }
-output "rbs_db_ip" {
-  value       = module.rbs.cloudsql_public_ip
-  description = "Terra RBS CloudSQL instance IP"
+output "buffer_db_ip" {
+  value       = module.buffer.cloudsql_public_ip
+  description = "Terra Buffer Service CloudSQL instance IP"
 }
-output "rbs_db_instance" {
-  value       = module.rbs.cloudsql_instance_name
-  description = "Terra RBS CloudSQL instance name"
+output "buffer_db_instance" {
+  value       = module.buffer.cloudsql_instance_name
+  description = "Terra Buffer Service CloudSQL instance name"
 }
-output "rbs_db_root_pass" {
-  value       = module.rbs.cloudsql_root_user_password
-  description = "Terra RBS database root password"
+output "buffer_db_root_pass" {
+  value       = module.buffer.cloudsql_root_user_password
+  description = "Terra Buffer Service database root password"
   sensitive   = true
 }
-output "rbs_db_creds" {
-  value       = module.rbs.cloudsql_app_db_creds
-  description = "Terra RBS database user credentials"
+output "buffer_db_creds" {
+  value       = module.buffer.cloudsql_app_db_creds
+  description = "Terra Buffer Service database user credentials"
   sensitive   = true
 }
-output "rbs_stairway_db_creds" {
-  value       = module.rbs.cloudsql_app_stairway_db_creds
-  description = "Terra RBS Stairway database user credentials"
+output "buffer_stairway_db_creds" {
+  value       = module.buffer.cloudsql_app_stairway_db_creds
+  description = "Terra Buffer Service Stairway database user credentials"
   sensitive   = true
 }
-output "rbs_ingress_ip" {
-  value       = module.rbs.ingress_ip
-  description = "Terra RBS ingress IP"
+output "buffer_ingress_ip" {
+  value       = module.buffer.ingress_ip
+  description = "Terra Buffer Service ingress IP"
 }
-output "rbs_fqdn" {
-  value       = module.rbs.fqdn
-  description = "Terra RBS fully qualified domain name"
+output "buffer_fqdn" {
+  value       = module.buffer.fqdn
+  description = "Terra Buffer Service fully qualified domain name"
 }
 
 #

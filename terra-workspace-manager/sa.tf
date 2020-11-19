@@ -25,7 +25,7 @@ locals {
   ]
 
   # Roles used to manage created workspace projects.
-  # TODO(PF-156): Once WM uses RBS, we no longer need permissions to create projects.
+  # TODO(PF-156): Once WM uses Resource Buffer Service, we no longer need permissions to create projects.
   app_folder_roles = [
     "roles/resourcemanager.folderAdmin",
     "roles/resourcemanager.projectCreator",

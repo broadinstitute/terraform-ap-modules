@@ -2,7 +2,7 @@
  * # Terra Resource Buffering Service module
  *
  * This module creates the service account and CloudSQL databases necessary for 
- * running the [Terra-RBS](http://github.com/databiosphere/terra-rbs).
+ * running the [terra-resource-buffer](http://github.com/databiosphere/terra-resource-buffer).
  * 
  * For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).

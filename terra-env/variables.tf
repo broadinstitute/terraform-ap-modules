@@ -82,7 +82,7 @@ locals {
     crl_janitor           = false,
     datarepo              = false,
     ontology              = false,
-    rbs                   = false,
+    buffer                   = false,
     consent               = false,
     rawls                 = false,
     leonardo              = false
@@ -199,24 +199,24 @@ variable "janitor_google_folder_ids" {
   default     = []
 }
 
-# Terra RBS Vars
+# Terra Resource Buffer Vars
 #
-variable "rbs_google_folder_ids" {
+variable "buffer_google_folder_ids" {
   type        = list(string)
-  description = "List of folders RBS has permission on."
+  description = "List of folders Resource Buffer Service has permission on."
   default     = []
 }
-variable "rbs_billing_account_ids" {
+variable "buffer_billing_account_ids" {
   type        = list(string)
-  description = "List of billing accounts RBS has permission to use."
+  description = "List of billing accounts Resource Buffer Service has permission to use."
   default     = []
 }
-variable "rbs_db_version" {
+variable "buffer_db_version" {
   type        = string
   default     = "POSTGRES_12"
-  description = "The version for the RBS CloudSQL instance"
+  description = "The version for the Resource Buffer Service CloudSQL instance"
 }
-variable "rbs_db_keepers" {
+variable "buffer_db_keepers" {
   type        = bool
   default     = false
   description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
