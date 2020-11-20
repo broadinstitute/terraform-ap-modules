@@ -38,7 +38,7 @@ locals {
     }]
 }
 
-# The main service account for the Terra RBS service app.
+# The main service account for the Terra Resource Buffer Service service app.
 resource "google_service_account" "app" {
   count = var.enable ? 1 : 0
 
@@ -48,7 +48,7 @@ resource "google_service_account" "app" {
   display_name = "${local.service}-${local.owner}"
 }
 
-# Grant Terra RBS App Service Account editor permission to create resources.
+# Grant Terra Resource Buffer Service App Service Account editor permission to create resources.
 # TBD: This may change to organization/folder level permission depends on the Rawls integration
 resource "google_project_iam_member" "app_roles" {
   count = var.enable ? length(local.app_sa_roles) : 0
@@ -59,7 +59,7 @@ resource "google_project_iam_member" "app_roles" {
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
-# Grant Terra RBS App Service Account permission to modify resource in folder.
+# Grant Terra Resource Buffer Service App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
   // Skip if google_folder variable is not present.
   count = var.enable ? length(local.folder_ids_and_roles): 0
@@ -70,8 +70,8 @@ resource "google_folder_iam_member" "app_folder_roles" {
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 
-# Grant Terra RBS App Service Account permission use the billing accounts.
-# If billing_account_ids is empty, we won't set the RBS SA as a billing user
+# Grant Terra Resource Buffer Service App Service Account permission use the billing accounts.
+# If billing_account_ids is empty, we won't set the Resource Buffer Service SA as a billing user
 resource "google_billing_account_iam_member" "app_billing_roles" {
   count              = var.enable ? length(var.billing_account_ids) : 0
   billing_account_id = var.billing_account_ids[count.index]

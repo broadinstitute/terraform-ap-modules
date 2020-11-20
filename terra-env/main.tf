@@ -168,10 +168,10 @@ module "ontology" {
   }
 }
 
-module "rbs" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rbs?ref=rbs-0.0.7"
+module "buffer" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.1.0"
 
-  enable = local.terra_apps["rbs"]
+  enable = local.terra_apps["buffer"]
 
   google_project = var.google_project
   cluster        = var.cluster
@@ -181,12 +181,12 @@ module "rbs" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
-  db_version = var.rbs_db_version
-  db_keepers = var.rbs_db_keepers
+  db_version = var.buffer_db_version
+  db_keepers = var.buffer_db_keepers
 
-  google_folder_ids = var.rbs_google_folder_ids
+  google_folder_ids = var.buffer_google_folder_ids
 
-  billing_account_ids = var.rbs_billing_account_ids
+  billing_account_ids = var.buffer_billing_account_ids
 
   providers = {
     google.target      = google.target
