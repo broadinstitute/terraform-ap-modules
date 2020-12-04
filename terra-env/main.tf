@@ -253,7 +253,7 @@ module "leonardo" {
 }
 
 module "agora" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//agora?ref=ch-DDO-905-agora-gke"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//agora?ref=agora-0.1.0"
 
   enable = local.terra_apps["agora"]
 
