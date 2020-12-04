@@ -82,10 +82,11 @@ locals {
     crl_janitor           = false,
     datarepo              = false,
     ontology              = false,
-    buffer                   = false,
+    buffer                = false,
     consent               = false,
     rawls                 = false,
-    leonardo              = false
+    leonardo              = false,
+    agora                 = false
     },
     var.terra_apps
   )

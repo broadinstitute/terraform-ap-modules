@@ -251,3 +251,22 @@ module "leonardo" {
     google.dns    = google.dns
   }
 }
+
+module "agora" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//agora?ref=agora-0.1.0"
+
+  enable = local.terra_apps["agora"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target = google.target
+    google.dns    = google.dns
+  }
+}
