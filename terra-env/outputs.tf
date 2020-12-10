@@ -109,7 +109,6 @@ output "workspace_container_folder_id" {
   value       = module.workspace_manager.workspace_container_folder_id
   description = "The folder id of the folder that workspace projects should be created within."
 }
-
 output "workspace_db_ip" {
   value       = module.workspace_manager.cloudsql_public_ip
   description = "Workspace Manager CloudSQL instance IP"
@@ -136,6 +135,10 @@ output "workspace_stairway_db_creds" {
 output "workspace_ingress_ip" {
   value       = module.workspace_manager.ingress_ip
   description = "Workspace Manager ingress IP"
+}
+output "workspace_ingress_ip_name" {
+  value       = module.workspace_manager.ingress_ip_name
+  description = "Workspace Manager ingress IP name"
 }
 output "workspace_fqdn" {
   value       = module.workspace_manager.fqdn
