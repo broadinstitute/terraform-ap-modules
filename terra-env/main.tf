@@ -272,7 +272,7 @@ module "agora" {
 }
 
 module "firecloudorch" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//firecloudorch?ref=DDO-913-orch-k8s"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//firecloudorch?ref=firecloudorch-0.1.0"
 
   enable = local.terra_apps["firecloudorch"]
 
