@@ -314,3 +314,17 @@ output "leonardo_fqdn" {
   value       = module.leonardo.fqdn
   description = "fqdn to access k8s leonardo deployment"
 }
+
+#
+# Firecloud Orchestration Outputs
+# 
+
+output "firecloudorch_ingress_ip" {
+  value       = module.firecloudorch.ingress_ip
+  description = "Static if for orchestration lb"
+}
+
+output "firecloudorch_fqdn" {
+  value       = module.firecloudorch.fqdn
+  description = "fqdn to acess orchestration deployment"
+}
