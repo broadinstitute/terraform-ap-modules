@@ -270,3 +270,22 @@ module "agora" {
     google.dns    = google.dns
   }
 }
+
+module "firecloudorch" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//agora?ref=DDO-913-orch-k8s"
+
+  enable = local.terra_apps["firecloudorch"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target = google.target
+    google.dns    = google.dns
+  }
+}
