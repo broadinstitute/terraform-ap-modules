@@ -33,7 +33,7 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "firecloudorch-k8s" # K8s suffix is here for dns testing purposes, ot avoid overlap with GCE consent, will remove when ready to cut over
+  service = "firecloudorch-k8s" # K8s suffix is here for dns testing purposes, ot avoid overlap with GCE orchestration, will remove when ready to cut over
 }
 
 #
