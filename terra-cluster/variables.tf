@@ -135,6 +135,11 @@ variable "authorized_network_cidrs" {
   type        = list(string)
   default     = []
 }
+variable "private_ingress_cidrs" {
+  description = "Array of CIDR blocks for private ingresses"
+  type        = list(string)
+  default     = []
+}
 
 variable "cloud_nat_settings" {
   description = "Cloud NAT settings"
