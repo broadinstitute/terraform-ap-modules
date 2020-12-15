@@ -1,8 +1,8 @@
 data "google_dns_managed_zone" "dns_zone" {
   count    = var.enable ? 1 : 0
   provider = google.dns
-
-  name = var.dns_zone_name
+  project  = var.google_project
+  name     = var.dns_zone_name
 }
 
 locals {
@@ -10,8 +10,8 @@ locals {
 }
 
 resource "google_dns_record_set" "ingress" {
-  count = var.enable ? 1 : 0
-
+  count        = var.enable ? 1 : 0
+  project      = var.google_project
   provider     = google.dns
   managed_zone = data.google_dns_managed_zone.dns_zone[0].name
   name         = local.fqdn
