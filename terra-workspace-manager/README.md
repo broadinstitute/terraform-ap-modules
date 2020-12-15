@@ -20,8 +20,8 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| google.target | n/a |
 | google | n/a |
+| google.target | n/a |
 
 ## Inputs
 
@@ -57,6 +57,7 @@ No requirements.
 | cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
 | ingress\_ip | Workspace Manager ingress IP |
+| ingress\_ip\_name | Sam ingress IP name |
 | fqdn | Workspace Manager fully qualified domain name |
 | cloudsql\_public\_ip | Workspace Manager CloudSQL instance IP |
 | cloudsql\_instance\_name | Workspace Manager CloudSQL instance name |

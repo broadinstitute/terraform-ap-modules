@@ -40,6 +40,7 @@ No requirements.
 | private\_master\_ipv4\_cidr\_block | CIDR range for private cluster master endpoint | `string` | `"0.0.0.0/28"` | no |
 | nat\_egress\_ip\_count | Number of Cloud NAT IPs to create for cluster egress | `number` | `2` | no |
 | authorized\_network\_cidrs | Array of CIDR blocks for authorized networks | `list(string)` | `[]` | no |
+| private\_ingress\_cidrs | Array of CIDR blocks for private ingresses | `list(string)` | `[]` | no |
 | cloud\_nat\_settings | Cloud NAT settings | `object({ min_ports_per_vm = number })` | <pre>{<br>  "min_ports_per_vm": 64<br>}</pre> | no |
 | istio\_enable | Whether to enable Google's Istio implementation in the cluster | `bool` | `true` | no |
 | release\_channel | See official documentation for GKE release channels | `string` | `"REGULAR"` | no |

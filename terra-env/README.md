@@ -90,6 +90,7 @@ No provider.
 | workspace\_db\_creds | Workspace Manager database user credentials |
 | workspace\_stairway\_db\_creds | Stairway database user credentials |
 | workspace\_ingress\_ip | Workspace Manager ingress IP |
+| workspace\_ingress\_ip\_name | Workspace Manager ingress IP name |
 | workspace\_fqdn | Workspace Manager fully qualified domain name |
 | crl\_janitor\_sa\_id | CRL Janitor Google service account ID |
 | crl\_janitor\_sqlproxy\_sa\_id | CRL Janitor Cloud SQL Proxy Google service account ID |
@@ -124,4 +125,6 @@ No provider.
 | rawls\_fqdn | fqdn to access k8s rawls deployment |
 | leonardo\_ingress\_ip | Static ip for leonardo LB |
 | leonardo\_fqdn | fqdn to access k8s leonardo deployment |
+| firecloudorch\_ingress\_ip | Static if for orchestration lb |
+| firecloudorch\_fqdn | fqdn to acess orchestration deployment |
 
