@@ -125,4 +125,6 @@ No provider.
 | rawls\_fqdn | fqdn to access k8s rawls deployment |
 | leonardo\_ingress\_ip | Static ip for leonardo LB |
 | leonardo\_fqdn | fqdn to access k8s leonardo deployment |
+| firecloudorch\_ingress\_ip | Static if for orchestration lb |
+| firecloudorch\_fqdn | fqdn to acess orchestration deployment |
 
