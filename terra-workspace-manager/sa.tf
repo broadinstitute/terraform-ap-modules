@@ -24,8 +24,8 @@ locals {
     "roles/cloudtrace.agent",
   ]
 
-  # Roles used to manage created workspace projects.
-  # TODO(PF-156): Once WM uses Resource Buffer Service, we no longer need permissions to create projects.
+  # Buffer service creates projects in this folder. Workspace Manager needs to be the  owner of the folder to have
+  # owner permission on projects inside.
   app_folder_roles = [
     "roles/owner",
   ]
