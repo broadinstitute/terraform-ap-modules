@@ -135,9 +135,9 @@ variable "authorized_network_cidrs" {
   type        = list(string)
   default     = []
 }
-variable "private_ingress_cidrs" {
-  description = "Array of CIDR blocks for private ingresses"
-  type        = list(string)
+variable "private_ingress_whitelist" {
+  description = "List of addresses to whitelist for private ingresses"
+  type        = list(object({ description = string, addresses = list(string) })
   default     = []
 }
 
