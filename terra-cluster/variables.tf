@@ -137,7 +137,7 @@ variable "authorized_network_cidrs" {
 }
 variable "private_ingress_whitelist" {
   description = "List of addresses to whitelist for private ingresses"
-  type        = list(object({ description = string, addresses = list(string) })
+  type        = list(object({ description = string, addresses = list(string) }))
   default     = []
 }
 
