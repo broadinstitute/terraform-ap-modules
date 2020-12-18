@@ -14,9 +14,9 @@ locals {
   # A maximum of 5 addresses are permitted in each CloudArmor firewall rule,
   # so divide up any address lists with > 5 into multiple rules
   chunked_whitelist = flatten([
-    for whitelist in local.private_ingress_whitelist : [
-      for chunk in chunklist(whitelist.addresses, 5) : {
-        description = whitelist.description
+    for address_list in local.private_ingress_whitelist : [
+      for chunk in chunklist(address_list.addresses, 5) : {
+        description = address_list.description
         addresses   = chunk
       }
     ]
