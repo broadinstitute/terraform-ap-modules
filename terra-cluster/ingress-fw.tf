@@ -30,14 +30,6 @@ resource "google_compute_security_policy" "terra-private-ingress-policy" {
   }
 
   rule {
-    action      = "allow"
-    priority    = size(var.private_ingress_cidrs)
-    description = "Allow traffic originating from within the cluster"
-
-    match {}
-  }
-
-  rule {
     action      = "deny(403)"
     priority    = "2147483647"
     description = "Default rule: deny all"
