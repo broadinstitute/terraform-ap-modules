@@ -13,7 +13,7 @@ locals {
 
   # A maximum of 5 addresses are permitted in each CloudArmor firewall rule,
   # so divide up any address lists with > 5 into multiple rules
-  chunked_whitelist = flatten([
+  private_ingress_whitelist_chunked = flatten([
     for address_list in local.private_ingress_whitelist : [
       for chunk in chunklist(address_list.addresses, 5) : {
         description = address_list.description
@@ -29,7 +29,7 @@ resource "google_compute_security_policy" "terra-private-ingress-policy" {
   # Chunk all cidrs into groups of 5 (max allowed in a rule),
   # add add a whitelist rule for each chunk
   dynamic "rule" {
-    for_each = local.chunked_whitelist
+    for_each = local.private_ingress_whitelist_chunked
 
     content {
       action   = "allow"
