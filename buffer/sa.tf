@@ -32,7 +32,8 @@ locals {
   ]
 
   folder_ids_and_roles = [
-    for pair in setproduct(local.app_folder_roles, var.google_folder_ids) : {
+    for pair in setproduct(local.app_folder_roles,
+       concat(var.google_folder_ids, [for f in google_folder.pool_folders : f.id])) : {
       folder_role = pair[0]
       folder_id = pair[1]
     }]
