@@ -32,11 +32,7 @@ locals {
     "roles/resourcemanager.projectDeleter",
   ]
 
-  folder_ids_and_roles = [
-  for pair in setproduct(local.app_folder_roles, var.workspace_project_folder_ids) : {
-    folder_role = pair[0]
-    folder_id = pair[1]
-  }]
+  folder_id_to_role = {for pair in setproduct(var.workspace_project_folder_ids, local.app_folder_roles) : pair[0] => pair[1]}
 }
 
 resource "google_service_account" "app" {
@@ -65,11 +61,11 @@ resource "google_folder_iam_member" "app" {
 }
 # Grant WorkspaceManager Service App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
-  for_each = var.enable ? toset(local.folder_ids_and_roles) : []
+  for_each = var.enable ? local.folder_id_to_role : []
 
   provider = google.target
-  folder  = local.folder_ids_and_roles[each.key].folder_id
-  role     = local.folder_ids_and_roles[each.key].folder_role
+  folder  = each.key
+  role     = each.value
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 resource "google_billing_account_iam_member" "app" {
