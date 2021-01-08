@@ -49,6 +49,7 @@ variable "env_type" {
 #
 # Service Vars
 #
+// TODO(PF-156) Remove this once WM switches to using RBS
 variable "workspace_project_folder_id" {
   type        = string
   description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
@@ -56,7 +57,12 @@ variable "workspace_project_folder_id" {
   # https://github.com/hashicorp/terraform/issues/21702
   default = ""
 }
-
+// workspace_project_folder_ids will replace the workspace_project_folder_id above. Key difference is that these folders are not created by WSM
+variable "workspace_project_folder_ids" {
+  type        = list(string)
+  description = "List of folder ids WSM will need to be able to access. These folders contain projects created by RBS. Folders are created outside of WSM."
+  default     = []
+}
 # This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
 variable "billing_account_ids" {
   type        = list(string)

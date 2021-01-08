@@ -31,6 +31,12 @@ locals {
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeleter",
   ]
+
+  folder_ids_and_roles = [
+  for pair in setproduct(local.app_folder_roles, var.workspace_project_folder_ids) : {
+    folder_role = pair[0]
+    folder_id = pair[1]
+  }]
 }
 
 resource "google_service_account" "app" {
@@ -49,11 +55,21 @@ resource "google_project_iam_member" "app" {
   role     = local.app_sa_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
+// TODO(PF-156): Remove this once WM uses RBS
 resource "google_folder_iam_member" "app" {
   count    = local.create_folder ? length(local.app_folder_roles) : 0
   provider = google.target
   folder   = google_folder.workspace_project_folder[0].id
   role     = local.app_folder_roles[count.index]
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+# Grant WorkspaceManager Service App Service Account permission to modify resource in folder.
+resource "google_folder_iam_member" "app_folder_roles" {
+  for_each = var.enable ? toset(local.folder_ids_and_roles) : []
+
+  provider = google.target
+  folder  = local.folder_ids_and_roles[each.key].folder_id
+  role     = local.folder_ids_and_roles[each.key].folder_role
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 resource "google_billing_account_iam_member" "app" {
