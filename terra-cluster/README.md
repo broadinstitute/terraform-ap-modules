@@ -40,7 +40,7 @@ No requirements.
 | private\_master\_ipv4\_cidr\_block | CIDR range for private cluster master endpoint | `string` | `"0.0.0.0/28"` | no |
 | nat\_egress\_ip\_count | Number of Cloud NAT IPs to create for cluster egress | `number` | `2` | no |
 | authorized\_network\_cidrs | Array of CIDR blocks for authorized networks | `list(string)` | `[]` | no |
-| private\_ingress\_cidrs | Array of CIDR blocks for private ingresses | `list(string)` | `[]` | no |
+| private\_ingress\_whitelist | List of addresses to whitelist for private ingresses | `list(object({ description = string, addresses = list(string) }))` | `[]` | no |
 | cloud\_nat\_settings | Cloud NAT settings | `object({ min_ports_per_vm = number })` | <pre>{<br>  "min_ports_per_vm": 64<br>}</pre> | no |
 | istio\_enable | Whether to enable Google's Istio implementation in the cluster | `bool` | `true` | no |
 | release\_channel | See official documentation for GKE release channels | `string` | `"REGULAR"` | no |
@@ -50,6 +50,7 @@ No requirements.
 | node\_pool\_default\_v2 | n/a | <pre>object({<br>    enable         = bool,<br>    min_node_count = number,<br>    max_node_count = number<br>  })</pre> | n/a | yes |
 | node\_pool\_cronjob\_v1 | n/a | <pre>object({<br>    enable         = bool,<br>    min_node_count = number,<br>    max_node_count = number<br>  })</pre> | n/a | yes |
 | node\_pool\_cromwell\_v1 | n/a | <pre>object({<br>    enable         = bool,<br>    min_node_count = number,<br>    max_node_count = number<br>  })</pre> | n/a | yes |
+| node\_pool\_opendj | n/a | <pre>object({<br>    enable         = bool,<br>    min_node_count = number,<br>    max_node_count = number<br>  })</pre> | n/a | yes |
 | other\_gcr\_projects | List of projects with GCR that the k8s node pool needs access to for pulling images. | `list(string)` | `[]` | no |
 | notification\_channels | A list of ids for channels to contact when an alert fires | `list(string)` | `[]` | no |
 | stackdriver\_workspace\_project | The stackdriver workspace that monitors the legacy firecloud environments except broad-dsde-prod. | `string` | `"broad-dsp-stackdriver"` | no |
