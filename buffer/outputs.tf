@@ -54,3 +54,13 @@ output "cloudsql_app_stairway_db_creds" {
   description = "Terra Resource Buffer Service Stairway database user credentials"
   sensitive   = true
 }
+
+#
+# Pool Folder Outputs
+#
+output "pool_id_to_folder_id" {
+  // Lookup each variable in the pool_ids input list in the generated folders map. This relies on the pool_id being each.key in the
+  // for_each in folder.tf
+  value       = var.enable ? { for p in var.pool_ids : p => google_folder.pool_folders[p].id }  : {}
+  description = "Map from pool id to the folder that will contain all projects created for the pool."
+}
