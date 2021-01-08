@@ -145,7 +145,7 @@ module "k8s-node-pool-opendj" {
     min_node_count = var.node_pool_opendj.min_node_count
     max_node_count = var.node_pool_opendj.max_node_count
   }
-  machine_type = "zones/us-central1-a/machineTypes/custom-80-81920"
+  machine_type = "custom-80-81920"
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "opendj" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-opendj"])
