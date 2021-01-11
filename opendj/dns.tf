@@ -4,7 +4,7 @@ data "google_dns_managed_zone" "dns_zone" {
 }
 
 locals {
-  fqdn = var.enable ? "${local.hostname}${local.subdomain_name}.${data.google_dns_managed_zone.dns_zone.dns_name}" : null
+  fqdn = "${local.hostname}${local.subdomain_name}.${data.google_dns_managed_zone.dns_zone.dns_name}"
 }
 
 resource "google_dns_record_set" "ingress" {
