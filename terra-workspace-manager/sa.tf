@@ -32,7 +32,8 @@ locals {
     "roles/resourcemanager.projectDeleter",
   ]
 
-  folder_id_to_role = {for pair in setproduct(var.workspace_project_folder_ids, local.app_folder_roles) : pair[0] => pair[1]}
+  cross_product = setproduct(var.workspace_project_folder_ids, local.app_folder_roles)
+  folder_id_to_role = {for p in local.cross_product : p[0] => p[1]}
 }
 
 resource "google_service_account" "app" {
