@@ -32,9 +32,6 @@ locals {
     "roles/resourcemanager.projectDeleter",
   ]
 
-  #cross_product = setproduct(var.workspace_project_folder_ids, local.app_folder_roles)
-  #folder_id_to_role = {for p in local.cross_product : p[0] => p[1]}
-
   folder_ids_and_roles = [
   for pair in setproduct(local.app_folder_roles, var.workspace_project_folder_ids) : {
     folder_role = pair[0]
@@ -67,18 +64,7 @@ resource "google_folder_iam_member" "app" {
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 # Grant WorkspaceManager Service App Service Account permission to modify resource in folder.
-#resource "google_folder_iam_member" "app_folder_roles" {
-#  for_each = var.enable ? local.folder_id_to_role : []
-
-#  provider = google.target
-#  folder  = each.key
-#  role     = each.value
-#  member   = "serviceAccount:${google_service_account.app[0].email}"
-#}
-
-# Grant Terra Resource Buffer Service App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
-  // Skip if google_folder variable is not present.
   count = var.enable ? length(local.folder_ids_and_roles): 0
 
   provider = google.target
