@@ -2,10 +2,10 @@
 # IP/DNS Outputs
 #
 output "ingress_ip" {
-  value       = var.enable ? google_compute_address.ingress_ip[0].address : null
+  value       = google_compute_address.ingress_ip.address
   description = "Ingress IP"
 }
 output "fqdn" {
-  value       = var.enable ? local.fqdn : null
+  value       = local.fqdn
   description = "Fully qualified domain name"
 }
