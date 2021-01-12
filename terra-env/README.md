@@ -82,7 +82,6 @@ No provider.
 | sam\_fqdn | Sam fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
-| workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
 | workspace\_db\_instance | Workspace Manager CloudSQL instance name |
