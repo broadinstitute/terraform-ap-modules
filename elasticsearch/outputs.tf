@@ -2,7 +2,7 @@
 # IP/DNS Outputs
 #
 output "ingress_ip" {
-  value       = google_compute_global_address.ingress_ip[0].address
+  value       = google_compute_global_address.ingress_ip.address
   description = "elasticsearch ingress IP"
 }
 output "fqdn" {
