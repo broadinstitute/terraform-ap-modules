@@ -60,7 +60,7 @@ variable "workspace_project_folder_id" {
 // workspace_project_folder_ids will replace the workspace_project_folder_id above. Key difference is that these folders are not created by WSM
 variable "workspace_project_folder_ids" {
   type        = list(string)
-  description = "List of folder ids WSM will need to be able to access. These folders contain projects created by RBS. Folders are created outside of WSM."
+  description = "List of folder ids WSM will need to be able to access. Folders are created outside of WSM."
   default     = []
 }
 # This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
