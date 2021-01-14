@@ -101,10 +101,6 @@ output "workspace_app_sa_id" {
   value       = module.workspace_manager.app_sa_id
   description = "Workspace Manager App Google service account ID"
 }
-output "workspace_cloud_trace_sa_id" {
-  value       = module.workspace_manager.cloud_trace_sa_id
-  description = "Workspace Manager Cloud trace Google service account ID"
-}
 output "workspace_container_folder_id" {
   value       = module.workspace_manager.workspace_container_folder_id
   description = "The folder id of the folder that workspace projects should be created within."

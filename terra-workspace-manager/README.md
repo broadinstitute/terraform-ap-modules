@@ -20,8 +20,8 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| google | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -54,7 +54,6 @@ No requirements.
 |------|-------------|
 | sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | app\_sa\_id | Workspace Manager App Google service account ID |
-| cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
 | ingress\_ip | Workspace Manager ingress IP |
 | ingress\_ip\_name | Sam ingress IP name |
