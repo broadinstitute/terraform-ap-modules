@@ -245,12 +245,12 @@ variable "buffer_pool_names" {
   description = "List of pools in this environment for which folders will be created and Buffer SA granted access to."
   default     = []
 }
-
 variable "buffer_external_folder_ids" {
   type        = list(string)
   description = "List of already existing folders that Buffer SA will get access to."
   default     = []
 }
+
 #
 # Sam Vars
 #

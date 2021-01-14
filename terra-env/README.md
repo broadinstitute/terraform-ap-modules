@@ -37,8 +37,8 @@ No provider.
 | wsm\_billing\_account\_ids | List of Google billing account ids to allow WM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
-| wsm\_buffer\_pool\_names | Name of the Buffer Service pools that create projects for WSM. | `list(string)` | `""` | no |
-| wsm\_external\_folder\_ids | Folders that WSM needs access to because projects will be created there. | `list(string)` | `""` | no |
+| wsm\_buffer\_pool\_names | Names of the buffer service pools that create projects for WSM. | `list(string)` | `[]` | no |
+| wsm\_external\_folder\_ids | Folders that WSM needs to access other than those managed by buffer service. | `list(string)` | `[]` | no |
 | grafana\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | prometheus\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | grafana\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
@@ -123,6 +123,7 @@ No provider.
 | buffer\_stairway\_db\_creds | Terra Buffer Service Stairway database user credentials |
 | buffer\_ingress\_ip | Terra Buffer Service ingress IP |
 | buffer\_fqdn | Terra Buffer Service fully qualified domain name |
+| buffer\_pool\_name\_to\_folder\_id | Map from pool name to the folder that will contain all projects created for the pool. Only populated for pools in the pool\_names input variable. |
 | consent\_ingress\_ip | Static ip for consent LB |
 | consent\_fqdn | fqdn to access k8s consent deployment |
 | rawls\_ingress\_ip | Static ip for rawls LB |
