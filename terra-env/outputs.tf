@@ -278,7 +278,12 @@ output "buffer_fqdn" {
   value       = module.buffer.fqdn
   description = "Terra Buffer Service fully qualified domain name"
 }
-
+output "buffer_pool_name_to_folder_id" {
+  // Lookup each variable in the pool_names input list in the generated folders map. This relies on the pool_name being each.key in the
+  // for_each in folder.tf
+  value       = module.buffer.pool_name_to_folder_id
+  description = "Map from pool name to the folder that will contain all projects created for the pool. Only populated for pools in the pool_names input variable."
+}
 #
 # Consent Outputs
 #
