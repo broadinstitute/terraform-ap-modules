@@ -115,6 +115,7 @@ variable "use_subdomain" {
 #
 # Workspace Manager Vars
 #
+# TODO (PF=156): Remove once WSM uses RBS.
 variable "wsm_workspace_project_folder_id" {
   type        = string
   description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
@@ -135,7 +136,23 @@ variable "wsm_db_keepers" {
   default     = false
   description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
 }
+variable "wsm_buffer_pool_names" {
+  type        = list(string)
+  description = "Names of the buffer service pools that create projects for WSM."
+  default     = []
+}
+# This field should be used in personal environments when the folder containing google projects
+# comes from the tools RBS. Otherwise, all projects should be created by Buffer Service
+# in the corresponding environment and the name of the pool should be passed in above.
+variable "wsm_external_folder_ids" {
+  type        = list(string)
+  description = "Folders that WSM needs to access other than those managed by buffer service."
+  default     = []
+}
 
+locals {
+ wsm_folder_ids = concat(var.wsm_external_folder_ids, [for p in var.wsm_buffer_pool_names: module.buffer.pool_name_to_folder_id[p]])
+}
 #
 # Prometheus / Grafana vars
 #
@@ -203,11 +220,6 @@ variable "janitor_google_folder_ids" {
 
 # Terra Resource Buffer Vars
 #
-variable "buffer_google_folder_ids" {
-  type        = list(string)
-  description = "List of folders Resource Buffer Service has permission on."
-  default     = []
-}
 variable "buffer_billing_account_ids" {
   type        = list(string)
   description = "List of billing accounts Resource Buffer Service has permission to use."
@@ -223,7 +235,22 @@ variable "buffer_db_keepers" {
   default     = false
   description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
 }
+variable "buffer_root_folder_id" {
+  type        = string
+  description = "Parent folder under which to create all pool-specific folders. If empty, no folders will be created."
+  default     = ""
+}
+variable "buffer_pool_names" {
+  type        = list(string)
+  description = "List of pools in this environment for which folders will be created and Buffer SA granted access to."
+  default     = []
+}
 
+variable "buffer_external_folder_ids" {
+  type        = list(string)
+  description = "List of already existing folders that Buffer SA will get access to."
+  default     = []
+}
 #
 # Sam Vars
 #
