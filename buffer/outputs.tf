@@ -58,9 +58,9 @@ output "cloudsql_app_stairway_db_creds" {
 #
 # Pool Folder Outputs
 #
-output "pool_id_to_folder_id" {
-  // Lookup each variable in the pool_ids input list in the generated folders map. This relies on the pool_id being each.key in the
+output "pool_name_to_folder_id" {
+  // Lookup each variable in the pool_names input list in the generated folders map. This relies on the pool_name being each.key in the
   // for_each in folder.tf
-  value       = var.enable ? { for p in var.pool_ids : p => google_folder.pool_folders[p].id }  : {}
-  description = "Map from pool id to the folder that will contain all projects created for the pool."
+  value       = var.enable ? { for p in var.pool_names : p => google_folder.pool_folders[p].id }  : {}
+  description = "Map from pool name to the folder that will contain all projects created for the pool. Only populated for pools in the pool_names input variable."
 }

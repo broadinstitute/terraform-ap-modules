@@ -28,7 +28,6 @@ No requirements.
 | dependencies | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
 | enable | Enable flag for this module. If set to false, no resources will be created. | `bool` | `true` | no |
 | google\_project | The google project in which to create resources | `string` | n/a | yes |
-| google\_folder\_ids | List of folders Resource Buffer Service has permission on. | `list(string)` | `[]` | no |
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
@@ -44,8 +43,9 @@ No requirements.
 | stairway\_db\_name | Stairway db name | `string` | `""` | no |
 | stairway\_db\_user | Stairway db username | `string` | `""` | no |
 | billing\_account\_ids | List of Google billing account ids to allow Resource Buffer Service to use | `list(string)` | `[]` | no |
-| parent\_folder\_id | Parent folder under which to create all pool-specific folders. If empty, no folders will be created. | `string` | `""` | no |
-| pool\_ids | List of pools. Each will get exactly one folder created. | `list(string)` | `[]` | no |
+| root\_folder\_id | Folder under which all projects will be created for this environment. If empty, no folders will be created. | `string` | `""` | no |
+| pool\_names | List of pools for which folders will be created and Buffer Service Account granted access to. | `list(string)` | `[]` | no |
+| external\_folder\_ids | List of already existing folders that Buffer Service Account will be granted access to. | `list(string)` | `[]` | no |
 
 ## Outputs
 
@@ -61,5 +61,5 @@ No requirements.
 | cloudsql\_root\_user\_password | Terra Resource Buffer Service database root password |
 | cloudsql\_app\_db\_creds | Terra Resource Buffer Service database user credentials |
 | cloudsql\_app\_stairway\_db\_creds | Terra Resource Buffer Service Stairway database user credentials |
-| pool\_id\_to\_folder\_id | Map from pool id to the folder that will contain all projects created for the pool. |
+| pool\_name\_to\_folder\_id | Map from pool name to the folder that will contain all projects created for the pool. Only populated for pools in the pool\_names input variable. |
 
