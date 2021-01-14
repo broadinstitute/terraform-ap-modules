@@ -140,6 +140,7 @@ variable "pool_names" {
   default     = []
 }
 
+# This field should only be used if there is a good reason to prefer a manually managed folder for a particular pool.
 variable "external_folder_ids" {
   type        = list(string)
   description = "List of already existing folders that Buffer Service Account will be granted access to."
