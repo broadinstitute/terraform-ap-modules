@@ -20,8 +20,8 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| google | n/a |
 | google.target | n/a |
+| google | n/a |
 
 ## Inputs
 
@@ -35,6 +35,7 @@ No requirements.
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 | env\_type | Environment type. Valid values are 'preview', 'preview\_shared', and 'default' | `string` | `"default"` | no |
 | workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder. | `string` | `""` | no |
+| workspace\_project\_folder\_ids | List of folder ids WSM will need to be able to access. Folders are created outside of WSM. | `list(string)` | `[]` | no |
 | billing\_account\_ids | List of Google billing account ids to allow WSM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
