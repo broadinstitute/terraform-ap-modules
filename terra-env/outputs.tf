@@ -270,6 +270,10 @@ output "buffer_ingress_ip" {
   value       = module.buffer.ingress_ip
   description = "Terra Buffer Service ingress IP"
 }
+output "buffer_ingress_ip_name" {
+  value       = module.buffer.ingress_ip_name
+  description = "Terra Buffer Service ingress IP name"
+}
 output "buffer_fqdn" {
   value       = module.buffer.fqdn
   description = "Terra Buffer Service fully qualified domain name"

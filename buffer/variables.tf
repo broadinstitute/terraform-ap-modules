@@ -41,6 +41,15 @@ locals {
 }
 
 #
+# IP Vars
+#
+variable "global_ip" {
+  type        = bool
+  description = "Whether to make the IP global"
+  default     = false
+}
+
+#
 # DNS Vars
 #
 variable "dns_zone_name" {

@@ -169,7 +169,7 @@ module "ontology" {
 }
 
 module "buffer" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.2.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.2.1"
 
   enable = local.terra_apps["buffer"]
 
@@ -180,6 +180,8 @@ module "buffer" {
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
+
+  global_ip = var.buffer_global_ip
 
   db_version = var.buffer_db_version
   db_keepers = var.buffer_db_keepers

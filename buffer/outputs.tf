@@ -18,8 +18,12 @@ output "client_sa_id" {
 # IP/DNS Outputs
 #
 output "ingress_ip" {
-  value       = var.enable ? google_compute_address.ingress_ip[0].address : null
+  value       = var.enable ? local.ingress_ip : null
   description = "Terra Resource Buffer Service ingress IP"
+}
+output "ingress_ip_name" {
+  value       = var.enable ? local.ingress_ip_name : null
+  description = "Terra Resource Buffer Service ingress IP name"
 }
 output "fqdn" {
   value       = var.enable ? local.fqdn : null

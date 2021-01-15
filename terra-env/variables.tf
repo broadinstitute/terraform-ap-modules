@@ -213,6 +213,11 @@ variable "buffer_billing_account_ids" {
   description = "List of billing accounts Resource Buffer Service has permission to use."
   default     = []
 }
+variable "buffer_global_ip" {
+  type        = bool
+  default     = false
+  description = "Whether to create a global IP address"
+}
 variable "buffer_db_version" {
   type        = string
   default     = "POSTGRES_12"

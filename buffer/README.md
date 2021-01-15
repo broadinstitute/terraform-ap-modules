@@ -32,6 +32,7 @@ No requirements.
 | cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | cluster\_short | Optional short cluster name | `string` | `""` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
+| global\_ip | Whether to make the IP global | `bool` | `false` | no |
 | dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
@@ -53,6 +54,7 @@ No requirements.
 | sqlproxy\_sa\_id | Terra Resource Buffer Service Cloud SQL Proxy Google service account ID |
 | client\_sa\_id | Client Google service account ID |
 | ingress\_ip | Terra Resource Buffer Service ingress IP |
+| ingress\_ip\_name | Terra Resource Buffer Service ingress IP name |
 | fqdn | Terra Resource Buffer Service fully qualified domain name |
 | cloudsql\_public\_ip | Terra Resource Buffer Service CloudSQL instance IP |
 | cloudsql\_instance\_name | Terra Resource Buffer Service CloudSQL instance name |

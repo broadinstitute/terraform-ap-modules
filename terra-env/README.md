@@ -49,6 +49,7 @@ No provider.
 | janitor\_google\_folder\_ids | List of folders Janitor has permission on. | `list(string)` | `[]` | no |
 | buffer\_google\_folder\_ids | List of folders Resource Buffer Service has permission on. | `list(string)` | `[]` | no |
 | buffer\_billing\_account\_ids | List of billing accounts Resource Buffer Service has permission to use. | `list(string)` | `[]` | no |
+| buffer\_global\_ip | Whether to create a global IP address | `bool` | `false` | no |
 | buffer\_db\_version | The version for the Resource Buffer Service CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | buffer\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |
@@ -117,6 +118,7 @@ No provider.
 | buffer\_db\_creds | Terra Buffer Service database user credentials |
 | buffer\_stairway\_db\_creds | Terra Buffer Service Stairway database user credentials |
 | buffer\_ingress\_ip | Terra Buffer Service ingress IP |
+| buffer\_ingress\_ip\_name | Terra Buffer Service ingress IP name |
 | buffer\_fqdn | Terra Buffer Service fully qualified domain name |
 | consent\_ingress\_ip | Static ip for consent LB |
 | consent\_fqdn | fqdn to access k8s consent deployment |
