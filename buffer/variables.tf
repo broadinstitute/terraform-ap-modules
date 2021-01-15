@@ -16,7 +16,6 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
-# TODO(PF-156): Remove once we are actually using the folders RBS creates for itself.
 variable "google_folder_ids" {
   type        = list(string)
   description = "List of folders Resource Buffer Service has permission on."
@@ -124,17 +123,5 @@ locals {
 variable "billing_account_ids" {
   type        = list(string)
   description = "List of Google billing account ids to allow Resource Buffer Service to use"
-  default     = []
-}
-
-variable "parent_folder_id" {
-  type        = string
-  description = "Parent folder under which to create all pool-specific folders. If empty, no folders will be created."
-  default     = ""
-}
-
-variable "pool_ids" {
-  type        = list(string)
-  description = "List of pools. Each will get exactly one folder created."
   default     = []
 }

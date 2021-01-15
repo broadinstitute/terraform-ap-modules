@@ -16,6 +16,8 @@ module "cloudsql" {
   }
   cloudsql_tier = var.db_tier
 
+  cloudsql_replication_type = null
+
   app_dbs = {
     "${local.service}" = {
       db       = local.db_name

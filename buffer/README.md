@@ -44,8 +44,6 @@ No requirements.
 | stairway\_db\_name | Stairway db name | `string` | `""` | no |
 | stairway\_db\_user | Stairway db username | `string` | `""` | no |
 | billing\_account\_ids | List of Google billing account ids to allow Resource Buffer Service to use | `list(string)` | `[]` | no |
-| parent\_folder\_id | Parent folder under which to create all pool-specific folders. If empty, no folders will be created. | `string` | `""` | no |
-| pool\_ids | List of pools. Each will get exactly one folder created. | `list(string)` | `[]` | no |
 
 ## Outputs
 
@@ -61,5 +59,4 @@ No requirements.
 | cloudsql\_root\_user\_password | Terra Resource Buffer Service database root password |
 | cloudsql\_app\_db\_creds | Terra Resource Buffer Service database user credentials |
 | cloudsql\_app\_stairway\_db\_creds | Terra Resource Buffer Service Stairway database user credentials |
-| pool\_id\_to\_folder\_id | Map from pool id to the folder that will contain all projects created for the pool. |
 

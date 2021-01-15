@@ -1,5 +1,5 @@
 module "cloudsql" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.1.0"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.1"
 
   enable = var.enable
 
@@ -13,6 +13,8 @@ module "cloudsql" {
     "app" = local.service
   }
   cloudsql_tier = var.db_tier
+
+  cloudsql_replication_type = null
 
   app_dbs = {
     "${local.service}" = {
