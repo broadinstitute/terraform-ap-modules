@@ -12,7 +12,7 @@
  */
 
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=gm-pg-fix"
 
   enable = local.terra_apps["poc"]
 
@@ -32,7 +32,7 @@ module "poc_service" {
 }
 
 module "identity_concentrator" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=identity-concentrator-0.1.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=gm-pg-fix"
   enable = local.terra_apps["identity_concentrator"]
 
   google_project = var.google_project
@@ -100,7 +100,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.7"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=gm-pg-fix"
 
   enable = local.terra_apps["crl_janitor"]
 
@@ -169,7 +169,7 @@ module "ontology" {
 }
 
 module "buffer" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=gm-pg-fix"
 
   enable = local.terra_apps["buffer"]
 
