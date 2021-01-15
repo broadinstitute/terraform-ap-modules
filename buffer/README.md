@@ -18,8 +18,8 @@ No requirements.
 | Name | Version |
 |------|---------|
 | google.dns | n/a |
-| google.target | n/a |
 | google | n/a |
+| google.target | n/a |
 
 ## Inputs
 
@@ -53,6 +53,7 @@ No requirements.
 | sqlproxy\_sa\_id | Terra Resource Buffer Service Cloud SQL Proxy Google service account ID |
 | client\_sa\_id | Client Google service account ID |
 | ingress\_ip | Terra Resource Buffer Service ingress IP |
+| ingress\_ip\_name | Terra Resource Buffer Service ingress IP name |
 | fqdn | Terra Resource Buffer Service fully qualified domain name |
 | cloudsql\_public\_ip | Terra Resource Buffer Service CloudSQL instance IP |
 | cloudsql\_instance\_name | Terra Resource Buffer Service CloudSQL instance name |

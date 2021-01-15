@@ -117,6 +117,7 @@ No provider.
 | buffer\_db\_creds | Terra Buffer Service database user credentials |
 | buffer\_stairway\_db\_creds | Terra Buffer Service Stairway database user credentials |
 | buffer\_ingress\_ip | Terra Buffer Service ingress IP |
+| buffer\_ingress\_ip\_name | Terra Buffer Service ingress IP name |
 | buffer\_fqdn | Terra Buffer Service fully qualified domain name |
 | consent\_ingress\_ip | Static ip for consent LB |
 | consent\_fqdn | fqdn to access k8s consent deployment |
