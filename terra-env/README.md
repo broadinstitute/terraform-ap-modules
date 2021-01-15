@@ -49,6 +49,7 @@ No provider.
 | janitor\_google\_folder\_ids | List of folders Janitor has permission on. | `list(string)` | `[]` | no |
 | buffer\_google\_folder\_ids | List of folders Resource Buffer Service has permission on. | `list(string)` | `[]` | no |
 | buffer\_billing\_account\_ids | List of billing accounts Resource Buffer Service has permission to use. | `list(string)` | `[]` | no |
+| buffer\_global\_ip | Whether to create a global IP address | `bool` | `false` | no |
 | buffer\_db\_version | The version for the Resource Buffer Service CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | buffer\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |

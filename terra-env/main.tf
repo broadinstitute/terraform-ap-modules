@@ -181,6 +181,8 @@ module "buffer" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
+  global_ip = var.buffer_global_ip
+
   db_version = var.buffer_db_version
   db_keepers = var.buffer_db_keepers
 

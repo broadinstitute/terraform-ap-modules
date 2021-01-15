@@ -20,8 +20,8 @@ No requirements.
 | google.dns | n/a |
 | http | n/a |
 | random | n/a |
-| google.target | n/a |
 | google-beta.target | n/a |
+| google.target | n/a |
 
 ## Inputs
 
