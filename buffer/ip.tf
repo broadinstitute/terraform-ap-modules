@@ -15,6 +15,6 @@ resource "google_compute_global_address" "ingress_ip" {
 }
 
 locals {
-  ingress_ip = var.global_ip ? [google_compute_global_address.ingress_ip[0].address] : [google_compute_address.ingress_ip[0].address]
-  ingress_ip_name = var.global_ip ? [google_compute_global_address.ingress_ip[0].name] : [google_compute_address.ingress_ip[0].name]
+  ingress_ip = var.enable ? (var.global_ip ? [google_compute_global_address.ingress_ip[0].address] : [google_compute_address.ingress_ip[0].address]) : null
+  ingress_ip_name = var.enable ? (var.global_ip ? [google_compute_global_address.ingress_ip[0].name] : [google_compute_address.ingress_ip[0].name]) : null
 }
