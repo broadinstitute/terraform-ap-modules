@@ -91,6 +91,7 @@ module "workspace_manager" {
 
   workspace_project_folder_id = var.wsm_workspace_project_folder_id
   billing_account_ids         = var.wsm_billing_account_ids
+  workspace_project_folder_ids = local.wsm_folder_ids
 
   providers = {
     google.target      = google.target
@@ -186,7 +187,9 @@ module "buffer" {
   db_version = var.buffer_db_version
   db_keepers = var.buffer_db_keepers
 
-  google_folder_ids = var.buffer_google_folder_ids
+  external_folder_ids = var.buffer_external_folder_ids
+  root_folder_id = var.buffer_root_folder_id
+  pool_names = var.buffer_pool_names
 
   billing_account_ids = var.buffer_billing_account_ids
 
