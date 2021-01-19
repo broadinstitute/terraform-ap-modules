@@ -16,14 +16,6 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
-<<<<<<< HEAD
-variable "google_folder_ids" {
-  type        = list(string)
-  description = "List of folders Resource Buffer Service has permission on."
-  default     = []
-}
-=======
->>>>>>> 5d1e1c6 ([PF-323] Update variable names and descriptions in Buffer Terraform. (#126))
 variable "cluster" {
   type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
