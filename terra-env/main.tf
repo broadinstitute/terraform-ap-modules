@@ -72,7 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=tnadler-recommit"
 
   enable = local.terra_apps["workspace_manager"]
 
@@ -170,7 +170,7 @@ module "ontology" {
 }
 
 module "buffer" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.3.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=tnadler-recommit"
 
   enable = local.terra_apps["buffer"]
 
