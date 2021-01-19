@@ -16,11 +16,6 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
-variable "google_folder_ids" {
-  type        = list(string)
-  description = "List of folders Resource Buffer Service has permission on."
-  default     = []
-}
 variable "cluster" {
   type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
@@ -132,5 +127,31 @@ locals {
 variable "billing_account_ids" {
   type        = list(string)
   description = "List of Google billing account ids to allow Resource Buffer Service to use"
+  default     = []
+}
+
+# Root folder for this environment. A single folder will be created under the root folder for all
+# buffer service resources, and then pool specific folders under that, i.e. structure will be
+# {root_folder_id}/buffer-{env}/{pool_name} for each pool_name passed in below. The id of the
+# bottom level folder must be the value of parentFolderId in the buffer service configuration.
+variable "root_folder_id" {
+  type        = string
+  description = "Folder under which all projects will be created for this environment. If empty, no folders will be created."
+  default     = ""
+}
+
+# For each pool in this list, a folder will be created and buffer service Service Account will
+# be granted permission. See root_folder_id docs for folder structure. Pool name is the pool id
+# from the buffer service configuration without version information.
+variable "pool_names" {
+  type        = list(string)
+  description = "List of pools for which folders will be created and Buffer Service Account granted access to."
+  default     = []
+}
+
+# This field should only be used if there is a good reason to prefer a manually managed folder for a particular pool.
+variable "external_folder_ids" {
+  type        = list(string)
+  description = "List of already existing folders that Buffer Service Account will be granted access to."
   default     = []
 }

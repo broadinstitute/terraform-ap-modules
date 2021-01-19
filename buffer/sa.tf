@@ -30,9 +30,10 @@ locals {
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeleter",
   ]
-
+  generated_folders = local.create_folders ? [for f in google_folder.pool_folders : f.id] : []
   folder_ids_and_roles = [
-    for pair in setproduct(local.app_folder_roles, var.google_folder_ids) : {
+    for pair in setproduct(local.app_folder_roles,
+       concat(var.external_folder_ids, )) : {
       folder_role = pair[0]
       folder_id = pair[1]
     }]
