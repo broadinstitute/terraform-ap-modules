@@ -5,7 +5,7 @@ DSP Analysis Platform Terraform Modules. This public repository contains Terrafo
 When making changes to modules deployed with Atlantis in the [terraform-ap-deployments repository](https://github.com/broadinstitute/terraform-ap-deployments), the following workflow must be followed:
 1. Create a PR in this repo with changes to the module(s). If changing a module that is a sub-module of another module (such as `terra-env`), remember to point the module reference to the PR branch.
 2. Create a PR in terraform-ap-deployments with the module reference of the changing module pointing to the modules repo PR branch.
-3. [Run a plan](https://github.com/broadinstitute/terraform-ap-deployments#3-iterate-using-atlantis) in the ap-deployments PR. If changing multiple environments/projects it is recommended to initially reach a green plan/apply for one of them before changing the others.
+3. [Run a plan](https://github.com/broadinstitute/terraform-ap-deployments#3-iterate-using-atlantis) in the ap-deployments PR. If changing multiple environments/projects it is recommended to initially reach a green plan/apply for one of them before changing the others (`atlantis plan -p [project name]`).
 4. When the plan above succeeds, obtain reviews for both PRs.
 5. Apply your changes. Sometimes errors will appear during the apply that TF did not catch in the plan. After adressing any such errors, repeat 3 and 4.
 6. Once the apply is successful, update any sub-module references in the ap-modules PR branch to a version tag one minor version higher than the previous version of that module, then merge the ap-modules PR.
