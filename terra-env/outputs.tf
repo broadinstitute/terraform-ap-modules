@@ -101,10 +101,6 @@ output "workspace_app_sa_id" {
   value       = module.workspace_manager.app_sa_id
   description = "Workspace Manager App Google service account ID"
 }
-output "workspace_cloud_trace_sa_id" {
-  value       = module.workspace_manager.cloud_trace_sa_id
-  description = "Workspace Manager Cloud trace Google service account ID"
-}
 output "workspace_container_folder_id" {
   value       = module.workspace_manager.workspace_container_folder_id
   description = "The folder id of the folder that workspace projects should be created within."
@@ -274,11 +270,20 @@ output "buffer_ingress_ip" {
   value       = module.buffer.ingress_ip
   description = "Terra Buffer Service ingress IP"
 }
+output "buffer_ingress_ip_name" {
+  value       = module.buffer.ingress_ip_name
+  description = "Terra Buffer Service ingress IP name"
+}
 output "buffer_fqdn" {
   value       = module.buffer.fqdn
   description = "Terra Buffer Service fully qualified domain name"
 }
-
+output "buffer_pool_name_to_folder_id" {
+  // Lookup each variable in the pool_names input list in the generated folders map. This relies on the pool_name being each.key in the
+  // for_each in folder.tf
+  value       = module.buffer.pool_name_to_folder_id
+  description = "Map from pool name to the folder that will contain all projects created for the pool. Only populated for pools in the pool_names input variable."
+}
 #
 # Consent Outputs
 #

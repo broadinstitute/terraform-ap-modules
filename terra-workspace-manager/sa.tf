@@ -31,6 +31,12 @@ locals {
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeleter",
   ]
+
+  folder_ids_and_roles = [
+  for pair in setproduct(local.app_folder_roles, var.workspace_project_folder_ids) : {
+    folder_role = pair[0]
+    folder_id = pair[1]
+  }]
 }
 
 resource "google_service_account" "app" {
@@ -49,6 +55,7 @@ resource "google_project_iam_member" "app" {
   role     = local.app_sa_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
+// TODO(PF-156): Remove this once WM uses RBS
 resource "google_folder_iam_member" "app" {
   count    = local.create_folder ? length(local.app_folder_roles) : 0
   provider = google.target
@@ -56,28 +63,18 @@ resource "google_folder_iam_member" "app" {
   role     = local.app_folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
+# Grant WorkspaceManager Service App Service Account permission to modify resource in folder.
+resource "google_folder_iam_member" "app_folder_roles" {
+  count = var.enable ? length(local.folder_ids_and_roles): 0
+
+  provider = google.target
+  folder  = local.folder_ids_and_roles[count.index].folder_id
+  role     = local.folder_ids_and_roles[count.index].folder_role
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
 resource "google_billing_account_iam_member" "app" {
   count              = var.enable && contains(["default", "preview_shared"], var.env_type) ? length(var.billing_account_ids) : 0
   billing_account_id = var.billing_account_ids[count.index]
   role               = "roles/billing.user"
   member             = "serviceAccount:${google_service_account.app[0].email}"
-}
-
-# TODO(wchamber): Remove the cloud_trace SA in favor of the single "app" SA.
-resource "google_service_account" "cloud_trace" {
-  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
-
-  provider     = google.target
-  project      = var.google_project
-  account_id   = "${local.service}-${local.owner}-cloud-trace"
-  display_name = "${local.service}-${local.owner}-cloud-trace"
-}
-
-resource "google_project_iam_member" "cloud_trace" {
-  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
-
-  provider = google.target
-  project  = var.google_project
-  role     = "roles/cloudtrace.admin"
-  member   = "serviceAccount:${google_service_account.cloud_trace[0].email}"
 }

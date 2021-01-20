@@ -37,6 +37,8 @@ No provider.
 | wsm\_billing\_account\_ids | List of Google billing account ids to allow WM to use for billing workspace google projects. | `list(string)` | `[]` | no |
 | wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| wsm\_buffer\_pool\_names | Names of the buffer service pools that create projects for WSM. | `list(string)` | `[]` | no |
+| wsm\_external\_folder\_ids | Folders that WSM needs to access other than those managed by buffer service. | `list(string)` | `[]` | no |
 | grafana\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | prometheus\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | grafana\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
@@ -47,10 +49,13 @@ No provider.
 | datarepo\_static\_ip\_name | Name of Data Repo's static IP | `string` | `""` | no |
 | datarepo\_static\_ip\_project | Project where of Data Repo's static IP lives | `string` | `""` | no |
 | janitor\_google\_folder\_ids | List of folders Janitor has permission on. | `list(string)` | `[]` | no |
-| buffer\_google\_folder\_ids | List of folders Resource Buffer Service has permission on. | `list(string)` | `[]` | no |
 | buffer\_billing\_account\_ids | List of billing accounts Resource Buffer Service has permission to use. | `list(string)` | `[]` | no |
+| buffer\_global\_ip | Whether to create a global IP address | `bool` | `false` | no |
 | buffer\_db\_version | The version for the Resource Buffer Service CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | buffer\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
+| buffer\_root\_folder\_id | Parent folder under which to create all pool-specific folders. If empty, no folders will be created. | `string` | `""` | no |
+| buffer\_pool\_names | List of pools in this environment for which folders will be created and Buffer SA granted access to. | `list(string)` | `[]` | no |
+| buffer\_external\_folder\_ids | List of already existing folders that Buffer SA will get access to. | `list(string)` | `[]` | no |
 | sam\_hostname | Sam ingress hostname | `string` | `"sam"` | no |
 | sam\_sdk\_sa\_count | How many Sam admin SDK service accounts for GSuite group/user management to create. | `number` | `3` | no |
 | sam\_firestore\_project\_name | Name for Sam Firestore project. Will default to sam-[workspace]-firestore if left blank. | `string` | `""` | no |
@@ -82,7 +87,6 @@ No provider.
 | sam\_fqdn | Sam fully qualified domain name |
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
-| workspace\_cloud\_trace\_sa\_id | Workspace Manager Cloud trace Google service account ID |
 | workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
 | workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
 | workspace\_db\_instance | Workspace Manager CloudSQL instance name |
@@ -118,7 +122,9 @@ No provider.
 | buffer\_db\_creds | Terra Buffer Service database user credentials |
 | buffer\_stairway\_db\_creds | Terra Buffer Service Stairway database user credentials |
 | buffer\_ingress\_ip | Terra Buffer Service ingress IP |
+| buffer\_ingress\_ip\_name | Terra Buffer Service ingress IP name |
 | buffer\_fqdn | Terra Buffer Service fully qualified domain name |
+| buffer\_pool\_name\_to\_folder\_id | Map from pool name to the folder that will contain all projects created for the pool. Only populated for pools in the pool\_names input variable. |
 | consent\_ingress\_ip | Static ip for consent LB |
 | consent\_fqdn | fqdn to access k8s consent deployment |
 | rawls\_ingress\_ip | Static ip for rawls LB |
