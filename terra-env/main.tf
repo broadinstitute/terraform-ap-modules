@@ -170,7 +170,7 @@ module "ontology" {
 }
 
 module "buffer" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.3.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.3.1"
 
   enable = local.terra_apps["buffer"]
 
