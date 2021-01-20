@@ -33,7 +33,7 @@ locals {
   generated_folders = local.create_folders ? [for f in google_folder.pool_folders : f.id] : []
   folder_ids_and_roles = [
     for pair in setproduct(local.app_folder_roles,
-       concat(var.external_folder_ids, )) : {
+       concat(var.external_folder_ids, local.generated_folders)) : {
       folder_role = pair[0]
       folder_id = pair[1]
     }]
