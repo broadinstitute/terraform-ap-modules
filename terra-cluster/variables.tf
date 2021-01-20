@@ -206,6 +206,14 @@ variable "node_pool_cromwell_v1" {
   })
 }
 
+variable "node_pool_opendj" {
+  type = object({
+    enable         = bool,
+    min_node_count = number,
+    max_node_count = number
+  })
+}
+
 #
 # CI SA vars
 #

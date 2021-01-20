@@ -126,3 +126,28 @@ module "k8s-node-pool-highmem" {
   # so we're stuck until we build out a new pool
   tags = local.legacy_node_tags
 }
+
+# opendj node pool
+module "k8s-node-pool-opendj" {
+  # boilerplate
+  enable = var.node_pool_opendj.enable
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
+  dependencies = [
+    module.k8s-master
+  ]
+  service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
+
+  # pool-specific settings
+  name = "opendj"
+  autoscaling = {
+    min_node_count = var.node_pool_opendj.min_node_count
+    max_node_count = var.node_pool_opendj.max_node_count
+  }
+  machine_type = "custom-80-81920"
+  disk_size_gb = 200
+  labels       = { "bio.terra/node-pool" = "opendj" }
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-opendj"])
+  taints       = [{ key = "bio.terra/workload", value = "opendj", effect = "NO_SCHEDULE" }]
+}
