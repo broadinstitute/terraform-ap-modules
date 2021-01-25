@@ -30,6 +30,8 @@ locals {
     "roles/resourcemanager.folderAdmin",
     "roles/resourcemanager.projectCreator",
     "roles/resourcemanager.projectDeleter",
+    "roles/serviceusage.serviceUsageAdmin",
+    "roles/billing.projectManager"
   ]
 
   folder_ids_and_roles = [
