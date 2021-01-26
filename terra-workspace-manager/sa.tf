@@ -28,10 +28,7 @@ locals {
   # TODO(PF-156): Once WM uses Resource Buffer Service, we no longer need permissions to create projects.
   app_folder_roles = [
     "roles/resourcemanager.folderAdmin",
-    "roles/resourcemanager.projectCreator",
-    "roles/resourcemanager.projectDeleter",
-    "roles/serviceusage.serviceUsageAdmin",
-    "roles/billing.projectManager"
+    "roles/owner"
   ]
 
   folder_ids_and_roles = [
