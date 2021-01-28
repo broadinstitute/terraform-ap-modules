@@ -1,4 +1,4 @@
-resource "google_compute_global_address" "ingress_ip" {
+resource "google_compute_address" "ingress_ip" {
   provider = google.target
   project  = var.google_project
 
