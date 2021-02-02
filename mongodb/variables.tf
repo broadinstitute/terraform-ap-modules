@@ -1,9 +1,10 @@
 #
 # General Vars
 #
-variable "google_project" {
+variable "backup_bucket_location" {
   type        = string
-  description = "The google project in which to create resources"
+  description = "Location of the backup bucket. Eg. 'us-central1'"
+  default     = "us-central1"
 }
 variable "owner" {
   type        = string

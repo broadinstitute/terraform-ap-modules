@@ -3,7 +3,6 @@
 # Service account used by Kubernetes CronJob to upload to backup bucket
 resource "google_service_account" "backup-sa" {
   provider     = google.target
-  project      = var.google_project
   account_id   = "mongodb-backup-${local.owner}"
   display_name = "mongodb-backup-${local.owner}"
 }
@@ -14,11 +13,9 @@ locals {
 
 # Bucket where mongodb dumps will be stored
 resource "google_storage_bucket" "backup-bucket" {
-  name     = "mongodb-backups-dsp-terra-${local.owner}"
-  location = "us-central1"
-  provider = google.target
-  project  = var.google_project
-
+  name          = "mongodb-backups-dsp-terra-${local.owner}"
+  provider      = google.target
+  location      = var.backup_bucket_location
   storage_class = "NEARLINE" # Retrieval will be rare, but retention might be adjusted
 
   # Enable versioning to guard against object deletion
@@ -44,7 +41,8 @@ resource "google_storage_bucket" "backup-bucket" {
 
 # Give backup SA permission to upload objects to bucket
 resource "google_storage_bucket_iam_binding" "binding" {
-  bucket  = google_storage_bucket.backup-bucket.name
-  role    = ["roles/storage.objectCreator"]
-  members = [google_service_account.backup-sa.name]
+  bucket   = google_storage_bucket.backup-bucket.name
+  provider = google.target
+  role     = ["roles/storage.objectCreator"]
+  members  = [google_service_account.backup-sa.name]
 }
