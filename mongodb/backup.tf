@@ -14,17 +14,19 @@ locals {
 
 # Bucket where mongodb dumps will be stored
 resource "google_storage_bucket" "backup-bucket" {
-  name     = "dsp-terra-${local.owner}-mongodb-backup"
+  name     = "mongodb-backups-dsp-terra-${local.owner}"
+  location = "us-central1"
   provider = google.target
   project  = var.google_project
 
   storage_class = "NEARLINE" # Retrieval will be rare, but retention might be adjusted
 
+  # Enable versioning to guard against object deletion
   versioning {
     enabled = true
   }
 
-  # Retain objects for min of 30 days
+  # Retain objects for minimum of 30 days
   retention_policy {
     retention_period = 30 * local.seconds_per_day
   }
