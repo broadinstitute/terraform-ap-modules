@@ -1,4 +1,4 @@
 output "backup_sa_id" {
-  value       = var.enable ? google_service_account.backup-sa.account_id : null
+  value       = google_service_account.backup-sa.account_id
   description = "MongoDB Backup SA ID"
 }
