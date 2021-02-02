@@ -18,7 +18,7 @@ resource "google_storage_bucket" "backup-bucket" {
   provider = google.target
   project  = var.google_project
 
-  storage_class = "NEARLINE" # Retrieval will be rare
+  storage_class = "NEARLINE" # Retrieval will be rare, but retention might be adjusted
 
   versioning {
     enabled = true
