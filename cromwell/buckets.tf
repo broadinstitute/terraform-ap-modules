@@ -25,6 +25,6 @@ resource "google_storage_bucket_iam_binding" "binding" {
   provider = google.target
 
   bucket  = google_storage_bucket.configs-bucket.name
-  role    = ["roles/storage.objectWriter"]
+  role    = ["roles/storage.objectAdmin"]
   members = [data.google_service_account.app-sa.name]
 }
