@@ -15,7 +15,7 @@ locals {
 resource "google_storage_bucket" "backup-bucket" {
   name          = "mongodb-backups-dsp-terra-${local.owner}"
   provider      = google.target
-  location      = var.backup_bucket_location
+  location      = "US"
   storage_class = "NEARLINE" # Retrieval will be rare, but retention might be adjusted
 
   # Enable versioning to guard against object deletion
