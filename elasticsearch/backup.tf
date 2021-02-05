@@ -35,7 +35,7 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
 # Grant sa permission to write to bucket
 resource "google_storage_bucket_iam_binding" "es-sa-binding" {
   bucket   = google_storage_bucket.es-snapshot-bucket.name
-  provider = googel.target
+  provider = google.target
   role     = "roles/storage.objectCreator"
   members  = ["serviceAccount:${google_service_account.elasticsearch-snapshot.email}"]
 }
