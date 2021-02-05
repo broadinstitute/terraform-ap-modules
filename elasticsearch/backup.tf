@@ -36,7 +36,6 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
 
 # Grant sa permission to write to bucket
 resource "google_storage_bucket_iam_binding" "es-sa-binding" {
-  project  = var.google_project
   bucket   = google_storage_bucket.es-snapshot-bucket.name
   provider = google.target
   role     = "roles/storage.objectCreator"
