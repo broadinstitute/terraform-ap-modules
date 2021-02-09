@@ -156,7 +156,7 @@ module "k8s-node-pool-opendj" {
 module "k8s-node-pool-mongodb-v1" {
   # boilerplate
   enable = var.node_pool_mongodb_v1.enable
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=ch-non-cos-image" # TODO - fix before merging
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.4-tf-0.12"
   dependencies = [
     module.k8s-master
   ]
