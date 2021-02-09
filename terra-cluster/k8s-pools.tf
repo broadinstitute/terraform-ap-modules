@@ -151,3 +151,35 @@ module "k8s-node-pool-opendj" {
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-opendj"])
   taints       = [{ key = "bio.terra/workload", value = "opendj", effect = "NO_SCHEDULE" }]
 }
+
+# MongoDB node pool
+module "k8s-node-pool-mongodb-v1" {
+  # boilerplate
+  enable = var.node_pool_mongodb_v1.enable
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.4-tf-0.12"
+  dependencies = [
+    module.k8s-master
+  ]
+  service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
+
+  # pool-specific settings
+  name = "mongodb-v1"
+  autoscaling = {
+    min_node_count = var.node_pool_mongodb_v1.min_node_count
+    max_node_count = var.node_pool_mongodb_v1.max_node_count
+  }
+
+  # MongoDB requires XFS filesystem, so we need to use Ubuntu
+  # https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#ubuntu
+  image_type = "ubuntu_containerd"
+
+  machine_type = "n1-highmem-4"
+  disk_size_gb = 200
+  labels       = { "bio.terra/node-pool" = "mongodb" }
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-mongodb-v1"])
+  taints       = [{ key = "bio.terra/workload", value = "mongodb", effect = "NO_SCHEDULE" }]
+
+  enable_secure_boot = true
+}
