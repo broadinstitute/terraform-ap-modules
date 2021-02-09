@@ -180,4 +180,6 @@ module "k8s-node-pool-mongodb-v1" {
   labels       = { "bio.terra/node-pool" = "mongodb" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-mongodb-v1"])
   taints       = [{ key = "bio.terra/workload", value = "mongodb", effect = "NO_SCHEDULE" }]
+
+  enable_secure_boot = true
 }
