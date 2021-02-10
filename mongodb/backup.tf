@@ -38,6 +38,6 @@ resource "google_storage_bucket" "backup-bucket" {
 resource "google_storage_bucket_iam_binding" "binding" {
   bucket   = google_storage_bucket.backup-bucket.name
   provider = google.target
-  role     = "roles/storage.objectCreator"
+  role     = "roles/storage.objectAdmin"
   members  = ["serviceAccount:${google_service_account.backup-sa.email}"]
 }
