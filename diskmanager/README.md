@@ -21,6 +21,7 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | google\_project | The google project to create a diskmanager service account in | `any` | n/a | yes |
+| owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 
 ## Outputs
 
