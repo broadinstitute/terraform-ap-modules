@@ -11,7 +11,7 @@ No requirements.
 Eventually, this module will create the following resources and permissions. As of this writing, it is only creating
 the three buckets, two service accounts, and applying the bucket permissions.
 
-Resources
+### Resources
 * 3 buckets: source, success, error
 * 2 cloud functions: streamer, file-mover
 * 2 service accounts: streamer, file-mover
