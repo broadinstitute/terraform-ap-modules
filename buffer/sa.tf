@@ -22,6 +22,9 @@ locals {
     "roles/monitoring.editor",
     "roles/cloudprofiler.agent",
     "roles/cloudtrace.agent",
+    # Allow creating&subscribing pub/sub topics for multi-instance Stairway.
+    "roles/pubsub.publisher",
+    "roles/pubsub.subscriber",
   ]
 
   # Roles used to manage projects for integration testing.
