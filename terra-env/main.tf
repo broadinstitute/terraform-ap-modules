@@ -101,8 +101,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=yyu-PF-161"
-  #source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.9"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.9"
 
   enable = local.terra_apps["crl_janitor"]
 
@@ -171,8 +170,7 @@ module "ontology" {
 }
 
 module "buffer" {
-  #source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.3.2"
-  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=yyu-PF-161"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.3.2"
 
   enable = local.terra_apps["buffer"]
 
