@@ -18,9 +18,8 @@ resource "google_project_iam_member" "sqlproxy_role" {
 
 locals {
   app_sa_roles = [
-    # Stairway publishes and subscribes to pubsub.
-    "roles/pubsub.publisher",
-    "roles/pubsub.subscriber",
+    # Allow creating & publishing & subscribing pub/sub topics for multi-instance Stairway.
+    "roles/pubsub.editor",
     # Allow exporting metrics, profiling, and tracing for monitoring.
     "roles/monitoring.editor",
     "roles/cloudprofiler.agent",
