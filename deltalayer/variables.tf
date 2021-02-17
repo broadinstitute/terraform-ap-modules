@@ -26,11 +26,13 @@ variable "sourcewriter_sa_email" {
 variable "bucket_suffix" {
   type        = string
   description = "Suffix to append to each bucket's name. Defaults to 'owner' variable if blank."
+  default = ""
 }
 
 variable "bucket_location" {
   type        = string
   description = "Google region in which to create buckets"
+  default = ""
 }
 
 variable "owner" {
