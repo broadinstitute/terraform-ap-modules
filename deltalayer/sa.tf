@@ -1,6 +1,6 @@
 # Service account for the "streamer" cloud function
 resource "google_service_account" "sa_streamer" {
-  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
+  count = var.enable ? 1 : 0
 
   provider     = google.target
   project      = var.google_project
@@ -10,7 +10,7 @@ resource "google_service_account" "sa_streamer" {
 
 # Service account for the "file-mover" cloud function.
 resource "google_service_account" "sa_filemover" {
-  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
+  count = var.enable ? 1 : 0
 
   provider     = google.target
   project      = var.google_project
