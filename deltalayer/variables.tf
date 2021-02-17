@@ -32,7 +32,7 @@ variable "bucket_suffix" {
 variable "bucket_location" {
   type        = string
   description = "Google region in which to create buckets"
-  default = ""
+  default = "us-central1"
 }
 
 variable "owner" {
@@ -43,8 +43,7 @@ variable "owner" {
 
 locals {
   owner           = var.owner == "" ? terraform.workspace : var.owner
-  bucket_suffix   = var.bucket_suffix == "" ? var.owner : var.bucket_suffix
-  bucket_location = var.bucket_location == "" ? "US-CENTRAL1" : var.bucket_location
+  bucket_suffix   = var.bucket_suffix == "" ? local.owner : var.bucket_suffix
   service         = "deltalayer"
 }
 
