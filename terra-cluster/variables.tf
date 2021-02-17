@@ -143,10 +143,11 @@ variable "private_ingress_whitelist" {
 
 variable "cloud_nat_settings" {
   description = "Cloud NAT settings"
-  type        = object({ min_ports_per_vm = number })
-  default = {
-    min_ports_per_vm = 64
-  }
+
+  type = object({
+    min_ports_per_vm                    = number,
+    enable_endpoint_independent_mapping = bool
+  })
 }
 
 # Istio
