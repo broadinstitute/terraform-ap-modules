@@ -19,14 +19,14 @@ resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding-filemove
   bucket   = google_storage_bucket.source-bucket.name
   provider = google.target
   role     = "roles/storage.objectAdmin"
-  members  = ["serviceAccount:${google_service_account.sa_filemover.email}"]
+  members  = ["serviceAccount:${google_service_account.sa_filemover[0].email}"]
 }
 
 resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding-streamer" {
   bucket   = google_storage_bucket.source-bucket.name
   provider = google.target
   role     = "roles/storage.objectViewer"
-  members  = ["serviceAccount:${google_service_account.sa_streamer.email}"]
+  members  = ["serviceAccount:${google_service_account.sa_streamer[0].email}"]
 }
 
 # "Success" bucket: sa_filemover creates/writes, coldline, auto-deletes after 120 days
@@ -52,7 +52,7 @@ resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding" {
   bucket   = google_storage_bucket.success-bucket.name
   provider = google.target
   role     = "roles/storage.objectCreator"
-  members  = ["serviceAccount:${google_service_account.sa_filemover.email}"]
+  members  = ["serviceAccount:${google_service_account.sa_filemover[0].email}"]
 }
 
 # "Error" bucket: sa_filemover creates/writes
@@ -67,6 +67,6 @@ resource "google_storage_bucket_iam_binding" "error-bucket-sa-binding" {
   bucket   = google_storage_bucket.error-bucket.name
   provider = google.target
   role     = "roles/storage.objectCreator"
-  members  = ["serviceAccount:${google_service_account.sa_filemover.email}"]
+  members  = ["serviceAccount:${google_service_account.sa_filemover[0].email}"]
 }
 
