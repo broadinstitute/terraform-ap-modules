@@ -2,10 +2,10 @@
 
 # "Source" bucket: sourcewriter_sa_email creates/writes, sa_filemover reads and deletes, sa_streamer reads
 resource "google_storage_bucket" "source-bucket" {
-  name     = "terra-deltalayer-source-${local.owner}"
+  name     = "terra-deltalayer-source-${local.bucket_suffix}"
   provider = google.target
   project  = var.google_project
-  location = var.bucket_location
+  location = local.bucket_location
 }
 
 resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding-sourcewriter" {
@@ -31,10 +31,10 @@ resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding-streamer
 
 # "Success" bucket: sa_filemover creates/writes, coldline, auto-deletes after 120 days
 resource "google_storage_bucket" "success-bucket" {
-  name          = "terra-deltalayer-success-${local.owner}"
+  name          = "terra-deltalayer-success-${local.bucket_suffix}"
   provider      = google.target
   project       = var.google_project
-  location      = var.bucket_location
+  location      = local.bucket_location
   storage_class = "COLDLINE"
 
   # Delete after 120 days
@@ -57,10 +57,10 @@ resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding" {
 
 # "Error" bucket: sa_filemover creates/writes
 resource "google_storage_bucket" "error-bucket" {
-  name     = "terra-deltalayer-error-${local.owner}"
+  name     = "terra-deltalayer-error-${local.bucket_suffix}"
   provider = google.target
   project  = var.google_project
-  location = var.bucket_location
+  location = local.bucket_location
 }
 
 resource "google_storage_bucket_iam_binding" "error-bucket-sa-binding" {
