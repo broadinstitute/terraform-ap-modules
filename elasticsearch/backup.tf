@@ -38,7 +38,7 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
 resource "google_storage_bucket_iam_binding" "es-sa-binding-edit" {
   bucket   = google_storage_bucket.es-snapshot-bucket.name
   provider = google.target
-  role     = "roles/storage.objectAdmin"
+  role     = "roles/storage.legacyBucketWriter"
   members  = ["serviceAccount:${google_service_account.elasticsearch-snapshot.email}"]
 }
 
