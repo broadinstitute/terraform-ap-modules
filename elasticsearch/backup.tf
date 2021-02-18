@@ -30,7 +30,7 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
 }
 
 # Grant sa permission to write to bucket
-resource "google_storage_bucket_iam_binding" "es-sa-binding" {
+resource "google_storage_bucket_iam_binding" "es-sa-binding-edit" {
   bucket   = google_storage_bucket.es-snapshot-bucket.name
   provider = google.target
   role     = "roles/storage.legacyBucketWriter"
