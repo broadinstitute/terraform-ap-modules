@@ -18,11 +18,6 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
   location      = "US"
   storage_class = "NEARLINE"
 
-  # Retain for 30 days
-  retention_policy {
-    retention_period = 30 * local.seconds_per_day
-  }
-
   # Delete after 1 year
   lifecycle_rule {
     condition {
@@ -38,7 +33,7 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
 resource "google_storage_bucket_iam_binding" "es-sa-binding-edit" {
   bucket   = google_storage_bucket.es-snapshot-bucket.name
   provider = google.target
-  role     = "roles/storage.objectAdmin"
+  role     = "roles/storage.legacyBucketWriter"
   members  = ["serviceAccount:${google_service_account.elasticsearch-snapshot.email}"]
 }
 
