@@ -18,11 +18,6 @@ resource "google_storage_bucket" "es-snapshot-bucket" {
   location      = "US"
   storage_class = "NEARLINE"
 
-  # Retain for 30 days
-  retention_policy {
-    retention_period = 30 * local.seconds_per_day
-  }
-
   # Delete after 1 year
   lifecycle_rule {
     condition {
