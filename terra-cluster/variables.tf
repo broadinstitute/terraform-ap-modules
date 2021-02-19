@@ -146,7 +146,8 @@ variable "cloud_nat_settings" {
 
   type = object({
     min_ports_per_vm                    = number,
-    enable_endpoint_independent_mapping = bool
+    enable_endpoint_independent_mapping = bool,
+    tcp_established_idle_timeout_sec    = number
   })
 }
 
