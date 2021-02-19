@@ -14,8 +14,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| google.dns | n/a |
 | google.target | n/a |
+| google.dns | n/a |
 
 ## Inputs
 
@@ -36,4 +36,5 @@ No requirements.
 |------|-------------|
 | ingress\_ip | elasticsearch ingress IP |
 | fqdn | elasticsearch fully qualified domain name |
+| snapshot\_sa\_id | Elasticsearch Snapshot SA ID |
 
