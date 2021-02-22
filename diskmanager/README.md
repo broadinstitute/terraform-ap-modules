@@ -1,4 +1,4 @@
-# Terra elasticsearch module
+# Terra diskmanager module
 
 For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)  
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
@@ -14,27 +14,18 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| google.dns | n/a |
 | google.target | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| google\_project | The google project in which to create resources | `string` | n/a | yes |
-| cluster | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
-| cluster\_short | Optional short cluster name | `string` | `""` | no |
+| google\_project | The google project to create a diskmanager service account in | `any` | n/a | yes |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
-| dns\_zone\_name | DNS zone name | `string` | `"dsp-envs"` | no |
-| use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
-| subdomain\_name | Domain namespacing between zone and hostname | `string` | `""` | no |
-| hostname | Service hostname | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| ingress\_ip | elasticsearch ingress IP |
-| fqdn | elasticsearch fully qualified domain name |
-| snapshot\_sa\_id | Elasticsearch Snapshot SA ID |
+| diskmanager\_sa\_id | Disk Manager service account id |
 
