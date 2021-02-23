@@ -70,3 +70,12 @@ resource "google_storage_bucket_iam_binding" "error-bucket-sa-binding" {
   members  = ["serviceAccount:${google_service_account.sa_filemover[0].email}"]
 }
 
+# Pub/Sub notifications for object-finalize in the source bucket
+resource "google_storage_notification" "source-finalize-notification" {
+  bucket         = google_storage_bucket.source-bucket.name
+  provider       = google.target
+  payload_format = "JSON_API_V1"
+  topic          = google_pubsub_topic.source.id
+  event_types    = ["OBJECT_FINALIZE"]
+  depends_on     = [google_pubsub_topic_iam_binding.source-topic-publish]
+}
