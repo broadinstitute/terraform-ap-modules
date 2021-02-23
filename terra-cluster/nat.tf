@@ -29,7 +29,9 @@ resource "google_compute_router_nat" "nat" {
 
   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
 
-  min_ports_per_vm = var.cloud_nat_settings.min_ports_per_vm
+  min_ports_per_vm                    = var.cloud_nat_settings.min_ports_per_vm
+  enable_endpoint_independent_mapping = var.cloud_nat_settings.enable_endpoint_independent_mapping
+  tcp_established_idle_timeout_sec    = var.cloud_nat_settings.tcp_established_idle_timeout_sec
 
   log_config {
     enable = true
