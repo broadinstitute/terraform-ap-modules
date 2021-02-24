@@ -28,7 +28,9 @@ module "cloudsql" {
   dependencies = [var.dependencies]
 }
 
-# permission for streamer SA to use cloudsql
+# permission for streamer SA to use cloudsql. N.B. we do not create a separate sqlproxy SA, since
+# Cloud Functions are the only sql client as of this writing. In the future, if we move to standalone
+# services accessing this SQL instance, we may want to create a new sqlproxy SA.
 resource "google_project_iam_member" "cloudsql" {
   provider = google.target
   project  = var.google_project

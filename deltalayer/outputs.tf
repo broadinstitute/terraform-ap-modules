@@ -11,3 +11,26 @@ output "sa_filemover_id" {
   value       = google_service_account.sa_filemover[0].account_id
   description = "File-mover SA ID"
 }
+
+#
+# CloudSQL PostgreSQL Outputs
+#
+output "cloudsql_public_ip" {
+  value       = var.enable ? module.cloudsql.public_ip : null
+  description = "Delta Layer CloudSQL instance IP"
+}
+output "cloudsql_instance_name" {
+  value       = var.enable ? module.cloudsql.instance_name : null
+  description = "Delta Layer CloudSQL instance name"
+}
+output "cloudsql_root_user_password" {
+  value       = var.enable ? module.cloudsql.root_user_password : null
+  description = "Delta Layer database root password"
+  sensitive   = true
+}
+output "cloudsql_app_db_creds" {
+  # Avoiding error on destroy with below condition
+  value       = var.enable ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds[local.service]) : null
+  description = "Delta Layer database user credentials"
+  sensitive   = true
+}
