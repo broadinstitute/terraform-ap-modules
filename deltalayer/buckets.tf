@@ -6,6 +6,7 @@ resource "google_storage_bucket" "source-bucket" {
   provider = google.target
   project  = var.google_project
   location = var.bucket_location
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket_iam_binding" "success-bucket-sa-binding-sourcewriter" {
@@ -36,6 +37,7 @@ resource "google_storage_bucket" "success-bucket" {
   project       = var.google_project
   location      = var.bucket_location
   storage_class = "COLDLINE"
+  uniform_bucket_level_access = true
 
   # Delete after 120 days
   lifecycle_rule {
@@ -61,6 +63,7 @@ resource "google_storage_bucket" "error-bucket" {
   provider = google.target
   project  = var.google_project
   location = var.bucket_location
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket_iam_binding" "error-bucket-sa-binding" {
