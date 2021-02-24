@@ -17,7 +17,7 @@ locals {
 variable "expose" {
   type        = bool
   description = "If true, create ingress IPs for MongoDB replicas"
-  default     = true
+  default     = false
 }
 variable "replica_count" {
   type        = number
