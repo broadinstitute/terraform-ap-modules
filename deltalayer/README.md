@@ -6,6 +6,19 @@ This module creates infrastructure resources for Delta Layer in Terra environmen
 
 No requirements.
 
+## Release Notes
+
+### 0.1.0
+* Initial release. Creates buckets, service accounts, and applies IAM to buckets.
+* Applies lifecycle rule to the "success" bucket to delete files after 120 days
+
+### 0.2.0
+* Creates pubsub topics and their IAM
+
+### 0.3.0
+* Applies uniform bucket-level access to the previously-created buckets
+* Creates Postgres database and proxy
+
 ## Providers
 
 | Name | Version |
