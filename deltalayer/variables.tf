@@ -47,3 +47,35 @@ locals {
   service         = "deltalayer"
 }
 
+#
+# Postgres CloudSQL DB Vars
+#
+variable "db_version" {
+  type        = string
+  default     = "POSTGRES_12"
+  description = "The version for the CloudSQL instance"
+}
+variable "db_keepers" {
+  type        = bool
+  default     = true
+  description = "Whether to use keepers to re-generate instance name."
+}
+variable "db_tier" {
+  type        = string
+  default     = "db-n1-standard-2" #relatively small; resize when/if needed
+  description = "The default tier (DB instance size) for the CloudSQL instance"
+}
+variable "db_name" {
+  type        = string
+  description = "Postgres db name"
+  default     = ""
+}
+variable "db_user" {
+  type        = string
+  description = "Postgres username"
+  default     = ""
+}
+locals {
+  db_name     = var.db_name == "" ? local.service : var.db_name
+  db_user     = var.db_user == "" ? local.service : var.db_user
+}
