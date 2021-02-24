@@ -6,18 +6,21 @@ variable "owner" {
   description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
-#
+variable "cluster" {
+  type        = string
+  description = "Terra GKE cluster suffix, whatever is after terra-"
+}
+locals {
+  owner = var.owner == "" ? terraform.workspace : var.owner
+}
+
 variable "expose" {
   type        = bool
-  description = "(Deprecated) If true, create ingress IPs for MongoDB replicas. Don't enable this outside the Terra dev environment!"
+  description = "If true, create ingress IPs for MongoDB replicas"
   default     = true
 }
 variable "replica_count" {
   type        = number
-  description = "(Deprecated) Number of replicas to create ingress IPs for"
+  description = "Number of replicas to create ingress IPs for"
   default     = 3
-}
-
-locals {
-  owner = var.owner == "" ? terraform.workspace : var.owner
 }
