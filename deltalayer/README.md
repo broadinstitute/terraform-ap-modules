@@ -17,7 +17,7 @@ No requirements.
 
 ### 0.3.0
 * Applies uniform bucket-level access to the previously-created buckets
-* Creates Postgres database and proxy
+* Creates Postgres database
 
 ## Providers
 
