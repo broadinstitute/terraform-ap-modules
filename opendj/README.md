@@ -36,4 +36,5 @@ No requirements.
 |------|-------------|
 | ingress\_ip | Ingress IP |
 | fqdn | Fully qualified domain name |
+| backup\_sa\_id | OpenDJ Backup SA ID |
 
