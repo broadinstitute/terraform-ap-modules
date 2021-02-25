@@ -26,13 +26,13 @@ variable "sourcewriter_sa_email" {
 variable "bucket_suffix" {
   type        = string
   description = "Suffix to append to each bucket's name. Defaults to 'owner' variable if blank."
-  default = ""
+  default     = ""
 }
 
 variable "bucket_location" {
   type        = string
   description = "Google region in which to create buckets"
-  default = "us-central1"
+  default     = "us-central1"
 }
 
 variable "owner" {
@@ -42,8 +42,40 @@ variable "owner" {
 }
 
 locals {
-  owner           = var.owner == "" ? terraform.workspace : var.owner
-  bucket_suffix   = var.bucket_suffix == "" ? local.owner : var.bucket_suffix
-  service         = "deltalayer"
+  owner         = var.owner == "" ? terraform.workspace : var.owner
+  bucket_suffix = var.bucket_suffix == "" ? local.owner : var.bucket_suffix
+  service       = "deltalayer"
 }
 
+#
+# Postgres CloudSQL DB Vars
+#
+variable "db_version" {
+  type        = string
+  default     = "POSTGRES_12"
+  description = "The version for the CloudSQL instance"
+}
+variable "db_keepers" {
+  type        = bool
+  default     = true
+  description = "Whether to use keepers to re-generate instance name."
+}
+variable "db_tier" {
+  type        = string
+  default     = "db-custom-4-8192" #relatively small; resize when/if needed
+  description = "The default tier (DB instance size) for the CloudSQL instance"
+}
+variable "db_name" {
+  type        = string
+  description = "Postgres db name"
+  default     = ""
+}
+variable "db_user" {
+  type        = string
+  description = "Postgres username"
+  default     = ""
+}
+locals {
+  db_name = var.db_name == "" ? local.service : var.db_name
+  db_user = var.db_user == "" ? local.service : var.db_user
+}

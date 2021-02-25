@@ -6,6 +6,19 @@ This module creates infrastructure resources for Delta Layer in Terra environmen
 
 No requirements.
 
+## Release Notes
+
+### 0.1.0
+* Initial release. Creates buckets, service accounts, and applies IAM to buckets.
+* Applies lifecycle rule to the "success" bucket to delete files after 120 days
+
+### 0.2.0
+* Creates pubsub topics and their IAM
+
+### 0.3.0
+* Applies uniform bucket-level access to the previously-created buckets
+* Creates Postgres database
+
 ## Providers
 
 | Name | Version |
@@ -23,6 +36,11 @@ No requirements.
 | bucket\_suffix | Suffix to append to each bucket's name. Defaults to 'owner' variable if blank. | `string` | `""` | no |
 | bucket\_location | Google region in which to create buckets | `string` | `"us-central1"` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
+| db\_version | The version for the CloudSQL instance | `string` | `"POSTGRES_12"` | no |
+| db\_keepers | Whether to use keepers to re-generate instance name. | `bool` | `true` | no |
+| db\_tier | The default tier (DB instance size) for the CloudSQL instance | `string` | `"db-n1-standard-2"` | no |
+| db\_name | Postgres db name | `string` | `"deltalayer"` | no |
+| db\_user | Postgres username | `string` | `"deltalayer"` | no |
 
 ## Outputs
 
@@ -30,4 +48,8 @@ No requirements.
 |------|-------------|
 | sa\_streamer\_id | Streamer SA ID |
 | sa\_filemover\_id | File-mover SA ID |
+| cloudsql\_public\_ip | Delta Layer CloudSQL instance IP |
+| cloudsql\_instance\_name | Delta Layer CloudSQL instance name |
+| cloudsql\_root\_user\_password | Delta Layer database root password |
+| cloudsql\_app\_db\_creds | Delta Layer database user credentials |
 
