@@ -41,7 +41,7 @@ No requirements.
 | nat\_egress\_ip\_count | Number of Cloud NAT IPs to create for cluster egress | `number` | `2` | no |
 | authorized\_network\_cidrs | Array of CIDR blocks for authorized networks | `list(string)` | `[]` | no |
 | private\_ingress\_whitelist | List of addresses to whitelist for private ingresses | `list(object({ description = string, addresses = list(string) }))` | `[]` | no |
-| cloud\_nat\_settings | Cloud NAT settings | `object({ min_ports_per_vm = number })` | <pre>{<br>  "min_ports_per_vm": 64<br>}</pre> | no |
+| cloud\_nat\_settings | Cloud NAT settings | <pre>object({<br>    min_ports_per_vm                    = number,<br>    enable_endpoint_independent_mapping = bool,<br>    tcp_established_idle_timeout_sec    = number<br>  })</pre> | n/a | yes |
 | istio\_enable | Whether to enable Google's Istio implementation in the cluster | `bool` | `true` | no |
 | release\_channel | See official documentation for GKE release channels | `string` | `"REGULAR"` | no |
 | k8s\_version\_prefix | Passed to k8s-cluster module to set minimum cluster version | `string` | n/a | yes |
