@@ -35,9 +35,7 @@ resource "google_storage_bucket" "backup-bucket" {
 
   # Enable Uniform Bucket-Level Access
   # https://docs.bridgecrew.io/docs/bc_gcp_gcs_2
-  uniform_bucket_level_access {
-    bucket_policy_only = true
-  }
+  uniform_bucket_level_access = true
 }
 
 # Give backup SA permission to upload objects to bucket
