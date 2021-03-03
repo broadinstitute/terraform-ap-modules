@@ -45,3 +45,11 @@ resource "google_storage_bucket_iam_binding" "binding" {
   role     = "roles/storage.objectAdmin"
   members  = ["serviceAccount:${google_service_account.backup-sa.email}"]
 }
+
+# Allow backup SA to copy backups from pod to bucket
+resource "google_project_iam_member" "backup" {
+  provider = google.target
+  project  = var.google_project
+  role     = "roles/container.admin"
+  member   = "serviceAccount:${google_service_account.backup-sa.email}"
+}
