@@ -161,7 +161,7 @@ variable "mongodb_roles" {
 }
 variable "mongodb_version" {
   type    = string
-  default = "3.6.14"
+  default = "4.4.3"
 }
 variable "mongodb_user" {
   type    = string
