@@ -52,3 +52,16 @@ locals {
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
   subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
+
+# Exposing elasticsearch for local development
+variable "expose" {
+  type        = bool
+  description = "If true, create an ip for each ES pod"
+  default     = false
+}
+
+variable "replica_count" {
+  type        = number
+  description = "Number of ips to create"
+  default     = 3
+}
