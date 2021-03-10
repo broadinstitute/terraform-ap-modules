@@ -72,7 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.3"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=ch-DDO-1107"
 
   enable = local.terra_apps["workspace_manager"]
 
@@ -89,8 +89,8 @@ module "workspace_manager" {
   db_version = var.wsm_db_version
   db_keepers = var.wsm_db_keepers
 
-  workspace_project_folder_id = var.wsm_workspace_project_folder_id
-  billing_account_ids         = var.wsm_billing_account_ids
+  workspace_project_folder_id  = var.wsm_workspace_project_folder_id
+  billing_account_ids          = var.wsm_billing_account_ids
   workspace_project_folder_ids = local.wsm_folder_ids
 
   providers = {
@@ -188,8 +188,8 @@ module "buffer" {
   db_keepers = var.buffer_db_keepers
 
   external_folder_ids = var.buffer_external_folder_ids
-  root_folder_id = var.buffer_root_folder_id
-  pool_names = var.buffer_pool_names
+  root_folder_id      = var.buffer_root_folder_id
+  pool_names          = var.buffer_pool_names
 
   billing_account_ids = var.buffer_billing_account_ids
 
