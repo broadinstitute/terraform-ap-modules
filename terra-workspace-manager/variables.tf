@@ -125,13 +125,13 @@ locals {
 }
 
 variable "cloudsql_pg12_settings" {
-  type        = object
+  type        = map
   default     = {}
   description = "Settings for Postgres 12 CloudSQL instance"
 }
 
 variable "cloudsql_pg13_settings" {
-  type        = object
+  type        = map
   default     = {}
   description = "Settings for Postgres 13 CloudSQL instance"
 }

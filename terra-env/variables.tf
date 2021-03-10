@@ -132,7 +132,7 @@ variable "wsm_buffer_pool_names" {
   default     = []
 }
 variable "wsm_cloudsql_pg12_settings" {
-  type        = object
+  type        = map
   description = "Settings for the WSM CloudSQL pg12 instance"
   default     = {}
 }
