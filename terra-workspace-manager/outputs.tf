@@ -14,7 +14,7 @@ output "app_sa_id" {
 # Infrastructure Outputs
 #
 output "workspace_container_folder_id" {
-  value       =  length(google_folder.workspace_project_folder) > 0 ? google_folder.workspace_project_folder[0].id : null
+  value       = length(google_folder.workspace_project_folder) > 0 ? google_folder.workspace_project_folder[0].id : null
   description = "The folder id of the folder that workspace projects should be created within."
 }
 
@@ -35,29 +35,21 @@ output "fqdn" {
 }
 
 #
-# CloudSQL PostgreSQL Outputs
+# CloudSQL Outputs
 #
-output "cloudsql_public_ip" {
-  value       = var.enable && contains(["default"], var.env_type) ? module.cloudsql.public_ip : null
-  description = "Workspace Manager CloudSQL instance IP"
-}
-output "cloudsql_instance_name" {
-  value       = var.enable && contains(["default"], var.env_type) ? module.cloudsql.instance_name : null
-  description = "Workspace Manager CloudSQL instance name"
-}
-output "cloudsql_root_user_password" {
-  value       = var.enable && contains(["default"], var.env_type) ? module.cloudsql.root_user_password : null
-  description = "Workspace Manager database root password"
-  sensitive   = true
-}
-output "cloudsql_app_db_creds" {
-  # Avoiding error on destroy with below condition
-  value       = var.enable && contains(["default"], var.env_type) ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds[local.service]) : null
-  description = "Workspace Manager database user credentials"
-  sensitive   = true
-}
-output "cloudsql_app_stairway_db_creds" {
-  value       = var.enable && contains(["default"], var.env_type) ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds["${local.service}-stairway"]) : null
-  description = "Stairway database user credentials"
-  sensitive   = true
+output "cloudsql_pg12_outputs" {
+  description = "Workspace Manager CloudSQL outputs"
+  value = {
+    # pg12 CloudSQL instance IP
+    public_ip = var.enable && contains(["default"], var.env_type) ? module.cloudsql.public_ip : null,
+    # pg12 CloudSQL instance name
+    instance_name = var.enable && contains(["default"], var.env_type) ? module.cloudsql.instance_name : null
+    # pg12 database root password
+    root_user_password = var.enable && contains(["default"], var.env_type) ? module.cloudsql.root_user_password : null
+    # pg12 app db creds
+    app_db_creds = var.enable && contains(["default"], var.env_type) ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds[local.service]) : null
+    # pg12 stairway db creds
+    stairway_db_creds = var.enable && contains(["default"], var.env_type) ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds["${local.service}-stairway"]) : null
+  }
+  sensitive = true
 }

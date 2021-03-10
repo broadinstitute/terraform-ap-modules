@@ -105,28 +105,9 @@ output "workspace_container_folder_id" {
   value       = module.workspace_manager.workspace_container_folder_id
   description = "The folder id of the folder that workspace projects should be created within."
 }
-output "workspace_db_ip" {
-  value       = module.workspace_manager.cloudsql_public_ip
-  description = "Workspace Manager CloudSQL instance IP"
-}
-output "workspace_db_instance" {
-  value       = module.workspace_manager.cloudsql_instance_name
-  description = "Workspace Manager CloudSQL instance name"
-}
-output "workspace_db_root_pass" {
-  value       = module.workspace_manager.cloudsql_root_user_password
-  description = "Workspace Manager database root password"
-  sensitive   = true
-}
-output "workspace_db_creds" {
-  value       = module.workspace_manager.cloudsql_app_db_creds
-  description = "Workspace Manager database user credentials"
-  sensitive   = true
-}
-output "workspace_stairway_db_creds" {
-  value       = module.workspace_manager.cloudsql_app_stairway_db_creds
-  description = "Stairway database user credentials"
-  sensitive   = true
+output "workspace_cloudsql_pg12_outputs" {
+  value       = module.workspace_manager.cloudsql_pg12_outputs
+  description = "Workspace Manager CloudSQL Postgres 12 instance outputs"
 }
 output "workspace_ingress_ip" {
   value       = module.workspace_manager.ingress_ip
@@ -325,7 +306,7 @@ output "leonardo_fqdn" {
 
 #
 # Firecloud Orchestration Outputs
-# 
+#
 
 output "firecloudorch_ingress_ip" {
   value       = module.firecloudorch.ingress_ip

@@ -126,20 +126,15 @@ variable "wsm_billing_account_ids" {
   description = "List of Google billing account ids to allow WM to use for billing workspace google projects."
   default     = []
 }
-variable "wsm_db_version" {
-  type        = string
-  default     = "POSTGRES_12"
-  description = "The version for the WSM CloudSQL instance"
-}
-variable "wsm_db_keepers" {
-  type        = bool
-  default     = false
-  description = "Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility"
-}
 variable "wsm_buffer_pool_names" {
   type        = list(string)
   description = "Names of the buffer service pools that create projects for WSM."
   default     = []
+}
+variable "wsm_cloudsql_pg12_settings" {
+  type        = map
+  description = "Settings for the WSM CloudSQL pg12 instance"
+  default     = {}
 }
 # This field should be used in personal environments when the folder containing google projects
 # comes from the tools RBS. Otherwise, all projects should be created by Buffer Service
@@ -151,7 +146,7 @@ variable "wsm_external_folder_ids" {
 }
 
 locals {
- wsm_folder_ids = concat(var.wsm_external_folder_ids, [for p in var.wsm_buffer_pool_names: module.buffer.pool_name_to_folder_id[p]])
+  wsm_folder_ids = concat(var.wsm_external_folder_ids, [for p in var.wsm_buffer_pool_names : module.buffer.pool_name_to_folder_id[p]])
 }
 #
 # Prometheus / Grafana vars
