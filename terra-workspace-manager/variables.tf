@@ -115,7 +115,7 @@ variable "db_keepers" {
 }
 variable "db_tier" {
   type        = string
-  default     = "db-g1-small"
+  default     = "db-custom-4-8192"
   description = "The default tier (DB instance size) for the CloudSQL instance"
 }
 variable "db_name" {
