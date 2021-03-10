@@ -131,6 +131,11 @@ variable "wsm_buffer_pool_names" {
   description = "Names of the buffer service pools that create projects for WSM."
   default     = []
 }
+variable "wsm_cloudsql_pg12_settings" {
+  type        = object
+  description = "Settings for the WSM CloudSQL pg12 instance"
+  default     = {}
+}
 # This field should be used in personal environments when the folder containing google projects
 # comes from the tools RBS. Otherwise, all projects should be created by Buffer Service
 # in the corresponding environment and the name of the pool should be passed in above.

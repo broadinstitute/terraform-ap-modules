@@ -105,9 +105,9 @@ output "workspace_container_folder_id" {
   value       = module.workspace_manager.workspace_container_folder_id
   description = "The folder id of the folder that workspace projects should be created within."
 }
-output "workspace_db_pg12" {
+output "workspace_cloudsql_pg12_outputs" {
   value       = module.workspace_manager.cloudsql_pg12_outputs
-  description = "Workspace Manager CloudSQL Postgres 12 Database outputs"
+  description = "Workspace Manager CloudSQL Postgres 12 instance outputs"
 }
 output "workspace_ingress_ip" {
   value       = module.workspace_manager.ingress_ip
