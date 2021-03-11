@@ -136,6 +136,11 @@ variable "wsm_cloudsql_pg12_settings" {
   description = "Settings for the WSM CloudSQL pg12 instance"
   default     = {}
 }
+variable "wsm_cloudsql_pg13_settings" {
+  type        = map
+  description = "Settings for the WSM CloudSQL pg13 instance"
+  default     = {}
+}
 # This field should be used in personal environments when the folder containing google projects
 # comes from the tools RBS. Otherwise, all projects should be created by Buffer Service
 # in the corresponding environment and the name of the pool should be passed in above.

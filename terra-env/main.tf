@@ -87,6 +87,7 @@ module "workspace_manager" {
   use_subdomain  = var.use_subdomain
 
   cloudsql_pg12_settings = var.wsm_cloudsql_pg12_settings
+  cloudsql_pg13_settings = var.wsm_cloudsql_pg13_settings
 
   workspace_project_folder_id  = var.wsm_workspace_project_folder_id
   billing_account_ids          = var.wsm_billing_account_ids
