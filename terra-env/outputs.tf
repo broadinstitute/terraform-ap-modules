@@ -109,6 +109,10 @@ output "workspace_cloudsql_pg12_outputs" {
   value       = module.workspace_manager.cloudsql_pg12_outputs
   description = "Workspace Manager CloudSQL Postgres 12 instance outputs"
 }
+output "workspace_cloudsql_pg13_outputs" {
+  value       = module.workspace_manager.cloudsql_pg13_outputs
+  description = "Workspace Manager CloudSQL Postgres 13 instance outputs"
+}
 output "workspace_ingress_ip" {
   value       = module.workspace_manager.ingress_ip
   description = "Workspace Manager ingress IP"
