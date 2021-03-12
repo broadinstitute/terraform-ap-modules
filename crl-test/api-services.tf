@@ -16,5 +16,6 @@ module "enable-services" {
     "bigquery.googleapis.com",
     "cloudbilling.googleapis.com",
     "iam.googleapis.com",
+    "notebooks.googleapis.com",
   ]
 }
