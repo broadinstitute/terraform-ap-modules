@@ -55,7 +55,9 @@ module "cloudsql-pg13" {
   cloudsql_replication_type = null
 
   cloudsql_insights_config = {
-    query_insights_enabled = true
+    query_insights_enabled  = true,
+    record_application_tags = true,
+    record_client_address   = true
   }
 
   app_dbs = {
