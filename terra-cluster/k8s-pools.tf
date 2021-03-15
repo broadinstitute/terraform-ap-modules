@@ -185,7 +185,7 @@ module "k8s-node-pool-mongodb-v1" {
 }
 
 # Elasticsearch Node Pool
-module "k8s-node-pool-elasticsearch" {
+module "k8s-node-pool-elasticsearch-v1" {
   # boilerplate
   enable = var.node_pool_opendj.enable
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.4-tf-0.12"
