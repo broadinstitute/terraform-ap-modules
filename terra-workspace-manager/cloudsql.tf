@@ -54,6 +54,10 @@ module "cloudsql-pg13" {
 
   cloudsql_replication_type = null
 
+  cloudsql_insights_config = {
+    query_insights_enabled = true
+  }
+
   app_dbs = {
     "${local.service}" = {
       db       = local.cloudsql_pg13_settings.db_name
