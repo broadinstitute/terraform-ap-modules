@@ -224,6 +224,14 @@ variable "node_pool_mongodb_v1" {
   })
 }
 
+variable "node_pool_elasticsearch_v1" {
+  type = object({
+    enable         = bool,
+    min_node_count = number,
+    max_node_count = number,
+  })
+}
+
 #
 # CI SA vars
 #
