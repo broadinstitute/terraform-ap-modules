@@ -183,3 +183,31 @@ module "k8s-node-pool-mongodb-v1" {
 
   enable_secure_boot = true
 }
+
+# Elasticsearch Node Pool
+module "k8s-node-pool-elasticsearch-v1" {
+  # boilerplate
+  enable = var.node_pool_opendj.enable
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.4-tf-0.12"
+  dependencies = [
+    module.k8s-master
+  ]
+  service_account = google_service_account.node_pool.email
+  master_name     = module.k8s-master.name
+  location        = var.cluster_location
+
+  # pool-specific settings
+  name = "elasticsearch-v1"
+  autoscaling = {
+    min_node_count = var.node_pool_elasticsearch_v1.min_node_count
+    max_node_count = var.node_pool_elasticsearch_v1.max_node_count
+  }
+
+  machine_type = "n1-highmem-4"
+  disk_size_gb = 200
+  labels       = { "bio.terra/node-pool" = "elasticsearch" }
+  tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-elasticsearch-v1"])
+  taints       = [{ key = "bio.terra/workload", value = "elasticsearch", effect = "NO_SCHEDULE" }]
+
+  enable_secure_boot = true
+}
