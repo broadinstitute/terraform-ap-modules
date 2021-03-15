@@ -203,7 +203,7 @@ module "k8s-node-pool-elasticsearch-v1" {
     max_node_count = var.node_pool_elasticsearch_v1.max_node_count
   }
 
-  machine_type = "n1-standard-2"
+  machine_type = "n1-highmem-4"
   disk_size_gb = 200
   labels       = { "bio.terra/node-pool" = "elasticsearch" }
   tags         = setunion(local.default_node_tags, ["k8s-${module.k8s-master.name}-node-elasticsearch-v1"])
