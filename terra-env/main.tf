@@ -72,7 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=cloudsql-postgres-1.2.4"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=ch-DDO-1107-2"
 
   enable = local.terra_apps["workspace_manager"]
 

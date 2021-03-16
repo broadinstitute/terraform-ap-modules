@@ -1,6 +1,6 @@
 # Postgres 13 CloudSQL instance
 module "cloudsql-pg13" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=ch-DDO-1107"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.4"
 
   enable = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable
 
