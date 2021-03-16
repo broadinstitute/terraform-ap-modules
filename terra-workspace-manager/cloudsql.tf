@@ -1,32 +1,38 @@
-# Old CloudSQL instance -- will be deleted
-module "cloudsql" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.1"
+# Postgres 13 CloudSQL instance
+module "cloudsql-pg13" {
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.4"
 
-  enable = var.enable && contains(["default"], var.env_type)
+  enable = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable
 
   providers = {
     google.target = google.target
   }
   project          = var.google_project
   cloudsql_name    = "${local.service}-db-${local.owner}"
-  cloudsql_version = local.cloudsql_pg12_settings.version
-  cloudsql_keepers = local.cloudsql_pg12_settings.keepers
+  cloudsql_version = local.cloudsql_pg13_settings.version
+  cloudsql_keepers = local.cloudsql_pg13_settings.keepers
   cloudsql_instance_labels = {
     "env" = local.owner
     "app" = local.service
   }
-  cloudsql_tier = local.cloudsql_pg12_settings.tier
+  cloudsql_tier = local.cloudsql_pg13_settings.tier
 
   cloudsql_replication_type = null
 
+  cloudsql_insights_config = {
+    query_insights_enabled  = true,
+    record_application_tags = true,
+    record_client_address   = true
+  }
+
   app_dbs = {
     "${local.service}" = {
-      db       = local.cloudsql_pg12_settings.db_name
-      username = local.cloudsql_pg12_settings.db_user
+      db       = local.cloudsql_pg13_settings.db_name
+      username = local.cloudsql_pg13_settings.db_user
     }
     "${local.service}-stairway" = {
-      db       = local.cloudsql_pg12_settings.stairway_db_name
-      username = local.cloudsql_pg12_settings.stairway_db_user
+      db       = local.cloudsql_pg13_settings.stairway_db_name
+      username = local.cloudsql_pg13_settings.stairway_db_user
     }
   }
 
