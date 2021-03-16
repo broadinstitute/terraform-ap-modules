@@ -11,14 +11,6 @@ output "app_sa_id" {
 }
 
 #
-# Infrastructure Outputs
-#
-output "workspace_container_folder_id" {
-  value       = length(google_folder.workspace_project_folder) > 0 ? google_folder.workspace_project_folder[0].id : null
-  description = "The folder id of the folder that workspace projects should be created within."
-}
-
-#
 # IP/DNS Outputs
 #
 output "ingress_ip" {

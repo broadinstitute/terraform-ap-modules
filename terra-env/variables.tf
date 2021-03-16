@@ -115,12 +115,6 @@ variable "use_subdomain" {
 #
 # Workspace Manager Vars
 #
-# TODO (PF=156): Remove once WSM uses RBS.
-variable "wsm_workspace_project_folder_id" {
-  type        = string
-  description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
-  default     = ""
-}
 variable "wsm_billing_account_ids" {
   type        = list(string)
   description = "List of Google billing account ids to allow WM to use for billing workspace google projects."
