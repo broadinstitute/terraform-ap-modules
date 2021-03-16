@@ -131,11 +131,6 @@ variable "wsm_buffer_pool_names" {
   description = "Names of the buffer service pools that create projects for WSM."
   default     = []
 }
-variable "wsm_cloudsql_pg12_settings" {
-  type        = map
-  description = "Settings for the WSM CloudSQL pg12 instance"
-  default     = {}
-}
 variable "wsm_cloudsql_pg13_settings" {
   type        = map
   description = "Settings for the WSM CloudSQL pg13 instance"
