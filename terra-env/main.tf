@@ -295,7 +295,7 @@ module "firecloudorch" {
 }
 
 module "thurloe" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//thurloe?ref=thurloe-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//thurloe?ref=thurloek8s"
 
   enable = local.terra_apps["thurloe"]
 
