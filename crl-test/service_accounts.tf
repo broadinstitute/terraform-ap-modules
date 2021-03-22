@@ -21,6 +21,7 @@ locals {
     "roles/storage.admin",
     "roles/bigquery.admin",
     "roles/notebooks.admin",
+    "roles/iam.serviceAccountUser", # Used in AI Notebooks creation.
   ]
 
   # Roles used to manage projects for integration testing.
