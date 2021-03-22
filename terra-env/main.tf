@@ -8,7 +8,7 @@
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
  *
  * This documentation is generated with [terraform-docs](https://github.com/segmentio/terraform-docs)
- * `terraform-docs markdown --no-sort . > README.md`
+ * `terraform-docs markdown --sort=false . > README.md`
  */
 
 module "poc_service" {
@@ -279,6 +279,25 @@ module "firecloudorch" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//firecloudorch?ref=firecloudorch-0.1.0"
 
   enable = local.terra_apps["firecloudorch"]
+
+  google_project = var.google_project
+  cluster        = var.cluster
+  cluster_short  = var.cluster_short
+
+  dns_zone_name  = var.dns_zone_name
+  subdomain_name = var.subdomain_name
+  use_subdomain  = var.use_subdomain
+
+  providers = {
+    google.target = google.target
+    google.dns    = google.dns
+  }
+}
+
+module "thurloe" {
+  source = "github.com/broadinstitute/terraform-ap-modules.git//thurloe?ref=thurloe-0.1.0"
+
+  enable = local.terra_apps["thurloe"]
 
   google_project = var.google_project
   cluster        = var.cluster

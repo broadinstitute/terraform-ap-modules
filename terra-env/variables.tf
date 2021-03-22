@@ -87,7 +87,8 @@ locals {
     rawls                 = false,
     leonardo              = false,
     agora                 = false,
-    firecloudorch         = false
+    firecloudorch         = false,
+    thurloe               = false
     },
     var.terra_apps
   )

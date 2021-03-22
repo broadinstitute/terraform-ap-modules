@@ -7,7 +7,7 @@ For more information, check out the [MC-Terra deployment doc](https://docs.dsp-d
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
 
 This documentation is generated with [terraform-docs](https://github.com/segmentio/terraform-docs)
-`terraform-docs markdown --no-sort . > README.md`
+`terraform-docs markdown --sort=false . > README.md`
 
 ## Requirements
 
@@ -16,6 +16,29 @@ No requirements.
 ## Providers
 
 No provider.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| agora | github.com/broadinstitute/terraform-ap-modules.git//agora?ref=agora-0.1.0 |  |
+| buffer | github.com/broadinstitute/terraform-ap-modules.git//buffer?ref=buffer-0.3.2 |  |
+| consent | github.com/broadinstitute/terraform-ap-modules.git//consent?ref=consent-0.2.0 |  |
+| crl_janitor | github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.9 |  |
+| datarepo | github.com/broadinstitute/terraform-ap-modules.git//datarepo?ref=terra-env-0.3.8 |  |
+| firecloudorch | github.com/broadinstitute/terraform-ap-modules.git//firecloudorch?ref=firecloudorch-0.1.0 |  |
+| identity_concentrator | github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=identity-concentrator-0.1.2 |  |
+| leonardo | github.com/broadinstitute/terraform-ap-modules.git//leonardo?ref=leonardo-0.0.1 |  |
+| ontology | github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.2 |  |
+| poc_service | github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.2 |  |
+| rawls | github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.1.0 |  |
+| sam | github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.3.0 |  |
+| workspace_manager | github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.5 |  |
+| thurloe | github.com/broadinstitute/terraform-ap-modules.git//thurloe?ref=thurloe-0.1.0 |  |
+
+## Resources
+
+No resources.
 
 ## Inputs
 
@@ -35,9 +58,8 @@ No provider.
 | use\_subdomain | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | wsm\_workspace\_project\_folder\_id | What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder. | `string` | `""` | no |
 | wsm\_billing\_account\_ids | List of Google billing account ids to allow WM to use for billing workspace google projects. | `list(string)` | `[]` | no |
-| wsm\_db\_version | The version for the WSM CloudSQL instance | `string` | `"POSTGRES_12"` | no |
-| wsm\_db\_keepers | Whether to use keepers to re-generate instance name. Disabled by default for backwards-compatibility | `bool` | `false` | no |
 | wsm\_buffer\_pool\_names | Names of the buffer service pools that create projects for WSM. | `list(string)` | `[]` | no |
+| wsm\_cloudsql\_pg13\_settings | Settings for the WSM CloudSQL pg13 instance | `map` | `{}` | no |
 | wsm\_external\_folder\_ids | Folders that WSM needs to access other than those managed by buffer service. | `list(string)` | `[]` | no |
 | grafana\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
 | prometheus\_dns\_name | DNS record name, excluding zone top-level domain. Eg. data.alpha | `string` | `""` | no |
@@ -88,11 +110,7 @@ No provider.
 | workspace\_sqlproxy\_sa\_id | Workspace Manager Cloud SQL Proxy Google service account ID |
 | workspace\_app\_sa\_id | Workspace Manager App Google service account ID |
 | workspace\_container\_folder\_id | The folder id of the folder that workspace projects should be created within. |
-| workspace\_db\_ip | Workspace Manager CloudSQL instance IP |
-| workspace\_db\_instance | Workspace Manager CloudSQL instance name |
-| workspace\_db\_root\_pass | Workspace Manager database root password |
-| workspace\_db\_creds | Workspace Manager database user credentials |
-| workspace\_stairway\_db\_creds | Stairway database user credentials |
+| workspace\_cloudsql\_pg13\_outputs | Workspace Manager CloudSQL Postgres 13 instance outputs |
 | workspace\_ingress\_ip | Workspace Manager ingress IP |
 | workspace\_ingress\_ip\_name | Workspace Manager ingress IP name |
 | workspace\_fqdn | Workspace Manager fully qualified domain name |
@@ -133,4 +151,5 @@ No provider.
 | leonardo\_fqdn | fqdn to access k8s leonardo deployment |
 | firecloudorch\_ingress\_ip | Static if for orchestration lb |
 | firecloudorch\_fqdn | fqdn to acess orchestration deployment |
-
+| thurloe\_ingress\_ip | Static ip for thurloe lb |
+| thurloe\_fqdn | fqdn to access thurloe deployment |
