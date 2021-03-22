@@ -72,7 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.4"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.5"
 
   enable = local.terra_apps["workspace_manager"]
 
@@ -86,7 +86,7 @@ module "workspace_manager" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
-  cloudsql_pg12_settings = var.wsm_cloudsql_pg12_settings
+  cloudsql_pg13_settings = var.wsm_cloudsql_pg13_settings
 
   workspace_project_folder_id  = var.wsm_workspace_project_folder_id
   billing_account_ids          = var.wsm_billing_account_ids

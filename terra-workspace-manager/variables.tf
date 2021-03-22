@@ -104,16 +104,8 @@ locals {
 # Postgres CloudSQL DB Vars
 #
 locals {
-  cloudsql_pg12_defaults = {
-    version          = "POSTGRES_12",               # Version for CloudSQL instance
-    keepers          = true,                        # Whether to use keepers to re-generate instance name
-    tier             = "db-g1-small",               # The default tier (DB instance size) for the CloudSQL instance
-    db_name          = local.service,               # Name of app DB
-    db_user          = local.service,               # Name of app DB user
-    stairway_db_name = "${local.service}-stairway", # Name of stairway DB
-    stairway_db_user = "${local.service}-stairway", # Name of stairway DB user
-  }
   cloudsql_pg13_defaults = {
+    enable           = true,                        # Whether to create this CloudSQL instance
     version          = "POSTGRES_13",               # Version for CloudSQL instance
     keepers          = true,                        # Whether to use keepers to re-generate instance name
     tier             = "db-custom-4-8192",          # The default tier (DB instance size) for the CloudSQL instance
@@ -124,12 +116,6 @@ locals {
   }
 }
 
-variable "cloudsql_pg12_settings" {
-  type        = map
-  default     = {}
-  description = "Settings for Postgres 12 CloudSQL instance"
-}
-
 variable "cloudsql_pg13_settings" {
   type        = map
   default     = {}
@@ -137,6 +123,5 @@ variable "cloudsql_pg13_settings" {
 }
 
 locals {
-  cloudsql_pg12_settings = merge(local.cloudsql_pg12_defaults, var.cloudsql_pg12_settings)
   cloudsql_pg13_settings = merge(local.cloudsql_pg13_defaults, var.cloudsql_pg13_settings)
 }
