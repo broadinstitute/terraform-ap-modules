@@ -317,17 +317,3 @@ output "firecloudorch_fqdn" {
   value       = module.firecloudorch.fqdn
   description = "fqdn to acess orchestration deployment"
 }
-
-#
-# Thurloe Outputs
-#
-
-output "thurloe_ingress_ip" {
-  value       = module.thurloe.ingress_ip
-  description = "Static ip for thurloe lb"
-}
-
-output "thurloe_fqdn" {
-  value       = module.thurloe.fqdn
-  description = "fqdn to access thurloe deployment"
-}

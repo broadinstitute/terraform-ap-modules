@@ -34,7 +34,6 @@ No provider.
 | rawls | github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.1.0 |  |
 | sam | github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.3.0 |  |
 | workspace_manager | github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.5 |  |
-| thurloe | github.com/broadinstitute/terraform-ap-modules.git//thurloe?ref=thurloe-0.1.0 |  |
 
 ## Resources
 
@@ -151,5 +150,3 @@ No resources.
 | leonardo\_fqdn | fqdn to access k8s leonardo deployment |
 | firecloudorch\_ingress\_ip | Static if for orchestration lb |
 | firecloudorch\_fqdn | fqdn to acess orchestration deployment |
-| thurloe\_ingress\_ip | Static ip for thurloe lb |
-| thurloe\_fqdn | fqdn to access thurloe deployment |
