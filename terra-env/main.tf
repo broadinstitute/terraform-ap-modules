@@ -8,7 +8,7 @@
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
  *
  * This documentation is generated with [terraform-docs](https://github.com/segmentio/terraform-docs)
- * `terraform-docs markdown --no-sort . > README.md`
+ * `terraform-docs markdown --sort=false . > README.md`
  */
 
 module "poc_service" {
