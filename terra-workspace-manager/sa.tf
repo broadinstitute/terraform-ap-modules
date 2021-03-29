@@ -20,10 +20,8 @@ locals {
   app_sa_roles = [
     "roles/cloudprofiler.agent",
     "roles/cloudtrace.agent",
-    # Allow exporting metrics, profiling, and tracing for monitoring.
-    "roles/monitoring.editor",
-    # Allow creating & publishing & subscribing pub/sub topics for multi-instance Stairway.
-    "roles/pubsub.editor"
+    "roles/monitoring.editor", # Allow exporting metrics, profiling, and tracing for monitoring.
+    "roles/pubsub.editor" # Allow creating & publishing & subscribing pub/sub topics for multi-instance Stairway.
   ]
 
   # Roles used to manage created workspace projects.
