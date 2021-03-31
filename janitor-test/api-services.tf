@@ -10,5 +10,6 @@ module "enable-services" {
     "storage-api.googleapis.com",
     "storage-component.googleapis.com",
     "bigquery.googleapis.com",
+    "notebooks.googleapis.com",
   ]
 }
