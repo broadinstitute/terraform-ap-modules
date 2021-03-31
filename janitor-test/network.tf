@@ -2,5 +2,5 @@
 resource "google_compute_network" "vpc_network" {
   name = "network"
   auto_create_subnetworks = true
-  project = google_project.project
+  project = google_project.project.project_id
 }
