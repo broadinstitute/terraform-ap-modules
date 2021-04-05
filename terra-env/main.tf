@@ -72,6 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
+  # TODO bump to workspace manager module tag before merging
   source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=dh-AS-701"
 
   enable = local.terra_apps["workspace_manager"]
