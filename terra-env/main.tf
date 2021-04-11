@@ -75,7 +75,6 @@ module "workspace_manager" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=dh-AS-701-v2"
 
   enable = local.terra_apps["workspace_manager"]
-  var.cloudsql_retained_backups = 28
 
   google_project = var.google_project
   cluster        = var.cluster
