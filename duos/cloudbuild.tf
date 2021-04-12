@@ -2,6 +2,8 @@
 resource "google_project_service" "cloudbuild-api" {
   project = "broad-dsp-gcr-public"
   service = "cloudbuild.googleapis.com"
+
+  provider = google.target
 }
 
 resource "google_cloudbuild_trigger" "duosui-build" {
@@ -22,4 +24,6 @@ resource "google_cloudbuild_trigger" "duosui-build" {
   }
 
   depends_on = [google_project_service.cloudbuild-api]
+
+  provider = google.target
 }
