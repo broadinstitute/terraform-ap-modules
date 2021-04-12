@@ -1,3 +1,9 @@
+# Ensure cloudbuild api is enabled
+resource "google_project_service" "cloudbuild-api" {
+  project = "broad-dsp-gcr-public"
+  service = "cloudbuild.googleapis.com"
+}
+
 resource "google_cloudbuild_trigger" "duosui-build" {
   name        = "duosui-build"
   description = "Image build trigger for Duos UI"
