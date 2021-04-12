@@ -12,7 +12,7 @@ resource "google_cloudbuild_trigger" "duosui-build" {
   project     = "broad-dsp-gcr-public"
 
   # path to cloudbuild file from repo root
-  filename = "build/cloudbuild.yml"
+  filename = "cloudbuild.yml"
 
   github {
     owner = "DataBiosphere"
