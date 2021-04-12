@@ -23,9 +23,5 @@ resource "google_cloudbuild_trigger" "duosui-build" {
     }
   }
 
-  build {
-    timeout = "1200s"
-  }
-
   provider = google.target
 }
