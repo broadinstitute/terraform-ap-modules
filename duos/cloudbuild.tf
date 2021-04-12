@@ -20,4 +20,6 @@ resource "google_cloudbuild_trigger" "duosui-build" {
       branch = ".*"
     }
   }
+
+  depends_on = [google_project_service.cloudbuild-api]
 }
