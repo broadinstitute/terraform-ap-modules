@@ -34,7 +34,13 @@ resource "google_compute_subnetwork" "k8s-cluster-subnet" {
   region                   = local.cluster_region
   ip_cidr_range            = var.nodes_subnet_ipv4_cidr_block
   private_ip_google_access = true
-  enable_flow_logs         = true
+
+  log_config {
+    aggregation_interval = "INTERVAL_5_SEC"
+    flow_sampling        = 0.5
+    metadata             = "INCLUDE_ALL_METADATA"
+  }
+
   secondary_ip_range = [
     {
       range_name    = "pods"
