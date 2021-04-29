@@ -37,10 +37,12 @@ resource "google_compute_subnetwork" "k8s-cluster-subnet" {
 
   dynamic "log_config" {
     for_each = local.enable_flow_logs
-    # Default Settings
-    aggregation_interval = "INTERVAL_5_SEC"
-    flow_sampling        = 0.5
-    metadata             = "INCLUDE_ALL_METADATA"
+    content {
+      # Default Settings
+      aggregation_interval = "INTERVAL_5_SEC"
+      flow_sampling        = 0.5
+      metadata             = "INCLUDE_ALL_METADATA"
+    }
   }
 
   secondary_ip_range = [
