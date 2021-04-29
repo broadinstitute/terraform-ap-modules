@@ -151,6 +151,18 @@ variable "cloud_nat_settings" {
   })
 }
 
+# VPC Flow logs should be enabled in prod for better security monitoring
+variable "enable_flow_logs" {
+  type        = bool
+  description = "flag to enable vpc flow logs"
+  default     = false
+}
+
+locals {
+  // Need to pass some collection to for_each in dynamic block
+  enable_flow_logs = var.enable_flow_logs ? [""] : []
+}
+
 # Istio
 variable "istio_enable" {
   description = "Whether to enable Google's Istio implementation in the cluster"

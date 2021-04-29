@@ -35,7 +35,9 @@ resource "google_compute_subnetwork" "k8s-cluster-subnet" {
   ip_cidr_range            = var.nodes_subnet_ipv4_cidr_block
   private_ip_google_access = true
 
-  log_config {
+  dynamic "log_config" {
+    for_each = local.enable_flow_logs
+    # Default Settings
     aggregation_interval = "INTERVAL_5_SEC"
     flow_sampling        = 0.5
     metadata             = "INCLUDE_ALL_METADATA"
