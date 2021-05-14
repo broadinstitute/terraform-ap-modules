@@ -59,15 +59,16 @@ variable "cloud_functions_repo" {
   default     = "terra-test-runner"
 }
 
-variable "bq_dataset" {
+variable "bq_dataset_id" {
   type        = string
   description = "The name of the BigQuery dataset for ingestion."
   default     = "test_runner_results"
 }
 
 locals {
+  service        = "testrunner"
   owner          = var.owner == "" ? terraform.workspace : var.owner
-  files_source   = var.files_source == "" ? "testrunner-results" : var.files_source
-  files_error    = var.files_error == "" ? "testrunner-stream-errors" : var.files_error
-  files_success  = var.files_success == "" ? "testrunner-stream-success" : var.files_success
+  files_source   = var.files_source == "" ? "${local.service}-results" : var.files_source
+  files_error    = var.files_error == "" ? "${local.service}-streaming-errors" : var.files_error
+  files_success  = var.files_success == "" ? "${local.service}-streaming-success" : var.files_success
 }
