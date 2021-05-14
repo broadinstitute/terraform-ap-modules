@@ -38,7 +38,7 @@ In Review.
 | files\_success | The path of the google storage bucket (the string after gs://). To be used by a cloud function to store successfully ingested files. | `string` | `""` | no |
 | files\_location | Google region in which to create buckets | `string` | `"us-central1"` | no |
 | cloud\_functions\_repo | The name of the Test Runner repo that is the source of cloud functions. | `string` | `"terra-test-runner"` | no |
-| bq\_dataset | The name of the BigQuery dataset for ingestion. | `string` | `"test_runner_results"` | no |
+| bq\_dataset\_id | The ID of the BigQuery dataset for ingestion. | `string` | `"test_runner_results"` | no |
 | owner | Environment or developer. Defaults to TF workspace name if left blank. | `string` | `""` | no |
 
 
