@@ -65,3 +65,9 @@ variable "replica_count" {
   description = "Number of ips to create"
   default     = 3
 }
+
+variable "enable_test_cluster" {
+  type        = bool
+  description = "Flag to toggle creation of resources for an alternate test es clustee"
+  default     = false
+}
