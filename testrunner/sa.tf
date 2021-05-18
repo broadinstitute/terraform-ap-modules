@@ -1,4 +1,4 @@
-# One Test Runner Service account for everything
+# One Test Runner Service account for uploading results files to a bucket
 resource "google_service_account" "sa_testrunner" {
   count = var.enable ? 1 : 0
 
