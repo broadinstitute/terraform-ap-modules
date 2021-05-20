@@ -72,7 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=master_rm_ddo_1275_wsm_postgres_disable_query_insights"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.8"
 
   enable = local.terra_apps["workspace_manager"]
 
