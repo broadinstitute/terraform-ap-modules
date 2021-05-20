@@ -21,7 +21,7 @@ module "cloudsql-pg13" {
   cloudsql_retained_backups = 28
 
   cloudsql_insights_config = {
-    query_insights_enabled  = true,
+    query_insights_enabled  = false,
     record_application_tags = true,
     record_client_address   = true
   }
