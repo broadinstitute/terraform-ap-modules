@@ -18,10 +18,10 @@ resource "google_project_iam_member" "sqlproxy" {
 
 locals {
   app_sa_roles = [
-    # Allow exporting metrics, profiling, and tracing for monitoring.
-    "roles/monitoring.editor",
-    "roles/cloudprofiler.agent",
-    "roles/cloudtrace.agent",
+    "roles/cloudprofiler.agent", # Profiling
+    "roles/cloudtrace.agent", # Tracing for monitoring
+    "roles/monitoring.editor", # Exporting metrics
+    "roles/pubsub.editor" # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
   ]
 
   # Roles used to manage created workspace projects.

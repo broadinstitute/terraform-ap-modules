@@ -1,6 +1,18 @@
 #
 # General Vars
 #
+variable "dependencies" {
+  # See: https://github.com/hashicorp/terraform/issues/21418#issuecomment-495818852
+  type        = any
+  default     = []
+  description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
+}
+variable "enable" {
+  type        = bool
+  description = "Enable flag for this module. If set to false, no resources will be created."
+  default     = true
+}
+
 variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
@@ -21,7 +33,7 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "elasticsearch-k8s" # K8s suffix is here for dns testing purposes, will remove when ready to cut over
+  service = "thurloe-k8s" # K8s suffix is here for dns testing purposes, to avoid overlap with GCE thurloe, will remove when ready to cut over
 }
 
 #
@@ -51,23 +63,4 @@ locals {
   hostname       = var.hostname == "" ? local.service : var.hostname
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
   subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
-}
-
-# Exposing elasticsearch for local development
-variable "expose" {
-  type        = bool
-  description = "If true, create an ip for each ES pod"
-  default     = false
-}
-
-variable "replica_count" {
-  type        = number
-  description = "Number of ips to create"
-  default     = 3
-}
-
-variable "enable_test_cluster" {
-  type        = bool
-  description = "Flag to toggle creation of resources for an alternate test es clustee"
-  default     = false
 }

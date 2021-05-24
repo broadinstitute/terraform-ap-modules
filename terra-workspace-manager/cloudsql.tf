@@ -1,6 +1,6 @@
 # Postgres 13 CloudSQL instance
 module "cloudsql-pg13" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.4"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.5"
 
   enable = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable
 
@@ -18,9 +18,10 @@ module "cloudsql-pg13" {
   cloudsql_tier = local.cloudsql_pg13_settings.tier
 
   cloudsql_replication_type = null
+  cloudsql_retained_backups = 28
 
   cloudsql_insights_config = {
-    query_insights_enabled  = true,
+    query_insights_enabled  = false,
     record_application_tags = true,
     record_client_address   = true
   }
