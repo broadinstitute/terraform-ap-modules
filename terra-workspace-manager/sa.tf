@@ -25,11 +25,8 @@ locals {
   ]
 
   # Roles used to manage created workspace projects.
-  # TODO(PF-156): Once WM uses Resource Buffer Service, we no longer need permissions to create projects.
   app_folder_roles = [
-    "roles/resourcemanager.folderAdmin",
     "roles/owner",
-    "roles/resourcemanager.projectCreator"
   ]
 
   folder_ids_and_roles = [
@@ -53,14 +50,6 @@ resource "google_project_iam_member" "app" {
   provider = google.target
   project  = var.google_project
   role     = local.app_sa_roles[count.index]
-  member   = "serviceAccount:${google_service_account.app[0].email}"
-}
-// TODO(PF-156): Remove this once WM uses RBS
-resource "google_folder_iam_member" "app" {
-  count    = local.create_folder ? length(local.app_folder_roles) : 0
-  provider = google.target
-  folder   = google_folder.workspace_project_folder[0].id
-  role     = local.app_folder_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
 # Grant WorkspaceManager Service App Service Account permission to modify resource in folder.

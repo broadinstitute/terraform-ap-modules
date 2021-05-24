@@ -49,14 +49,6 @@ variable "env_type" {
 #
 # Service Vars
 #
-// TODO(PF-156) Remove this once WM switches to using RBS
-variable "workspace_project_folder_id" {
-  type        = string
-  description = "What google folder within which to create a folder for creating workspace google projects. If empty, do not create a folder."
-  # Use empty string as a default value as TF has problems with null as a default between modules.
-  # https://github.com/hashicorp/terraform/issues/21702
-  default = ""
-}
 // workspace_project_folder_ids will replace the workspace_project_folder_id above. Key difference is that these folders are not created by WSM.
 variable "workspace_project_folder_ids" {
   type        = list(string)
