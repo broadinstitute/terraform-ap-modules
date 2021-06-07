@@ -98,30 +98,6 @@ module "workspace_manager" {
   }
 }
 
-module "external_credentials_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-external-credentials-manager?ref=externalcreds"
-
-  enable = local.terra_apps["external_credentials_manager"]
-
-  google_project = var.google_project
-  cluster        = var.cluster
-  cluster_short  = var.cluster_short
-
-  env_type = var.env_type
-
-  dns_zone_name  = var.dns_zone_name
-  subdomain_name = var.subdomain_name
-  use_subdomain  = var.use_subdomain
-
-  cloudsql_pg13_settings = var.ecm_cloudsql_pg13_settings
-
-  providers = {
-    google.target      = google.target
-    google.dns         = google.dns
-    google-beta.target = google-beta.target
-  }
-}
-
 module "crl_janitor" {
   source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.9"
 

@@ -79,7 +79,6 @@ locals {
     identity_concentrator = false,
     sam                   = false,
     workspace_manager     = false,
-    external_credentials_manager = false,
     crl_janitor           = false,
     datarepo              = false,
     ontology              = false,
@@ -143,13 +142,6 @@ variable "wsm_external_folder_ids" {
 locals {
   wsm_folder_ids = concat(var.wsm_external_folder_ids, [for p in var.wsm_buffer_pool_names : module.buffer.pool_name_to_folder_id[p]])
 }
-
-variable "ecm_cloudsql_pg13_settings" {
-  type        = map
-  description = "Settings for the ECM CloudSQL pg13 instance"
-  default     = {}
-}
-
 #
 # Prometheus / Grafana vars
 #

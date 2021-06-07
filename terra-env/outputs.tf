@@ -119,34 +119,6 @@ output "workspace_fqdn" {
 }
 
 #
-# External Credentials Manager Outputs
-#
-output "externalcreds_sqlproxy_sa_id" {
-  value       = module.external_credentials_manager.sqlproxy_sa_id
-  description = "External Credentials Manager Cloud SQL Proxy Google service account ID"
-}
-output "externalcreds_app_sa_id" {
-  value       = module.external_credentials_manager.app_sa_id
-  description = "External Credentials Manager App Google service account ID"
-}
-output "externalcreds_cloudsql_pg13_outputs" {
-  value       = module.external_credentials_manager.cloudsql_pg13_outputs
-  description = "External Credentials Manager CloudSQL Postgres 13 instance outputs"
-}
-output "externalcreds_ingress_ip" {
-  value       = module.external_credentials_manager.ingress_ip
-  description = "External Credentials Manager ingress IP"
-}
-output "externalcreds_ingress_ip_name" {
-  value       = module.external_credentials_manager.ingress_ip_name
-  description = "External Credentials Manager ingress IP name"
-}
-output "externalcreds_fqdn" {
-  value       = module.external_credentials_manager.fqdn
-  description = "External Credentials Manager fully qualified domain name"
-}
-
-#
 # CRL Janitor Service Outputs
 #
 output "crl_janitor_sa_id" {
