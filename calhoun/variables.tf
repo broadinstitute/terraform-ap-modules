@@ -33,7 +33,7 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "calhoun-k8s" # K8s suffix is here for dns testing purposes, will remove when ready to cut over
+  service = "calhoun"
 }
 
 #
