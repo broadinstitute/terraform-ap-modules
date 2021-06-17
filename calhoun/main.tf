@@ -1,5 +1,5 @@
 /**
- * # Terra calhon module
+ * # Terra calhoun module
  * 
  * For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
  * and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
