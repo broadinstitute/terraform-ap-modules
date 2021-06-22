@@ -35,6 +35,55 @@ variable "bucket_location" {
   default     = "us-central1"
 }
 
+#
+# Streaming Cloud Function Vars
+#
+variable "source_archive_bucket" {
+  description = "The GCS bucket containing the zip archive which contains the function"
+  type        = string
+}
+
+variable "source_archive_object" {
+  description = "The source archive object (file) in archive bucket"
+  type        = string
+}
+
+variable "function_name" {
+  type        = string
+  description = "A user-defined name of the function. Function names must be unique globally"
+}
+
+variable "function_description" {
+  type        = string
+  description = "Description of the function"
+}
+
+variable "function_entry_point" {
+  type        = string
+  description = "Name of the function that will be executed when the Google Cloud Function is triggered"
+}
+
+variable "function_runtime_mb" {
+  type        = string
+  description = "Memory (in MB), available to the function. Default value is 256. Possible values include 128, 256, 512, 1024, etc"
+  default     = 512
+}
+
+variable "bq_dataset" {
+  type        = string
+  description = "The user-defined BigQuery dataset for the streaming function"
+}
+variable "bq_tables" {
+  type        = string
+  description = "The BigQuery Table ID(s) that are exposed to the streaming function. Separate multiple tables by comma-delimited string"
+}
+variable "bq_table_schemas" {
+  type        = map
+  description = "A map of key-value pairs where the key represents the Table ID and value the corresponding Table Schema in JSON format"
+}
+
+##
+
 variable "owner" {
   type        = string
   description = "Environment or developer. Defaults to TF workspace name if left blank."

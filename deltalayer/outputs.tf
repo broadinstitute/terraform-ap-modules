@@ -34,3 +34,6 @@ output "cloudsql_app_db_creds" {
   description = "Delta Layer database user credentials"
   sensitive   = true
 }
+output "streaming_function_id" {
+  value = google_cloudfunctions_function.streaming_function.id
+}
