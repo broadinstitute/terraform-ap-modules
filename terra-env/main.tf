@@ -72,7 +72,7 @@ module "sam" {
 }
 
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=jaycarlton/PF-810"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=jaycarlton%2FPF-810"
 
   enable = local.terra_apps["workspace_manager"]
 
