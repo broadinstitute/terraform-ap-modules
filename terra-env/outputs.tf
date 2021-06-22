@@ -101,10 +101,6 @@ output "workspace_app_sa_id" {
   value       = module.workspace_manager.app_sa_id
   description = "Workspace Manager App Google service account ID"
 }
-output "workspace_container_folder_id" {
-  value       = module.workspace_manager.workspace_container_folder_id
-  description = "The folder id of the folder that workspace projects should be created within."
-}
 output "workspace_cloudsql_pg13_outputs" {
   value       = module.workspace_manager.cloudsql_pg13_outputs
   description = "Workspace Manager CloudSQL Postgres 13 instance outputs"

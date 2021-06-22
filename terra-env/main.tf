@@ -88,7 +88,6 @@ module "workspace_manager" {
 
   cloudsql_pg13_settings = var.wsm_cloudsql_pg13_settings
 
-  workspace_project_folder_id  = var.wsm_workspace_project_folder_id
   billing_account_ids          = var.wsm_billing_account_ids
   workspace_project_folder_ids = local.wsm_folder_ids
 

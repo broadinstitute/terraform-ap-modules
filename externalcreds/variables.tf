@@ -32,7 +32,7 @@ variable "owner" {
 }
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "workspace"
+  service = "externalcreds"
 }
 
 #
@@ -44,22 +44,6 @@ variable "env_type" {
   type        = string
   description = "Environment type. Valid values are 'preview', 'preview_shared', and 'default'"
   default     = "default"
-}
-
-#
-# Service Vars
-#
-// workspace_project_folder_ids will replace the workspace_project_folder_id above. Key difference is that these folders are not created by WSM.
-variable "workspace_project_folder_ids" {
-  type        = list(string)
-  description = "List of folder ids WSM will need to be able to access. Folders are created outside of WSM."
-  default     = []
-}
-# This is mostly helpful for testing deployments. Eventually, we want users to bring their billing accounts to WM dynamically.
-variable "billing_account_ids" {
-  type        = list(string)
-  description = "List of Google billing account ids to allow WSM to use for billing workspace google projects."
-  default     = []
 }
 
 #
@@ -103,8 +87,6 @@ locals {
     tier             = "db-custom-4-8192",          # The default tier (DB instance size) for the CloudSQL instance
     db_name          = local.service,               # Name of app DB
     db_user          = local.service,               # Name of app DB user
-    stairway_db_name = "${local.service}-stairway", # Name of stairway DB
-    stairway_db_user = "${local.service}-stairway", # Name of stairway DB user
   }
 }
 

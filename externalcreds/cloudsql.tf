@@ -27,13 +27,9 @@ module "cloudsql-pg13" {
   }
 
   app_dbs = {
-    "${local.service}" = {
+    (local.service) = {
       db       = local.cloudsql_pg13_settings.db_name
       username = local.cloudsql_pg13_settings.db_user
-    }
-    "${local.service}-stairway" = {
-      db       = local.cloudsql_pg13_settings.stairway_db_name
-      username = local.cloudsql_pg13_settings.stairway_db_user
     }
   }
 
