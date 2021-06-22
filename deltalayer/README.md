@@ -41,6 +41,15 @@ No requirements.
 | db\_tier | The default tier (DB instance size) for the CloudSQL instance | `string` | `"db-n1-standard-2"` | no |
 | db\_name | Postgres db name | `string` | `"deltalayer"` | no |
 | db\_user | Postgres username | `string` | `"deltalayer"` | no |
+| source\_archive\_bucket | The GCS bucket containing the zip archive which contains the function | `string` | n/a | yes |
+| source\_archive\_object | The source archive object (file) in archive bucket | `string` | n/a | yes |
+| function\_name | A user-defined name of the function. Function names must be unique globally | `string` | n/a | yes |
+| function\_description | Description of the function | `string` | `""` | no |
+| function\_runtime_\mb | Memory (in MB), available to the function. Default value is 256. Possible values include 128, 256, 512, 1024, etc | number | 512 | no |
+| function\_entry\_point | Name of the function that will be executed when the Google Cloud Function is triggered | `string` | n/a | yes |
+| bq\_dataset | The user-defined BigQuery dataset for the streaming function | `string` | n/a | yes |
+| bq\_tables | The BigQuery Table ID(s) that are exposed to the streaming function. Separate multiple tables by comma-delimited string | `string` | n/a | yes |
+| bq\_table\_schemas | A map of key-value pairs where the key represents the Table ID and value the corresponding Table Schema in JSON format | `map` | n/a | yes |
 
 ## Outputs
 
