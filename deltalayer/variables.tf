@@ -56,6 +56,7 @@ variable "function_name" {
 variable "function_description" {
   type        = string
   description = "Description of the function"
+  default     = ""
 }
 
 variable "function_entry_point" {
