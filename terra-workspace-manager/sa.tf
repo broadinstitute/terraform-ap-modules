@@ -21,7 +21,10 @@ locals {
     "roles/cloudprofiler.agent", # Profiling
     "roles/cloudtrace.agent", # Tracing for monitoring
     "roles/monitoring.editor", # Exporting metrics
-    "roles/pubsub.editor" # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
+    "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
+    "roles/storage.objectViewer", # read source bucket objects for storage transfer
+    "roles/storage.legacyBucketReader", # read source bucket for storage transfer
+    "roles/storage.legacyBucketWriter", # write sink bucket for storage transfer
   ]
 
   # Roles used to manage created workspace projects.
