@@ -38,7 +38,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| google\_project | The google project id to create for CLI to run tests in. | `string` | n/a | yes |
+| google\_project | The google project id to create for the CLI to create resources in | `string` | n/a | yes |
 | folder\_id | What folder to create google\_project in. | `string` | n/a | yes |
 | billing\_account\_id | What billing account to assign google\_project. | `string` | n/a | yes |
 | enable\_billing\_user | Whether to set the CLI test SA as a billing user on the billing account. | `bool` | `true` | no |
