@@ -13,6 +13,7 @@ module "enable-services" {
     "monitoring.googleapis.com",
     "storage-api.googleapis.com",
     "storage-component.googleapis.com",
-    "storagetransfer.googleapis.com"
+    "storagetransfer.googleapis.com",
+    "bigquerydatatransfer.googleapis.com"
   ]
 }
