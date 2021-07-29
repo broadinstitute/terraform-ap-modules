@@ -70,9 +70,8 @@ module "sam" {
   firestore_billing_account_id = var.sam_firestore_billing_account_id
   firestore_folder_id          = var.sam_firestore_folder_id
 }
-
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.7.3"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.7.6"
 
   enable = local.terra_apps["workspace_manager"]
 
