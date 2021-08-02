@@ -24,7 +24,7 @@ locals {
     "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
     "roles/bigquery.admin", # working with Data Transfer Service
     "roles/iam.serviceAccountTokenCreator", # working with account tokens
-    "roles/composer.ServiceAgentV2Ext" # get & set IAM policies
+    "roles/composer.ServiceAgentV2Ext" # get & set IAM policies for BigQuery Data Transfer Service
   ]
 
   # Roles used to manage created workspace projects.
