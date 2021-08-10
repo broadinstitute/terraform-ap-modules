@@ -46,11 +46,11 @@ resource "kubernetes_role_binding" "testrunner_k8s_sa_rolebinding" {
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind      = "Role"
-    name      = kubernetes_role.testrunner_k8s_role.metadata.name
+    name      = kubernetes_role.testrunner_k8s_role.metadata[0].name
   }
   subject {
     kind      = "ServiceAccount"
-    name      = kubernetes_service_account.testrunner_k8s_service_account.metadata.name
+    name      = kubernetes_service_account.testrunner_k8s_service_account.metadata[0].name
     namespace = var.k8s_namespace
   }
   depends_on = [
