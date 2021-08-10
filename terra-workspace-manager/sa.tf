@@ -21,10 +21,7 @@ locals {
     "roles/cloudprofiler.agent", # Profiling
     "roles/cloudtrace.agent", # Tracing for monitoring
     "roles/monitoring.editor", # Exporting metrics
-    "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
-    "roles/bigquery.admin", # working with Data Transfer Service
-    "roles/iam.serviceAccountTokenCreator", # working with account tokens
-    "roles/composer.ServiceAgentV2Ext" # get & set IAM policies for BigQuery Data Transfer Service
+    "roles/pubsub.editor" # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
   ]
 
   # Roles used to manage created workspace projects.
