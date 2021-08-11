@@ -1,6 +1,6 @@
 resource "kubernetes_service_account" "testrunner_k8s_service_account" {
   metadata {
-    name = "${local.service}-k8s-sa"
+    name      = "${local.service}-k8s-sa"
     namespace = var.k8s_namespace
     labels = {
       "app.kubernetes.io/component" = local.service
@@ -10,7 +10,7 @@ resource "kubernetes_service_account" "testrunner_k8s_service_account" {
 
 resource "kubernetes_role" "testrunner_k8s_role" {
   metadata {
-    name = "${local.service}-k8s-role"
+    name      = "${local.service}-k8s-role"
     namespace = var.k8s_namespace
     labels = {
       "app.kubernetes.io/component" = local.service
@@ -37,7 +37,7 @@ resource "kubernetes_role" "testrunner_k8s_role" {
 
 resource "kubernetes_role_binding" "testrunner_k8s_sa_rolebinding" {
   metadata {
-    name = "${local.service}-k8s-sa-rolebinding"
+    name      = "${local.service}-k8s-sa-rolebinding"
     namespace = var.k8s_namespace
     labels = {
       "app.kubernetes.io/component" = local.service
@@ -61,7 +61,7 @@ resource "kubernetes_role_binding" "testrunner_k8s_sa_rolebinding" {
 
 data "kubernetes_secret" "testrunner_k8s_sa_secret" {
   metadata {
-    name = kubernetes_service_account.testrunner_k8s_service_account.default_secret_name
+    name      = kubernetes_service_account.testrunner_k8s_service_account.default_secret_name
     namespace = var.k8s_namespace
   }
   depends_on = [

@@ -1,6 +1,3 @@
-#
-# General Vars
-#
 variable "dependencies" {
   # See: https://github.com/hashicorp/terraform/issues/21418#issuecomment-495818852
   type        = any
@@ -12,7 +9,6 @@ variable "enable" {
   description = "Enable flag for this module. If set to false, no resources will be created."
   default     = true
 }
-
 variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
