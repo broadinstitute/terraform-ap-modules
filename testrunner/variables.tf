@@ -6,6 +6,9 @@ variable "sourcewriter_sa_email" {
   type        = string
   description = "The email of the service account that will write files to the source bucket"
 }
+variable "billing_account_id" {
+  description = "Billing account id"
+}
 variable "k8s_namespace" {
   type        = string
   description = "Terra GKE namespace suffix, whatever is after terra-"
