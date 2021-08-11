@@ -9,10 +9,6 @@ variable "sourcewriter_sa_email" {
 variable "billing_account_id" {
   description = "Billing account id"
 }
-variable "k8s_namespace" {
-  type        = string
-  description = "Terra GKE namespace suffix, whatever is after terra-"
-}
 variable "owner" {
   type        = string
   description = "Environment or developer. Defaults to TF workspace name if left blank."
