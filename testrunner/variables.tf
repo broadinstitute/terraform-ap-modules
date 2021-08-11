@@ -2,10 +2,6 @@ variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
 }
-variable "sourcewriter_sa_email" {
-  type        = string
-  description = "The email of the service account that will write files to the source bucket"
-}
 variable "billing_account_id" {
   description = "Billing account id"
 }
