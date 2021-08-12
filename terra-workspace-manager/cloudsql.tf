@@ -26,9 +26,7 @@ module "cloudsql-pg13" {
     record_client_address   = true
   }
 
-  cloudsql_maintenance_window_day = 6
-  cloudsql_maintenance_window_hour = 2
-  cloudsql_maintenance_window_update_track = "stable"
+  cloudsql_maintenance_window_enable = 1
 
   app_dbs = {
     "${local.service}" = {
