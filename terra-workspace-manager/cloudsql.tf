@@ -1,6 +1,6 @@
 # Postgres 13 CloudSQL instance
 module "cloudsql-pg13" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.5"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.6"
 
   enable = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable
 
@@ -25,6 +25,8 @@ module "cloudsql-pg13" {
     record_application_tags = true,
     record_client_address   = true
   }
+
+  cloudsql_maintenance_window_enable = true
 
   app_dbs = {
     "${local.service}" = {
