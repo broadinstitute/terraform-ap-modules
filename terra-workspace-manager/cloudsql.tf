@@ -26,7 +26,7 @@ module "cloudsql-pg13" {
     record_client_address   = true
   }
 
-  cloudsql_maintenance_window_enable = true
+  cloudsql_maintenance_window_enable = false
 
   app_dbs = {
     "${local.service}" = {
