@@ -13,7 +13,7 @@ output "sa_filemover_id" {
 }
 
 output "sa_deployer_id" {
-  value       = google_service_account.deployer[0].account_id
+  value       = google_service_account.sa_deployer[0].account_id
   description = "Deployer SA ID"
 }
 
