@@ -17,3 +17,13 @@ resource "google_service_account" "sa_filemover" {
   account_id   = "${local.service}-${local.owner}-filemover"
   display_name = "${local.service}-${local.owner}-filemover"
 }
+
+# Service account for deploying the cloud functions.
+resource "google_service_account" "sa_deployer" {
+  count = var.enable ? 1 : 0
+
+  provider     = google.target
+  project      = var.google_project
+  account_id   = "${local.service}-${local.owner}-deployer"
+  display_name = "${local.service}-${local.owner}-deployer"
+}
