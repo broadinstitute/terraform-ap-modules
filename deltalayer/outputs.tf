@@ -12,6 +12,11 @@ output "sa_filemover_id" {
   description = "File-mover SA ID"
 }
 
+output "sa_deployer_id" {
+  value       = google_service_account.sa_deployer[0].account_id
+  description = "Deployer SA ID"
+}
+
 #
 # CloudSQL PostgreSQL Outputs
 #
