@@ -42,7 +42,7 @@ resource "google_project_iam_member" "sa" {
 # Grants the deployer service account the ability to launch the Cloud
 # Function as the streamer service account
 resource "google_service_account_iam_member" "sa_streamer" {
-  service_account_id = google_service_account.sa_streamer[0].account_id
+  service_account_id = google_service_account.sa_streamer[0].email
   role               = "roles/iam.serviceAccountUser"
   member             = "serviceAccount:${google_service_account.sa_deployer[0].email}"
 }
