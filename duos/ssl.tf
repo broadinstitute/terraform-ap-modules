@@ -13,5 +13,5 @@ locals {
   base_managed_domains = [
     local.fqdn,
   ]
-  managed_domains = concat(local.base_managed_domains, var.additional_subject_names)
+  managed_domains = concat(local.base_managed_domains, var.additional_managed_domains)
 }

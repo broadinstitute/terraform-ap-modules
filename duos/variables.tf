@@ -68,7 +68,7 @@ locals {
 #
 # SSL Vars
 #
-variable "additional_subject_names" {
+variable "additional_managed_domains" {
   type        = list(string)
   description = "any additional subject alternative names to include on managed ssl cert in addition to the fqdn defined here"
   default     = []
