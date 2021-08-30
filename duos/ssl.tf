@@ -13,5 +13,5 @@ locals {
   base_managed_domains = [
     local.fqdn,
   ]
-  managed_domains = terraform.workspace == "prod" ? concat(base_managed_domains, "duos.broadinstitute.org") : local.base_managed_domains
+  managed_domains = concat(local.base_managed_domains, var.additional_subject_names)
 }

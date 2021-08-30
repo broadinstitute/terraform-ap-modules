@@ -64,3 +64,12 @@ locals {
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
   subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
+
+#
+# SSL Vars
+#
+variable "additional_subject_names" {
+  type        = list(string)
+  description = "any additional subject alternative names to include on managed ssl cert in addition to the fqdn defined here"
+  default     = []
+}
