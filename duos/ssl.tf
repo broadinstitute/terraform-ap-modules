@@ -11,7 +11,7 @@ resource "google_compute_managed_ssl_certificate" "duos_cert" {
 
 locals {
   base_managed_domains = [
-    local.fqdn
+    local.fqdn,
   ]
-  managed_domains = terraform.workspace == "prod" ? concat(base_managed_domains, "duos.broadinstitute.org") : base_managed_domains
+  managed_domains = terraform.workspace == "prod" ? concat(base_managed_domains, "duos.broadinstitute.org") : local.base_managed_domains
 }
