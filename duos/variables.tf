@@ -78,7 +78,7 @@ variable "authorized_certificate_authorities" {
   type        = list(string)
   description = "A list of certificate issuing authorities that can provision a google managed ssl cert for duos"
   default = [
-    "0 issue letsencrypt.org",
-    "0 issue pki.goog",
+    "0 issue \"letsencrypt.org\"",
+    "0 issue \"pki.goog\"",
   ]
 }
