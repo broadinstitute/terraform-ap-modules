@@ -64,3 +64,21 @@ locals {
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
   subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
+
+#
+# SSL Vars
+#
+variable "additional_managed_domains" {
+  type        = list(string)
+  description = "any additional subject alternative names to include on managed ssl cert in addition to the fqdn defined here"
+  default     = []
+}
+
+variable "authorized_certificate_authorities" {
+  type        = list(string)
+  description = "A list of certificate issuing authorities that can provision a google managed ssl cert for duos"
+  default = [
+    "0 issue \"letsencrypt.org\"",
+    "0 issue \"pki.goog\"",
+  ]
+}
