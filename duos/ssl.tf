@@ -15,3 +15,20 @@ locals {
   ]
   managed_domains = concat(local.base_managed_domains, var.additional_managed_domains)
 }
+
+# For Google managed certs to work properly we also need a CAA record that authorizes the 
+# letsencrypt.org and pki issuers to issuer a TLS cert for duos
+
+resource "google_dns_record_set" "duos_caa" {
+  count        = var.enable ? 1 : 0
+  project      = var.google_project
+  provider     = google.target
+  managed_zone = data.google_dns_managed_zone.dns_zone[0].name
+  name         = local.fqdn
+  type         = "CAA"
+  ttl          = "300"
+  rrdatas = [
+    "0 issue letsencrypt.org",
+    "0 issue pki.goog",
+  ]
+}
