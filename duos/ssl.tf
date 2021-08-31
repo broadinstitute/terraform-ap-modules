@@ -17,7 +17,7 @@ locals {
 }
 
 # For Google managed certs to work properly we also need a CAA record that authorizes the 
-# letsencrypt.org and pki issuers to issuer a TLS cert for duos
+# letsencrypt.org and pki issuers to issue a TLS cert for duos
 
 resource "google_dns_record_set" "duos_caa" {
   count        = var.enable ? 1 : 0
