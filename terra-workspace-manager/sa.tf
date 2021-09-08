@@ -21,7 +21,8 @@ locals {
     "roles/cloudprofiler.agent", # Profiling
     "roles/cloudtrace.agent", # Tracing for monitoring
     "roles/monitoring.editor", # Exporting metrics
-    "roles/pubsub.editor" # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
+    "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
+    "roles/storagetransfer.admin" # Using the Storage Transfer Service for GCS Bucket Clone operations.
   ]
 
   # Roles used to manage created workspace projects.
