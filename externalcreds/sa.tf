@@ -21,7 +21,6 @@ locals {
     "roles/cloudprofiler.agent", # Profiling
     "roles/cloudtrace.agent",    # Tracing for monitoring
     "roles/monitoring.editor",   # Exporting metrics
-    "roles/pubsub.editor"        # Creating, publishing & subscribing pub/sub topics for visa events.
   ]
 }
 
@@ -45,6 +44,6 @@ resource "google_project_iam_member" "app" {
 resource "google_pubsub_topic_iam_member" "member" {
   project = google_pubsub_topic.ecm_events.project
   topic   = google_pubsub_topic.ecm_events.name
-  role    = "roles/editor"
+  role    = "roles/pubsub.publisher"
   member  = "serviceAccount:${google_service_account.app[0].email}"
 }
