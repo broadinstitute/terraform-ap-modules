@@ -39,10 +39,21 @@ resource "google_project_iam_member" "sa" {
   member   = "serviceAccount:${google_service_account.sa_deployer[0].email}"
 }
 
+data "google_app_engine_default_service_account" "default_appspot" {
+}
+
 # Grants the deployer service account the ability to launch the Cloud
 # Function as the streamer service account
 resource "google_service_account_iam_member" "sa_streamer_iam" {
   service_account_id = google_service_account.sa_streamer[0].name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.sa_deployer[0].email}"
+}
+
+# Grants the deployer service account the ability to act as
+# <project-id>@appspot.gserviceaccount.com
+resource "google_service_account_iam_member" "appspot_iam" {
+  service_account_id = data.google_app_engine_default_service_account.default_appspot.email
   role               = "roles/iam.serviceAccountUser"
   member             = "serviceAccount:${google_service_account.sa_deployer[0].email}"
 }
