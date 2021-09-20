@@ -18,9 +18,10 @@ resource "google_project_iam_member" "sqlproxy" {
 
 locals {
   app_sa_roles = [
-    "roles/cloudprofiler.agent", # Profiling
-    "roles/cloudtrace.agent",    # Tracing for monitoring
-    "roles/monitoring.editor",   # Exporting metrics
+    "roles/cloudprofiler.agent",            # Profiling
+    "roles/cloudtrace.agent",               # Tracing for monitoring
+    "roles/monitoring.editor",              # Exporting metrics
+    "roles/iam.serviceAccountTokenCreator", # For signing JWTs
   ]
 }
 
