@@ -93,7 +93,7 @@ data "google_app_engine_default_service_account" "default_appspot" {
 # Grants the deployer service account the ability to act as
 # <project-id>@appspot.gserviceaccount.com
 resource "google_service_account_iam_member" "appspot_iam" {
-  service_account_id = data.google_app_engine_default_service_account.default_appspot.email
+  service_account_id = data.google_app_engine_default_service_account.default_appspot.name
   role               = "roles/iam.serviceAccountUser"
   member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
