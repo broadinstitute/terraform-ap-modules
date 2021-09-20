@@ -95,5 +95,5 @@ data "google_app_engine_default_service_account" "default_appspot" {
 resource "google_service_account_iam_member" "appspot_iam" {
   service_account_id = data.google_app_engine_default_service_account.default_appspot.email
   role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:${google_service_account.sa_deployer[0].email}"
+  member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
