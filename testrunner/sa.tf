@@ -30,12 +30,10 @@ resource "google_project_iam_binding" "k8s_engine_viewer" {
   ]
 }
 
-resource "google_project_iam_binding" "storage_admin" {
+resource "google_project_iam_member" "storage_admin" {
   project = var.google_project
   role    = "roles/storage.admin"
-  members = [
-    "serviceAccount:${google_service_account.testrunner_service_account[0].email}"
-  ]
+  member  = "serviceAccount:${google_service_account.testrunner_service_account[0].email}"
 }
 
 # Service account for deploying the TestRunner-related cloud functions.
