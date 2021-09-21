@@ -11,10 +11,10 @@ resource "google_service_account" "testrunner_service_account" {
 # Grants both TestRunner and TestRunner Streamer SAs the ability to stream to BigQuery.
 # Right now, there is a redundancy here for backward compatibility to older versions of TestRunner.
 # Eventually we will remove the binding for TestRunner SA and use the Streamer SA binding only.
-resource "google_project_iam_binding" "bq_job_user" {
+resource "google_project_iam_binding" "bq_user" {
   provider = google.target
   project  = var.google_project
-  role     = "roles/bigquery.jobUser"
+  role     = "roles/bigquery.user"
   members = [
     "serviceAccount:${google_service_account.testrunner_service_account[0].email}",
     "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
