@@ -11,23 +11,25 @@ resource "google_service_account" "testrunner_service_account" {
 # Grants both TestRunner and TestRunner Streamer SAs the ability to stream to BigQuery.
 # Right now, there is a redundancy here for backward compatibility to older versions of TestRunner.
 # Eventually we will remove the binding for TestRunner SA and use the Streamer SA binding only.
-resource "google_project_iam_binding" "bq_user" {
+resource "google_project_iam_member" "bq_testrunner_user" {
   provider = google.target
   project  = var.google_project
   role     = "roles/bigquery.user"
-  members = [
-    "serviceAccount:${google_service_account.testrunner_service_account[0].email}",
-    "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
-  ]
+  member   = "serviceAccount:${google_service_account.testrunner_service_account[0].email}"
 }
 
-resource "google_project_iam_binding" "k8s_engine_viewer" {
+resource "google_project_iam_member" "bq_streamer_user" {
+  provider = google.target
+  project  = var.google_project
+  role     = "roles/bigquery.user"
+  member   = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
+}
+
+resource "google_project_iam_member" "k8s_engine_viewer" {
   provider = google.target
   project  = var.google_project
   role     = "roles/container.viewer"
-  members = [
-    "serviceAccount:${google_service_account.testrunner_service_account[0].email}"
-  ]
+  member   = "serviceAccount:${google_service_account.testrunner_service_account[0].email}"
 }
 
 resource "google_project_iam_member" "storage_admin" {
@@ -51,13 +53,11 @@ resource "google_service_account" "testrunner_cf_deployer_sa" {
 # the Google project used for the deployment of TestRunner Cloud Functions,
 # so we apply the permission to that Google project here instead of in a
 # google-project.tf module
-resource "google_project_iam_binding" "cf_admin" {
+resource "google_project_iam_member" "cf_admin" {
   provider = google.target
   project  = var.google_project
   role     = "roles/cloudfunctions.admin"
-  members   = [
-    "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
-  ]
+  member   = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 # Service account for the TestRunner "streamer" cloud function.
@@ -77,12 +77,10 @@ resource "google_service_account" "testrunner_streamer_sa" {
 
 # Grants the deployer SA the ability to use TestRunner streamer SA.
 # This allows, for example, the Cloud Function deployer SA to stand up the relevant Cloud Function as streamer.
-resource "google_service_account_iam_binding" "testrunner_streamer_sa_iam" {
+resource "google_service_account_iam_member" "testrunner_streamer_sa_iam" {
   service_account_id = google_service_account.testrunner_streamer_sa[0].name
   role               = "roles/iam.serviceAccountUser"
-  members             = [
-    "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
-  ]
+  member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 data "google_app_engine_default_service_account" "default_appspot" {
