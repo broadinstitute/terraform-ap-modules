@@ -17,10 +17,10 @@ data "google_storage_project_service_account" "gcs_account" {
 }
 
 # permission for automatic SA to publish to source topic
-resource "google_pubsub_topic_iam_binding" "testrunner_results_bucket_topic_publish_policy" {
+resource "google_pubsub_topic_iam_member" "testrunner_results_bucket_topic_publish_policy" {
   provider = google.target
   project  = var.google_project
   topic    = google_pubsub_topic.testrunner_results_bucket_topic.name
   role     = "roles/pubsub.publisher"
-  members  = ["serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"]
+  member   = "serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"
 }
