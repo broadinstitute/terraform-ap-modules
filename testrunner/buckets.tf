@@ -9,6 +9,12 @@ resource "google_storage_bucket" "testrunner-results-bucket" {
   uniform_bucket_level_access = true
 }
 
+resource "google_storage_bucket_iam_member" "testrunner-results-bucket-admin" {
+  bucket = google_storage_bucket.testrunner-results-bucket.name
+  role = "roles/storage.admin"
+  member = google_service_account.testrunner_streamer_sa[0].email
+}
+
 # Pub/Sub notifications for object-finalize in the TestRunner results bucket.
 # The TestRunner results bucket requires permissions to publish events to pub/sub topics.
 # The IAM policy resource must exist before the attempt to utilise pub/sub resource.
