@@ -27,5 +27,5 @@ resource "google_storage_notification" "testrunner-results-finalize-notification
   payload_format = "JSON_API_V1"
   topic          = google_pubsub_topic.testrunner_results_bucket_topic.id
   event_types    = ["OBJECT_FINALIZE"]
-  depends_on     = [google_pubsub_topic_iam_binding.testrunner_results_bucket_topic_publish_policy]
+  depends_on     = [google_pubsub_topic_iam_member.testrunner_results_bucket_topic_publish_policy]
 }
