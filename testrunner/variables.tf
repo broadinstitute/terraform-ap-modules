@@ -28,7 +28,7 @@ variable "owner" {
   default     = ""
 }
 
-variable "testrunner_sa_iam_roles" {
+variable "testrunner_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the TestRunner SA will be added."
   default     = [
@@ -38,7 +38,7 @@ variable "testrunner_sa_iam_roles" {
   ]
 }
 
-variable "testrunner_cf_deployer_sa_iam_roles" {
+variable "testrunner_cf_deployer_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the TestRunner Cloud Function Deployer SA will be added."
   default     = [
@@ -46,20 +46,27 @@ variable "testrunner_cf_deployer_sa_iam_roles" {
   ]
 }
 
-variable "testrunner_cf_deployer_sa_runas_default_appspot_sa_iam_roles" {
+variable "testrunner_streamer_sa_project_iam_roles" {
   type        = list(string)
-  description = "A list of one or more roles which the TestRunner CF Deployer SA will be able to run as the Default AppSpot SA."
+  description = "A list of one or more project roles to which the TestRunner Streamer SA will be added."
   default     = [
-    "roles/iam.serviceAccountUser",
+    "roles/bigquery.user",
   ]
 }
 
-variable "testrunner_streamer_sa_iam_roles" {
+variable "testrunner_streamer_sa_storage_bucket_iam_roles" {
   type        = list(string)
-  description = "A list of one or more roles to which the TestRunner Streamer SA will be added."
+  description = "A list of one or more storage bucket roles to which the TestRunner Streamer SA will be added."
   default     = [
-    "roles/bigquery.user",
-    "roles/iam.serviceAccountUser",
+    "roles/storage.admin",
+  ]
+}
+
+variable "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles" {
+  type        = list(string)
+  description = "A list of one or more roles which the GSP Automatic SA will use to publish results to the TestRunner Results Bucket Topic." 
+  default     = [
+    "roles/pubsub.publisher",
   ]
 }
 
@@ -69,7 +76,7 @@ locals {
 }
 
 ## The following entities were added on 24 Sep 2021 as part of a temporary
-## workaround to addres the IAM storage.admin role SA membership issue that
+## workaround to address the IAM storage.admin role SA membership issue that
 ## manifested as part of QA-1485 and QA-1526. See JIRA issue DDO-1542 for details.
 #
 # These variables will need to remain in this file until the following items are
@@ -79,7 +86,7 @@ locals {
 # - The changes required to manage these non-TestRunner entities have been moved
 #   to a common IAM module.
 
-variable "firecloud_sa_iam_roles" {
+variable "firecloud_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the Firecloud SA will be added."
   default     = [
@@ -92,7 +99,7 @@ variable "firecloud_sa_name" {
   default     = ""
 }
 
-variable "leonardo_sa_iam_roles" {
+variable "leonardo_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the Leonardo SA will be added."
   default     = [
@@ -105,7 +112,7 @@ variable "leonardo_sa_name" {
   default     = ""
 }
 
-variable "sam_sa_iam_roles" {
+variable "sam_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the Sam SA will be added."
   default     = [
