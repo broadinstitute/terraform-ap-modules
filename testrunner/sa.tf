@@ -83,3 +83,47 @@ resource "google_project_iam_member" "testrunner_streamer_sa_iam_role" {
   role    = "${element(var.testrunner_streamer_sa_iam_roles, count.index)}"
   member  = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
 }
+
+## The following entities were added on 24 Sep 2021 as part of a temporary
+## workaround to addres the IAM storage.admin role SA membership issue that
+## manifested as part of QA-1485 and QA-1526. See JIRA issue DDO-1542 for details.
+#
+# These variables will need to remain in this file until the following items are
+# complete:
+# - The changes for QA-1526 have been merged to master in terraform-ap-modules and
+#   terraform-ap-deployments.
+# - The changes required to manage these non-TestRunner entities have been moved
+#   to a common IAM module.
+
+data "google_service_account" "firecloud_sa" {
+  account_id = var.firecloud_sa_name
+}
+
+data "google_service_account" "leonardo_sa" {
+  account_id = var.leonardo_sa_name
+}
+
+data "google_service_account" "sam_sa" {
+  account_id = var.sam_sa_name
+}
+
+resource "google_project_iam_member" "firecloud_sa_iam_role" {
+  count = "${length(var.firecloud_sa_iam_roles)}"
+  project = var.google_project
+  role    = "${element(var.firecloud_sa_iam_roles, count.index)}"
+  member  = "serviceAccount:${google_service_account.firecloud_sa[0].email}"
+}
+
+resource "google_project_iam_member" "sam_sa_iam_role" {
+  count = "${length(var.sam_sa_iam_roles)}"
+  project = var.google_project
+  role    = "${element(var.sam_sa_iam_roles, count.index)}"
+  member  = "serviceAccount:${google_service_account.sam_sa[0].email}"
+}
+
+resource "google_project_iam_member" "leonardo_sa_iam_role" {
+  count = "${length(var.leonardo_sa_iam_roles)}"
+  project = var.google_project
+  role    = "${element(var.leonardo_sa_iam_roles, count.index)}"
+  member  = "serviceAccount:${google_service_account.leonardo_sa[0].email}"
+}

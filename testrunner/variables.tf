@@ -67,3 +67,53 @@ locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
   service = "testrunner"
 }
+
+## The following entities were added on 24 Sep 2021 as part of a temporary
+## workaround to addres the IAM storage.admin role SA membership issue that
+## manifested as part of QA-1485 and QA-1526. See JIRA issue DDO-1542 for details.
+#
+# These variables will need to remain in this file until the following items are
+# complete:
+# - The changes for QA-1526 have been merged to master in terraform-ap-modules and
+#   terraform-ap-deployments.
+# - The changes required to manage these non-TestRunner entities have been moved
+#   to a common IAM module.
+
+variable "firecloud_sa_iam_roles" {
+  type        = list(string)
+  description = "A list of one or more roles to which the Firecloud SA will be added."
+  default     = [
+    "roles/storage.admin",
+  ]
+}
+
+variable "firecloud_sa_name" {
+  type        = string
+  default     = ""
+}
+
+variable "leonardo_sa_iam_roles" {
+  type        = list(string)
+  description = "A list of one or more roles to which the Leonardo SA will be added."
+  default     = [
+    "roles/storage.admin",
+  ]
+}
+
+variable "leonardo_sa_name" {
+  type        = string
+  default     = ""
+}
+
+variable "sam_sa_iam_roles" {
+  type        = list(string)
+  description = "A list of one or more roles to which the Sam SA will be added."
+  default     = [
+    "roles/storage.admin",
+  ]
+}
+
+variable "sam_sa_name" {
+  type        = string
+  default     = ""
+}
