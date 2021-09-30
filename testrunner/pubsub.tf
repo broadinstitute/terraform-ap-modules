@@ -11,16 +11,17 @@ resource "google_pubsub_topic" "testrunner_results_bucket_topic" {
 # Cloud Functions are deployed.
 
 # automatic SA for this project: https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/storage_project_service_account
-data "google_storage_project_service_account" "gcs_account" {
+data "google_storage_project_service_account" "gsp_automatic_sa" {
   provider = google.target
   project  = var.google_project
 }
 
 # permission for automatic SA to publish to source topic
-resource "google_pubsub_topic_iam_member" "testrunner_results_bucket_topic_publish_policy" {
+resource "google_pubsub_topic_iam_member" "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_role" {
   provider = google.target
   project  = var.google_project
   topic    = google_pubsub_topic.testrunner_results_bucket_topic.name
-  role     = "roles/pubsub.publisher"
-  member   = "serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"
+  count    = length(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles)
+  role     = element(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles, count.index)
+  member   = "serviceAccount:${data.google_storage_project_service_account.gsp_automatic_sa.email_address}"
 }

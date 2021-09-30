@@ -9,10 +9,11 @@ resource "google_storage_bucket" "testrunner-results-bucket" {
   uniform_bucket_level_access = true
 }
 
-resource "google_storage_bucket_iam_member" "testrunner-results-bucket-admin" {
+resource "google_storage_bucket_iam_member" "testrunner_streamer_sa_storage_bucket_iam_role" {
+  count  = length(var.testrunner_streamer_sa_storage_bucket_iam_roles)
   bucket = google_storage_bucket.testrunner-results-bucket.name
-  role = "roles/storage.admin"
-  member = google_service_account.testrunner_streamer_sa[0].email
+  role   = element(var.testrunner_streamer_sa_storage_bucket_iam_roles, count.index)
+  member = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
 }
 
 # Pub/Sub notifications for object-finalize in the TestRunner results bucket.
@@ -27,5 +28,5 @@ resource "google_storage_notification" "testrunner-results-finalize-notification
   payload_format = "JSON_API_V1"
   topic          = google_pubsub_topic.testrunner_results_bucket_topic.id
   event_types    = ["OBJECT_FINALIZE"]
-  depends_on     = [google_pubsub_topic_iam_member.testrunner_results_bucket_topic_publish_policy]
+  depends_on     = [google_pubsub_topic_iam_member.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_role]
 }

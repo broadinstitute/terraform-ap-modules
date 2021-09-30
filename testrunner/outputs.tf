@@ -3,7 +3,7 @@
 #
 
 output "testrunner_sa_id" {
-  value       = google_service_account.testrunner_service_account[0].account_id
+  value       = google_service_account.testrunner_sa[0].account_id
   description = "TestRunner service account id"
 }
 
