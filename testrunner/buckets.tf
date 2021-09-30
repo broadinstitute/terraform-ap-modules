@@ -10,10 +10,10 @@ resource "google_storage_bucket" "testrunner-results-bucket" {
 }
 
 resource "google_storage_bucket_iam_member" "testrunner_streamer_sa_storage_bucket_iam_role" {
-  count = length(var.testrunner_streamer_sa_storage_bucket_iam_roles)
+  count  = length(var.testrunner_streamer_sa_storage_bucket_iam_roles)
   bucket = google_storage_bucket.testrunner-results-bucket.name
-  role    = element(var.testrunner_streamer_sa_storage_bucket_iam_roles, count.index)
-  member  = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
+  role   = element(var.testrunner_streamer_sa_storage_bucket_iam_roles, count.index)
+  member = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
 }
 
 # Pub/Sub notifications for object-finalize in the TestRunner results bucket.

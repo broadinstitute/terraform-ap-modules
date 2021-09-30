@@ -2,22 +2,22 @@
 
 # Main service account (assume this is for general operations?)
 resource "google_service_account" "testrunner_sa" {
-  count         = var.enable ? 1 : 0
-  provider      = google.target
-  project       = var.google_project
-  account_id    = "${local.service}-${local.owner}"
-  display_name  = "${local.service}-${local.owner}"
-  description   = "The IAM Service Account for TestRunner"
+  count        = var.enable ? 1 : 0
+  provider     = google.target
+  project      = var.google_project
+  account_id   = "${local.service}-${local.owner}"
+  display_name = "${local.service}-${local.owner}"
+  description  = "The IAM Service Account for TestRunner"
 }
 
 # Service account for deploying the TestRunner-related cloud functions.
 resource "google_service_account" "testrunner_cf_deployer_sa" {
-  count         = var.enable ? 1 : 0
-  provider      = google.target
-  project       = var.google_project
-  account_id    = "${local.service}-${local.owner}-cf-deployer"
-  display_name  = "${local.service}-${local.owner}-cf-deployer"
-  description   = "The Service Account for deploying TestRunner Cloud Functions"
+  count        = var.enable ? 1 : 0
+  provider     = google.target
+  project      = var.google_project
+  account_id   = "${local.service}-${local.owner}-cf-deployer"
+  display_name = "${local.service}-${local.owner}-cf-deployer"
+  description  = "The Service Account for deploying TestRunner Cloud Functions"
 }
 
 # Service account for the TestRunner "streamer" cloud function.
@@ -26,12 +26,12 @@ resource "google_service_account" "testrunner_cf_deployer_sa" {
 # 2) Open a channel / input stream to the file object in the bucket.
 # 3) Stream data to BigQuery.
 resource "google_service_account" "testrunner_streamer_sa" {
-  count         = var.enable ? 1 : 0
-  provider      = google.target
-  project       = var.google_project
-  account_id    = "${local.service}-${local.owner}-streamer"
-  display_name  = "${local.service}-${local.owner}-streamer"
-  description   = "The Service Account for TestRunner Streamer Cloud Functions"
+  count        = var.enable ? 1 : 0
+  provider     = google.target
+  project      = var.google_project
+  account_id   = "${local.service}-${local.owner}-streamer"
+  display_name = "${local.service}-${local.owner}-streamer"
+  description  = "The Service Account for TestRunner Streamer Cloud Functions"
 }
 
 data "google_app_engine_default_service_account" "default_appspot_sa" {
@@ -70,15 +70,15 @@ resource "google_project_iam_member" "testrunner_cf_deployer_sa_project_iam_role
 }
 
 resource "google_service_account_iam_member" "testrunner_cf_deployer_sa_runas_default_appspot_sa_service_account_iam_role" {
-  service_account_id  = data.google_app_engine_default_service_account.default_appspot_sa.name
-  role                = "roles/iam.serviceAccountUser"
-  member              = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
+  service_account_id = data.google_app_engine_default_service_account.default_appspot_sa.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 resource "google_service_account_iam_member" "testrunner_cf_deployer_sa_runas_testrunner_streamer_sa_service_account_iam_role" {
-  service_account_id  = google_service_account.testrunner_streamer_sa[0].name
-  role                = "roles/iam.serviceAccountUser"
-  member              = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
+  service_account_id = google_service_account.testrunner_streamer_sa[0].name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 resource "google_project_iam_member" "testrunner_streamer_sa_project_iam_role" {

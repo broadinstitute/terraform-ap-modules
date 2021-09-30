@@ -31,7 +31,7 @@ variable "owner" {
 variable "testrunner_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the TestRunner SA will be added."
-  default     = [
+  default = [
     "roles/bigquery.user",
     "roles/container.viewer",
     "roles/storage.admin",
@@ -41,7 +41,7 @@ variable "testrunner_sa_project_iam_roles" {
 variable "testrunner_cf_deployer_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the TestRunner Cloud Function Deployer SA will be added."
-  default     = [
+  default = [
     "roles/cloudfunctions.admin",
   ]
 }
@@ -49,7 +49,7 @@ variable "testrunner_cf_deployer_sa_project_iam_roles" {
 variable "testrunner_streamer_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more project roles to which the TestRunner Streamer SA will be added."
-  default     = [
+  default = [
     "roles/bigquery.user",
   ]
 }
@@ -57,15 +57,15 @@ variable "testrunner_streamer_sa_project_iam_roles" {
 variable "testrunner_streamer_sa_storage_bucket_iam_roles" {
   type        = list(string)
   description = "A list of one or more storage bucket roles to which the TestRunner Streamer SA will be added."
-  default     = [
+  default = [
     "roles/storage.admin",
   ]
 }
 
 variable "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles" {
   type        = list(string)
-  description = "A list of one or more roles which the GSP Automatic SA will use to publish results to the TestRunner Results Bucket Topic." 
-  default     = [
+  description = "A list of one or more roles which the GSP Automatic SA will use to publish results to the TestRunner Results Bucket Topic."
+  default = [
     "roles/pubsub.publisher",
   ]
 }
@@ -89,38 +89,38 @@ locals {
 variable "firecloud_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the Firecloud SA will be added."
-  default     = [
+  default = [
     "roles/storage.admin",
   ]
 }
 
 variable "firecloud_sa_name" {
-  type        = string
-  default     = ""
+  type    = string
+  default = ""
 }
 
 variable "leonardo_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the Leonardo SA will be added."
-  default     = [
+  default = [
     "roles/storage.admin",
   ]
 }
 
 variable "leonardo_sa_name" {
-  type        = string
-  default     = ""
+  type    = string
+  default = ""
 }
 
 variable "sam_sa_project_iam_roles" {
   type        = list(string)
   description = "A list of one or more roles to which the Sam SA will be added."
-  default     = [
+  default = [
     "roles/storage.admin",
   ]
 }
 
 variable "sam_sa_name" {
-  type        = string
-  default     = ""
+  type    = string
+  default = ""
 }
