@@ -11,6 +11,18 @@ variable "enable" {
   default     = true
 }
 
+variable "enable_dashboard" {
+  type        = bool
+  description = "Enable flag for TestRunner dashboard. If set to false, no resources related to TestRunner dashboard will be created."
+  default     = false
+}
+
+variable "dashboard_namespace" {
+  type        = string
+  description = "The Kubernetes namespace of the TestRunner Dashboard"
+  default     = "testrunnerdashboard"
+}
+
 variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
@@ -71,8 +83,9 @@ variable "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_ro
 }
 
 locals {
-  owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "testrunner"
+  owner            = var.owner == "" ? terraform.workspace : var.owner
+  service          = "testrunner"
+  dashboardservice = "testrunnerdashboard"
 }
 
 ## The following entities were added on 24 Sep 2021 as part of a temporary
