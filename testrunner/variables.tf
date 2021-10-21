@@ -119,7 +119,7 @@ variable "dns_zone_name" {
   default     = "dsp-envs"
 }
 
-variable "use_subdomain" {
+variable "subdomain_name_enable" {
   type        = bool
   description = "Whether to use a subdomain between the zone and hostname"
   default     = true
@@ -140,7 +140,7 @@ variable "hostname" {
 locals {
   hostname       = var.hostname == "" ? local.dashboardservice : var.hostname
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
-  subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
+  subdomain_name = var.subdomain_name_enable ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
 
 ## The following entities were added on 24 Sep 2021 as part of a temporary
