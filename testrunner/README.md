@@ -77,11 +77,11 @@ No modules.
 | <a name="input_sam_sa_name"></a> [sam\_sa\_name](#input\_sam\_sa\_name) | n/a | `string` | `""` | no |
 | <a name="input_sam_sa_project_iam_roles"></a> [sam\_sa\_project\_iam\_roles](#input\_sam\_sa\_project\_iam\_roles) | A list of one or more roles to which the Sam SA will be added. | `list(string)` | <pre>[<br>  "roles/storage.admin"<br>]</pre> | no |
 | <a name="input_subdomain_name"></a> [subdomain\_name](#input\_subdomain\_name) | Domain namespacing between zone and hostname | `string` | `""` | no |
+| <a name="input_subdomain_name_enable"></a> [subdomain\_name\_enable](#input\_subdomain\_name\_enable) | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 | <a name="input_testrunner_cf_deployer_sa_project_iam_roles"></a> [testrunner\_cf\_deployer\_sa\_project\_iam\_roles](#input\_testrunner\_cf\_deployer\_sa\_project\_iam\_roles) | A list of one or more roles to which the TestRunner Cloud Function Deployer SA will be added. | `list(string)` | <pre>[<br>  "roles/cloudfunctions.admin"<br>]</pre> | no |
 | <a name="input_testrunner_sa_project_iam_roles"></a> [testrunner\_sa\_project\_iam\_roles](#input\_testrunner\_sa\_project\_iam\_roles) | A list of one or more roles to which the TestRunner SA will be added. | `list(string)` | <pre>[<br>  "roles/bigquery.user",<br>  "roles/container.viewer",<br>  "roles/storage.admin"<br>]</pre> | no |
 | <a name="input_testrunner_streamer_sa_project_iam_roles"></a> [testrunner\_streamer\_sa\_project\_iam\_roles](#input\_testrunner\_streamer\_sa\_project\_iam\_roles) | A list of one or more project roles to which the TestRunner Streamer SA will be added. | `list(string)` | <pre>[<br>  "roles/bigquery.user"<br>]</pre> | no |
 | <a name="input_testrunner_streamer_sa_storage_bucket_iam_roles"></a> [testrunner\_streamer\_sa\_storage\_bucket\_iam\_roles](#input\_testrunner\_streamer\_sa\_storage\_bucket\_iam\_roles) | A list of one or more storage bucket roles to which the TestRunner Streamer SA will be added. | `list(string)` | <pre>[<br>  "roles/storage.admin"<br>]</pre> | no |
-| <a name="input_use_subdomain"></a> [use\_subdomain](#input\_use\_subdomain) | Whether to use a subdomain between the zone and hostname | `bool` | `true` | no |
 
 ## Outputs
 
