@@ -18,6 +18,6 @@ output "testrunner_streamer_sa_id" {
 }
 
 output "testrunner_dashboard_sa_id" {
-  value       = var.enable_dashboard ? google_service_account.testrunner_dashbaord_sa[0].account_id : null
+  value       = var.enable_dashboard ? google_service_account.testrunner_dashboard_workload_sa[0].account_id : null
   description = "TestRunner Dashboard Workload Identity service account id"
 }
