@@ -22,5 +22,5 @@ resource "google_service_account_iam_member" "testrunner_dashboard_workload_iden
   count              = var.enable_dashboard ? 1 : 0
   service_account_id = google_service_account.testrunner_dashboard_workload_sa[0].name
   role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${var.google_project}.svc.id.goog[${var.dashboard_namespace}/${local.dashboardservice}-service-ksa]"
+  member             = "serviceAccount:${var.google_project}.svc.id.goog[${var.dashboard_namespace}/${local.dashboardservice}-sa]"
 }
