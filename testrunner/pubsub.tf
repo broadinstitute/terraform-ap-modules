@@ -2,6 +2,7 @@
 
 # Pubsub topic for TestRunner results bucket's Storage Object Events.
 resource "google_pubsub_topic" "testrunner_results_bucket_topic" {
+  count    = var.enable ? 1 : 0
   provider = google.target
   project  = var.google_project
   name     = "testrunner-results-bucket-topic"
@@ -21,7 +22,7 @@ resource "google_pubsub_topic_iam_member" "gsp_automatic_sa_testrunner_results_b
   provider = google.target
   project  = var.google_project
   topic    = google_pubsub_topic.testrunner_results_bucket_topic.name
-  count    = length(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles)
+  count    = var.enable ? length(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles) : 0
   role     = element(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles, count.index)
   member   = "serviceAccount:${data.google_storage_project_service_account.gsp_automatic_sa.email_address}"
 }

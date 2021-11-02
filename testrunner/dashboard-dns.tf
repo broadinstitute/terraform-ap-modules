@@ -1,6 +1,5 @@
 data "google_dns_managed_zone" "dns_zone" {
-  count = var.enable_dashboard && contains(["default", "preview"], var.env_type) ? 1 : 0
-
+  count    = var.enable_dashboard && contains(["default", "preview"], var.env_type) ? 1 : 0
   provider = google.dns
   name     = var.dns_zone_name
 }
@@ -10,8 +9,7 @@ locals {
 }
 
 resource "google_dns_record_set" "ingress" {
-  count = var.enable_dashboard && contains(["default", "preview"], var.env_type) ? 1 : 0
-
+  count        = var.enable_dashboard && contains(["default", "preview"], var.env_type) ? 1 : 0
   provider     = google.dns
   managed_zone = data.google_dns_managed_zone.dns_zone[0].name
   name         = local.fqdn
