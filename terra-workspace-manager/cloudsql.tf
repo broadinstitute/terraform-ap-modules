@@ -31,7 +31,7 @@ module "cloudsql-pg13" {
     "log_connections" = "on",
     "log_disconnections" = "on",
     "log_lock_waits" = "on",
-    "log_min_error_statement" = "info",
+    "log_min_error_statement" = "error",
     "log_temp_files" = "0",
     "log_min_duration_statement" = "-1"
   }
