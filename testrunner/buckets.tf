@@ -25,10 +25,10 @@ resource "google_storage_bucket_iam_member" "testrunner_streamer_sa_storage_buck
 # to the specified pubsub topic.
 resource "google_storage_notification" "testrunner-results-finalize-notification" {
   count          = var.enable ? 1 : 0
-  bucket         = google_storage_bucket.testrunner-results-bucket.name
+  bucket         = google_storage_bucket.testrunner-results-bucket[0].name
   provider       = google.target
   payload_format = "JSON_API_V1"
-  topic          = google_pubsub_topic.testrunner_results_bucket_topic.id
+  topic          = google_pubsub_topic.testrunner_results_bucket_topic[0].id
   event_types    = ["OBJECT_FINALIZE"]
   depends_on     = [google_pubsub_topic_iam_member.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_role]
 }
