@@ -17,7 +17,6 @@ module "cloudsql-pg13" {
   }
   cloudsql_tier = local.cloudsql_pg13_settings.tier
 
-  cloudsql_replication_type = null
   cloudsql_retained_backups = 28
 
   cloudsql_insights_config = {
