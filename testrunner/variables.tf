@@ -96,7 +96,7 @@ variable "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_ro
 locals {
   owner            = var.owner == "" ? terraform.workspace : var.owner
   service          = "testrunner"
-  dashboardservice = "testrunnerdashboard"
+  dashboardservice = "trdashboard"
 }
 
 #
