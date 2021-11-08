@@ -11,9 +11,32 @@ variable "enable" {
   default     = true
 }
 
+variable "enable_dashboard" {
+  type        = bool
+  description = "Enable flag for TestRunner dashboard. If set to false, no resources related to TestRunner dashboard will be created."
+  default     = false
+}
+
+variable "dashboard_namespace" {
+  type        = string
+  description = "The Kubernetes namespace of the TestRunner Dashboard"
+  default     = "default"
+}
+
 variable "google_project" {
   type        = string
   description = "The google project in which to create resources"
+}
+
+variable "cluster" {
+  type        = string
+  description = "Terra GKE cluster suffix, whatever is after terra-"
+}
+
+variable "cluster_short" {
+  type        = string
+  description = "Optional short cluster name"
+  default     = ""
 }
 
 variable "bucket_location" {
@@ -71,8 +94,53 @@ variable "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_ro
 }
 
 locals {
-  owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "testrunner"
+  owner            = var.owner == "" ? terraform.workspace : var.owner
+  service          = "testrunner"
+  dashboardservice = "trdash"
+}
+
+#
+# Environment types:
+#   default: Standard persistent environments that contain a 'prod-like' set of infrastructure
+#   preview: Short-lived, ephemeral environments with various shortcuts and resource sharing to make them lightweight & quick to spin up/down
+#   preview_shared: A deployment with all of the infrastructure that is shared between the preview environments
+variable "env_type" {
+  type        = string
+  description = "Environment type. Valid values are 'preview', 'preview_shared', and 'default'"
+  default     = "default"
+}
+
+#
+# TestRunner Dashboard DNS Vars
+#
+variable "dns_zone_name" {
+  type        = string
+  description = "DNS zone name"
+  default     = "dsp-envs"
+}
+
+variable "subdomain_name_enable" {
+  type        = bool
+  description = "Whether to use a subdomain between the zone and hostname"
+  default     = true
+}
+
+variable "subdomain_name" {
+  type        = string
+  description = "Domain namespacing between zone and hostname"
+  default     = ""
+}
+
+variable "hostname" {
+  type        = string
+  description = "Service hostname"
+  default     = ""
+}
+
+locals {
+  hostname       = var.hostname == "" ? local.dashboardservice : var.hostname
+  cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
+  subdomain_name = var.subdomain_name_enable ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
 
 ## The following entities were added on 24 Sep 2021 as part of a temporary

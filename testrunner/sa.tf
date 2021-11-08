@@ -56,33 +56,35 @@ data "google_app_engine_default_service_account" "default_appspot_sa" {
 #     <project-id>@appspot.gserviceaccount.com
 
 resource "google_project_iam_member" "testrunner_sa_project_iam_role" {
-  count   = length(var.testrunner_sa_project_iam_roles)
+  count   = var.enable ? length(var.testrunner_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.testrunner_sa_project_iam_roles, count.index)
   member  = "serviceAccount:${google_service_account.testrunner_sa[0].email}"
 }
 
 resource "google_project_iam_member" "testrunner_cf_deployer_sa_project_iam_role" {
-  count   = length(var.testrunner_cf_deployer_sa_project_iam_roles)
+  count   = var.enable ? length(var.testrunner_cf_deployer_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.testrunner_cf_deployer_sa_project_iam_roles, count.index)
   member  = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 resource "google_service_account_iam_member" "testrunner_cf_deployer_sa_runas_default_appspot_sa_service_account_iam_role" {
+  count              = var.enable ? 1 : 0
   service_account_id = data.google_app_engine_default_service_account.default_appspot_sa.name
   role               = "roles/iam.serviceAccountUser"
   member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 resource "google_service_account_iam_member" "testrunner_cf_deployer_sa_runas_testrunner_streamer_sa_service_account_iam_role" {
+  count              = var.enable ? 1 : 0
   service_account_id = google_service_account.testrunner_streamer_sa[0].name
   role               = "roles/iam.serviceAccountUser"
   member             = "serviceAccount:${google_service_account.testrunner_cf_deployer_sa[0].email}"
 }
 
 resource "google_project_iam_member" "testrunner_streamer_sa_project_iam_role" {
-  count   = length(var.testrunner_streamer_sa_project_iam_roles)
+  count   = var.enable ? length(var.testrunner_streamer_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.testrunner_streamer_sa_project_iam_roles, count.index)
   member  = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
@@ -100,34 +102,37 @@ resource "google_project_iam_member" "testrunner_streamer_sa_project_iam_role" {
 #   to a common IAM module.
 
 data "google_service_account" "firecloud_sa" {
+  count      = var.enable ? 1 : 0
   account_id = var.firecloud_sa_name
 }
 
 data "google_service_account" "leonardo_sa" {
+  count      = var.enable ? 1 : 0
   account_id = var.leonardo_sa_name
 }
 
 data "google_service_account" "sam_sa" {
+  count      = var.enable ? 1 : 0
   account_id = var.sam_sa_name
 }
 
 resource "google_project_iam_member" "firecloud_sa_project_iam_role" {
-  count   = length(var.firecloud_sa_project_iam_roles)
+  count   = var.enable ? length(var.firecloud_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.firecloud_sa_project_iam_roles, count.index)
-  member  = "serviceAccount:${data.google_service_account.firecloud_sa.email}"
+  member  = "serviceAccount:${data.google_service_account.firecloud_sa[0].email}"
 }
 
 resource "google_project_iam_member" "leonardo_sa_project_iam_role" {
-  count   = length(var.leonardo_sa_project_iam_roles)
+  count   = var.enable ? length(var.leonardo_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.leonardo_sa_project_iam_roles, count.index)
-  member  = "serviceAccount:${data.google_service_account.leonardo_sa.email}"
+  member  = "serviceAccount:${data.google_service_account.leonardo_sa[0].email}"
 }
 
 resource "google_project_iam_member" "sam_sa_project_iam_role" {
-  count   = length(var.sam_sa_project_iam_roles)
+  count   = var.enable ? length(var.sam_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.sam_sa_project_iam_roles, count.index)
-  member  = "serviceAccount:${data.google_service_account.sam_sa.email}"
+  member  = "serviceAccount:${data.google_service_account.sam_sa[0].email}"
 }
