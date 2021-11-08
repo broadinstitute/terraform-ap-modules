@@ -16,8 +16,6 @@ module "cloudsql" {
     "env" = local.owner
     "app" = local.service
   }
-
-  cloudsql_replication_type = null
   
   cloudsql_database_flags = {
     "log_checkpoints" = "on",
