@@ -102,34 +102,37 @@ resource "google_project_iam_member" "testrunner_streamer_sa_project_iam_role" {
 #   to a common IAM module.
 
 data "google_service_account" "firecloud_sa" {
+  count      = var.enable ? 1 : 0
   account_id = var.firecloud_sa_name
 }
 
 data "google_service_account" "leonardo_sa" {
+  count      = var.enable ? 1 : 0
   account_id = var.leonardo_sa_name
 }
 
 data "google_service_account" "sam_sa" {
+  count      = var.enable ? 1 : 0
   account_id = var.sam_sa_name
 }
 
 resource "google_project_iam_member" "firecloud_sa_project_iam_role" {
-  count   = length(var.firecloud_sa_project_iam_roles)
+  count   = var.enable ? length(var.firecloud_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.firecloud_sa_project_iam_roles, count.index)
-  member  = "serviceAccount:${data.google_service_account.firecloud_sa.email}"
+  member  = "serviceAccount:${data.google_service_account.firecloud_sa[0].email}"
 }
 
 resource "google_project_iam_member" "leonardo_sa_project_iam_role" {
-  count   = length(var.leonardo_sa_project_iam_roles)
+  count   = var.enable ? length(var.leonardo_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.leonardo_sa_project_iam_roles, count.index)
-  member  = "serviceAccount:${data.google_service_account.leonardo_sa.email}"
+  member  = "serviceAccount:${data.google_service_account.leonardo_sa[0].email}"
 }
 
 resource "google_project_iam_member" "sam_sa_project_iam_role" {
-  count   = length(var.sam_sa_project_iam_roles)
+  count   = var.enable ? length(var.sam_sa_project_iam_roles) : 0
   project = var.google_project
   role    = element(var.sam_sa_project_iam_roles, count.index)
-  member  = "serviceAccount:${data.google_service_account.sam_sa.email}"
+  member  = "serviceAccount:${data.google_service_account.sam_sa[0].email}"
 }
