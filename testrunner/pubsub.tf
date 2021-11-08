@@ -21,7 +21,7 @@ data "google_storage_project_service_account" "gsp_automatic_sa" {
 resource "google_pubsub_topic_iam_member" "gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_role" {
   provider = google.target
   project  = var.google_project
-  topic    = google_pubsub_topic.testrunner_results_bucket_topic.name
+  topic    = google_pubsub_topic.testrunner_results_bucket_topic[0].name
   count    = var.enable ? length(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles) : 0
   role     = element(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles, count.index)
   member   = "serviceAccount:${data.google_storage_project_service_account.gsp_automatic_sa.email_address}"

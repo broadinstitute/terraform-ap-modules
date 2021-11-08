@@ -12,7 +12,7 @@ resource "google_storage_bucket" "testrunner-results-bucket" {
 
 resource "google_storage_bucket_iam_member" "testrunner_streamer_sa_storage_bucket_iam_role" {
   count  = var.enable ? length(var.testrunner_streamer_sa_storage_bucket_iam_roles) : 0
-  bucket = google_storage_bucket.testrunner-results-bucket.name
+  bucket = google_storage_bucket.testrunner-results-bucket[0].name
   role   = element(var.testrunner_streamer_sa_storage_bucket_iam_roles, count.index)
   member = "serviceAccount:${google_service_account.testrunner_streamer_sa[0].email}"
 }
