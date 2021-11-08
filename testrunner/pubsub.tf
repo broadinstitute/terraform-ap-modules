@@ -13,6 +13,7 @@ resource "google_pubsub_topic" "testrunner_results_bucket_topic" {
 
 # automatic SA for this project: https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/storage_project_service_account
 data "google_storage_project_service_account" "gsp_automatic_sa" {
+  count    = var.enable ? 1 : 0
   provider = google.target
   project  = var.google_project
 }
