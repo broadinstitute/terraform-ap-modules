@@ -25,5 +25,5 @@ resource "google_pubsub_topic_iam_member" "gsp_automatic_sa_testrunner_results_b
   topic    = google_pubsub_topic.testrunner_results_bucket_topic[0].name
   count    = var.enable ? length(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles) : 0
   role     = element(var.gsp_automatic_sa_testrunner_results_bucket_pubsub_topic_publish_iam_roles, count.index)
-  member   = "serviceAccount:${data.google_storage_project_service_account.gsp_automatic_sa.email_address}"
+  member   = "serviceAccount:${data.google_storage_project_service_account.gsp_automatic_sa[0].email_address}"
 }
