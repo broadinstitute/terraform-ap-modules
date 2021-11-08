@@ -1,6 +1,7 @@
 data "google_dns_managed_zone" "dns_zone" {
   count    = var.enable_dashboard && contains(["default", "preview"], var.env_type) ? 1 : 0
   provider = google.dns
+  project  = var.google_project
   name     = var.dns_zone_name
 }
 
