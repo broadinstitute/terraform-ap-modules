@@ -1,5 +1,5 @@
 module "cloudsql" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=DDO-1720-cloudsql-vars"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-2.0.0"
 
   count = var.enable ? 1 : 0
 
