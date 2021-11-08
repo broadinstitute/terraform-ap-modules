@@ -1,5 +1,5 @@
 module "cloudsql" {
-  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-1.2.1"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-2.0.0"
 
   enable = var.enable
 
@@ -18,6 +18,16 @@ module "cloudsql" {
   }
 
   cloudsql_replication_type = null
+  
+  cloudsql_database_flags = {
+    "log_checkpoints" = "on",
+    "log_connections" = "on",
+    "log_disconnections" = "on",
+    "log_lock_waits" = "on",
+    "log_min_error_statement" = "error",
+    "log_temp_files" = "0",
+    "log_min_duration_statement" = "-1"
+  }
 
   app_dbs = {
     "${local.service}" = {
