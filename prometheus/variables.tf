@@ -29,6 +29,12 @@ variable "enable" {
   default     = true
 }
 
+variable "enable_thanos" {
+  type        = bool
+  description = "whether to create networking resources for exposing thanos sidecar. This is used to aggregate across multiple prometheuses"
+  default     = false
+}
+
 # DNS vars
 variable "dns_zone_name" {
   type        = string
