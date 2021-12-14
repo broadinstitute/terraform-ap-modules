@@ -16,6 +16,12 @@ variable "dns_project" {
   default     = "dsp-devops"
 }
 
+variable "k8s_namespace" {
+  type        = string
+  description = "Kubernetes namespace that hosts prometheus deployments"
+  default     = "monitoring"
+}
+
 locals {
   owner     = var.environment == "integration" ? "integ" : terraform.workspace
   service   = "prometheus"
