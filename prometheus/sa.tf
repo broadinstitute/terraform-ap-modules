@@ -26,6 +26,7 @@ data "google_iam_policy" "prometheus_workload_identity_policy" {
     members = [
       "serviceAccount:${var.google_project}.svc.id.goog[${var.k8s_namespace}/terra-prometheus-operator-prometheus]",
       "serviceAccount:${var.google_project}.svc.id.goog[${var.k8s_namespace}/prometheus-to-sd-sa]",
+    ]
   }
   provider = google.target
 }
