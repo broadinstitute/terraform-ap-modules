@@ -32,8 +32,8 @@ data "google_iam_policy" "prometheus_workload_identity_policy" {
 }
 
 # Workload Identity User policy (SA config)
-resource "google_service_account_iam_policy" "prometheus-dns_workload_identity_iam" {
-  service_account_id = google_service_account.sherlock.name
-  policy_data        = data.google_iam_policy.sherlock_workload_identity_policy.policy_data
+resource "google_service_account_iam_policy" "prometheus_workload_identity_iam" {
+  service_account_id = google_service_account.prometheus.name
+  policy_data        = data.google_iam_policy.prometheus_workload_identity_policy.policy_data
   provider           = google.target
 }
