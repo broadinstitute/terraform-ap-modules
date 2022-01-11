@@ -12,7 +12,7 @@
  */
 
 module "poc_service" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.2"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=DDO-1862-bump-cloudsql-module-versions"
 
   enable = local.terra_apps["poc"]
 
@@ -32,7 +32,7 @@ module "poc_service" {
 }
 
 module "identity_concentrator" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=identity-concentrator-0.1.2"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//identity-concentrator?ref=DDO-1862-bump-cloudsql-module-versions"
   enable = local.terra_apps["identity_concentrator"]
 
   google_project = var.google_project
@@ -98,7 +98,7 @@ module "workspace_manager" {
 }
 
 module "crl_janitor" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=crl-janitor-0.2.9"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//crl-janitor?ref=DDO-1862-bump-cloudsql-module-versions"
 
   enable = local.terra_apps["crl_janitor"]
 
