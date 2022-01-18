@@ -22,7 +22,20 @@ locals {
     "roles/cloudtrace.agent", # Tracing for monitoring
     "roles/monitoring.editor", # Exporting metrics
     "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
-    "roles/storagetransfer.admin" # Using the Storage Transfer Service for GCS Bucket Clone operations.
+  ]
+
+  # For permissions from normally-admin roles that WSM needs for specific functionality
+  app_sa_custom_role_permissions = [
+    # For GCS Bucket Clone operations (replaces Storage Transfer Admin)
+    #   As of 1/18/22, "this functionality is only used by Verily services, not Terra UI (yet)",
+    #   so it isn't currently used everywhere, but "at some point we expect this will be used in 
+    #   all environments"
+    #   https://broadinstitute.slack.com/archives/C02LMB1PQ6R/p1642541948003200
+    "storagetransfer.jobs.create",
+    "storagetransfer.jobs.delete",
+    "storagetransfer.jobs.get",
+    "storagetransfer.operations.get",
+    "storagetransfer.projects.getServiceAccount"
   ]
 
   # Roles used to manage created workspace projects.
@@ -35,6 +48,17 @@ locals {
     folder_role = pair[0]
     folder_id = pair[1]
   }]
+}
+
+resource "google_project_iam_custom_role" "app_sa_custom_role" {
+  count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
+
+  provider = google.target
+  project = var.google_project
+  role_id = "${local.service}${title(local.owner)}CustomRole"
+  title = "${local.service}-${local.owner} Custom Role"
+  description = "Custom role for ${local.service} ${local.owner}, managed by DevOps Atlantis `terra-env`"
+  permissions = local.app_sa_custom_role_permissions
 }
 
 resource "google_service_account" "app" {
@@ -53,6 +77,15 @@ resource "google_project_iam_member" "app" {
   role     = local.app_sa_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
+
+resource "google_project_iam_member" "app_custom_role_membership" {
+  count    = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
+  provider = google.target
+  project  = var.google_project
+  role     = google_project_iam_custom_role.app_sa_custom_role[0].id
+  member   = "serviceAccount:${google_service_account.app[0].email}"
+}
+
 # Grant WorkspaceManager Service App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
   count = var.enable ? length(local.folder_ids_and_roles): 0
