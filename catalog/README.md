@@ -24,7 +24,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloudsql-pg13"></a> [cloudsql-pg13](#module\_cloudsql-pg13) | github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres | cloudsql-postgres-2.0.0 |
+| <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres | cloudsql-postgres-2.0.0 |
 
 ## Resources
 
@@ -42,7 +42,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cloudsql_pg13_settings"></a> [cloudsql\_pg13\_settings](#input\_cloudsql\_pg13\_settings) | Settings for Postgres 13 CloudSQL instance | `map` | `{}` | no |
+| <a name="input_cloudsql_settings"></a> [cloudsql\_settings](#input\_cloudsql\_settings) | Settings for Postgres 13 CloudSQL instance | `map` | `{}` | no |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | Terra GKE cluster suffix, whatever is after terra- | `string` | n/a | yes |
 | <a name="input_cluster_short"></a> [cluster\_short](#input\_cluster\_short) | Optional short cluster name | `string` | `""` | no |
 | <a name="input_dependencies"></a> [dependencies](#input\_dependencies) | Work-around for Terraform 0.12's lack of support for 'depends\_on' in custom modules. | `any` | `[]` | no |
@@ -60,7 +60,7 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | <a name="output_app_sa_id"></a> [app\_sa\_id](#output\_app\_sa\_id) | Terra Data Catalog App Google service account ID |
-| <a name="output_cloudsql_pg13_outputs"></a> [cloudsql\_pg13\_outputs](#output\_cloudsql\_pg13\_outputs) | Terra Data Catalog CloudSQL outputs (pg13 instance) |
+| <a name="output_cloudsql_outputs"></a> [cloudsql\_outputs](#output\_cloudsql\_outputs) | Terra Data Catalog CloudSQL outputs (pg13 instance) |
 | <a name="output_fqdn"></a> [fqdn](#output\_fqdn) | Terra Data Catalog fully qualified domain name |
 | <a name="output_ingress_ip"></a> [ingress\_ip](#output\_ingress\_ip) | Terra Data Catalog ingress IP |
 | <a name="output_ingress_ip_name"></a> [ingress\_ip\_name](#output\_ingress\_ip\_name) | Terra Data Catalog ingress IP name |

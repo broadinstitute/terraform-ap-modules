@@ -29,17 +29,17 @@ output "fqdn" {
 #
 # CloudSQL Outputs
 #
-output "cloudsql_pg13_outputs" {
+output "cloudsql_outputs" {
   description = "Terra Data Catalog CloudSQL outputs (pg13 instance)"
   value = {
     # pg13 CloudSQL instance IP
-    public_ip = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? module.cloudsql-pg13.public_ip : null,
+    public_ip = var.enable && contains(["default"], var.env_type) && local.cloudsql_settings.enable ? module.cloudsql.public_ip : null,
     # pg13 CloudSQL instance name
-    instance_name = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? module.cloudsql-pg13.instance_name : null
+    instance_name = var.enable && contains(["default"], var.env_type) && local.cloudsql_settings.enable ? module.cloudsql.instance_name : null
     # pg13 database root password
-    root_user_password = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? module.cloudsql-pg13.root_user_password : null
+    root_user_password = var.enable && contains(["default"], var.env_type) && local.cloudsql_settings.enable ? module.cloudsql.root_user_password : null
     # pg13 app db creds
-    app_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? (length(module.cloudsql-pg13.app_db_creds) == 0 ? {} : module.cloudsql-pg13.app_db_creds[local.service]) : null
+    app_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_settings.enable ? (length(module.cloudsql.app_db_creds) == 0 ? {} : module.cloudsql.app_db_creds[local.service]) : null
   }
   sensitive = true
 }

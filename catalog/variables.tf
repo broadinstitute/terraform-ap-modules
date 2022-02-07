@@ -80,7 +80,7 @@ locals {
 # Postgres CloudSQL DB Vars
 #
 locals {
-  cloudsql_pg13_defaults = {
+  cloudsql_defaults = {
     enable           = true,                        # Whether to create this CloudSQL instance
     version          = "POSTGRES_13",               # Version for CloudSQL instance
     keepers          = true,                        # Whether to use keepers to re-generate instance name
@@ -90,12 +90,12 @@ locals {
   }
 }
 
-variable "cloudsql_pg13_settings" {
+variable "cloudsql_settings" {
   type        = map
   default     = {}
   description = "Settings for Postgres 13 CloudSQL instance"
 }
 
 locals {
-  cloudsql_pg13_settings = merge(local.cloudsql_pg13_defaults, var.cloudsql_pg13_settings)
+  cloudsql_settings = merge(local.cloudsql_defaults, var.cloudsql_settings)
 }
