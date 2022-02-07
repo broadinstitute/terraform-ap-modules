@@ -5,7 +5,3 @@ provider "google" {
 provider "google" {
   alias = "dns"
 }
-
-provider "google-beta" {
-  alias = "target"
-}
