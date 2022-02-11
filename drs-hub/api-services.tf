@@ -9,6 +9,5 @@ module "enable-services" {
     "cloudtrace.googleapis.com",
     "logging.googleapis.com",
     "monitoring.googleapis.com",
-    "pubsub.googleapis.com",
   ]
 }

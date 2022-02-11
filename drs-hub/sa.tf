@@ -23,10 +23,3 @@ resource "google_project_iam_member" "app" {
   role     = local.app_sa_roles[count.index]
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }
-
-resource "google_pubsub_topic_iam_member" "member" {
-  project = google_pubsub_topic.ecm_events.project
-  topic   = google_pubsub_topic.ecm_events.name
-  role    = "roles/pubsub.publisher"
-  member  = "serviceAccount:${google_service_account.app[0].email}"
-}
