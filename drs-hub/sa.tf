@@ -3,7 +3,6 @@ locals {
     "roles/cloudprofiler.agent",            # Profiling
     "roles/cloudtrace.agent",               # Tracing for monitoring
     "roles/monitoring.editor",              # Exporting metrics
-    "roles/iam.serviceAccountTokenCreator", # For signing JWTs
   ]
 }
 
