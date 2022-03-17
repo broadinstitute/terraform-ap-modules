@@ -217,7 +217,7 @@ module "consent" {
 }
 
 module "rawls" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=ehigham--ca-1819-billing-probe-service-accounts"
 
   enable = local.terra_apps["rawls"]
 
