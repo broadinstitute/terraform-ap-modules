@@ -7,3 +7,9 @@ resource "google_service_account" "billing-probe" {
   display_name = "Terra Billing Probe"
   description  = "Probe to check that users have given Terra the correct privileges on their Billing Accounts to create projects."
 }
+
+resource "google_service_account_iam_member" "billing-probe-sa-token-creator" {
+  service_account_id = google_service_account.billing-probe.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+  member             = "serviceAccount:${service_accounts.rawls}"
+}
