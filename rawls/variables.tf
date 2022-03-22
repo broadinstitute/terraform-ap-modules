@@ -35,6 +35,11 @@ locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
   service = "rawls-k8s" # K8s suffix is here for dns testing purposes, ot avoid overlap with GCE consent, will remove when ready to cut over
 }
+variable "service_accounts" {
+  type        = map(string)
+  description = "Externally managed service accounts of Terra services."
+  default     = { rawls = "" }
+}
 
 #
 # DNS vars

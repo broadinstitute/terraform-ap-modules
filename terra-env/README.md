@@ -1,9 +1,9 @@
 # terra-env module
 
-This Terraform module manages resources for a single Terra environment.  
+This Terraform module manages resources for a single Terra environment.
 Each Terra application's resources are defined in its own module that this module references.
 
-For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)  
+For more information, check out the [MC-Terra deployment doc](https://docs.dsp-devops.broadinstitute.org/mc-terra/mcterra-deployment)
 and our [Terraform best practices](https://docs.dsp-devops.broadinstitute.org/best-practices-guides/terraform).
 
 This documentation is generated with [terraform-docs](https://github.com/segmentio/terraform-docs)
@@ -31,7 +31,7 @@ No provider.
 | leonardo | github.com/broadinstitute/terraform-ap-modules.git//leonardo?ref=leonardo-0.0.1 |  |
 | ontology | github.com/broadinstitute/terraform-ap-modules.git//ontology?ref=ontology-0.1.2 |  |
 | poc_service | github.com/broadinstitute/terraform-ap-modules.git//poc-service?ref=poc-service-0.1.2 |  |
-| rawls | github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.1.0 |  |
+| rawls | github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.2.0 |  |
 | sam | github.com/broadinstitute/terraform-ap-modules.git//sam?ref=sam-0.3.0 |  |
 | workspace_manager | github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.6.5 |  |
 

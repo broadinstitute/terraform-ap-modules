@@ -217,7 +217,7 @@ module "consent" {
 }
 
 module "rawls" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.1.0"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//rawls?ref=rawls-0.2.0"
 
   enable = local.terra_apps["rawls"]
 
@@ -228,6 +228,8 @@ module "rawls" {
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
+
+  service_accounts = var.service_accounts
 
   providers = {
     google.target = google.target

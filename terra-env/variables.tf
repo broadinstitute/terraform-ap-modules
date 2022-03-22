@@ -1,5 +1,5 @@
 # See: https://github.com/hashicorp/terraform/issues/21418#issuecomment-495818852
-variable dependencies {
+variable "dependencies" {
   type        = any
   default     = []
   description = "Work-around for Terraform 0.12's lack of support for 'depends_on' in custom modules."
@@ -23,6 +23,11 @@ variable "classic_storage_google_project" {
 }
 locals {
   classic_storage_google_project = var.classic_storage_google_project == "" ? var.google_project : var.classic_storage_google_project
+}
+variable "service_accounts" {
+  type        = map(string)
+  description = "Externally managed service accounts of Terra services."
+  default     = { rawls = "" }
 }
 variable "cluster" {
   type        = string
@@ -126,7 +131,7 @@ variable "wsm_buffer_pool_names" {
   default     = []
 }
 variable "wsm_cloudsql_pg13_settings" {
-  type        = map
+  type        = map(any)
   description = "Settings for the WSM CloudSQL pg13 instance"
   default     = {}
 }
