@@ -24,6 +24,11 @@ variable "classic_storage_google_project" {
 locals {
   classic_storage_google_project = var.classic_storage_google_project == "" ? var.google_project : var.classic_storage_google_project
 }
+variable "service_accounts" {
+  type        = map(string)
+  description = "Externally managed service accounts of Terra services."
+  default     = { rawls = "" }
+}
 variable "cluster" {
   type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
