@@ -11,5 +11,5 @@ resource "google_service_account" "billing-probe" {
 resource "google_service_account_iam_member" "billing-probe-sa-token-creator" {
   service_account_id = google_service_account.billing-probe.name
   role               = "roles/iam.serviceAccountTokenCreator"
-  member             = "serviceAccount:${service_accounts.rawls}"
+  member             = "serviceAccount:${var.service_accounts.rawls}"
 }

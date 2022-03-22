@@ -229,6 +229,8 @@ module "rawls" {
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
+  service_accounts = var.service_accounts
+
   providers = {
     google.target = google.target
     google.dns    = google.dns
