@@ -10,7 +10,7 @@ resource "google_service_account" "billing-probe" {
 
 resource "google_service_account_iam_member" "billing-probe-sa-token-creator" {
   count              = var.enable ? 1 : 0
-  service_account_id = google_service_account.billing-probe.name
+  service_account_id = google_service_account.billing-probe[0].name
   role               = "roles/iam.serviceAccountTokenCreator"
   member             = "serviceAccount:${var.service_accounts.rawls}"
 }
