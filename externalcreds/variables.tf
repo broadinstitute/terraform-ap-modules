@@ -30,7 +30,7 @@ variable "owner" {
   description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
-variable "ssh_keypair_encryption_kms_keyring" {
+variable "kms_keyring" {
   type        = string
   description = "name of the kms key ring for encrypting/decrypting ssh keys in the ECM database."
   default     = ""

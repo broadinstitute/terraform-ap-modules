@@ -1,6 +1,6 @@
 resource "google_kms_key_ring" "keyring" {
-  name     = var.ssh_keypair_encryption_kms_keyring
-  location = "global"
+  name     = var.kms_keyring
+  location = "us-central1"
   project = var.google_project
 }
 
