@@ -23,6 +23,7 @@ To do the above linting automatically on each commit, you can add the following 
 (If you have global hooks already you may need to add [this tweak](https://stackoverflow.com/a/49912720/2014408) to run local ones as well)
 ```
 #!/bin/sh
+
 # Formats any *.tf files according to the hashicorp convention
 files=$(git diff --diff-filter=d --cached --name-only)
 for f in $files
@@ -31,6 +32,7 @@ do
     terraform fmt -check=true $f
   fi
 done
+
 # Keep module docs up to date
 for d in $(ls -d */)
 do
