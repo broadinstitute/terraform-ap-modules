@@ -30,6 +30,18 @@ variable "owner" {
   description = "Environment or developer. Defaults to TF workspace name if left blank."
   default     = ""
 }
+variable "ssh_keypair_encryption_kms_keyring" {
+  type        = string
+  description = "name of the kms key ring for encrypting/decrypting ssh keys in the ECM database."
+  default     = ""
+}
+
+variable "ssh_keypair_encryption_kms_key" {
+  type        = string
+  description = "name of the kms key id for encrypting/decrypting ssh keys in the ECM database."
+  default     = ""
+}
+
 locals {
   owner   = var.owner == "" ? terraform.workspace : var.owner
   service = "externalcreds"
