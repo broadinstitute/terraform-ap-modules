@@ -49,7 +49,7 @@ resource "google_pubsub_topic_iam_member" "member" {
 }
 
 resource "google_kms_crypto_key_iam_member" "crypto_key" {
-  crypto_key_id = google_kms_crypto_key.ssh-keypair-encryption-key.id
+  crypto_key_id = google_kms_crypto_key.ssh_keypair_encryption_key.id
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member        = "serviceAccount:${google_service_account.app[0].email}"
 }
