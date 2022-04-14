@@ -10,5 +10,6 @@ module "enable-services" {
     "logging.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
+    "cloudkms.googleapis.com"
   ]
 }
