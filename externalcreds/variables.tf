@@ -96,6 +96,18 @@ variable "cloudsql_pg13_settings" {
   description = "Settings for Postgres 13 CloudSQL instance"
 }
 
+variable "kms_keyring" {
+  type        = string
+  description = "name of the kms key ring for encrypting/decrypting in the ECM database."
+  default     = "kms_symmetric_key_ring"
+}
+
+variable "ssh_keypair_encryption_kms_key" {
+  type        = string
+  description = "name of the kms key id for encrypting/decrypting ssh keys in the ECM database."
+  default     = "kms_symmetric_key_for_ssh_key_encrypt_decrypt"
+}
+
 locals {
   cloudsql_pg13_settings = merge(local.cloudsql_pg13_defaults, var.cloudsql_pg13_settings)
 }
