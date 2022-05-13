@@ -41,8 +41,6 @@ output "cloudsql_pg13_outputs" {
     root_user_password = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? module.cloudsql-pg13.root_user_password : null
     # pg13 app db creds
     app_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? (length(module.cloudsql-pg13.app_db_creds) == 0 ? {} : module.cloudsql-pg13.app_db_creds[local.service]) : null
-    # pg13 stairway db creds
-    stairway_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? (length(module.cloudsql-pg13.app_db_creds) == 0 ? {} : module.cloudsql-pg13.app_db_creds["${local.service}-stairway"]) : null
   }
   sensitive = true
 }
