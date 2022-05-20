@@ -31,7 +31,8 @@ locals {
     # Allow exporting metrics, profiling, and tracing for monitoring.
     "roles/monitoring.editor",
     "roles/cloudprofiler.agent",
-    "roles/cloudtrace.agent"
+    "roles/cloudtrace.agent",
+    "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
   ]
 }
 
