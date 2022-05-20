@@ -86,6 +86,8 @@ locals {
     tier             = "db-custom-4-8192",          # The default tier (DB instance size) for the CloudSQL instance
     db_name          = local.service,               # Name of app DB
     db_user          = local.service,               # Name of app DB user
+    stairway_db_name = "${local.service}-stairway", # Name of stairway DB
+    stairway_db_user = "${local.service}-stairway", # Name of stairway DB user
   }
 }
 
