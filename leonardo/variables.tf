@@ -78,5 +78,5 @@ variable "service_accounts" {
 variable "terra_docker_versions_upload_bucket" {
   type        = string
   description = "Bucket that Leonardo will upload the Terra Docker Versions file to"
-  value       = "terra-docker-image-documentation"
+  default     = "terra-docker-image-documentation"
 }
