@@ -27,7 +27,7 @@ locals {
 variable "service_accounts" {
   type        = map(string)
   description = "Externally managed service accounts of Terra services."
-  default     = { rawls = "" }
+  default     = { rawls = "", leonardo = "" }
 }
 variable "cluster" {
   type        = string

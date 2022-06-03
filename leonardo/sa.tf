@@ -1,0 +1,7 @@
+# See DDO-2120 for more information on why this is necessary
+resource "google_storage_bucket_iam_member" "member" {
+  count  = var.enable && contains(keys(vars.service_accounts), "leonardo") && length(vars.service_accounts[leonardo]) > 0 ? 1 : 0
+  bucket = var.terra_docker_versions_upload_bucket
+  role   = "roles/storage.objectAdmin"
+  member = vars.service_accounts[leonardo]
+}

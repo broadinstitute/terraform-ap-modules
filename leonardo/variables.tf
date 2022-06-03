@@ -64,3 +64,19 @@ locals {
   cluster_name   = var.cluster_short == "" ? var.cluster : var.cluster_short
   subdomain_name = var.use_subdomain ? (var.subdomain_name == "" ? ".${local.owner}.${local.cluster_name}" : var.subdomain_name) : ""
 }
+
+#
+# SA vars
+#
+
+variable "service_accounts" {
+  type        = map(string)
+  description = "Externally managed service accounts of Terra services."
+  default     = { leonardo = "" }
+}
+
+variable "terra_docker_versions_upload_bucket" {
+  type        = string
+  description = "Bucket that Leonardo will upload the Terra Docker Versions file to"
+  value       = "terra-docker-image-documentation"
+}
