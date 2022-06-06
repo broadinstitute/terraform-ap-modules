@@ -66,7 +66,7 @@ locals {
 }
 
 #
-# SA vars
+# Used for the environment's Terra Docker Versions file bucket
 #
 
 variable "service_accounts" {
@@ -77,6 +77,6 @@ variable "service_accounts" {
 
 variable "terra_docker_versions_upload_bucket" {
   type        = string
-  description = "Bucket that Leonardo will upload the Terra Docker Versions file to"
-  default     = "terra-docker-image-documentation"
+  description = "If not-null, create a publicly-readable, Leonardo-writable bucket for data serving"
+  default     = null
 }

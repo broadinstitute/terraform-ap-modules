@@ -278,3 +278,13 @@ variable "sam_firestore_folder_id" {
   type        = string
   default     = ""
 }
+
+#
+# Leonardo Vars
+#
+
+variable "leonardo_terra_docker_versions_upload_bucket" {
+  type        = string
+  description = "If not-null, create a publicly-readable, Leonardo-writable bucket for data serving"
+  default     = null
+}
