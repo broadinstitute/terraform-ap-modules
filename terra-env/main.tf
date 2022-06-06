@@ -238,7 +238,7 @@ module "rawls" {
 }
 
 module "leonardo" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//leonardo?ref=leonardo-0.0.1"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//leonardo?ref=leonardo-0.0.2"
 
   enable = local.terra_apps["leonardo"]
 
@@ -249,6 +249,9 @@ module "leonardo" {
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
+
+  service_accounts                    = var.service_accounts
+  terra_docker_versions_upload_bucket = var.leonardo_terra_docker_versions_upload_bucket
 
   providers = {
     google.target = google.target
