@@ -238,7 +238,7 @@ module "rawls" {
 }
 
 module "leonardo" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//leonardo?ref=DDO-2120-leonardo-upload-versions-file"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//leonardo?ref=leonardo-0.0.2"
 
   enable = local.terra_apps["leonardo"]
 
