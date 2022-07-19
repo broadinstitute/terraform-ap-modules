@@ -105,11 +105,13 @@ locals {
     db_user          = local.service,               # Name of app DB user
     stairway_db_name = "${local.service}-stairway", # Name of stairway DB
     stairway_db_user = "${local.service}-stairway", # Name of stairway DB user
+    policy_db_name   = "${local.service}-policy",   # Name of policy DB
+    policy_db_user   = "${local.service}-policy",   # Name of policy DB user
   }
 }
 
 variable "cloudsql_pg13_settings" {
-  type        = map
+  type        = map(any)
   default     = {}
   description = "Settings for Postgres 13 CloudSQL instance"
 }
