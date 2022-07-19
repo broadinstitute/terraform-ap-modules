@@ -46,6 +46,10 @@ module "cloudsql-pg13" {
       db       = local.cloudsql_pg13_settings.stairway_db_name
       username = local.cloudsql_pg13_settings.stairway_db_user
     }
+    "${local.service}-policy" = {
+      db       = local.cloudsql_pg13_settings.policy_db_name
+      username = local.cloudsql_pg13_settings.policy_db_user
+    }
   }
 
   dependencies = [var.dependencies]

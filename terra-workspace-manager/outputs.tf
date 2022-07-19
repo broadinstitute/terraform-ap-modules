@@ -42,6 +42,8 @@ output "cloudsql_pg13_outputs" {
     app_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? (length(module.cloudsql-pg13.app_db_creds) == 0 ? {} : module.cloudsql-pg13.app_db_creds[local.service]) : null
     # pg13 stairway db creds
     stairway_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? (length(module.cloudsql-pg13.app_db_creds) == 0 ? {} : module.cloudsql-pg13.app_db_creds["${local.service}-stairway"]) : null
+    # pg13 policy db creds
+    policy_db_creds = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable ? (length(module.cloudsql-pg13.app_db_creds) == 0 ? {} : module.cloudsql-pg13.app_db_creds["${local.service}-policy"]) : null
   }
   sensitive = true
 }
