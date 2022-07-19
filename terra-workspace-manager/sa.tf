@@ -19,9 +19,9 @@ resource "google_project_iam_member" "sqlproxy" {
 locals {
   app_sa_roles = [
     "roles/cloudprofiler.agent", # Profiling
-    "roles/cloudtrace.agent", # Tracing for monitoring
-    "roles/monitoring.editor", # Exporting metrics
-    "roles/pubsub.editor", # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
+    "roles/cloudtrace.agent",    # Tracing for monitoring
+    "roles/monitoring.editor",   # Exporting metrics
+    "roles/pubsub.editor",       # Creating, publishing & subscribing pub/sub topics for multi-instance Stairway.
   ]
 
   # For permissions from normally-admin roles that WSM needs for specific functionality
@@ -44,19 +44,19 @@ locals {
   ]
 
   folder_ids_and_roles = [
-  for pair in setproduct(local.app_folder_roles, var.workspace_project_folder_ids) : {
-    folder_role = pair[0]
-    folder_id = pair[1]
+    for pair in setproduct(local.app_folder_roles, var.workspace_project_folder_ids) : {
+      folder_role = pair[0]
+      folder_id   = pair[1]
   }]
 }
 
 resource "google_project_iam_custom_role" "app_sa_custom_role" {
   count = var.enable && contains(["default", "preview_shared"], var.env_type) ? 1 : 0
 
-  provider = google.target
-  project = var.google_project
-  role_id = "${local.service}${title(local.owner)}CustomRole"
-  title = "${local.service}-${local.owner} Custom Role"
+  provider    = google.target
+  project     = var.google_project
+  role_id     = "${local.service}${title(local.owner)}CustomRole"
+  title       = "${local.service}-${local.owner} Custom Role"
   description = "Custom role for ${local.service} ${local.owner}, managed by DevOps Atlantis `terra-env`"
   permissions = local.app_sa_custom_role_permissions
 }
@@ -88,10 +88,10 @@ resource "google_project_iam_member" "app_custom_role_membership" {
 
 # Grant WorkspaceManager Service App Service Account permission to modify resource in folder.
 resource "google_folder_iam_member" "app_folder_roles" {
-  count = var.enable ? length(local.folder_ids_and_roles): 0
+  count = var.enable ? length(local.folder_ids_and_roles) : 0
 
   provider = google.target
-  folder  = local.folder_ids_and_roles[count.index].folder_id
+  folder   = local.folder_ids_and_roles[count.index].folder_id
   role     = local.folder_ids_and_roles[count.index].folder_role
   member   = "serviceAccount:${google_service_account.app[0].email}"
 }

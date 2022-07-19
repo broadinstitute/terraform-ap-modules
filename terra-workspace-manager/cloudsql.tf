@@ -24,14 +24,14 @@ module "cloudsql-pg13" {
     record_application_tags = true,
     record_client_address   = true
   }
-  
+
   cloudsql_database_flags = {
-    "log_checkpoints" = "on",
-    "log_connections" = "on",
-    "log_disconnections" = "on",
-    "log_lock_waits" = "on",
-    "log_min_error_statement" = "error",
-    "log_temp_files" = "0",
+    "log_checkpoints"            = "on",
+    "log_connections"            = "on",
+    "log_disconnections"         = "on",
+    "log_lock_waits"             = "on",
+    "log_min_error_statement"    = "error",
+    "log_temp_files"             = "0",
     "log_min_duration_statement" = "-1"
   }
 
