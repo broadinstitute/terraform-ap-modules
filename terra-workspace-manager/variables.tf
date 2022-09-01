@@ -109,6 +109,8 @@ locals {
     policy_db_user      = "${local.service}-policy",      # Name of policy DB user
     landingzone_db_name = "${local.service}-landingzone", # Name of landingzone DB
     landingzone_db_user = "${local.service}-landingzone", # Name of landingzone DB user
+    landingzone_stairway_db_name = "${local.service}-landingzone-stairway", # Name of landingzone stairway DB
+    landingzone_stairway_db_user = "${local.service}-landingzone-stairway", # Name of landingzone stairway DB user
   }
 }
 

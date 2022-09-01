@@ -54,6 +54,10 @@ module "cloudsql-pg13" {
       db       = local.cloudsql_pg13_settings.landingzone_db_name
       username = local.cloudsql_pg13_settings.landingzone_db_user
     }
+    "${local.service}-landingzone-stairway" = {
+      db       = local.cloudsql_pg13_settings.landingzone_stairway_db_name
+      username = local.cloudsql_pg13_settings.landingzone_stairway_db_user
+    }
   }
 
   dependencies = [var.dependencies]
