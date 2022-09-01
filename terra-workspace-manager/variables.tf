@@ -97,16 +97,18 @@ locals {
 #
 locals {
   cloudsql_pg13_defaults = {
-    enable           = true,                        # Whether to create this CloudSQL instance
-    version          = "POSTGRES_13",               # Version for CloudSQL instance
-    keepers          = true,                        # Whether to use keepers to re-generate instance name
-    tier             = "db-custom-4-8192",          # The default tier (DB instance size) for the CloudSQL instance
-    db_name          = local.service,               # Name of app DB
-    db_user          = local.service,               # Name of app DB user
-    stairway_db_name = "${local.service}-stairway", # Name of stairway DB
-    stairway_db_user = "${local.service}-stairway", # Name of stairway DB user
-    policy_db_name   = "${local.service}-policy",   # Name of policy DB
-    policy_db_user   = "${local.service}-policy",   # Name of policy DB user
+    enable              = true,                           # Whether to create this CloudSQL instance
+    version             = "POSTGRES_13",                  # Version for CloudSQL instance
+    keepers             = true,                           # Whether to use keepers to re-generate instance name
+    tier                = "db-custom-4-8192",             # The default tier (DB instance size) for the CloudSQL instance
+    db_name             = local.service,                  # Name of app DB
+    db_user             = local.service,                  # Name of app DB user
+    stairway_db_name    = "${local.service}-stairway",    # Name of stairway DB
+    stairway_db_user    = "${local.service}-stairway",    # Name of stairway DB user
+    policy_db_name      = "${local.service}-policy",      # Name of policy DB
+    policy_db_user      = "${local.service}-policy",      # Name of policy DB user
+    landingzone_db_name = "${local.service}-landingzone", # Name of landingzone DB
+    landingzone_db_user = "${local.service}-landingzone", # Name of landingzone DB user
   }
 }
 
