@@ -107,6 +107,10 @@ locals {
     stairway_db_user = "${local.service}-stairway", # Name of stairway DB user
     policy_db_name   = "${local.service}-policy",   # Name of policy DB
     policy_db_user   = "${local.service}-policy",   # Name of policy DB user
+    landingzone_db_name = "${local.service}-landingzone", #Name of Azure LandingZone DB
+    landingzone_db_user = "${local.service}-landingzone", #Name of Azure LandingZone DB user
+    landingzone_stairway_db_name = "${local.service}-landingzone-stairway", #Name of Azure LandingZone Stairway DB
+    landingzone_stairway_db_user = "${local.service}-landingzone-stairway"  #Name of Azure LandingZone Stairway DB user
   }
 }
 
