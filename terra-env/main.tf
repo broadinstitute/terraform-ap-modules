@@ -71,7 +71,7 @@ module "sam" {
   firestore_folder_id          = var.sam_firestore_folder_id
 }
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=TOAZ-199-add-deployment-support-for-lz-databases"
+  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.10.0"
 
   enable = local.terra_apps["workspace_manager"]
 
