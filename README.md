@@ -16,7 +16,7 @@ When making changes to modules deployed with Atlantis in the [terraform-ap-deplo
 ## Formatting
 Before committing changes to a module, please run the following linting operations in the module directory:
 - `terraform fmt` - Will fix any formatting/indentation syntax.
-- `terraform-docs markdown --no-sort . > README.md` - If adding/modifying vars/outputs/README header, this [terraform-docs](https://github.com/segmentio/terraform-docs) command will update the README.
+- `terraform-docs markdown . > README.md` - If adding/modifying vars/outputs/README header, this [terraform-docs](https://github.com/segmentio/terraform-docs) command will update the README.
 
 ### Pre-commit hook
 To do the above linting automatically on each commit, you can add the following git commit hook in `.git/hooks/pre-commit`:
