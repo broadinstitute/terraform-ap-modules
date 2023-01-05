@@ -24,11 +24,3 @@ output "fqdn" {
   value       = var.enable && contains(["default", "preview"], var.env_type) ? local.fqdn : null
   description = "Sam fully qualified domain name"
 }
-
-#
-# Firestore Outputs
-#
-output "firestore_project_name" {
-  value       = var.enable && contains(["preview_shared"], var.env_type) ? google_project.sam-firestore[0].name : null
-  description = "Sam Firestore project name"
-}
