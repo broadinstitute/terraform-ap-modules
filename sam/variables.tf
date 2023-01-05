@@ -78,4 +78,8 @@ locals {
 #
 # Sam Vars
 #
-
+variable "num_admin_sdk_service_accounts" {
+  description = "How many Admin SDK service accounts to do GSuite group/user management to create."
+  type        = number
+  default     = 3
+}
