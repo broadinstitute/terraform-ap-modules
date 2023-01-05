@@ -83,3 +83,13 @@ variable "num_admin_sdk_service_accounts" {
   type        = number
   default     = 3
 }
+
+variable "firestore_project_name" {
+  description = "Name for Sam Firestore project"
+  type        = string
+  default     = ""
+}
+
+locals {
+  firestore_project_name = var.firestore_project_name == "" ? "terra-${local.service}-${local.owner}-firestore" : var.firestore_project_name
+}
