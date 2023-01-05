@@ -12,7 +12,7 @@ resource "google_project" "sam-firestore" {
 }
 
 module "enable-services-firestore" {
-  source      = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=gm-api-project"
+  source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/api-services?ref=gm-api-project"
 
   enable_flag = var.enable && contains(["preview_shared"], var.env_type)
 
@@ -20,27 +20,10 @@ module "enable-services-firestore" {
     google.target = google.target
   }
   google_project = var.enable && contains(["preview_shared"], var.env_type) ? google_project.sam-firestore[0].name : ""
-  services       = [
+  services = [
     "cloudfunctions.googleapis.com",
     "firestore.googleapis.com"
   ]
 }
 
-# Sam Firestore service account
-resource "google_service_account" "sam-firestore" {
-  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
 
-  provider     = google.target
-  project      = google_project.sam-firestore[0].name
-  account_id   = "${local.service}-${local.owner}-firestore"
-  display_name = "${local.service}-${local.owner}-firestore"
-}
-
-resource "google_project_iam_member" "sam-firestore" {
-  count = var.enable && contains(["preview_shared"], var.env_type) ? 1 : 0
-
-  provider = google.target
-  project  = google_project.sam-firestore[0].name
-  role     = "roles/editor"
-  member   = "serviceAccount:${google_service_account.sam-firestore[0].email}"
-}

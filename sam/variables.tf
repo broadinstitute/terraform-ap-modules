@@ -83,23 +83,3 @@ variable "num_admin_sdk_service_accounts" {
   type        = number
   default     = 3
 }
-
-#
-# Sam Firestore Vars
-#
-variable "firestore_project_name" {
-  description = "Name for Sam Firestore project"
-  type        = string
-  default     = ""
-}
-variable "firestore_billing_account_id" {
-  description = "Sam Firestore project billing account ID"
-  type        = string
-}
-variable "firestore_folder_id" {
-  description = "Sam Firestore project folder ID"
-  type        = string
-}
-locals {
-  firestore_project_name = var.firestore_project_name == "" ? "terra-${local.service}-${local.owner}-firestore" : var.firestore_project_name
-}
