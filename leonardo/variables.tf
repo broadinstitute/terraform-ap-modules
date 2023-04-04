@@ -26,6 +26,15 @@ variable "cluster_short" {
   description = "Optional short cluster name"
   default     = ""
 }
+variable "namespace" {
+  type        = string
+  description = "Optional Kubernetes namespace (defaults to terra-{cluster})"
+  default     = ""
+}
+locals {
+  namespace = var.namespace == "" ? "terra-${var.cluster}" : var.namespace
+}
+
 variable "owner" {
   type        = string
   description = "Environment or developer. Defaults to TF workspace name if left blank."
@@ -66,7 +75,7 @@ locals {
 }
 
 #
-# Used for the environment's Terra Docker Versions file bucket
+# Service account config
 #
 
 variable "service_accounts" {
@@ -74,6 +83,20 @@ variable "service_accounts" {
   description = "Externally managed service accounts of Terra services."
   default     = { leonardo = "" }
 }
+variable "enable_workload_identity" {
+  type        = bool
+  description = "Enable configuring application service accounts for Workload Identity"
+  default     = false
+}
+variable "kubernetes_sa_name" {
+  type        = string
+  description = "When Workload Identity is enabled, this Kubernetes SA in {namespace} will be able to impersonate Leonardo's Google SA"
+  default     = "leonardo-sa"
+}
+
+#
+# Used for the environment's Terra Docker Versions file bucket
+#
 
 variable "terra_docker_versions_upload_bucket" {
   type        = string

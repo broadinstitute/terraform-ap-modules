@@ -24,11 +24,18 @@ variable "classic_storage_google_project" {
 locals {
   classic_storage_google_project = var.classic_storage_google_project == "" ? var.google_project : var.classic_storage_google_project
 }
+
 variable "service_accounts" {
   type        = map(string)
   description = "Externally managed service accounts of Terra services."
   default     = { rawls = "", leonardo = "" }
 }
+variable "enable_workload_identity" {
+  type        = bool
+  description = "Enable configuring application service accounts for Workload Identity"
+  default     = false
+}
+
 variable "cluster" {
   type        = string
   description = "Terra GKE cluster suffix, whatever is after terra-"
@@ -38,6 +45,16 @@ variable "cluster_short" {
   description = "Optional short cluster name"
   default     = ""
 }
+variable "namespace" {
+  type        = string
+  description = "Optional Kubernetes namespace (defaults to terra-{cluster})"
+  default     = ""
+}
+locals {
+  namespace = var.namespace == "" ? "terra-${var.cluster}" : var.namespace
+}
+
+
 variable "owner" {
   type        = string
   description = "Environment or developer. Defaults to TF workspace name if left blank."
