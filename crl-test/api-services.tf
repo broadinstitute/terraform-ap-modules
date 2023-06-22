@@ -14,6 +14,7 @@ module "enable-services" {
     "storage-api.googleapis.com",
     "storage-component.googleapis.com",
     "bigquery.googleapis.com",
+	"dataproc.googleapis.com",
     "cloudbilling.googleapis.com",
     "iam.googleapis.com",
   ]
