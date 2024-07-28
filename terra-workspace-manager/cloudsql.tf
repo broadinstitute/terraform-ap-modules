@@ -2,7 +2,7 @@
 module "cloudsql-pg13" {
   source = "github.com/broadinstitute/terraform-shared.git//terraform-modules/cloudsql-postgres?ref=cloudsql-postgres-2.0.0"
 
-  enable = var.enable && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable
+  enable = var.enable && var.cloudsql_enabled && contains(["default"], var.env_type) && local.cloudsql_pg13_settings.enable
 
   providers = {
     google.target = google.target

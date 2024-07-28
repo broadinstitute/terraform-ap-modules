@@ -71,7 +71,7 @@ module "sam" {
   firestore_folder_id          = var.sam_firestore_folder_id
 }
 module "workspace_manager" {
-  source = "github.com/broadinstitute/terraform-ap-modules.git//terra-workspace-manager?ref=terra-workspace-manager-0.10.0"
+  source = "../terra-workspace-manager"
 
   enable = local.terra_apps["workspace_manager"]
 
@@ -81,10 +81,12 @@ module "workspace_manager" {
 
   env_type = var.env_type
 
+  dns_enabled    = var.dns_enabled
   dns_zone_name  = var.dns_zone_name
   subdomain_name = var.subdomain_name
   use_subdomain  = var.use_subdomain
 
+  cloudsql_enabled       = var.cloudsql_enabled
   cloudsql_pg13_settings = var.wsm_cloudsql_pg13_settings
 
   billing_account_ids          = var.wsm_billing_account_ids

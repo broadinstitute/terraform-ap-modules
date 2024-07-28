@@ -65,6 +65,11 @@ variable "billing_account_ids" {
 #
 # DNS Vars
 #
+variable "dns_enabled" {
+  type        = bool
+  description = "If true, provision DNS records and static IP for Ingress"
+  default     = true
+}
 variable "dns_zone_name" {
   type        = string
   description = "DNS zone name"
@@ -112,6 +117,12 @@ locals {
     landingzone_stairway_db_name = "${local.service}-landingzone-stairway", #Name of Azure LandingZone Stairway DB
     landingzone_stairway_db_user = "${local.service}-landingzone-stairway"  #Name of Azure LandingZone Stairway DB user
   }
+}
+
+variable "cloudsql_enabled" {
+  type        = bool
+  description = "If true, provision a CloudSQL instance"
+  default     = true
 }
 
 variable "cloudsql_pg13_settings" {
