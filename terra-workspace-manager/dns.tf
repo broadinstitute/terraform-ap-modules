@@ -2,7 +2,7 @@ data "google_dns_managed_zone" "dns_zone" {
   count = var.enable && var.dns_enabled && contains(["default", "preview"], var.env_type) ? 1 : 0
 
   provider = google.dns
-  name     = var.enable && var.dns_enabled && contains(["default", "preview"], var.env_type) ? var.dns_zone_name : null
+  name     = var.dns_zone_name
 }
 
 locals {
