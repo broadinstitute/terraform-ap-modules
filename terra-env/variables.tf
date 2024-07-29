@@ -118,6 +118,11 @@ locals {
 #
 # DNS Vars
 #
+variable "dns_enabled" {
+  type        = bool
+  description = "If true, provision DNS records and static IP for Ingress"
+  default     = true
+}
 variable "dns_zone_name" {
   type        = string
   description = "DNS zone name"
@@ -131,6 +136,15 @@ variable "subdomain_name" {
 variable "use_subdomain" {
   type        = bool
   description = "Whether to use a subdomain between the zone and hostname"
+  default     = true
+}
+
+#
+# CloudSQL DB Vars
+#
+variable "cloudsql_enabled" {
+  type        = bool
+  description = "If true, provision a CloudSQL instance"
   default     = true
 }
 
