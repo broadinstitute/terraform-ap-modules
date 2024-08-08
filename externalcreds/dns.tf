@@ -6,7 +6,7 @@ data "google_dns_managed_zone" "dns_zone" {
 }
 
 locals {
-  fqdn = var.enable && contains(["default", "preview"], var.env_type) ? "${local.hostname}${local.subdomain_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
+  fqdn = var.enable && var.enable_dns ? "${local.hostname}${local.subdomain_name}.${data.google_dns_managed_zone.dns_zone[0].dns_name}" : null
 }
 
 resource "google_dns_record_set" "ingress" {
